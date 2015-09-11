@@ -1,0 +1,222 @@
+[submodule "janus/cucumbertables"]
+	path = janus/cucumbertables/plugin
+	url = https://gist.github.com/287147.git
+[submodule "zsh/zprezto"]
+	path = zsh/zprezto
+	url = https://github.com/chauncey-garrett/zsh-prezto.git
+[submodule "bin/external/lns"]
+	path = bin/external/lns
+	url = https://github.com/chauncey-garrett/bin-lns.git
+[submodule "bin/external/formd"]
+	path = bin/external/formd
+	url = https://github.com/chauncey-garrett/bin-formd.git
+[submodule "bin/external/histo"]
+	path = bin/external/histo
+	url = https://github.com/chauncey-garrett/bin-histo.git
+[submodule "janus/taskpaper"]
+	path = janus/taskpaper
+	url = https://github.com/chauncey-garrett/vim-taskpaper.git
+[submodule "janus/tag-highlight"]
+	path = janus/tag-highlight
+	url = https://github.com/chauncey-garrett/vim-tag-highlight.git
+[submodule "janus/camelcasemotion"]
+	path = janus/camelcasemotion
+	url = https://github.com/chauncey-garrett/vim-camelcasemotion.git
+[submodule "bin/external/prowl"]
+	path = bin/external/prowl
+	url = https://github.com/chauncey-garrett/bin-prowl.pl.git
+[submodule "colors/external/base16-builder"]
+	path = colors/external/base16-builder
+	url = https://github.com/chauncey-garrett/colors-base16-builder.git
+[submodule "colors/external/iterm-argonaut"]
+	path = colors/external/iterm-argonaut
+	url = https://github.com/chauncey-garrett/colors-iterm-argonaut.git
+[submodule "janus/gitv"]
+	path = janus/gitv
+	url = https://github.com/chauncey-garrett/vim-gitv.git
+[submodule "cheat"]
+	path = cheat
+	url = https://github.com/chauncey-garrett/bin-cheat.git
+[submodule "janus/airline"]
+	path = janus/airline
+	url = https://github.com/chauncey-garrett/vim-airline
+[submodule "bin/external/now"]
+	path = bin/external/now
+	url = https://github.com/chauncey-garrett/bin-now.git
+[submodule "keybindings"]
+	path = keybindings
+	url = https://github.com/chauncey-garrett/osx-keybindings.git
+[submodule "bin/external/vimpager"]
+	path = bin/external/vimpager
+	url = https://github.com/chauncey-garrett/vim-vimpager.git
+[submodule "janus/marked"]
+	path = janus/marked
+	url = https://github.com/chauncey-garrett/vim-marked.git
+[submodule "janus/dash"]
+	path = janus/dash
+	url = https://github.com/chauncey-garrett/vim-dash.git
+[submodule "janus/tmuxline"]
+	path = janus/tmuxline
+	url = https://github.com/chauncey-garrett/vim-tmuxline.git
+[submodule "janus/clam"]
+	path = janus/clam
+	url = https://github.com/chauncey-garrett/vim-clam.git
+[submodule "janus/applescript"]
+	path = janus/applescript
+	url = https://github.com/chauncey-garrett/vim-applescript.git
+[submodule "bin/external/launchd-check-for-dropbox-conflicts"]
+	path = bin/external/launchd-check-for-dropbox-conflicts
+	url = https://github.com/chauncey-garrett/osx-launchd-check-for-dropbox-conflicts.git
+[submodule "janus/abolish"]
+	path = janus/abolish
+	url = https://github.com/chauncey-garrett/vim-abolish.git
+[submodule "bin/external/nino"]
+	path = bin/external/nino
+	url = https://github.com/chauncey-garrett/bin-nino.git
+[submodule "bin/external/remotecopy"]
+	path = bin/external/remotecopy
+	url = https://github.com/chauncey-garrett/bin-remotecopy.git
+[submodule "janus/colorizer"]
+	path = janus/colorizer
+	url = https://github.com/chauncey-garrett/vim-colorizer.git
+[submodule "janus/numbers"]
+	path = janus/numbers
+	url = https://github.com/chauncey-garrett/vim-numbers.git
+[submodule "janus/tabular"]
+	path = janus/tabular
+	url = https://github.com/chauncey-garrett/vim-tabular.git
+[submodule "janus/vimux"]
+	path = janus/vimux
+	url = https://github.com/chauncey-garrett/vim-vimux.git
+[submodule "janus/criticmarkup"]
+	path = janus/criticmarkup
+	url = https://github.com/chauncey-garrett/vim-criticmarkup.git
+[submodule "emacs/emacs.d/deft"]
+	path = emacs/emacs.d/deft
+	url = https://github.com/chauncey-garrett/emacs-deft.git
+[submodule "janus/funcoo"]
+	path = janus/funcoo
+	url = https://github.com/chauncey-garrett/vim-funcoo.git
+[submodule "dotsync"]
+	path = dotsync
+	url = https://github.com/chauncey-garrett/bin-dotsync.git
+[submodule "janus/snippets"]
+	path = janus/snippets
+	url = https://github.com/chauncey-garrett/vim-snippets.git
+[submodule "bin/external/gsub"]
+	path = bin/external/gsub
+	url = https://gist.github.com/a4c79e174f9788bf3ee9.git
+[submodule "gaussian-tools"]
+	path = gaussian-tools
+	url = https://github.com/chauncey-garrett/gaussian-tools.git
+[submodule "janus/switch"]
+	path = janus/switch
+	url = https://github.com/chauncey-garrett/vim-switch.git
+[submodule "janus/jekyll"]
+	path = janus/jekyll
+	url = https://github.com/chauncey-garrett/vim-jekyll.git
+[submodule "janus/plist"]
+	path = janus/plist
+	url = https://github.com/chauncey-garrett/vim-plist.git
+[submodule "bin/external/fasd"]
+	path = bin/external/fasd
+	url = https://github.com/chauncey-garrett/bin-fasd.git
+[submodule "colors/external/solarized"]
+	path = colors/external/solarized
+	url = https://github.com/chauncey-garrett/colors-solarized.git
+[submodule "colors/external/textmate-twilight2"]
+	path = colors/external/textmate-twilight2
+	url = https://github.com/chauncey-garrett/colors-textmate-twilight2.git
+[submodule "fonts/external/redacted"]
+	path = fonts/external/redacted
+	url = https://github.com/chauncey-garrett/font-redacted.git
+[submodule "fonts/external/consolas-for-powerline"]
+	path = fonts/external/consolas-for-powerline
+	url = https://github.com/chauncey-garrett/font-consolas-powerline-vim.git
+[submodule "colors/external/iterm2"]
+	path = colors/external/iterm2
+	url = https://github.com/chauncey-garrett/colors-iterm2.git
+[submodule "bin/external/keyboard-maestro-diff-dropbox-duplicates"]
+	path = bin/external/keyboard-maestro-diff-dropbox-duplicates
+	url = https://github.com/chauncey-garrett/keyboard-maestro-diff-dropbox-duplicates.git
+[submodule "fonts/external/blackout"]
+	path = fonts/external/blackout
+	url = https://github.com/chauncey-garrett/font-blackout.git
+[submodule "fonts/external/chunk"]
+	path = fonts/external/chunk
+	url = https://github.com/chauncey-garrett/font-chunk.git
+[submodule "fonts/external/font-awesome"]
+	path = fonts/external/font-awesome
+	url = https://github.com/chauncey-garrett/font-font-awesome.git
+[submodule "fonts/external/junction"]
+	path = fonts/external/junction
+	url = https://github.com/chauncey-garrett/font-junction.git
+[submodule "fonts/external/knewave"]
+	path = fonts/external/knewave
+	url = https://github.com/chauncey-garrett/font-knewave.git
+[submodule "fonts/external/league-gothic"]
+	path = fonts/external/league-gothic
+	url = https://github.com/chauncey-garrett/font-league-gothic.git
+[submodule "fonts/external/league-script-number-one"]
+	path = fonts/external/league-script-number-one
+	url = https://github.com/chauncey-garrett/font-league-script-number-one.git
+[submodule "fonts/external/ostrich-sans"]
+	path = fonts/external/ostrich-sans
+	url = https://github.com/chauncey-garrett/font-ostrich-sans.git
+[submodule "fonts/external/sniglet"]
+	path = fonts/external/sniglet
+	url = https://github.com/chauncey-garrett/font-sniglet.git
+[submodule "fonts/external/sorts-mill-goudy"]
+	path = fonts/external/sorts-mill-goudy
+	url = https://github.com/chauncey-garrett/font-sorts-mill-goudy.git
+[submodule "fonts/external/powerline-fonts"]
+	path = fonts/external/powerline-fonts
+	url = https://github.com/chauncey-garrett/font-powerline-fonts.git
+[submodule "dir-colors/external/dircolors-solarized"]
+	path = dir-colors/external/dircolors-solarized
+	url = https://github.com/chauncey-garrett/dircolors-solarized.git
+[submodule "fonts/external/fanwood"]
+	path = fonts/external/fanwood
+	url = https://github.com/chauncey-garrett/font-fanwood.git
+[submodule "janus/tasklist"]
+	path = janus/tasklist
+	url = https://github.com/chauncey-garrett/vim-tasklist.git
+[submodule "janus/gnuplot"]
+	path = janus/gnuplot
+	url = https://github.com/chauncey-garrett/vim-gnuplot.git
+[submodule "janus/editorconfig"]
+	path = janus/editorconfig
+	url = https://github.com/chauncey-garrett/vim-editorconfig.git
+[submodule "janus/colors-pencil"]
+	path = janus/colors-pencil
+	url = https://github.com/chauncey-garrett/vim-colors-pencil.git
+[submodule "osx-quicklook-plugins/external/MMD-QuickLook"]
+	path = osx-quicklook-plugins/external/MMD-QuickLook
+	url = https://github.com/chauncey-garrett/osx-quicklook-MMD-QuickLook.git
+[submodule "janus/auto-pairs"]
+	path = janus/auto-pairs
+	url = https://github.com/chauncey-garrett/auto-pairs.git
+[submodule "bin/external/rsync-deploy"]
+	path = bin/external/rsync-deploy
+	url = https://github.com/chauncey-garrett/rsync-deploy.git
+[submodule "janus/YouCompleteMe"]
+	path = janus/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "janus/ultisnips"]
+	path = janus/ultisnips
+	url = https://github.com/chauncey-garrett/ultisnips.git
+[submodule "janus/wordy"]
+	path = janus/wordy
+	url = https://github.com/chauncey-garrett/vim-wordy.git
+[submodule "janus/preserve-no-eol"]
+	path = janus/preserve-no-eol
+	url = https://github.com/chauncey-garrett/vim-preserve-no-eol.git
+[submodule "janus/narrow-region"]
+	path = janus/narrow-region
+	url = https://github.com/chauncey-garrett/vim-narrow-region.git
+[submodule "janus/syntax-nginx"]
+	path = janus/syntax-nginx
+	url = https://github.com/chauncey-garrett/vim-syntax-nginx.git
+[submodule "janus/jade"]
+	path = janus/jade
+	url = https://github.com/chauncey-garrett/vim-jade.git
