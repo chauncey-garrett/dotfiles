@@ -109,10 +109,13 @@ fi
 # Source private config files
 #
 
-for config_file in $(ls $HOME/.dotfiles/zsh/private/*.rc)
-do
-	source "$config_file"
-done
+if test -n "$(find $HOME/.dotfiles/zsh/private -maxdepth 1 -name '*.rc' -print -quit)"
+then
+	for config_file in $(ls $HOME/.dotfiles/zsh/private/*.rc)
+	do
+		source "$config_file"
+	done
+fi
 
 #
 # Docbook
