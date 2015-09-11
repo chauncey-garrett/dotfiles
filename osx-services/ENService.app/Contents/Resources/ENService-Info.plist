@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>ENService</string>
+	<key>CFBundleGetInfoString</key>
+	<string>17.0.0 (Bld 9013).  Copyright © 2003-2013 Thomson Reuters.  All Rights Reserved.</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.ThomsonResearchSoft.EndNote.ENService</string>
+	<key>CFBundleIconFile</key>
+	<string>EndNote</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>ENService 1.0</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>17.0.0.9013</string>
+	<key>CFBundleVersion</key>
+	<string>17.0.0.9013</string>
+	<key>NSBGOnly</key>
+	<string>1</string>
+	<key>NSExtensions</key>
+	<dict/>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSServices</key>
+	<array>
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>EndNote/Find Citation(s)...</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>doFindService</string>
+			<key>NSPortName</key>
+			<string>ENService</string>
+			<key>NSReturnTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+			<key>NSTimeout</key>
+			<string>3600000</string>
+		</dict>
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>EndNote/Format Paper...</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>doScanService</string>
+			<key>NSPortName</key>
+			<string>ENService</string>
+			<key>NSSendTypes</key>
+			<array>
+				<string>NSRTFPboardType</string>
+			</array>
+			<key>NSTimeout</key>
+			<string>120000</string>
+		</dict>
+		<dict>
+			<key>NSMenuItem</key>
+			<dict>
+				<key>default</key>
+				<string>EndNote/Insert Citation</string>
+			</dict>
+			<key>NSMessage</key>
+			<string>doInsertService</string>
+			<key>NSPortName</key>
+			<string>ENService</string>
+			<key>NSReturnTypes</key>
+			<array>
+				<string>NSStringPboardType</string>
+			</array>
+			<key>NSTimeout</key>
+			<string>120000</string>
+		</dict>
+	</array>
+</dict>
+</plist>

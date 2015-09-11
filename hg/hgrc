@@ -1,0 +1,17 @@
+[extensions]
+hgext.extdiff =
+
+[extdiff]
+cmd.dw = /Applications/DeltaWalker.app/Contents/MacOS/hg
+cmd.ksdiff = /usr/local/bin/ksdiff
+opts.ksdiff = --changeset --wait --filelist
+
+[ui]
+merge = dw
+# merge = Kaleidoscope
+
+[merge-tools]
+dw.executable = /Applications/DeltaWalker.app/Contents/MacOS/hg
+dw.args = $local $other $base $output
+Kaleidoscope.executable = /usr/local/bin/ksdiff
+Kaleidoscope.args = --merge --output $output --base $base -- $local $other

@@ -1,0 +1,34 @@
+"
+" Hide toolbar
+"
+
+set guioptions-=T
+
+"
+" Set window size
+"
+
+" set lines=55 columns=100
+
+"
+" Set colorscheme
+"
+
+colorscheme solarized
+let g:solarized_bold=1
+
+" colorscheme pencil
+" let g:pencil_terminal_italics = 1
+
+"
+" Set Font
+"
+
+set guifont=InputMonoNarrow:h16
+" set guifont=Essential\ PragmataPro:h16
+" set guifont=Liberation\ Mono\ for\ Powerline:h16
+" set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
+" set guifont=Menlo\ for\ Powerline:h14
+" set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+" set guifont=Consolas\ for\ Powerline:h14
+" set guifont=Consolas\ for\ Powerline\ FixedD:h14

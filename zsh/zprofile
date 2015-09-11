@@ -1,0 +1,232 @@
+#
+# Executes commands at login pre-zshrc.
+#
+
+#
+# DTerm
+#
+
+# if [[ "$TERM_PROGRAM" == "DTerm" ]]
+# then # these are only executed in DTerm shells
+# # else # these are only executed in non-DTerm shells
+# fi
+
+#
+# Browser
+#
+
+if [[ "$OSTYPE" == darwin* ]]
+then
+	export BROWSER='open'
+fi
+
+#
+# Editors
+#
+
+if [[ -n "$SSH_CLIENT" || -n "$SSH2_CLIENT" ]]
+then # on SSH
+	export EDITOR='vi -e'
+	export VISUAL='vim'
+	export PAGER='less'
+else # @local
+	export EDITOR='vi -e'
+	export VISUAL='vim'
+	export PAGER='less'
+fi
+
+#
+# Language
+#
+
+if [[ -z "$LANG" ]]
+then
+	export LANG='en_US.UTF-8'
+fi
+
+#
+# Zsh custom directory
+#
+
+[[ -f "$HOME/.dotfiles/zsh" ]] && export ZSH_CUSTOM="$HOME/.dotfiles/zsh"
+
+#
+# Temporary Files
+#
+
+if [[ ! -d "$TMPDIR" ]]
+then
+	export TMPDIR="/tmp/$USER"
+	mkdir -p -m 700 "$TMPDIR"
+fi
+
+TMPPREFIX="${TMPDIR%/}/zsh"
+if [[ ! -d "$TMPPREFIX" ]]
+then
+	mkdir -p "$TMPPREFIX"
+fi
+
+#
+# Perlbrew
+#
+
+if [[ -f "$HOME/.perlbrew" ]]
+then
+	export PERLBREW_ROOT=$HOME/.perlbrew
+	[[ -s ~/.perlbrew/etc/bashrc ]] && source ~/.perlbrew/etc/bashrc
+fi
+
+#
+# Go
+#
+
+[[ -f "$HOME/gocode" ]] && export GOPATH="$HOME/gocode"
+
+#
+# Java
+#
+
+# export JAVA_HOME="$(/usr/libexec/java_home -v 1.7)"
+[[ -f "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home" ]] && export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
+
+#
+# Less
+#
+
+# Set the default Less options.
+# Mouse-wheel scrolling has been disabled by -X (disable screen clearing).
+# Remove -X and -F (exit if the content fits on one screen) to enable it.
+export LESS='-F -g -i -M -R -w -X -z-4'
+
+# Set the Less input preprocessor.
+# Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
+if (( $#commands[(i)lesspipe(|.sh)] ))
+then
+	export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+fi
+
+#
+# Source private config files
+#
+
+for config_file in $(ls "$HOME/.dotfiles/zsh/private/*.rc")
+do
+	source "$config_file"
+done
+
+#
+# Docbook
+#
+
+[[ -f "/usr/local/etc/xml/catalog" ]] && export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
+
+#
+# Cheat
+#
+
+[[ -f "$HOME/.dotfiles/cheat" ]] && export CHEATCOLORS=true
+
+#
+# Gaussian tools
+#
+
+[[ -d $HOME/.dotfiles/gaussian-tools ]] && export GAUSSIAN_TOOLS_DIRECTORY="$HOME/.dotfiles/gaussian-tools"
+
+#
+# Paths
+#
+
+# Later we'll need to trim down the paths that follow because the ones given here are for all my accounts, some of which have unusual paths in them. rationalize-path will remove nonexistent directories from an array.
+#	NOTE: this works only on arrays, not colon-delimited strings. Not that this is a problem now that there is typeset -T.
+rationalize-path() {
+	local element
+	local build
+	build=()
+	# Evil quoting to survive an eval and to make sure that this works even with variables containing IFS characters, if I'm crazy enough to setopt shwordsplit.
+	eval '
+	foreach element in "$'"$1"'[@]"
+	do
+		if [[ -d "$element" ]]
+		then
+			build=("$build[@]" "$element")
+		fi
+	done
+	'"$1"'=( "$build[@]" )
+	'
+}
+
+typeset -gU cdpath fpath mailpath path
+
+# Set the list of directories that cd searches.
+cdpath=(
+	.
+	"$cdpath[@]"
+)
+export CDPATH
+typeset -U cdpath # add only unique entries
+
+# Path to search for autoloadable functions.
+fpath=(
+	$HOME/lib/zsh/func
+	"$fpath[@]"
+)
+export FPATH
+typeset -U fpath # add only unique entries
+
+# Set the list of directories that Zsh searches for programs.
+# NOTE: Top items appear in PATH first
+path=(
+	$GAUSSIAN_TOOLS_DIRECTORY
+	$HOME/{.bin,bin}
+	$HOME/.rbenv/shims
+	$HOME/.pyenv/shims
+	$HOME/.perlbrew/{bin,perls/perl-5.18.0/bin}
+	/usr/local/share/npm/bin
+	/usr/local/mysql/bin
+	/usr/local/MacGPG2/bin
+	/usr/local/opt/ruby/bin
+	/usr/local/opt/go/libexec/bin
+	/usr/local/{bin,sbin}
+	/opt/openmpi/bin
+	/usr/lib64/qt-3.3/bin
+	/opt/eclipse
+	/opt/ganglia/{bin,sbin}
+	/usr/java/latest/bin
+	/opt/maven/bin
+	/opt/maui/bin
+	/opt/torque/{bin,sbin}
+	/opt/pdsh/bin
+	/opt/rocks/{bin,sbin}
+	/opt/gridengine/bin/linux-x64
+	/opt/X11/bin
+	/usr/libexec
+	/usr/X11/bin
+	/usr/texbin
+	/usr/{bin,sbin}
+	/{bin,sbin}
+	"$path[@]"
+	"$fpath[@]"
+)
+export PATH
+typeset -U path        # add only unique entries
+rationalize-path path  # remove entries that don't exist on this system -- just for sanity's sake more than anything
+
+# Set the list of directories that Zsh searches for manuals.
+# NOTE: Top items appear in PATH first
+manpath=(
+	$HOME/{.man,man}
+	/usr/local/git/man
+	/usr/local/mysql/man
+	/usr/local/{man,sbin}
+	/share/utils/MPI/openmpi/intel/1.6.5/share/man
+	/share/utils/INTEL/intel13/composerxe/man/en_US
+	/share/utils/INTEL/intel13/composerxe/mkl/man/en_US
+	/usr/share/man
+	/usr/man/preformat
+	/usr/man
+	/usr/X11/man
+	"$manpath[@]"
+)
+export MANPATH
+typeset -U manpath        # add only unique entries
+rationalize-path manpath  # remove entries that don't exist on this system -- just for sanity's sake more than anything

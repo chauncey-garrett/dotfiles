@@ -1,0 +1,39 @@
+#
+# Repeat the following keybinding n times
+#     - ^u 5 opt-shift-del would delete the 5 previous words
+#
+
+defaults write -g NSRepeatCountBinding -string "^u"
+
+#
+# Download PDF files instead of opening them in Safari?
+#
+
+defaults write com.apple.Safari WebKitOmitPDFSupport -bool YES
+# defaults write com.apple.Safari WebKitOmitPDFSupport -bool NO
+
+#
+# Hide SpamSieve's Dock icon?
+#
+
+# Show
+# /usr/libexec/PlistBuddy /Applications/SpamSieve.app/Contents/Info.plist -c "Set LSUIElement 0"
+
+# Hide
+/usr/libexec/PlistBuddy /Applications/SpamSieve.app/Contents/Info.plist -c "Set LSUIElement 1"
+
+#
+# Make BetterSnapTool work better with the Dock
+#
+
+defaults write com.apple.dock workspaces-edge-delay -float 2.0; killall Dock
+
+#
+# Mailmate - Undo send
+#
+
+# enable
+defaults write com.freron.MailMate MmSendMessageDelayEnabled -bool YES
+
+# set the time delay (in seconds)
+defaults write com.freron.MailMate MmSendMessageDelay -integer 180

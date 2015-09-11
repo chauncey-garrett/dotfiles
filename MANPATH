@@ -1,0 +1,10 @@
+#
+# MANPATH additions
+# List items in the reverse order you want them to appear in $MANPATH
+#	(i.e., last items appear first.)
+#
+/usr/local/man
+/usr/local/mysql/man
+/usr/local/git/man
+/usr/local/opt/coreutils/libexec/gnuman
+$HOME/.share/man

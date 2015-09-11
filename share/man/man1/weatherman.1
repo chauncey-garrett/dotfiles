@@ -1,0 +1,106 @@
+.TH weatherman 1  "January 12, 2013" "version 1.2.2" "USER COMMANDS"
+.SH NAME
+weatherman \- Display weather information from the command line
+.SH SYNOPSIS
+.B weatherman
+[
+.I options
+] [
+.I LOCATION
+]
+.LP
+.SH DESCRIPTION
+.B weatherman
+displays weather information for a given location.  You can specify a city (i.e. "Tokyo, Japan") or a US zip code for the location.
+.SH OPTIONS
+.TP
+.B \-m
+Use metric units (Celcius, millibars, millimeters).  This is the default.
+.TP
+.B \-e
+Use English units (Fahrenheit, inches)
+.TP
+.B \-x
+Show extended forecast
+.TP
+.B \-F FORMAT
+Print the output using the specified format.  Data can be referenced with sequence characters listed below. Escape sequences are also interpreted. This option is not usable with extended forcasts.
+
+   %%     a literal %
+
+   %u     temperature unit label (C or F)
+
+   %l     location
+
+   %n     weather station name
+
+   %o     observation time
+
+   %a     severe weather alert text
+
+   %c     current temperature
+
+   %T     high temperature
+
+   %t     low temperature
+
+   %i     heat index or "feels like" temperature
+
+   %h     humidity
+
+   %d     dew point
+
+   %w     wind speed
+
+   %W     wind direction
+
+   %g     average wind speed
+
+   %p     pressure
+
+   %r     rain
+
+   %R     average rain for the month
+
+   %s     time of sunrise
+
+   %S     time of sunset
+
+   %m     moon phase
+.TP
+.B \-S
+Save unit and location setting to ~/.weathermanrc.  If either are not specified, it will use the setting from ~/.weathermanrc
+.TP
+.B \-h
+Display the help text and exit.
+.TP
+.B \-v
+Display version information and exit.
+.SH EXAMPLES
+Display the weather information for Tokyo, Japan:
+.PP
+.B weatherman
+"Tokyo, Japan"
+.PP
+Display the weather information with English units for the 77001 zip code:
+.PP
+.B weatherman
+\-e 77001
+.PP
+Display the current temperature by itself for Tokyo, Japan:
+.PP
+.B weatherman
+\-F'%c %u' "Tokyo Japan"
+.PP
+A more detailed example followed by the resulting output:
+.PP
+.B weatherman
+\-F'The high and low temps for %l are %T %u and %t %u with a humidity of %h%%' "Tokyo, Japan"
+
+The high and low temps for Tokyo, Japan are 17 C and 16 C with a humidity of 63%
+.SH PROJECT HOMEPAGE
+http://darkhorse.nu/weatherman
+.SH AUTHOR
+Rob Hunter <rhunter@darkhorse.nu>
+.SH LICENSE
+weatherman is distributed under a FreeBSD license.

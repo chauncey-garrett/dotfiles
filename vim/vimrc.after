@@ -1,0 +1,421 @@
+""
+"" Use mouse
+""
+
+set mouse=a
+set ttym=xterm2
+
+""
+"" OS X Clipboard
+""
+
+" Yank text to the OS X clipboard
+set clipboard=unnamed
+
+" Preserve indentation while pasting text from the OS X clipboard
+noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+
+""
+"" FormD
+""
+
+nmap <leader>fr :%! formd -r<CR>
+nmap <leader>fi :%! formd -i<CR>
+
+""
+"" Numbers in sidebar
+""
+
+nnoremap <F3> :NumbersToggle<CR>
+
+""
+"" Color scheme
+""
+
+" solarized color scheme
+syntax enable
+set background=dark
+" set background=light
+colorscheme solarized
+
+""
+"" Marked
+""
+
+" open with Marked
+nnoremap <leader>m :MarkedOpen!<CR>
+" :nnoremap <leader>m :silent !open -a "Marked 2.app" '%:p'<cr>
+
+""
+"" Spell checking
+""
+
+" turn on spell checking
+set spell
+
+""
+"" NERDtree
+""
+
+" show hidden files in NERDtree
+let NERDTreeShowHidden=1
+
+" ignore files
+let NERDTreeIgnore=['\.DS_Store$', '\.vim$']
+
+""
+"" NERDcommenter
+""
+
+let NERDSpaceDelims=1
+
+""
+"" Taskpaper
+""
+
+" To change the default date format string used when marking a task complete, define the `task_paper_date_format` variable. The format matches your system's `strftime()` function. For example, to include the date and time in ISO8601 format:
+let g:task_paper_date_format = "%Y-%m-%dT%H:%M:%S%z"
+
+" To change the default archive project name, define the `task_paper_archive_project` variable.  The default value is "Archive".
+let g:task_paper_archive_project = "Archive"
+
+" By default, when you move a task, the cursor will follow that task to its new location.  To make the cursor stay in it's current location, change the `task_paper_follow_move` variable.
+let g:task_paper_follow_move = 0
+
+" If you want to hide done tasks when searching you can change the `task_paper_search_hide_done` variable.
+let g:task_paper_search_hide_done = 1
+
+" To set a custom style (colour, bold, etc.) for tags task_paper_styles variable, which is a dictionary.
+let g:task_paper_styles={'wait': 'ctermfg=Blue guifg=Blue', 'FAIL': 'ctermbg=Red guibg=Red'}
+
+" See |highlight-args| for a full description of the syntax.
+
+""
+"" Highlight search
+""
+
+nnoremap <silent> <esc> :noh<cr><esc>
+
+""
+"" Git
+""
+
+" Turn on plugin indenting for git commit messages
+filetype indent plugin on
+
+""
+"" Whitespace
+""
+
+function! TrimWhiteSpace()
+	%s/\s\+$//e
+endfunction
+
+" Delete whitespace from the current line
+nnoremap <silent> <Leader>rtws :call TrimWhiteSpace()<CR>
+
+" Delete whitespace on write
+" autocmd FileWritePre    * :call TrimWhiteSpace()
+" autocmd FileAppendPre   * :call TrimWhiteSpace()
+" autocmd FilterWritePre  * :call TrimWhiteSpace()
+" autocmd BufWritePre     * :call TrimWhiteSpace()
+
+" Flags is '' to clear highlighting, or is a string to specify what to highlight (one or more characters):
+"   e  whitespace at end of line
+"   i  spaces used for indenting
+"   s  spaces before a tab
+"   t  tabs not at start of line
+function! ShowWhitespace(flags)
+	let bad = ''
+	let pat = []
+	for c in split(a:flags, '\zs')
+		if c == 'e'
+			call add(pat, '\s\+$')
+		elseif c == 'i'
+			call add(pat, '^\t*\zs \+')
+		elseif c == 's'
+			call add(pat, ' \+\ze\t')
+		elseif c == 't'
+			call add(pat, '[^\t]\zs\t\+')
+		else
+			let bad .= c
+		endif
+	endfor
+	if len(pat) > 0
+		let s = join(pat, '\|')
+		exec 'syntax match ExtraWhitespace "'.s.'" containedin=ALL'
+	else
+		syntax clear ExtraWhitespace
+	endif
+	if len(bad) > 0
+		echo 'ShowWhitespace ignored: '.bad
+	endif
+endfunction
+
+function! ToggleShowWhitespace()
+	if !exists('b:ws_show')
+		let b:ws_show = 0
+	endif
+	if !exists('b:ws_flags')
+		let b:ws_flags = 'eist'  " default (which whitespace to show)
+	endif
+	let b:ws_show = !b:ws_show
+	if b:ws_show
+		call ShowWhitespace(b:ws_flags)
+	else
+		call ShowWhitespace('')
+	endif
+endfunction
+
+nnoremap <Leader>ws :call ToggleShowWhitespace()<CR>
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+
+" au BufEnter * match ExtraWhitespace /\S\zs\s\+$/
+" au InsertEnter * match ExtraWhitespace /\S\zs\s\+\%#\@<!$/
+" au InsertLeave * match ExtraWhiteSpace /\S\zs\s\+$/
+
+""
+"" Airline customization
+""
+
+" Smarter tab line
+let g:airline#extensions#tabline#enabled = 1
+
+" Define seperators
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" Ensure powerline symbols are loaded
+let g:airline_powerline_fonts = 1
+
+""
+"" Typewriter mode
+""
+
+" Keep the focus on the current line
+" set scrolloff=999
+
+""
+"" Unimpaired
+""
+
+" Exchange single lines
+nmap <C-K> [e
+nmap <C-J> ]e
+
+" Exchange multiple lines
+vmap <C-K> [egv
+vmap <C-J> ]egv
+
+""
+"" Miscellaneous
+""
+
+" Visually select the text that was last edited/pasted
+nmap gV `[v`]
+
+" Use Ag instead of Ack with ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+""
+"" Window splitting
+""
+
+" More natural splitting
+set splitbelow
+set splitright
+
+" Simplify window movement
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
+
+""
+"" Clam settings
+""
+
+nnoremap ! :Clam<space>
+vnoremap ! :ClamVisual<space>
+
+""
+"" Reassign arrow keys for line movement
+""
+
+nmap <Up> [e
+vmap <Up> [egv
+nmap <Down> ]e
+vmap <Down> ]egv
+nmap <Left> <<
+vmap <Left> <gv
+nmap <Right> >>
+vmap <Right> >gv
+
+""
+"" Formatting
+""
+
+" set tab formatting to 4 column tabs -> like Windows developers
+set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+
+" set tab formatting to 8 column tabs -> like Linux kernel developers
+" set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+
+" allow for word wrapping
+set wrap
+set linebreak
+set nolist
+set breakindent " indent with text
+set showbreak=╎ " break character
+
+" folding settings
+set foldmethod=indent   " fold based on indent
+set foldnestmax=10      " deepest fold is 10 levels
+set nofoldenable        " dont fold by default
+set foldlevel=1         " this is just what I use
+
+" Shortcut to rapidly toggle `set list`
+nmap <leader><leader>l :set list!<CR>
+
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
+
+"
+" Switch
+"
+
+nnoremap - :Switch<cr>
+
+"
+" LanguageTool
+"
+
+let g:languagetool_jar='/Applications/LanguageTool-2.6/languagetool-commandline.jar'
+
+"
+" Set abnormal filetypes
+"
+
+au! BufNewFile,BufRead *.plt,*.gnuplot setf gnuplot
+au! BufNewFile,BufRead *.applescript setf applescript
+
+""
+"" Jekyll
+""
+
+let g:jekyll_site_dir = '_site'
+
+""
+"" BufferGator fix
+""
+
+nmap <leader>b :BuffergatorToggle<CR>
+
+""
+"" prevent vim from writing newlines
+""
+
+" :set wrap
+" :set linebreak
+" :set nolist  " list disables linebreak
+" :set textwidth=0
+" :set wrapmargin=0
+
+""
+"" easily open files with edit
+""	 http://vimcasts.org/episodes/the-edit-command/
+""
+
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+
+"
+" Persistent undo
+"
+
+set undofile                " Save undo's after file closes
+set undodir=$HOME/.vim/undo " where to save undo histories
+set undolevels=1000         " How many undos
+set undoreload=10000        " number of lines to save for undo
+
+"
+" UltiSnips and YouCompleteMe
+"
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger="<cr>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" let g:UltiSnipsExpandTrigger       = "<c-tab>"
+" let g:UltiSnipsJumpForwardTrigger  = "<tab>"
+" let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" " Enable tabbing through list of results
+" function! g:UltiSnips_Complete()
+	" call UltiSnips#ExpandSnippet()
+	" if g:ulti_expand_res == 0
+		" if pumvisible()
+			" return "\<C-n>"
+		" else
+			" call UltiSnips#JumpForwards()
+			" if g:ulti_jump_forwards_res == 0
+			   " return "\<TAB>"
+			" endif
+		" endif
+	" endif
+	" return ""
+" endfunction
+
+" au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+
+" " Expand snippet or return
+" let g:ulti_expand_res = 0
+" function! Ulti_ExpandOrEnter()
+	" call UltiSnips#ExpandSnippet()
+	" if g:ulti_expand_res
+		" return ''
+	" else
+		" return "\<return>"
+" endfunction
+
+" " Set <space> as primary trigger
+" inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>
+
+"
+" Preserve EOL
+"
+
+let g:PreserveNoEOL = 1
+
+"
+" Nginx syntax highlighting
+"
+
+au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
+
+"
+" Paragraph formatting with par
+" brew install par
+"
+
+" set textwidth=80
+" set formatoptions+=t
+set formatprg=par\ -w80
+
+"
+" HTML indentation
+"
+
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
+let g:html_indent_inctags = "address,article,aside,audio,blockquote,canvas,dd,div,dl,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,main,nav,noscript,ol,output,p,pre,section,table,tfoot,ul,video"
+

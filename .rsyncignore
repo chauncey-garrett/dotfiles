@@ -1,0 +1,27 @@
+# Ignore these files when rsyncing to remote machines
+.git/
+*.d/localhost
+aptitude/cache
+backup/
+cmus/autosave
+cmus/cache
+cmus/*-history
+cmus/*.pl
+ssh/id*
+ssh/environment*
+ssh/known_hosts
+ssh/master/*
+gnupg/secring.gpg
+gnupg/sshcontrol
+gnupg/gpg-agent.env
+gnupg/private*
+vim/.*
+vim/*.swp
+vim/backup/
+mutt/cache/.*
+mutt/mailboxes.*
+mutt/smime/*
+mutt/certificates
+subversion/auth/
+task/*.data
+

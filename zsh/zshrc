@@ -1,0 +1,394 @@
+#
+# Executes commands at the start of an interactive session.
+#
+
+#
+# Load a custom profile for the local machine and each domain or subdomain it belongs to. (e.g. com, example.com and foo.example.com)
+#
+
+parts=(${(s:.:)$(hostname)})
+
+for i in {${#parts}..1}
+do
+    local profile=${(j:.:)${parts[$i,${#parts}]}}
+    local file=$ZSH_CUSTOM/profiles/$profile
+    if [ -f $file ]
+    then
+        source $file
+    fi
+done
+
+#
+# Source Prezto.
+#
+
+[[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+
+#
+# Customize to your needs...
+#
+
+#
+# Command highlighting patterns
+# NOTE: Requires syntax highlighting plugin
+#
+
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+
+#
+# Ctrl+Z
+# - On an empty command line, runs bg (so that Ctrl+Z Ctrl+Z suspends a program and immediately resumes it in the background).
+# - On a non-empty command line, suspend the current command edition: let me type another command, and when that second command line finished, I get back the first command to edit.
+#
+
+function fancy-ctrl-z()
+{
+	if [[ $#BUFFER -eq 0 ]]
+	then
+		bg
+		zle redisplay
+	else
+		zle push-line-or-edit
+	fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z
+
+#
+# cd to directory of linked file
+#
+
+function cdln()
+{
+	cd $(dirname $(readlink -f "$1"))
+}
+
+#
+# Copy the current directory into the clipboard
+#
+
+(( $+commands[pbcopy] )) && alias copydir='pwd | tr -d "\r\n" | pbcopy'
+
+#
+# Terminal-Velocity
+#
+
+(( $+commands[terminal_velocity] )) && alias tv=terminal_velocity
+
+#
+# Tmuxinator
+#
+
+[[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]] && source "$HOME/.tmuxinator/scripts/tmuxinator"
+
+#
+# Homebrew
+#
+
+(( $+commands[brew] )) && alias brews='brew list -1'
+
+#
+# cd to the directory a symlink is pointing to or that directory containing the file the symlink is pointing to
+#
+
+function cdlink()
+{
+	for f in "$@"
+	do
+		cd $f(:A:h)
+	done
+}
+
+#
+# Be paranoid, new files are readable/writable by me only, but not as root.
+#
+
+# if [[ $UID -ne 0 ]]
+# then
+	# umask 077
+# fi
+
+#
+# Colorize stderr in red
+#
+# exec 2>>(
+    # while read X
+	# do
+        # print "\e[91m${X}\e[0m" > /dev/tty
+    # done &
+# )
+
+#
+# List the current SHELL (instead of the SHELL you started in)
+#
+
+function shell()
+{
+	ps | grep `echo $$` | awk '{ print $4 }'
+}
+
+#
+# Access the online help:
+#
+
+unalias run-help
+autoload run-help
+HELPDIR=/usr/local/share/zsh/helpfiles
+
+#
+# Always use vim
+#
+
+if [[ -n "$SSH_CLIENT" || -n "$SSH2_CLIENT" ]]
+then # on SSH
+	alias vi='vim' # may not be desirable
+	alias mvim='vim'
+	alias gvim='vim'
+else # @local
+	alias vi='mvim' # may not be desirable
+	alias vim='mvim' # may not be desirable
+fi
+
+
+#
+# Gauss-View - CRUNTCh
+#
+
+alias gv='ssh -Yf cruntch /usr/local/bin/gv5 &'
+
+#
+# OS X Calendar
+#
+
+(( $+commands[icalBuddy] )) && alias ical="icalBuddy -nc -n -f eventsToday+2"
+
+#
+# WiFi
+#
+# Usage:
+#	wifi on
+#	wifi off
+#
+
+(( $+commands[networksetup] )) && alias wifi="networksetup -setairportpower en1"
+
+#
+# Nino (weather)
+#
+
+(( $+commands[nino] )) && alias nino="nino $WEATHER_WUNDERGROUND_API $WEATHER_ZIP"
+
+#
+# Deft
+#
+
+(( $+commands[emacs] )) && alias nv='emacs -f deft'
+
+#
+# Ack
+#
+
+# Search with Ack, then open resulting files in vim
+if (( $+commands[ack] && $+commands[vim] ))
+then
+	function ack2vim()
+	{
+		ack -li -- "$@" 2>/dev/null | xargs -o vim -c "/$@"
+	}
+fi
+
+#
+# Internet troubleshooting
+#
+
+# ping google
+alias poogle='ping -c 3 google.com'
+
+# speedtest 500MB
+(( $+commands[wget] )) && alias speedtest500='wget --output-document=/dev/null http://speedtest.wdc01.softlayer.com/downloads/test500.zip'
+
+# print out my IP address
+function myip()
+{
+	echo "public    : "`curl -s ip.appspot.com`
+	ifconfig lo0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "lo0       : " $2}'
+	ifconfig en0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+	ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+	ifconfig en1 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+	ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+}
+
+#
+# Xcode
+#
+
+[[ -f "/Developer/Applications/Xcode.app" ]] && alias xcode='open -a /Developer/Applications/Xcode.app'
+
+#
+# Pymol
+#
+
+[[ -f "/Applications/MacPyMOL.app" ]] && alias pymol="/Applicationsications/MacPyMOL.app/Contents/MacOS/MacPyMOL"
+
+
+#
+# Fuzzy Finder
+#
+
+if (( $+commands[fzf] ))
+then
+	# source config files
+	[[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
+
+	# vimf - Open selected file in Vim
+	function vimf()
+	{
+		local file
+		file=$(fzf --query="$1") && vim "$file"
+	}
+
+	# fd - cd to selected directory
+	function fd()
+	{
+		local dir
+		dir=$(find ${1:-*} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) &&
+		cd "$dir"
+	}
+
+	# fda - including hidden directories
+	function fda()
+	{
+		local dir
+		dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+	}
+
+	# fh - repeat history
+	function fh()
+	{
+		eval $(history 1 "${1}" | fzf +s | sed 's/ *[0-9]* *//')
+	}
+
+	# fkill - kill process
+	function fkill()
+	{
+		ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
+	}
+
+	# fbr - checkout git branch
+	function fbr()
+	{
+		local branches branch
+		branches=$(git branch) &&
+		branch=$(echo "$branches" | fzf +s +m) &&
+		git checkout $(echo "$branch" | sed "s/.* //")
+	}
+
+	# fco - checkout git commit
+	function fco()
+	{
+		local commits commit
+		commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
+		commit=$(echo "$commits" | fzf +s +m -e) &&
+		git checkout $(echo "$commit" | sed "s/ .*//")
+	}
+
+	# Immediately select the file when there's only one match. If not, start the fuzzy finder as usual.
+	function fq1()
+	{
+		local lines
+		lines=$(fzf --filter="$1" --no-sort)
+		if [ -z "$lines" ]
+		then
+			return 1
+		elif [ $(wc -l <<< "$lines") -eq 1 ]
+		then
+			echo "$lines"
+		else
+			echo "$lines" | fzf --query="$1"
+		fi
+	}
+
+	# Open the selected file with the default editor
+	# (Bypass fuzzy finder when there's only one match)
+	function fe()
+	{
+		local file
+		file=$(fq1 "$1") && ${EDITOR:-vim} "$file"
+	}
+fi
+
+#
+# FORTRAN
+#
+
+if (( $+commands[gfortran] ))
+then
+	alias f95="gfortran -std=f95"
+	alias f77="gfortran -std=legacy"
+fi
+
+#
+# Modules
+#
+
+[[ -f "/usr/local/opt/modules/Modules/init/zsh" ]] && source "/usr/local/opt/modules/Modules/init/zsh"
+
+#
+# dfc
+#
+
+(( $+commands[dfc] )) && alias disk-usage="dfc"
+
+#
+# Tower
+#
+
+(( $+commands[gittower] )) && alias tower="gittower ."
+
+#
+# Marked 2
+#
+
+if [[ -f "/Applications/Marked 2.app" ]]
+then
+	function mark()
+	{
+		if [ $@ ]
+		then
+			open -a "Marked 2" $@
+		else
+			open -a "Marked 2"
+		fi
+	}
+fi
+
+#
+# Python
+#
+
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+#
+# Save last command to clipboard and nvALT
+#
+
+function pbcopy-last
+{
+	# set nvALT folder
+	local nvalt_root=“$HOME/Dropbox/Notes”
+	mkdir -p "${nvalt_root}"
+
+	# copy the command to the clipboard
+	history -1 | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' | pbcopy
+
+	# make a new note for nvALT
+	echo "Press \"^C\" to copy to the pasteboard"
+	echo "OR"
+	echo "Type the title of the nvALT note you want to create, followed by [ENTER]:"
+	read nvalt_note
+
+	pbpaste >> “${nvalt_root}"/"${nvalt_note}”
+}
+
+HISTSIZE=100000
+SAVEHIST=100000

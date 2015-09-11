@@ -1,0 +1,68 @@
+source 'https://rubygems.org'
+
+gem 'rake'
+
+#
+# Rails
+#
+
+gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+#
+# Heroku
+#   - does not support SQLite, use PostgreSQL instead
+#
+
+gem 'heroku'
+gem 'execjs'
+gem 'therubyracer'
+
+group :development, :test do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+  gem 'thin'
+end
+
+# Gems used only for assets and not required in production environments by default.
+group :assets do
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'uglifier'
+end
+
+gem 'json'
+gem 'jquery-rails'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'static'
+
+#
+# Git
+#
+
+gem 'git'
+gem 'github'
+gem 'gist'
+
+#
+# TMUX
+#
+
+gem 'tmuxinator'
+
+#
+# Blogging - jekyll
+#
+
+gem 'jekyll'
+gem 'redcarpet'
+
+#
+# Fun
+#
+
+gem 'cowsay'
+gem 'lolcat'
+
+

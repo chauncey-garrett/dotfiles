@@ -1,0 +1,12 @@
+# .bash_profile
+
+[[ -x $HOME/bin/zsh ]] && {
+	echo "Run Zsh? [Yn]"
+	read line
+	[ "$line" = Y ] && exec $HOME/bin/zsh -l
+}
+
+# Get the aliases and functions
+# if [ -f ~/.bashrc ]; then
+	# . ~/.bashrc
+# fi

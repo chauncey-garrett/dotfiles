@@ -1,0 +1,45 @@
+#
+# PATH additions
+#   - List items in the REVERSE order you want them to appear in $PATH
+#	  (i.e., last items appear first.)
+#
+
+/usr/texbin
+/usr/local/MacGPG2/bin
+/opt/X11/bin
+/usr/X11/bin
+/sbin
+/usr/sbin
+/bin
+/usr/bin
+/usr/local/sbin
+/usr/local/bin
+$HOME/.perlbrew/perls/perl-5.18.0/bin
+$HOME/.perlbrew/bin
+$HOME/.pyenv/shims
+/usr/local/opt/ruby/bin
+$HOME/.rbenv/shims
+/opt/openmpi/bin
+/usr/lib64/qt-3.3/bin
+/opt/eclipse
+/opt/ganglia/sbin
+/opt/ganglia/bin
+/usr/java/latest/bin
+/opt/maven/bin
+/opt/maui/bin
+/opt/torque/sbin
+/opt/torque/bin
+/opt/pdsh/bin
+/opt/rocks/sbin
+/opt/rocks/bin
+/opt/gridengine/bin/linux-x64
+/usr/local/opt/coreutils/libexec/gnubin
+/usr/local/mysql/bin
+/usr/local/share/npm/bin
+/Developer/Tools
+/usr/libexec
+$HOME/bin
+$HOME/bin
+$HOME/.bin
+$HOME/.bin
+

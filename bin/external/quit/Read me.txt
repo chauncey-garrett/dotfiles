@@ -1,0 +1,63 @@
+-----------------------------------------------------------
+ 
+ Quit: quits Mac OS X applications politely
+
+ Written by Jon Stovell on July 11, 2009
+ Last updated on Oct 9, 2013
+
+-----------------------------------------------------------
+
+Install:
+
+Drag quit onto the alias to your /usr/local/bin folder. Finder will request admininstrator authentication. You will then be able to invoke the command by typing:
+
+	quit AppName
+	
+on the command line.
+
+You may also store quit somewhere else. However, if quit is not stored in /usr/local/bin (or another folder defined in your bash $PATH), you will need to type the full path to the quit script to use it.
+
+Users who do not have administrator privileges on their computer may want to store quit in ~/Library/Scripts, and then add ~/Library/Scripts to their $PATH. Instructions on adding folders to $PATH can be found by searching the Internet for "add to bash PATH". Alternatively, quit can be stored in your home folder, which is already on your $PATH.
+
+-----------------------------------------------------------
+
+Description:
+
+This script allows one to simply type the following command to quit an application politely (so that it can save and exit properly):
+
+	quit AppName
+
+There is no easy way to quit an application politely from the command line included in Mac OS X. There are options that are easy to use, but not nice to applications, and an option that is nice to applications, but not easy to use: 
+
+1) Kill and killall are easy to use, but none of their possible signals will initiate a polite quit of an OS X application. All kill signals either force a quit without saving, or (worse) force a quit without saving and with an error message from the OS. This is because kill deals with processes, not applications.
+
+2) Osascript can use an Applescript command to initiate a polite quit, but it is tedious to write that command on the command line.
+
+This script takes one or more application names as arguments, and uses osascript to tell each one to quit.
+
+Note: application names are NOT process names! The application name is the name that Script Editor uses. Often the process name and the application name are identical, but not always.
+
+-----------------------------------------------------------
+
+Usage: quit [-a] [-p] [-s|n] <application names>
+
+Arguments are the names of one or more applications, or `all` 
+to quit all foreground applications except Finder and Terminal.
+Arguments are not case sensitive.
+Arguments with spaces should be quoted.
+
+Options:
+ -a	Match argument string with any of the application's name, 
+	displayed name, short name, or title. E.g.: `quit "microsoft word"` 
+	and `quit -a word` will both quit Microsoft Word, because
+	the app calls itself "Word" in the menu bar.
+ -p	Use partial matches (e.g. edit for TextEdit).
+	Prompts for confirmation.
+ -s	Attempt to save modified files when quitting.
+	Overrides any previous -n option.
+ -n	Do not attempt to save modified files when quitting.
+	Overrides any previous -s option.
+
+If neither the -s or -n options are specified, quit will try
+to determine if any documents require saving, and if necessary
+will ask the user whether to save or not.

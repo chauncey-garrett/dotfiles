@@ -1,0 +1,8 @@
+secring.gpg
+pubring.gpg
+trustdb.gpg
+gpg-agent.env
+sshcontrol
+random*
+private*
+*~

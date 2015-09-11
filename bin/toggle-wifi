@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+##
+## Toggle wifi on OS X
+##
+
+local device=$(networksetup -listallhardwareports | grep -E '(Wi-Fi|AirPort)' -A 1 | grep -o en.)
+[[ "$(networksetup -getairportpower $device)" == *On ]] && local power="off" || local power="on"
+networksetup -setairportpower $device $power
+
+

@@ -1,0 +1,1 @@
+alias nano='nano -ABr'

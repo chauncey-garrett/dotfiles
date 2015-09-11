@@ -1,0 +1,50 @@
+# OS X
+._*                # thumbnails
+.cache
+.Spotlight-V100    # Might appear on external disk
+.Trashes           # Might appear on external disk
+.DS_Store          # Finder folder config
+ehthumbs.db
+
+# Windows
+desktop.ini  # folder config file
+Thumbs.db    # image file caches
+
+# Vim
+.*.sw[a-z]
+*.un~
+# *~
+Session.vim
+
+# Compiled source
+*.pyc
+*.pyo
+
+# IDE specific
+dwsync.xml
+*.tmp
+*.wpr
+*.project
+*.cproject
+*.tmproj
+*.tmproject
+*.vi
+*.komodoproject
+.komodotools
+nbproject
+
+# SASS
+*.sass-cache
+
+# Tags (etags, ctags)
+tags
+TAGS
+
+# Other dev-related files
+*.bak
+*.orig
+.directory
+.svn/*
+svn-commit.*
+
+

@@ -1,0 +1,60 @@
+#
+# Check for a local ackrc file
+#
+
+export ACKRC=".ackrc"
+
+#
+# Be smart about case-sensitivity
+#
+
+--smart-case
+
+#
+# Flush output immediately, even when piped
+#
+
+--flush
+
+#
+# Force color and header, even in less -R
+#
+
+--color
+--color-filename=blue
+--color-match=magenta
+--color-lineno=white
+
+#
+# Custom types and abbreviations
+#
+
+--type-set=py:py
+--type-set=coffee:coffee
+--type-set=markdown:markdown,md,mdown,mmd
+--type-set=cucumber:feature
+--type-set=rdoc:rdoc
+--type-set=web=.css,.htm,.html,.php,.phtml,.js
+
+#
+# New Additions
+#
+
+--type-add=ruby:haml,builder,rake
+--type-add=css:sass,scss
+--type-add=js:coffee
+
+#
+# Extensions
+#
+
+--type-add=font:ext:otf,ttf
+
+#
+# Sort the files lexicographically for clarity
+#
+
+--group
+--sort-files
+
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Converting "$1" to "$1".iso:"
+
+hdiutil convert "$1" -format UDTO -o "$1".iso
+
+mv "$1".iso.cdr "$1".iso

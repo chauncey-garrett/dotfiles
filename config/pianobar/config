@@ -1,0 +1,30 @@
+# User settings
+user = chauncey.garrett+pandora@gmail.com
+password_command = security find-generic-password -a "pianobar" -g 2>&1 | grep password | sed -e "s/password: \"//" -e "s/\"//"
+
+# Keybindings
+act_help = ?
+act_songlove = +
+act_songban = -
+act_stationaddmusic = a
+act_stationcreate = c
+act_stationdelete = d
+act_songexplain = e
+act_stationaddbygenre = g
+act_songinfo = i
+act_addshared = j
+act_songmove = m
+act_songnext = n
+act_songpause = p
+act_quit = q
+act_stationrename = r
+act_stationchange = s
+act_songtired = t
+act_upcoming = u
+act_stationselectquickmix = x
+act_voldown = (
+act_volup = )
+
+# Quality settings
+audio_quality = high
+history = 7

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="64px" height="64px">
+<g opacity="0.5">
+<polygon fill="#FFFFFF" stroke="#3558C9" stroke-linecap="round" stroke-linejoin="round" points="10.515,39.797 10.346,15.816 
+	35.844,7.906 35.823,30.415 "/>
+<path fill="#FFFFFF" stroke="#3558C9" stroke-linecap="round" stroke-linejoin="round" d="M35.823,7.947
+	c0,0,7.889-6.564,8.582-7.258c0,0,17.736,9.972,18.24,10.162c0,0-6.899,7.846-7.11,8.751"/>
+<path fill="#769DFF" stroke="#3558C9" stroke-linecap="round" stroke-linejoin="round" d="M10.515,39.797l25.309-9.382V7.947
+	L9.841,15.731L5.971,8.2L28.25,1.51c0,0,1.577-0.504,1.704-1.01c0,0,3.723,6.437,5.87,7.447l19.712,11.655l-1.01,23.309
+	L35.823,30.415"/>
+<polygon fill="#FFFFFF" stroke="#3558C9" stroke-linecap="round" stroke-linejoin="round" points="28.017,29.785 27.766,54.104 
+	54.525,42.911 55.535,19.602 "/>
+<polygon fill="#FFFFFF" stroke="#3558C9" stroke-linecap="round" stroke-linejoin="round" points="36.201,40.64 61.005,29.7 
+	55.535,19.602 28.017,29.785 "/>
+<polygon fill="#92B6FF" stroke="#3558C9" stroke-linecap="round" stroke-linejoin="round" points="28.017,29.785 27.766,54.104 
+	10.515,39.797 10.263,16.068 "/>
+<polygon fill="#FFFFFF" stroke="#3558C9" stroke-linecap="round" stroke-linejoin="round" points="0.5,21.454 16.573,34.918 
+	28.017,29.785 9.841,15.731 "/>
+</g>
+</svg>

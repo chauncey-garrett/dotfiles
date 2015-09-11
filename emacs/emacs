@@ -1,0 +1,9 @@
+; Deft (Notational Velocity emacs mode)
+; http://jblevins.org/projects/deft/
+(add-to-list 'load-path "~/.emacs.d/deft")
+(require 'deft)
+	(setq deft-extension "md")
+	(setq deft-directory "~/Dropbox/Notes")
+	; (setq deft-text-mode 'markdown-mode)
+	(setq deft-use-filename-as-title t)
+	(global-set-key [f8] 'deft)

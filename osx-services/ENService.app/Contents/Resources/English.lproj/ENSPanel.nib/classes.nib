@@ -1,0 +1,34 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {OKHit = id; launchHit = id; showWindow = id; }; 
+            CLASS = ENAlertController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {launchENButton = id; okButton = id; text = id; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {
+            ACTIONS = {searchHit = id; }; 
+            CLASS = ENController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {searchButton = id; searchtext = id; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {
+            ACTIONS = {cancelHit = id; okHit = id; tableHit = id; }; 
+            CLASS = ENResultsController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                cancelButton = id; 
+                details = id; 
+                helpButton = id; 
+                library = id; 
+                okButton = id; 
+                results = id; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}

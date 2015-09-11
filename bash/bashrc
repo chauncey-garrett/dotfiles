@@ -1,0 +1,67 @@
+# echo "
+#
+# 	:::::::::      :::      ::::::::  :::    :::
+# 	:+:    :+:   :+: :+:   :+:    :+: :+:    :+:
+# 	+:+    +:+  +:+   +:+  +:+        +:+    +:+
+# 	+#++:++#+  +#++:++#++: +#++:++#++ +#++:++#++
+# 	+#+    +#+ +#+     +#+        +#+ +#+    +#+
+# 	#+#    #+# #+#     #+# #+#    #+# #+#    #+#
+# 	#########  ###     ###  ########  ###    ###
+#
+#
+# "
+
+#############
+## ALIASES ##
+#############
+
+alias ls="ls -FG"
+alias la="ls -FGA"
+alias ll="ls -FGAl"
+alias ..="cd .."
+alias nano="nano -AB"
+alias psa="ps auxc | less"
+
+###################
+## MISCELLANEOUS ##
+###################
+
+# Allow for more robust search browsing throughout the command line history
+bind '"[A":history-search-forward'
+bind '"[B":history-search-backward'
+
+# PS1
+export PS1="\w \$ "
+
+# Scary Root Prompt
+export SUDO_PS1="\[\e[31;1;46m\][\u] \w \$\[\e[0m\] "
+
+# Homebrew tab completion
+source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+
+#
+# Add the PATH
+#
+
+while read dir
+do
+	if [[ -d "$dir" ]]
+	then
+		PATH="$dir:$PATH"
+	fi
+done < $HOME/.dotfiles/PATH
+export PATH
+
+#
+# Add the MANPATH
+#
+
+while read dir
+do
+	if [[ -d "$dir" ]]
+	then
+		MANPATH="$dir:$MANPATH"
+	fi
+done < $HOME/.dotfiles/MANPATH
+export MANPATH
+

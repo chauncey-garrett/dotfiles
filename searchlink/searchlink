@@ -1,0 +1,44 @@
+# set to true to force inline links
+inline: false
+
+# set to true to add titles to links based on site title
+include_titles: true
+
+# if true, a failed iTunes search will fall back to Google
+itunes_fallback: true
+
+# change this to set a specific country for search (default US)
+country_code: US
+
+# set to true to include a random string in ref titles
+# allows running SearchLink multiple times w/out conflicts
+prefix_random: true
+
+# append affiliate link info to iTunes urls, empty quotes for none
+# example:
+# itunes_affiliate: "&at=10l4tL&ct=searchlink"
+itunes_affiliate: ""
+
+# to create Amazon affiliate links, set amazon_partner to:
+# [tag, camp, creative]
+# Use the amazon link tool to create any affiliate link and examine
+# to find the needed parts. Set to false to return regular amazon links
+# example: amazon_partner: ["bretttercom-20","1789","390957"]
+amazon_partner: ["lnk0f-20"]
+
+# To create custom abbreviations for Google Site Searches,
+# add to (or replace) the hash below.
+# "abbreviation" => "site.url",
+# This allows you, for example to use [search term](!bt)
+# as a shortcut to search brettterpstra.com. Keys in this
+# hash can override existing search triggers. Make sure
+# every line except the last ends in a comma
+custom_site_searches:
+  bt: brettterpstra.com
+  md: www.macdrifter.com
+  tuaw: www.tuaw.com
+  ms: macstories.net
+  dd: www.leancrew.com
+  sp: macsparky.com
+  man: developer.apple.com
+  dev: developer.apple.com

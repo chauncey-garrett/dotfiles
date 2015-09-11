@@ -1,0 +1,35 @@
+#aliases
+
+# To help make life easier
+alias cvg "grep -AE 4 Converged"
+alias fq "grep Freq"
+alias zro "grep zero"
+alias erg "egrep -A 8 Zero"
+alias ll "ls -l"
+alias .. "cd .."
+alias pie "grep Enthalpies"
+alias la "ls -a"
+
+# PROCHECK environments and aliases
+# ---------------------------------
+set    prodir =  /Applications/Procheck/procheck
+setenv prodir   '/Applications/Procheck/procheck'
+alias procheck      $prodir'/procheck.scr'
+alias procheck_comp $prodir'/procheck_comp.scr'
+alias procheck_nmr  $prodir'/procheck_nmr.scr'
+alias proplot       $prodir'/proplot.scr'
+alias proplot_comp  $prodir'/proplot_comp.scr'
+alias proplot_nmr   $prodir'/proplot_nmr.scr'
+alias aquapro       $prodir'/aquapro.scr'
+alias gfac2pdb      $prodir'/gfac2pdb.scr'
+alias viol2pdb      $prodir'/viol2pdb.scr'
+alias wirplot       $prodir'/wirplot.scr'
+
+# AQUA environment and aliases (for use with PROCHECK-NMR)
+# --------------------------------------------------------
+# Aliases are initialised by typing 'aqua'
+#
+if ( ! $?aquaroot )         setenv aquaroot   /Applications/Procheck/aqua
+if ( "`alias aqua`" == "" ) alias  aqua       'source $aquaroot/aqsetupi'
+
+

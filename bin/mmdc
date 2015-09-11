@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Run the MultiMarkdown Composer app from the command line
+
+if [ $# = 0 ]
+then
+	open -b com.multimarkdown.composer.mac
+else
+until [ "$*" = "" ]
+do
+	if [ ! -f "$1" ]
+	then
+		touch "$1"
+	fi
+	open -b com.multimarkdown.composer.mac "$1"
+	shift
+done
+fi

@@ -1,0 +1,65 @@
+/*
+ * split_view.css
+ */
+
+.split-view
+{
+   position: relative;
+}
+
+.split-view.split-view-vertical > .split-view-pane-tl
+{
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   width: 300px;
+   z-index: 1;
+}
+
+.split-view.split-view-vertical > .split-view-splitter
+{
+   position: absolute;
+   top: 0;
+   left: 300px;
+   bottom: 0;
+   width: 10px;
+   background-image: url( cid:splitter-drag.svg );
+   background-position: 50% 100%;
+   background-repeat: no-repeat;
+   -webkit-background-size: 10px 14px;
+   z-index: 2;
+   -webkit-user-drag: element;
+}
+
+.split-view.split-view-vertical > .split-view-splitter > .split-view-spline
+{
+   width: 0;
+   height: 100%;
+   border: 1px solid rgb( 125, 125, 125 );
+   border-width: 0 1px;
+   margin: 0 4px;
+}
+
+.split-view.split-view-vertical > .split-view-splitter:-webkit-drag
+{
+   /* WebKit will animate the original during drag, so don't draw our own then */
+   background-image: none;
+}
+.split-view.split-view-vertical > .split-view-splitter > .split-view-spline:-webkit-drag
+{
+   /* WebKit will animate the original during drag, so don't draw our own then */
+   border-color: transparent;
+}
+
+.split-view.split-view-vertical > .split-view-pane-br
+{
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   margin-left: 310px;
+   z-index: 0;
+}
+
