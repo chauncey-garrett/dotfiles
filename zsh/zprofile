@@ -109,7 +109,7 @@ fi
 # Source private config files
 #
 
-for config_file in $(ls "$HOME/.dotfiles/zsh/private/*.rc")
+for config_file in $(ls $HOME/.dotfiles/zsh/private/*.rc)
 do
 	source "$config_file"
 done
