@@ -419,3 +419,9 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 let g:html_indent_inctags = "address,article,aside,audio,blockquote,canvas,dd,div,dl,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,main,nav,noscript,ol,output,p,pre,section,table,tfoot,ul,video"
 
+"
+" Syntastic
+"
+
+let g:syntastic_always_populate_loc_list = 1
+
