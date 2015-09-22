@@ -1,6 +1,6 @@
 [user]
 	name = Chauncey Garrett
-	email = git@chauncey.io
+	email = egarrett@emortgagelogic.com
 #	signingkey = **Your GPG ID**
 [core]
 	excludesfile = ~/.gitignore_global
@@ -21,7 +21,7 @@
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
@@ -31,7 +31,7 @@
 [credential]
 	helper = osxkeychain
 [push]
-	default = simple
+	default = current
 [commit]
 	template = ~/.gitmessage
 #[branch "master"]
@@ -62,7 +62,6 @@
 	untracked = cyan
 	branch = magenta
 [diff]
-external = "/Applications/DeltaWalker.app/Contents/MacOS/git-diff"
 	tool = Kaleidoscope
 	mnemonicprefix = true # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject instead of a/b/c/d as prefixes for patches
 [difftool]
