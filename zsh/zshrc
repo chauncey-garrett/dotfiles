@@ -149,13 +149,6 @@ else # @local
 	alias vim='mvim' # may not be desirable
 fi
 
-
-#
-# Gauss-View - CRUNTCh
-#
-
-alias gv='ssh -Yf cruntch /usr/local/bin/gv5 &'
-
 #
 # OS X Calendar
 #
