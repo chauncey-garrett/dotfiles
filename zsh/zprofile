@@ -109,9 +109,9 @@ fi
 # Source private config files
 #
 
-if test -n "$(find $HOME/.dotfiles/zsh/private -maxdepth 1 -name '*.rc' -print -quit)"
+if test -n "$(find $HOME/.dotfiles/zsh/profile -maxdepth 1 -name '*.rc' -print -quit)"
 then
-	for config_file in $(ls $HOME/.dotfiles/zsh/private/*.rc)
+	for config_file in $(ls $HOME/.dotfiles/zsh/profile/*.rc)
 	do
 		source "$config_file"
 	done
@@ -233,3 +233,4 @@ manpath=(
 export MANPATH
 typeset -U manpath        # add only unique entries
 rationalize-path manpath  # remove entries that don't exist on this system -- just for sanity's sake more than anything
+
