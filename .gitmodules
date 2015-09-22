@@ -199,9 +199,6 @@
 [submodule "bin/external/rsync-deploy"]
 	path = bin/external/rsync-deploy
 	url = https://github.com/chauncey-garrett/rsync-deploy.git
-[submodule "janus/YouCompleteMe"]
-	path = janus/YouCompleteMe
-	url = https://github.com/Valloric/YouCompleteMe.git
 [submodule "janus/ultisnips"]
 	path = janus/ultisnips
 	url = https://github.com/chauncey-garrett/ultisnips.git
@@ -220,3 +217,6 @@
 [submodule "janus/jade"]
 	path = janus/jade
 	url = https://github.com/chauncey-garrett/vim-jade.git
+[submodule "janus/tern"]
+	path = janus/tern
+	url = https://github.com/marijnh/tern_for_vim
