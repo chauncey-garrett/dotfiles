@@ -12,98 +12,38 @@ root = true
 #
 
 [*]
+charset = utf-8
 end_of_line = lf
-trim_trailing_whitespace = true
-insert_final_newline = true
-charset = utf-8
-indent_style = tab
-indent_size = 4
-tab_width = 4
-curly_bracket_next_line = true
-
-#
-# Python
-#
-
-[*.py]
-charset = utf-8
-indent_style = space
-indent_size = 4
-
-#
-# Sass
-#
-
-[*.{sass,scss}]
-indent_style = space
 indent_size = 2
+indent_style = space
+insert_final_newline = true
+max_line_length = 80
+trim_trailing_whitespace = true
 
 #
 # CSS
 #
 
 [*.css]
-indent_style = tab
-indent_size = 2
 
 #
 # HTML
 #
 
 [*.html]
-indent_style = tab
-indent_size = 2
-
-#
-# XML
-#
-
-[*.xml]
-indent_style = space
-indent_size = 2
 
 #
 # JavaScript
 #
 
 [*.js]
-charset = utf-8
-indent_style = tab
 indent_size = 4
-trim_trailing_whitespace = true
-insert_final_newline = true
 
 #
-# JSON
+# JSON,YML
 #
 
-[*.json]
-indent_style = space
-indent_size = 2
-
-#
-# YAML
-#
-
-[*.yml]
-indent_style = space
-indent_size = 2
-
-#
-# Ruby
-#
-
-[*.{rb},Rakefile,Gemfile,Gemfile.lock]
-indent_style = space
-indent_size = 2
-
-#
-# Shell
-#
-
-[*.{sh,zsh}]
-indent_style = tab
-indent_size = 4
+[*.{json,yml}]
 
 #
 # Markdown
@@ -114,24 +54,39 @@ indent_size = 4
 trim_trailing_whitespace = false
 
 #
-# Miscellaneous files
+# Perl
 #
 
-[.travis.yml]
-indent_style = space
-indent_size = 2
-
-[ChangeLog]
-indent_size = 8
+[*.pl]
 
 #
-# JQuery
+# Python
 #
 
-[jquery.expander.js]
-indent_style = space
-indent_size = 2
-
-[jquery.pagination.js]
-indent_style = tab
+[*.py]
 indent_size = 4
+
+#
+# Ruby
+#
+
+[*.{rb},Rakefile,Gemfile,Gemfile.lock]
+
+#
+# Sass
+#
+
+[*.{sass,scss}]
+
+#
+# Shell
+#
+
+[*.{sh,zsh}]
+
+#
+# XML
+#
+
+[*.xml]
+
