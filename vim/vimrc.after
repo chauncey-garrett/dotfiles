@@ -16,11 +16,15 @@ set clipboard=unnamed
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 ""
-"" FormD
+"" Markdown
 ""
 
+" FormD
 nmap <leader>fr :%! formd -r<CR>
 nmap <leader>fi :%! formd -i<CR>
+
+" Markdown2HTML
+nmap <leader>md :%!mmd --to=html --smart --notes --mask --process-html<cr>
 
 ""
 "" Numbers in sidebar
