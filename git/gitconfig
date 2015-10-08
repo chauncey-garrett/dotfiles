@@ -56,7 +56,6 @@
 	untracked = cyan
 	branch = magenta
 [diff]
-external = "/Applications/DeltaWalker.app/Contents/MacOS/git-diff"
 	tool = Kaleidoscope
 	mnemonicprefix = true # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject instead of a/b/c/d as prefixes for patches
 [difftool]
@@ -78,8 +77,6 @@ external = "/Applications/DeltaWalker.app/Contents/MacOS/git-diff"
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
-[mergetool  "deltawalker"]
-cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
