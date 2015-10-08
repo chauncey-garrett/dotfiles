@@ -28,9 +28,6 @@
 	default = simple
 [commit]
 	template = ~/.gitmessage
-#[branch "master"]
-# 	remote = origin
-# 	merge = refs/heads/master
 [branch]
 	autosetupmerge = true
 [color]
