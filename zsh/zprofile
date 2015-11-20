@@ -67,16 +67,6 @@ then
 fi
 
 #
-# Perlbrew
-#
-
-if [[ -f "$HOME/.perlbrew" ]]
-then
-	export PERLBREW_ROOT=$HOME/.perlbrew
-	[[ -s ~/.perlbrew/etc/bashrc ]] && source ~/.perlbrew/etc/bashrc
-fi
-
-#
 # Go
 #
 
@@ -183,7 +173,6 @@ path=(
 	$HOME/{.bin,bin}
 	$HOME/.rbenv/shims
 	$HOME/.pyenv/shims
-	$HOME/.perlbrew/{bin,perls/perl-5.18.0/bin}
 	/usr/local/share/npm/bin
 	/usr/local/mysql/bin
 	/usr/local/MacGPG2/bin
