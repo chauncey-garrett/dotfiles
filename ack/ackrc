@@ -26,29 +26,43 @@ export ACKRC=".ackrc"
 --color-lineno=white
 
 #
-# Custom types and abbreviations
+# Additions
 #
 
---type-set=py:py
---type-set=coffee:coffee
---type-set=markdown:markdown,md,mdown,mmd
---type-set=cucumber:feature
---type-set=rdoc:rdoc
+# Ruby
+--type-set=rdoc:.rdoc
+--type-set=slim:.slim
+--type-set=haml:.haml
+--type-add=ruby:.haml,.builder,.rake
+
+# Python
+--type-set=py:.py
+--type-add=python:.cpy,.vpy
+
+# JavaScript
+--type-set=coffee:.coffee
+--type-add=js:.coffee
+
+# Markdown
+--type-set=markdown:.markdown,.md,.mdown,.mmd
+
+# CSV files
+--type-set=csv=.txt,.csv,.tsv
+
+# Cucumber
+--type-set=cucumber:.feature
+
+# Web
 --type-set=web=.css,.htm,.html,.php,.phtml,.js
 
-#
-# New Additions
-#
+# Actionscript
+--type-set=actionscript=.as
 
---type-add=ruby:haml,builder,rake
---type-add=css:sass,scss
---type-add=js:coffee
+# CSS
+--type-add=sass:.sass,.scss
 
-#
-# Extensions
-#
-
---type-add=font:ext:otf,ttf
+# Fonts
+--type-add=font:ext:.otf,.ttf
 
 #
 # Sort the files lexicographically for clarity
@@ -57,4 +71,10 @@ export ACKRC=".ackrc"
 --group
 --sort-files
 
+#
+# Ignore
+#
+
+--ignore-dir=node_modules
+--ignore-dir=log
 
