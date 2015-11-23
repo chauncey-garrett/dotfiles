@@ -16,15 +16,9 @@
 	sync = !legit sync \"$@\"
 	publish = !legit publish \"$@\"
 	graft = !legit graft \"$@\"
-#	root = !pwd -P
+	root = !pwd -P
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
@@ -34,9 +28,6 @@
 	default = current
 [commit]
 	template = ~/.gitmessage
-#[branch "master"]
-# 	remote = origin
-# 	merge = refs/heads/master
 [branch]
 	autosetupmerge = true
 [color]
@@ -83,8 +74,6 @@
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
-[mergetool  "deltawalker"]
-cmd = '/Applications/DeltaWalker.app/Contents/MacOS/git-merge' "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
