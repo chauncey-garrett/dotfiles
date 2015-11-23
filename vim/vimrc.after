@@ -407,9 +407,11 @@ au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfil
 " brew install par
 "
 
-" set textwidth=80
-" set formatoptions+=t
-set formatprg=par\ -w80
+if executable('par')
+  set textwidth=80
+  set formatoptions+=t
+  set formatprg=par\ -w80
+endif
 
 "
 " HTML indentation
