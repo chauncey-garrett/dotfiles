@@ -379,3 +379,17 @@ function pbcopy-last
 
 HISTSIZE=100000
 SAVEHIST=100000
+
+#
+# Print out line numbers
+#
+
+# Output a text file with line numbers
+# http://brettterpstra.com/2015/11/24/shell-tricks-quick-line-numbering/
+lno() {
+  if [ $# == 0 ]; then
+    echo "No filename provided."
+  else
+    sed = "$1" | paste -s -d '\t\n' - -
+  fi
+}
