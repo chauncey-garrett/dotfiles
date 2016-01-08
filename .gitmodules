@@ -208,9 +208,6 @@
 [submodule "janus/preserve-no-eol"]
 	path = janus/preserve-no-eol
 	url = https://github.com/chauncey-garrett/vim-preserve-no-eol.git
-[submodule "janus/narrow-region"]
-	path = janus/narrow-region
-	url = https://github.com/chauncey-garrett/vim-narrow-region.git
 [submodule "janus/syntax-nginx"]
 	path = janus/syntax-nginx
 	url = https://github.com/chauncey-garrett/vim-syntax-nginx.git
@@ -219,4 +216,4 @@
 	url = https://github.com/chauncey-garrett/vim-jade.git
 [submodule "janus/tern"]
 	path = janus/tern
-	url = https://github.com/marijnh/tern_for_vim
+	url = https://github.com/chauncey-garrett/vim-tern.git
