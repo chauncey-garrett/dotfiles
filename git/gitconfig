@@ -1,6 +1,6 @@
 [user]
 	name = Chauncey Garrett
-	email = egarrett@emortgagelogic.com
+	email = git@chauncey.io
 #	signingkey = **Your GPG ID**
 [core]
 	excludesfile = ~/.gitignore_global
