@@ -21,72 +21,11 @@ max_line_length = 80
 trim_trailing_whitespace = true
 
 #
-# CSS
+# Overrides
 #
 
-[*.css]
-
-#
-# HTML
-#
-
-[*.html]
-
-#
-# JavaScript
-#
-
-[*.js]
-indent_size = 4
-
-#
-# JSON,YML
-#
-
-[*.{json,yml}]
-
-#
 # Markdown
-#
-
 [*.{md,markdown,mmd,mdown,markdn}]
 indent_size = 4
 trim_trailing_whitespace = false
-
-#
-# Perl
-#
-
-[*.pl]
-
-#
-# Python
-#
-
-[*.py]
-indent_size = 4
-
-#
-# Ruby
-#
-
-[*.{rb},Rakefile,Gemfile,Gemfile.lock]
-
-#
-# Sass
-#
-
-[*.{sass,scss}]
-
-#
-# Shell
-#
-
-[*.{sh,zsh}]
-
-#
-# XML
-#
-
-[*.xml]
 
