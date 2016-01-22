@@ -134,7 +134,7 @@ zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 #
 
 # Set ssh-agent identities to load.
-zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_dsa' 'id_github' 'id_stash'
+zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_dsa' 'id_github' 'id_stash' 'id_eml'
 
 #
 # Syntax Highlighting
@@ -180,3 +180,4 @@ zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 
 # Integrate with iTerm2.
 zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+
