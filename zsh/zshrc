@@ -156,9 +156,13 @@ function cdlink() {
 # List the current SHELL (instead of the SHELL you started in)
 #
 
-function shell()
-{
-	ps | grep `echo $$` | awk '{ print $4 }'
+function shell() {
+  if (( ! $+commands[awk] )); then
+    # die 1 "brew is not an available command."
+    return
+  fi
+
+  ps | grep "$(echo $$)" | awk '{ print $4 }'
 }
 
 #
