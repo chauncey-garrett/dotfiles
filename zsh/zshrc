@@ -197,7 +197,14 @@ fi
 #	wifi off
 #
 
-(( $+commands[networksetup] )) && alias wifi="networksetup -setairportpower en1"
+function wifi() {
+  if (( ! $+commands[networksetup] )); then
+    # die 1 "networksetup is not an available command."
+    return
+  fi
+
+  networksetup -setairportpower en1 "$@"
+}
 
 #
 # Nino (weather)
