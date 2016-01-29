@@ -112,7 +112,7 @@ filetype indent plugin on
 ""
 
 function! TrimWhiteSpace()
-	%s/\s\+$//e
+  %s/\s\+$//e
 endfunction
 
 " Delete whitespace from the current line
@@ -130,45 +130,45 @@ nnoremap <silent> <Leader>rtws :call TrimWhiteSpace()<CR>
 "   s  spaces before a tab
 "   t  tabs not at start of line
 function! ShowWhitespace(flags)
-	let bad = ''
-	let pat = []
-	for c in split(a:flags, '\zs')
-		if c == 'e'
-			call add(pat, '\s\+$')
-		elseif c == 'i'
-			call add(pat, '^\t*\zs \+')
-		elseif c == 's'
-			call add(pat, ' \+\ze\t')
-		elseif c == 't'
-			call add(pat, '[^\t]\zs\t\+')
-		else
-			let bad .= c
-		endif
-	endfor
-	if len(pat) > 0
-		let s = join(pat, '\|')
-		exec 'syntax match ExtraWhitespace "'.s.'" containedin=ALL'
-	else
-		syntax clear ExtraWhitespace
-	endif
-	if len(bad) > 0
-		echo 'ShowWhitespace ignored: '.bad
-	endif
+  let bad = ''
+  let pat = []
+  for c in split(a:flags, '\zs')
+    if c == 'e'
+      call add(pat, '\s\+$')
+    elseif c == 'i'
+      call add(pat, '^\t*\zs \+')
+    elseif c == 's'
+      call add(pat, ' \+\ze\t')
+    elseif c == 't'
+      call add(pat, '[^\t]\zs\t\+')
+    else
+      let bad .= c
+    endif
+  endfor
+  if len(pat) > 0
+    let s = join(pat, '\|')
+    exec 'syntax match ExtraWhitespace "'.s.'" containedin=ALL'
+  else
+    syntax clear ExtraWhitespace
+  endif
+  if len(bad) > 0
+    echo 'ShowWhitespace ignored: '.bad
+  endif
 endfunction
 
 function! ToggleShowWhitespace()
-	if !exists('b:ws_show')
-		let b:ws_show = 0
-	endif
-	if !exists('b:ws_flags')
-		let b:ws_flags = 'eist'  " default (which whitespace to show)
-	endif
-	let b:ws_show = !b:ws_show
-	if b:ws_show
-		call ShowWhitespace(b:ws_flags)
-	else
-		call ShowWhitespace('')
-	endif
+  if !exists('b:ws_show')
+    let b:ws_show = 0
+  endif
+  if !exists('b:ws_flags')
+    let b:ws_flags = 'eist'  " default (which whitespace to show)
+  endif
+  let b:ws_show = !b:ws_show
+  if b:ws_show
+    call ShowWhitespace(b:ws_flags)
+  else
+    call ShowWhitespace('')
+  endif
 endfunction
 
 nnoremap <Leader>ws :call ToggleShowWhitespace()<CR>
@@ -349,50 +349,53 @@ set undoreload=10000        " number of lines to save for undo
 " UltiSnips and YouCompleteMe
 "
 
-" make YCM compatible with UltiSnips (using supertab)
+" Make YCM compatible with UltiSnips (using supertab).
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger="<cr>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+" Better key bindings for UltiSnipsExpandTrigger.
+let g:UltiSnipsExpandTrigger = "<cr>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
-" let g:UltiSnipsExpandTrigger       = "<c-tab>"
-" let g:UltiSnipsJumpForwardTrigger  = "<tab>"
-" let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+""""
 
-" " Enable tabbing through list of results
-" function! g:UltiSnips_Complete()
-	" call UltiSnips#ExpandSnippet()
-	" if g:ulti_expand_res == 0
-		" if pumvisible()
-			" return "\<C-n>"
-		" else
-			" call UltiSnips#JumpForwards()
-			" if g:ulti_jump_forwards_res == 0
-			   " return "\<TAB>"
-			" endif
-		" endif
-	" endif
-	" return ""
-" endfunction
+let g:UltiSnipsExpandTrigger = "<c-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-" au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+" Enable tabbing through list of results
+function! g:UltiSnips_Complete()
+  call UltiSnips#ExpandSnippet()
+  if g:ulti_expand_res == 0
+    if pumvisible()
+      return "\<C-n>"
+    else
+      call UltiSnips#JumpForwards()
+      if g:ulti_jump_forwards_res == 0
+        return "\<TAB>"
+      endif
+    endif
+  endif
+  return ""
+endfunction
 
-" " Expand snippet or return
-" let g:ulti_expand_res = 0
-" function! Ulti_ExpandOrEnter()
-	" call UltiSnips#ExpandSnippet()
-	" if g:ulti_expand_res
-		" return ''
-	" else
-		" return "\<return>"
-" endfunction
+au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
-" " Set <space> as primary trigger
-" inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>
+" Expand snippet or return
+let g:ulti_expand_res = 0
+function! Ulti_ExpandOrEnter()
+  call UltiSnips#ExpandSnippet()
+  if g:ulti_expand_res
+    return ''
+  else
+    return "\<return>"
+  endif
+endfunction
+
+" Set <space> as primary trigger
+inoremap <space> <C-R>=Ulti_ExpandOrEnter()<CR>
 
 "
 " Preserve EOL
