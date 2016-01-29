@@ -166,7 +166,7 @@ function shell() {
     return
   fi
 
-  ps | grep "$(echo $$)" | awk '{ print $4 }'
+  ps | grep "$$" | awk '{ print $4 }'
 }
 
 #
