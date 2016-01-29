@@ -26,7 +26,15 @@ done
 # Source Prezto.
 #
 
-[[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+prezto="${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+
+if [[ -s "${prezto}" ]]; then
+
+  # shellcheck source=/dev/null
+  source "${prezto}"
+else
+  exit
+fi
 
 #
 # Customize to your needs...
