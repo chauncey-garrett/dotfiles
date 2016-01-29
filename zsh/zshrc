@@ -405,8 +405,8 @@ function pbcopy-last {
   pbpaste >> "${nvalt_root}"/"${nvalt_note}"
 }
 
-HISTSIZE=100000
-SAVEHIST=100000
+export HISTSIZE=100000
+export SAVEHIST=100000
 
 #
 # Print out line numbers
