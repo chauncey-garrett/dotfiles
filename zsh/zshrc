@@ -449,9 +449,16 @@ export SAVEHIST=100000
 # Output a text file with line numbers
 # http://brettterpstra.com/2015/11/24/shell-tricks-quick-line-numbering/
 lno() {
-  if [ $# == 0 ]; then
+  if (( ! $+commands[sed] )); then
+    # die 1 "sed is not an available command."
+    return
+  fi
+
+  if (( $# == 0 )); then
+    # die 1 "No filename provided."
     echo "No filename provided."
   else
     sed = "$1" | paste -s -d '\t\n' - -
   fi
 }
+
