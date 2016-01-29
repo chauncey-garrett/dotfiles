@@ -173,14 +173,31 @@ HELPDIR=/usr/local/share/zsh/helpfiles
 # Always use vim
 #
 
-if [[ -n "$SSH_CLIENT" || -n "$SSH2_CLIENT" ]]
-then # on SSH
-	alias vi='vim' # may not be desirable
-	alias mvim='vim'
-	alias gvim='vim'
-else # @local
-	alias vi='mvim' # may not be desirable
-	alias vim='mvim' # may not be desirable
+if (( $+commands[vim] )); then
+  # die 1 "vim is not an available command."
+
+  # @ssh
+  if [[ -n "${SSH_CLIENT}" || -n "${SSH2_CLIENT}" ]]; then
+    alias vi='vim'
+    alias mvim='vim'
+    alias gvim='vim'
+
+  # @local
+  else
+
+    # Use MacVim if available
+    if (( !+commands[mvim] )); then
+      alias vi='mvim'
+      alias vim='mvim'
+      alias gvim='mvim'
+
+    # Use regular vim
+    else
+      alias vi='vim'
+      alias mvim='vim'
+      alias gvim='vim'
+    fi
+  fi
 fi
 
 #
