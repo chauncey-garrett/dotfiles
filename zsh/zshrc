@@ -49,20 +49,24 @@ ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 
 #
 # Ctrl+Z
-# - On an empty command line, runs bg (so that Ctrl+Z Ctrl+Z suspends a program and immediately resumes it in the background).
-# - On a non-empty command line, suspend the current command edition: let me type another command, and when that second command line finished, I get back the first command to edit.
 #
 
-function fancy-ctrl-z()
-{
-	if [[ $#BUFFER -eq 0 ]]
-	then
-		bg
-		zle redisplay
-	else
-		zle push-line-or-edit
-	fi
+function fancy-ctrl-z() {
+
+  # On an empty command line. Run bg (so that Ctrl+Z Ctrl+Z suspends a program
+  # and immediately resumes it in the background).
+  if [[ $#BUFFER -eq 0 ]]; then
+    bg
+    zle redisplay
+
+  # On a non-empty command line. Suspend the current command edition: let me
+  # type another command, and when that second command line finished, I get back
+  # the first command to edit.
+  else
+    zle push-line-or-edit
+  fi
 }
+
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
