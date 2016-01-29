@@ -341,7 +341,14 @@ fi
 # dfc
 #
 
-(( $+commands[dfc] )) && alias disk-usage="dfc"
+function disk-usage() {
+  if (( ! $+commands[dfc] )); then
+    # die 1 "dfc is not an available command."
+    return
+  fi
+
+  dfc
+}
 
 #
 # Tower
