@@ -325,11 +325,23 @@ fi
 # FORTRAN
 #
 
-if (( $+commands[gfortran] ))
-then
-	alias f95="gfortran -std=f95"
-	alias f77="gfortran -std=legacy"
-fi
+function f95() {
+  if (( ! $+commands[gfortran] )); then
+    # die 1 "gfortran is not an available command."
+    return
+  fi
+
+  gfortran -std=f95
+}
+
+function f77() {
+  if (( ! $+commands[gfortran] )); then
+    # die 1 "gfortran is not an available command."
+    return
+  fi
+
+  gfortran -std=legacy
+}
 
 #
 # Modules
