@@ -313,9 +313,6 @@ HOMEBREW_FORMULAS=(
 	# parallelized gzip
 	pigz
 
-	# toggle yosemite dark mode
-	dark-mode
-
 	# monitor pipes
 	pipemeter
 
