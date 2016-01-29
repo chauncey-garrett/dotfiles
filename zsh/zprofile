@@ -134,6 +134,7 @@ fi
 #	NOTE: this works only on arrays, not colon-delimited strings. Not that this is a problem now that there is typeset -T.
 rationalize-path() {
 	local element build
+
 	build=()
 
 	# Evil quoting to survive an eval and to make sure that this works even with variables containing IFS characters, if I'm crazy enough to setopt shwordsplit.
