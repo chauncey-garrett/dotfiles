@@ -233,15 +233,11 @@ function myip()
 [[ -f "/Developer/Applications/Xcode.app" ]] && alias xcode='open -a /Developer/Applications/Xcode.app'
 
 #
-# Pymol
-#
-
-[[ -f "/Applications/MacPyMOL.app" ]] && alias pymol="/Applicationsications/MacPyMOL.app/Contents/MacOS/MacPyMOL"
-
-
-#
 # Fuzzy Finder
 #
+
+
+
 
 if (( $+commands[fzf] ))
 then
