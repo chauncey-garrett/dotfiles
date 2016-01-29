@@ -84,6 +84,12 @@ HOMEBREW_FORMULAS=(
 	node
 
 	#
+	# Sass
+	#
+
+	libsass
+
+	#
 	# PostGreSQL
 	#
 
