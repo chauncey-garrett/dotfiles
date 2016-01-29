@@ -778,10 +778,17 @@ formulas() {
 formulas
 
 # Install apps
-echo "installing apps"
-brew cask "${HOMEBREW_CASKS[@]}"
+apps() {
+	echo "installing apps"
 
-brew cask alfred link
+	for app in "${HOMEBREW_CASKS[@]}"; do
+		brew cask "${app}"
+	done
+
+	brew cask alfred link
+}
+
+apps
 
 # Check for errors
 echo "doctoring"
