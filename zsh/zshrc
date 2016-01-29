@@ -306,89 +306,96 @@ function xcode() {
 # Fuzzy Finder
 #
 
+if (( $+commands[fzf] )); then
 
+  # Source config files
+  if [[ -f "${HOME}/.fzf.zsh" ]]; then
+    source "${HOME}/.fzf.zsh"
+  fi
 
+  # vimf - Open selected file in Vim
+  function vimf() {
+    local file
 
-if (( $+commands[fzf] ))
-then
-	# source config files
-	[[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
+    file="$(fzf --query="$1")"
 
-	# vimf - Open selected file in Vim
-	function vimf()
-	{
-		local file
-		file=$(fzf --query="$1") && vim "$file"
-	}
+    vim "${file}"
+  }
 
-	# fd - cd to selected directory
-	function fd()
-	{
-		local dir
-		dir=$(find ${1:-*} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) &&
-		cd "$dir"
-	}
+  # fd - cd to selected directory
+  function fd() {
+    local dir
 
-	# fda - including hidden directories
-	function fda()
-	{
-		local dir
-		dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
-	}
+    dir="$(find "${1:-*}" -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m)"
 
-	# fh - repeat history
-	function fh()
-	{
-		eval $(history 1 "${1}" | fzf +s | sed 's/ *[0-9]* *//')
-	}
+    cd "${dir}" || exit
+  }
 
-	# fkill - kill process
-	function fkill()
-	{
-		ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
-	}
+  # fda - including hidden directories
+  function fda() {
+    local dir
 
-	# fbr - checkout git branch
-	function fbr()
-	{
-		local branches branch
-		branches=$(git branch) &&
-		branch=$(echo "$branches" | fzf +s +m) &&
-		git checkout $(echo "$branch" | sed "s/.* //")
-	}
+    dir="$(find "${1:-.}" -type d 2> /dev/null | fzf +m)"
 
-	# fco - checkout git commit
-	function fco()
-	{
-		local commits commit
-		commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
-		commit=$(echo "$commits" | fzf +s +m -e) &&
-		git checkout $(echo "$commit" | sed "s/ .*//")
-	}
+    cd "${dir}" || exit
+  }
 
-	# Immediately select the file when there's only one match. If not, start the fuzzy finder as usual.
-	function fq1()
-	{
-		local lines
-		lines=$(fzf --filter="$1" --no-sort)
-		if [ -z "$lines" ]
-		then
-			return 1
-		elif [ $(wc -l <<< "$lines") -eq 1 ]
-		then
-			echo "$lines"
-		else
-			echo "$lines" | fzf --query="$1"
-		fi
-	}
+  # fh - repeat history
+  function fh() {
+    eval "$(history 1 "$1" | fzf +s | sed 's/ *[0-9]* *//')"
+  }
 
-	# Open the selected file with the default editor
-	# (Bypass fuzzy finder when there's only one match)
-	function fe()
-	{
-		local file
-		file=$(fq1 "$1") && ${EDITOR:-vim} "$file"
-	}
+  # fkill - kill process
+  function fkill() {
+    ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -"${1:-9}"
+  }
+
+  # fbr - checkout git branch
+  function fbr() {
+    local branches
+    local branch
+
+    branches="$(git branch)"
+    branch="$(echo "${branches}" | fzf +s +m)"
+
+    git checkout "$(echo "${branch}" | sed "s/.* //")"
+  }
+
+  # fco - checkout git commit
+  function fco() {
+    local commits
+    local commit
+
+    commits="$(git log --pretty=oneline --abbrev-commit --reverse)"
+    commit="$(echo "${commits}" | fzf +s +m -e)"
+
+    git checkout "$(echo "${commit}" | sed "s/ .*//")"
+  }
+
+  # Immediately select the file when there's only one match. If not, start the fuzzy finder as usual.
+  function fq1() {
+    local lines
+
+    lines="$(fzf --filter="$1" --no-sort)"
+
+    if [ -z "${lines}" ]; then
+      return 1
+    elif [ "$(wc -l <<< "$lines")" -eq 1 ]; then
+      echo "${lines}"
+    else
+      echo "${lines}" | fzf --query="$1"
+    fi
+  }
+
+  # Open the selected file with the default editor
+  # (Bypass fuzzy finder when there's only one match)
+  function fe() {
+    local file
+
+    file="$(fq1 "$1")"
+
+    "${EDITOR:-vim}" "$file"
+  }
 fi
 
 #
