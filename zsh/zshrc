@@ -230,7 +230,14 @@ function myip()
 # Xcode
 #
 
-[[ -f "/Developer/Applications/Xcode.app" ]] && alias xcode='open -a /Developer/Applications/Xcode.app'
+function xcode() {
+  if [[ -f "/Developer/Applications/Xcode.app" ]]; then
+    # die 1 "Xcode.app is not available installed."
+    return
+  fi
+
+  open -a "/Developer/Applications/Xcode.app"
+}
 
 #
 # Fuzzy Finder
