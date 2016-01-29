@@ -74,9 +74,8 @@ bindkey '^Z' fancy-ctrl-z
 # cd to directory of linked file
 #
 
-function cdln()
-{
-	cd $(dirname $(readlink -f "$1"))
+function cdln() {
+  cd "$(dirname "$(readlink -f "$1")")" || exit
 }
 
 #
