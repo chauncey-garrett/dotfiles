@@ -216,13 +216,20 @@ fi
 #
 
 # Search with Ack, then open resulting files in vim
-if (( $+commands[ack] && $+commands[vim] ))
-then
-	function ack2vim()
-	{
-		ack -li -- "$@" 2>/dev/null | xargs -o vim -c "/$@"
-	}
-fi
+function ack2vim() {
+  if (( ! $+commands[ack] )); then
+    # die 1 "ack is not an available command."
+    return
+  fi
+
+  if (( ! $+commands[vim] )); then
+    # die 1 "vim is not an available command."
+    return
+  fi
+
+  ack -li -- "$@" 2>/dev/null \
+    | xargs -o "vim" -c "/$@"
+}
 
 #
 # Internet troubleshooting
