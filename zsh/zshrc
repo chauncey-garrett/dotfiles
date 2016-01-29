@@ -230,7 +230,14 @@ function poogle() {
 }
 
 # speedtest 500MB
-(( $+commands[wget] )) && alias speedtest500='wget --output-document=/dev/null http://speedtest.wdc01.softlayer.com/downloads/test500.zip'
+function speedtest() {
+  if (( ! $+commands[wget] )); then
+    # die 1 "wget is not an available command."
+    return
+  fi
+
+  wget --output-document="/dev/null" "http://speedtest.wdc01.softlayer.com/downloads/test500.zip"
+}
 
 # print out my IP address
 function myip()
