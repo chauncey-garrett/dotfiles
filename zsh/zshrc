@@ -347,7 +347,18 @@ fi
 # Tower
 #
 
-(( $+commands[gittower] )) && alias tower="gittower ."
+function tower() {
+  if (( ! $+commands[gittower] )); then
+    # die 1 "gittower is not an available command."
+    return
+  fi
+
+  if [[ $@ ]]; then
+    gittower "$@"
+  else
+    gittower .
+  fi
+}
 
 #
 # Marked 2
