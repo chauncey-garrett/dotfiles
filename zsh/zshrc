@@ -95,7 +95,14 @@ function copydir() {
 # Terminal-Velocity
 #
 
-(( $+commands[terminal_velocity] )) && alias tv=terminal_velocity
+function tv() {
+  if (( ! $+commands[terminal_velocity] )); then
+    # die 1 "terminal_velocity is not an available command."
+    return
+  fi
+
+  terminal_velocity
+}
 
 #
 # Tmuxinator
