@@ -693,11 +693,23 @@ HOMEBREW_FORMULAS=(
 	)
 
 	HOMEBREW_CASKS=(
+		# fonts
 	#     font-inconsolata-dz-for-powerline
 	#     font-inconsolata
 	#     font-source-code-pro
 	#     font-droid-sans-mono
 	#     font-meslo-lg
+
+		# QuickLook Plugins
+	#     qlcolorcode
+	#     qlmarkdown
+	#     qlprettypatch
+	#     qlstephen
+	#     quicklook-csv
+	#     quicklook-json
+	#     webp-quicklook
+
+		# Apps
 	#     google-chrome
 	#     firefox
 	#     caffeine
@@ -716,13 +728,6 @@ HOMEBREW_FORMULAS=(
 	#     vlc
 	#     hipchat
 	#     betterzipql
-	#     qlcolorcode
-	#     qlmarkdown
-	#     qlprettypatch
-	#     qlstephen
-	#     quicklook-csv
-	#     quicklook-json
-	#     webp-quicklook
 	#     recordit
 	#     appcleaner
 	#     virtualbox
