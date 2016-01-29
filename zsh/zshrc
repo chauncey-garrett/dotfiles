@@ -114,7 +114,14 @@ function tv() {
 # Homebrew
 #
 
-(( $+commands[brew] )) && alias brews='brew list -1'
+function brews() {
+  if (( ! $+commands[brew] )); then
+    # die 1 "brew is not an available command."
+    return
+  fi
+
+  brew list -1
+}
 
 #
 # cd to the directory a symlink is pointing to or that directory containing the file the symlink is pointing to
