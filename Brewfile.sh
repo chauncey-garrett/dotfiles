@@ -767,6 +767,15 @@ taps() {
 
 taps
 
+formulas() {
+	echo "installing"
+
+	for formula in "${HOMEBREW_FORMULAS[@]}"; do
+		brew install "${formula}"
+	done
+}
+
+formulas
 
 # Install apps
 echo "installing apps"
