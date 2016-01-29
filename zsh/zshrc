@@ -209,7 +209,14 @@ fi
 # Deft
 #
 
-(( $+commands[emacs] )) && alias nv='emacs -f deft'
+function nv() {
+  if (( ! $+commands[emacs] )); then
+    # die 1 "emacs is not an available command."
+    return
+  fi
+
+  emacs -f deft
+}
 
 #
 # Ack
