@@ -494,10 +494,10 @@ function f77() {
 # Modules
 #
 
-modules="/usr/local/opt/modules/Modules/init/zsh"
+myModules="/usr/local/opt/modules/Modules/init/zsh"
 
-if [[ -s "${modules}" ]]; then
-  source "${modules}"
+if [[ -s "${myModules}" ]]; then
+  source "${myModules}"
 fi
 
 #
