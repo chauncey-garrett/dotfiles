@@ -24,12 +24,6 @@ HOMEBREW_FORMULAS=(
 	# OpenSSL
 	openssl
 
-	# SQLite
-	sqlite --with-docs --with-fts --with-functions --with-icu4c
-
-	# MySQL
-	mysql --enable-local-infile --enable-memchached --with-archive-storage-engine --with-embedded --with-tests
-
 	tcl-tk --enable-threads
 
 	python --with-brewed-tk --with-docs
