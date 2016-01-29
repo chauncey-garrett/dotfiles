@@ -220,7 +220,14 @@ function bing() {
 }
 
 # ping google
-alias poogle='ping -c 3 google.com'
+function poogle() {
+  if (( ! $+commands[ping] )); then
+    # die 1 "ping is not an available command."
+    return
+  fi
+
+  ping -c 3 "google.com"
+}
 
 # speedtest 500MB
 (( $+commands[wget] )) && alias speedtest500='wget --output-document=/dev/null http://speedtest.wdc01.softlayer.com/downloads/test500.zip'
