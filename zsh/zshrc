@@ -127,12 +127,10 @@ function brews() {
 # cd to the directory a symlink is pointing to or that directory containing the file the symlink is pointing to
 #
 
-function cdlink()
-{
-	for f in "$@"
-	do
-		cd $f(:A:h)
-	done
+function cdlink() {
+  for file in "$@"; do
+    cd "${file}(:A:h)" || exit
+  done
 }
 
 #
