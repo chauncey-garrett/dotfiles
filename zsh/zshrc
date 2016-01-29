@@ -209,6 +209,16 @@ fi
 # Internet troubleshooting
 #
 
+# ping bing
+function bing() {
+  if (( ! $+commands[ping] )); then
+    # die 1 "ping is not an available command."
+    return
+  fi
+
+  ping -c 100 "bing.com"
+}
+
 # ping google
 alias poogle='ping -c 3 google.com'
 
