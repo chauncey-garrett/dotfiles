@@ -15,7 +15,7 @@ for i in {${#parts}..1}; do
   file="${ZSH_CUSTOM}/profiles/${profile}"
 
   # Load profile, if one exists.
-  if [[ -f "${file}" ]]; then
+  if [[ -s "${file}" ]]; then
 
     # shellcheck source=/dev/null
     source "${file}"
@@ -379,7 +379,7 @@ function xcode() {
 if (( $+commands[fzf] )); then
 
   # Source config files
-  if [[ -f "${HOME}/.fzf.zsh" ]]; then
+  if [[ -s "${HOME}/.fzf.zsh" ]]; then
     source "${HOME}/.fzf.zsh"
   fi
 
@@ -494,7 +494,11 @@ function f77() {
 # Modules
 #
 
-[[ -f "/usr/local/opt/modules/Modules/init/zsh" ]] && source "/usr/local/opt/modules/Modules/init/zsh"
+modules="/usr/local/opt/modules/Modules/init/zsh"
+
+if [[ -s "${modules}" ]]; then
+  source "${modules}"
+fi
 
 #
 # dfc
