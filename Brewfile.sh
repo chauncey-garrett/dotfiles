@@ -205,7 +205,7 @@ HOMEBREW_FORMULAS=(
 	# Vim
 	#
 
-	# vim --override-system-vi --with-lua --with-luajit --with-mzscheme --with-perl --with-tcl
+	vim --override-system-vi --with-lua --with-luajit --with-mzscheme --with-perl --with-tcl --with-client-server
 	vimpager
 	macvim --with-lua --with-luajit
 	vifm
