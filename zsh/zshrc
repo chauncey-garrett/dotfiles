@@ -82,7 +82,14 @@ function cdln() {
 # Copy the current directory into the clipboard
 #
 
-(( $+commands[pbcopy] )) && alias copydir='pwd | tr -d "\r\n" | pbcopy'
+function copydir() {
+  if (( ! $+commands[pbcopy] )); then
+    # die 1 "pbcopy is not an available command."
+    return
+  fi
+
+  pwd | tr -d "\r\n" | pbcopy
+}
 
 #
 # Terminal-Velocity
