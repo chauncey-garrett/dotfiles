@@ -428,7 +428,7 @@ if (( $+commands[fzf] )); then
     branches="$(git branch)"
     branch="$(echo "${branches}" | fzf +s +m)"
 
-    git checkout "$(echo "${branch}" | sed "s/.* //")"
+    git checkout "${branch//.* //}"
   }
 
   # fco - checkout git commit
@@ -439,7 +439,7 @@ if (( $+commands[fzf] )); then
     commits="$(git log --pretty=oneline --abbrev-commit --reverse)"
     commit="$(echo "${commits}" | fzf +s +m -e)"
 
-    git checkout "$(echo "${commit}" | sed "s/ .*//")"
+    git checkout "${commit// .*//}"
   }
 
   # Immediately select the file when there's only one match. If not, start the fuzzy finder as usual.
