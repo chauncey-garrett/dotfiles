@@ -632,7 +632,6 @@ HOMEBREW_FORMULAS=(
 	# fontconfig
 	# freetype
 	# gd
-	# gdbm
 	# gettext
 	# ghc
 	# glances
@@ -800,3 +799,4 @@ brew cleanup
 
 echo "linking apps"
 brew linkapps
+
