@@ -6,78 +6,76 @@
 # DTerm
 #
 
-# if [[ "$TERM_PROGRAM" == "DTerm" ]]
-# then # these are only executed in DTerm shells
-# # else # these are only executed in non-DTerm shells
+# if [[ "$TERM_PROGRAM" == "DTerm" ]]; then
 # fi
 
 #
 # Browser
 #
 
-if [[ "$OSTYPE" == darwin* ]]
-then
-	export BROWSER='open'
+if [[ "${OSTYPE}" == darwin* ]]; then
+	export BROWSER="open"
 fi
 
 #
 # Editors
 #
 
-if [[ -n "$SSH_CLIENT" || -n "$SSH2_CLIENT" ]]
-then # on SSH
-	export EDITOR='vi -e'
-	export VISUAL='vim'
-	export PAGER='less'
-else # @local
-	export EDITOR='vi -e'
-	export VISUAL='vim'
-	export PAGER='less'
+# @ssh
+if [[ -n "${SSH_CLIENT}" || -n "${SSH2_CLIENT}" ]]; then
+	export EDITOR="vi -e"
+	export VISUAL="vim"
+	export PAGER="less"
+
+# @local
+else
+	export EDITOR="vi -e"
+	export VISUAL="vim"
+	export PAGER="less"
 fi
 
 #
 # Language
 #
 
-if [[ -z "$LANG" ]]
-then
-	export LANG='en_US.UTF-8'
+if [[ -z "${LANG}" ]]; then
+	export LANG="en_US.UTF-8"
 fi
 
 #
 # Zsh custom directory
 #
 
-[[ -f "$HOME/.dotfiles/zsh" ]] && export ZSH_CUSTOM="$HOME/.dotfiles/zsh"
+if [[ -d "${HOME}/.dotfiles/zsh" ]]; then
+  export ZSH_CUSTOM="${HOME}/.dotfiles/zsh"
+fi
 
 #
 # Temporary Files
 #
 
-if [[ ! -d "$TMPDIR" ]]
-then
-	export TMPDIR="/tmp/$USER"
-	mkdir -p -m 700 "$TMPDIR"
-fi
+export TMPDIR="/tmp/${USER}"
+mkdir -p -m 700 "${TMPDIR}"
 
-TMPPREFIX="${TMPDIR%/}/zsh"
-if [[ ! -d "$TMPPREFIX" ]]
-then
-	mkdir -p "$TMPPREFIX"
-fi
+export TMPPREFIX="${TMPDIR%/}/zsh"
+mkdir -p "${TMPPREFIX}"
 
 #
 # Go
 #
 
-[[ -f "$HOME/gocode" ]] && export GOPATH="$HOME/gocode"
+if [[ -f "${HOME}/gocode" ]]; then
+  export GOPATH="${HOME}/gocode"
+fi
 
 #
 # Java
 #
 
 # export JAVA_HOME="$(/usr/libexec/java_home -v 1.7)"
-[[ -f "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home" ]] && export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
+if [[ -f "/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home" ]]; then
+  export JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home"
+fi
 
 #
 # Less
@@ -90,8 +88,7 @@ export LESS='-F -g -i -M -R -w -X -z-4'
 
 # Set the Less input preprocessor.
 # Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
-if (( $#commands[(i)lesspipe(|.sh)] ))
-then
+if (( $#commands[(i)lesspipe(|.sh)] )); then
 	export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
 
@@ -99,11 +96,9 @@ fi
 # Source private config files
 #
 
-if test -n "$(find $HOME/.dotfiles/zsh/profile -maxdepth 1 -name '*.rc' -print -quit)"
-then
-	for config_file in $(ls $HOME/.dotfiles/zsh/profile/*.rc)
-	do
-		source "$config_file"
+if test -n "$(find "${HOME}/.dotfiles/zsh/profile" -maxdepth 1 -name '*.rc' -print -quit)"; then
+	for config_file in $(ls "${HOME}/.dotfiles/zsh/profile/*.rc"); do
+		source "${config_file}"
 	done
 fi
 
@@ -111,19 +106,25 @@ fi
 # Docbook
 #
 
-[[ -f "/usr/local/etc/xml/catalog" ]] && export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
+if [[ -f "/usr/local/etc/xml/catalog" ]]; then
+  export XML_CATALOG_FILES="/usr/local/etc/xml/catalog"
+fi
 
 #
 # Cheat
 #
 
-[[ -f "$HOME/.dotfiles/cheat" ]] && export CHEATCOLORS=true
+if (( $+commands[cheat] )); then
+  export CHEATCOLORS=true
+fi
 
 #
 # Gaussian tools
 #
 
-[[ -d $HOME/.dotfiles/gaussian-tools ]] && export GAUSSIAN_TOOLS_DIRECTORY="$HOME/.dotfiles/gaussian-tools"
+if [[ -d "${HOME}/.dotfiles/gaussian-tools" ]]; then
+  export GAUSSIAN_TOOLS_DIRECTORY="${HOME}/.dotfiles/gaussian-tools"
+fi
 
 #
 # Paths
@@ -132,19 +133,18 @@ fi
 # Later we'll need to trim down the paths that follow because the ones given here are for all my accounts, some of which have unusual paths in them. rationalize-path will remove nonexistent directories from an array.
 #	NOTE: this works only on arrays, not colon-delimited strings. Not that this is a problem now that there is typeset -T.
 rationalize-path() {
-	local element
-	local build
+	local element build
 	build=()
+
 	# Evil quoting to survive an eval and to make sure that this works even with variables containing IFS characters, if I'm crazy enough to setopt shwordsplit.
 	eval '
-	foreach element in "$'"$1"'[@]"
-	do
-		if [[ -d "$element" ]]
-		then
-			build=("$build[@]" "$element")
+	foreach element in "$'"$1"'[@]"; do
+		if [[ -d "${element}" ]]; then
+			build=("${build[@]}" "${element}")
 		fi
 	done
-	'"$1"'=( "$build[@]" )
+
+	'"$1"'=( "${build[@]}" )
 	'
 }
 
@@ -153,26 +153,30 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that cd searches.
 cdpath=(
 	.
-	"$cdpath[@]"
+	"${cdpath[@]}"
 )
+
 export CDPATH
 typeset -U cdpath # add only unique entries
 
 # Path to search for autoloadable functions.
 fpath=(
-	$HOME/lib/zsh/func
-	"$fpath[@]"
+	"${HOME}/lib/zsh/func"
+	"${fpath[@]}"
 )
+
 export FPATH
-typeset -U fpath # add only unique entries
+
+# Add only unique entries.
+typeset -U fpath
 
 # Set the list of directories that Zsh searches for programs.
 # NOTE: Top items appear in PATH first
 path=(
-	$GAUSSIAN_TOOLS_DIRECTORY
-	$HOME/{.bin,bin}
-	$HOME/.rbenv/shims
-	$HOME/.pyenv/shims
+	${GAUSSIAN_TOOLS_DIRECTORY}
+	${HOME}/{.bin,bin}
+	${HOME}/.rbenv/shims
+	${HOME}/.pyenv/shims
 	/usr/local/share/npm/bin
 	/usr/local/mysql/bin
 	/usr/local/MacGPG2/bin
@@ -196,17 +200,23 @@ path=(
 	/usr/texbin
 	/usr/{bin,sbin}
 	/{bin,sbin}
-	"$path[@]"
-	"$fpath[@]"
+	"${path[@]}"
+	"${fpath[@]}"
 )
+
 export PATH
-typeset -U path        # add only unique entries
-rationalize-path path  # remove entries that don't exist on this system -- just for sanity's sake more than anything
+
+# Add only unique entries.
+typeset -U path
+
+# Remove entries that don't exist on this system -- just for sanity's sake more
+# than anything.
+rationalize-path path
 
 # Set the list of directories that Zsh searches for manuals.
 # NOTE: Top items appear in PATH first
 manpath=(
-	$HOME/{.man,man}
+	${HOME}/{.man,man}
 	/usr/local/git/man
 	/usr/local/mysql/man
 	/usr/local/{man,sbin}
@@ -217,9 +227,15 @@ manpath=(
 	/usr/man/preformat
 	/usr/man
 	/usr/X11/man
-	"$manpath[@]"
+	"${manpath[@]}"
 )
+
 export MANPATH
-typeset -U manpath        # add only unique entries
-rationalize-path manpath  # remove entries that don't exist on this system -- just for sanity's sake more than anything
+
+# Add only unique entries.
+typeset -U manpath
+
+# Remove entries that don't exist on this system -- just for sanity's sake more
+# than anything.
+rationalize-path manpath
 
