@@ -203,7 +203,24 @@ fi
 # Nino (weather)
 #
 
-(( $+commands[nino] )) && alias nino="nino $WEATHER_WUNDERGROUND_API $WEATHER_ZIP"
+function nino() {
+  if (( ! $+commands[nino] )); then
+    # die 1 "nino is not an available command."
+    return
+  fi
+
+  if (( ! $+WEATHER_ZIP )); then
+    # die 1 "WEATHER_ZIP must be set."
+    return
+  fi
+
+  if (( ! $+WEATHER_WUNDERGROUND_API  )); then
+    # die 1 "WEATHER_WUNDERGROUND_API must be set."
+    return
+  fi
+
+  nino "${WEATHER_WUNDERGROUND_API}" "${WEATHER_ZIP}"
+}
 
 #
 # Deft
