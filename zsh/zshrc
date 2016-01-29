@@ -353,18 +353,22 @@ fi
 # Marked 2
 #
 
-if [[ -f "/Applications/Marked 2.app" ]]
-then
-	function mark()
-	{
-		if [ $@ ]
-		then
-			open -a "Marked 2" $@
-		else
-			open -a "Marked 2"
-		fi
-	}
-fi
+function mark() {
+  local marked
+
+  marked="/Applications/Marked 2.app"
+
+  if [[ -f "${marked}" ]]; then
+    # die 1 "Marked is not an available application."
+    return
+  fi
+
+  if [[ $@ ]]; then
+    open -a "${marked}" "$@"
+  else
+    open -a "${marked}"
+  fi
+}
 
 #
 # Save last command to clipboard and nvALT
