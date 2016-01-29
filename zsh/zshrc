@@ -187,7 +187,14 @@ fi
 # OS X Calendar
 #
 
-(( $+commands[icalBuddy] )) && alias ical="icalBuddy -nc -n -f eventsToday+2"
+function ical() {
+  if (( ! $+commands[icalBuddy] )); then
+    # die 1 "icalBuddy is not an available command."
+    return
+  fi
+
+  icalBuddy -nc -n -f eventsToday+2
+}
 
 #
 # WiFi
