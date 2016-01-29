@@ -6,16 +6,20 @@
 # Load a custom profile for the local machine and each domain or subdomain it belongs to. (e.g. com, example.com and foo.example.com)
 #
 
-parts=(${(s:.:)$(hostname)})
+parts=(${(s:.:)"$(hostname)"})
 
-for i in {${#parts}..1}
-do
-    local profile=${(j:.:)${parts[$i,${#parts}]}}
-    local file=$ZSH_CUSTOM/profiles/$profile
-    if [ -f $file ]
-    then
-        source $file
-    fi
+for i in {${#parts}..1}; do
+
+  # NOTE: Don't quote profile.
+  profile=${(j:.:)${parts[$i,${#parts}]}}
+  file="${ZSH_CUSTOM}/profiles/${profile}"
+
+  # Load profile, if one exists.
+  if [[ -f "${file}" ]]; then
+
+    # shellcheck source=/dev/null
+    source "${file}"
+  fi
 done
 
 #
