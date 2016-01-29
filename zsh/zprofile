@@ -178,6 +178,7 @@ path=(
 	${HOME}/{.bin,bin}
 	${HOME}/.rbenv/shims
 	${HOME}/.pyenv/shims
+	${HOME}/.linuxbrew/bin
 	/usr/local/share/npm/bin
 	/usr/local/mysql/bin
 	/usr/local/MacGPG2/bin
@@ -218,6 +219,7 @@ rationalize-path path
 # NOTE: Top items appear in PATH first
 manpath=(
 	${HOME}/{.man,man}
+	${HOME}/.linuxbrew/share/man
 	/usr/local/git/man
 	/usr/local/mysql/man
 	/usr/local/{man,sbin}
@@ -239,4 +241,20 @@ typeset -U manpath
 # Remove entries that don't exist on this system -- just for sanity's sake more
 # than anything.
 rationalize-path manpath
+
+# Set the list of directories that Zsh searches for info.
+# NOTE: Top items appear in PATH first
+infopath=(
+	${HOME}/.linuxbrew/share/info
+	"$infopath[@]"
+)
+
+export INFOPATH
+
+# Add only unique entries.
+typeset -U infopath
+
+# Remove entries that don't exist on this system -- just for sanity's sake more
+# than anything.
+rationalize-path infopath
 
