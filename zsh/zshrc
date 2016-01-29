@@ -23,7 +23,7 @@ for i in {${#parts}..1}; do
 done
 
 #
-# Source Prezto.
+# Source Prezto
 #
 
 prezto="${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -148,11 +148,12 @@ function cdlink() {
 #
 # Colorize stderr in red
 #
+
 # exec 2>>(
-    # while read X
-	# do
-        # print "\e[91m${X}\e[0m" > /dev/tty
-    # done &
+# while read X
+# do
+  # print "\e[91m${X}\e[0m" > /dev/tty
+# done &
 # )
 
 #
@@ -169,7 +170,7 @@ function shell() {
 }
 
 #
-# Access the online help:
+# Access the online help
 #
 
 unalias run-help
