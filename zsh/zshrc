@@ -138,12 +138,11 @@ function cdlink() {
 }
 
 #
-# Be paranoid, new files are readable/writable by me only, but not as root.
+# Be paranoid, new files are readable/writable by me only, but not as root
 #
 
-# if [[ $UID -ne 0 ]]
-# then
-	# umask 077
+# if [[ ${UID} -ne 0 ]]; then
+  # umask 077
 # fi
 
 #
