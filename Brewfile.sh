@@ -32,8 +32,8 @@ HOMEBREW_FORMULAS=(
 
 	tcl-tk --enable-threads
 
-	python --quicktest --with-brewed-tk --with-docs
-	python3 --quicktest --with-brewed-tk --with-docs
+	python --with-brewed-tk --with-docs
+	python3 --with-brewed-tk --with-docs
 	ruby --with-doc --with-gdbm --with-gmp --with-libffi --with-suffix --with-tcltk
 	lua --with-completion
 	luajit --enable-debug
@@ -207,7 +207,7 @@ HOMEBREW_FORMULAS=(
 
 	# vim --override-system-vi --with-lua --with-luajit --with-mzscheme --with-perl --with-tcl
 	vimpager
-	# macvim --custom-icons --with-lua --with-luajit
+	macvim --with-lua --with-luajit
 	vifm
 	ctags
 	par
@@ -597,7 +597,6 @@ HOMEBREW_FORMULAS=(
 
 	################################################################################
 	# dnsmasq
-	# mongodb
 	# phantomjs
 	# gh
 	# nginx
@@ -608,7 +607,6 @@ HOMEBREW_FORMULAS=(
 	# geos #3.4.2
 	# postgis #2.1.4
 	# proj #4.8.0
-	# elasticsearch-0.20 #0.20.6
 	# libmemcached #1.0.18
 	# redis
 	# aacgain
@@ -616,7 +614,6 @@ HOMEBREW_FORMULAS=(
 	# libnet
 	# ncdu
 	# nmap
-	# pcre
 	# pkg-config
 	# vnstat
 	# alpine
@@ -671,7 +668,6 @@ HOMEBREW_FORMULAS=(
 	# little-cms2
 	# lrzsz
 	# mad
-	# mercurial
 	# mpfr
 	# mutt
 	# nettle
