@@ -757,11 +757,16 @@ echo "cleaning"
 brew cleanup
 
 # Install packages
-echo "tapping"
-brew tap "${HOMEBREW_TAPS[@]}"
+taps() {
+	echo "tapping"
 
-echo "installing"
-brew install "${HOMEBREW_FORMULAS[@]}"
+	for tap in "${HOMEBREW_TAPS[@]}"; do
+		brew tap "${tap}"
+	done
+}
+
+taps
+
 
 # Install apps
 echo "installing apps"
