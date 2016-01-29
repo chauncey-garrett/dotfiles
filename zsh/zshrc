@@ -108,7 +108,11 @@ function tv() {
 # Tmuxinator
 #
 
-[[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]] && source "$HOME/.tmuxinator/scripts/tmuxinator"
+tmuxinator="${HOME}/.tmuxinator/scripts/tmuxinator"
+
+if [[ -s "$tmuxinator" ]]; then
+  source "$tmuxinator"
+fi
 
 #
 # Homebrew
