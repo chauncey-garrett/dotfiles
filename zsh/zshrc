@@ -370,22 +370,39 @@ fi
 # Save last command to clipboard and nvALT
 #
 
-function pbcopy-last
-{
-	# set nvALT folder
-	local nvalt_root=“$HOME/Dropbox/Notes”
-	mkdir -p "${nvalt_root}"
+function pbcopy-last {
+  # Set nvALT folder.
+  local nvalt_root
 
-	# copy the command to the clipboard
-	history -1 | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' | pbcopy
+  nvalt_root="${HOME}/Dropbox/Notes"
 
-	# make a new note for nvALT
-	echo "Press \"^C\" to copy to the pasteboard"
-	echo "OR"
-	echo "Type the title of the nvALT note you want to create, followed by [ENTER]:"
-	read nvalt_note
+  if (( ! $+commands[pbcopy] )); then
+    # die 1 "pbcopy is not an available command."
+    return
+  fi
 
-	pbpaste >> “${nvalt_root}"/"${nvalt_note}”
+  if (( ! $+commands[pbpaste] )); then
+    # die 1 "pbpaste is not an available command."
+    return
+  fi
+
+  if (( ! $+commands[awk] )); then
+    # die 1 "awk is not an available command."
+    return
+  fi
+
+  mkdir -p "${nvalt_root}"
+
+  # Copy the command to the clipboard.
+  history -1 | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' | pbcopy
+
+  # Make a new note for nvALT.
+  echo "Press \"^C\" to copy to the pasteboard"
+  echo "OR"
+  echo "Type the title of the nvALT note you want to create, followed by [ENTER]:"
+  read -r nvalt_note
+
+  pbpaste >> "${nvalt_root}"/"${nvalt_note}"
 }
 
 HISTSIZE=100000
