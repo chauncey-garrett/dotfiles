@@ -194,7 +194,7 @@ if (( $+commands[vim] )); then
   else
 
     # Use MacVim if available
-    if (( !+commands[mvim] )); then
+    if (( $+commands[mvim] )); then
       alias vi='mvim'
       alias vim='mvim'
       alias gvim='mvim'
