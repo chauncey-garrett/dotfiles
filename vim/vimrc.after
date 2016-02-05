@@ -9,22 +9,34 @@ set ttym=xterm2
 " OS X
 "
 
-" Yank text to the OS X clipboard
-set clipboard=unnamed
+" Check we're on OS X.
+if (system('uname') =~ "darwin")
 
-" Preserve indentation while pasting text from the OS X clipboard
-noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+  "
+  " OS X Clipboard
+  "
+
+  " Yank text to the OS X clipboard.
+  set clipboard=unnamed
+
+  " Preserve indentation while pasting text from the OS X clipboard.
+  noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+endif
 
 "
 " Markdown
 "
 
 " FormD
-nmap <leader>fr :%! formd -r<CR>
-nmap <leader>fi :%! formd -i<CR>
+if executable('formd')
+  nmap <leader>fr :%! formd -r<CR>
+  nmap <leader>fi :%! formd -i<CR>
+endif
 
 " Markdown2HTML
-nmap <leader>md :%!mmd --to=html --smart --notes --mask --process-html<cr>
+if executable('mmd')
+  nmap <leader>md :%!mmd --to=html --smart --notes --mask --process-html<cr>
+endif
 
 "
 " Numbers in sidebar
@@ -61,11 +73,20 @@ set spell
 " NERDtree
 "
 
-" show hidden files in NERDtree
-let NERDTreeShowHidden=1
+if exists(":NERDTree")
 
-" ignore files
-let NERDTreeIgnore=['\.DS_Store$', '\.vim$']
+  " Show hidden files in NERDTree.
+  let NERDTreeShowHidden=1
+
+  " Ignore files.
+  let NERDTreeIgnore=[
+        \ '\.DS_Store$',
+        \ '\.vim$'
+        \ ]
+
+  " Close NERDTree on open.
+  let NERDTreeQuitOnOpen = 1
+endif
 
 "
 " NERDCommenter
@@ -98,7 +119,10 @@ let g:task_paper_styles={'wait': 'ctermfg=Blue guifg=Blue', 'FAIL': 'ctermbg=Red
 " Highlight search
 "
 
-nnoremap <silent> <esc> :noh<cr><esc>
+" NOTE: Doesn't work under Cygwin for some unknown reason.
+if !has("win32unix")
+  nnoremap <silent> <esc> :noh<cr><esc>
+endif
 
 "
 " Git
@@ -219,7 +243,9 @@ vmap <C-J> ]egv
 nmap gV `[v`]
 
 " Use Ag instead of Ack with ack.vim.
+if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
 
 "
 " Window splitting
@@ -351,6 +377,7 @@ set undoreload=10000        " number of lines to save for undo
 
 " For some reason this command doesn't work:
 "   let g:neocomplete#enable_at_startup = 1
+"
 " Use this autocmd instead.
 " NOTE: https://github.com/Shougo/neocomplete.vim/issues/398
 autocmd VimEnter * NeoCompleteEnable
@@ -561,12 +588,14 @@ let g:html_indent_inctags = "address,article,aside,audio,blockquote,canvas,dd,di
 " Syntastic
 "
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_auto_jump = 1
+if exists(":SyntasticCheck")
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_aggregate_errors = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_auto_jump = 1
 
-let g:syntastic_javascript_checkers = ['jshint']
+  let g:syntastic_javascript_checkers = ['jshint']
+endif
 
