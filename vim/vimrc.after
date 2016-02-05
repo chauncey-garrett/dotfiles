@@ -1,13 +1,13 @@
-""
-"" Use mouse
-""
+"
+" Use mouse
+"
 
 set mouse=a
 set ttym=xterm2
 
-""
-"" OS X Clipboard
-""
+"
+" OS X
+"
 
 " Yank text to the OS X clipboard
 set clipboard=unnamed
@@ -15,9 +15,9 @@ set clipboard=unnamed
 " Preserve indentation while pasting text from the OS X clipboard
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
-""
-"" Markdown
-""
+"
+" Markdown
+"
 
 " FormD
 nmap <leader>fr :%! formd -r<CR>
@@ -26,15 +26,15 @@ nmap <leader>fi :%! formd -i<CR>
 " Markdown2HTML
 nmap <leader>md :%!mmd --to=html --smart --notes --mask --process-html<cr>
 
-""
-"" Numbers in sidebar
-""
+"
+" Numbers in sidebar
+"
 
 nnoremap <F3> :NumbersToggle<CR>
 
-""
-"" Color scheme
-""
+"
+" Color scheme
+"
 
 " solarized color scheme
 syntax enable
@@ -42,24 +42,24 @@ set background=dark
 " set background=light
 colorscheme solarized
 
-""
-"" Marked
-""
+"
+" Marked
+"
 
-" open with Marked
+" Open with Marked.
 nnoremap <leader>m :MarkedOpen!<CR>
 " :nnoremap <leader>m :silent !open -a "Marked 2.app" '%:p'<cr>
 
-""
-"" Spell checking
-""
+"
+" Spell checking
+"
 
-" turn on spell checking
+" Turn on spell checking.
 set spell
 
-""
-"" NERDtree
-""
+"
+" NERDtree
+"
 
 " show hidden files in NERDtree
 let NERDTreeShowHidden=1
@@ -67,15 +67,15 @@ let NERDTreeShowHidden=1
 " ignore files
 let NERDTreeIgnore=['\.DS_Store$', '\.vim$']
 
-""
-"" NERDcommenter
-""
+"
+" NERDCommenter
+"
 
 let NERDSpaceDelims=1
 
-""
-"" Taskpaper
-""
+"
+" Taskpaper
+"
 
 " To change the default date format string used when marking a task complete, define the `task_paper_date_format` variable. The format matches your system's `strftime()` function. For example, to include the date and time in ISO8601 format:
 let g:task_paper_date_format = "%Y-%m-%dT%H:%M:%S%z"
@@ -94,22 +94,22 @@ let g:task_paper_styles={'wait': 'ctermfg=Blue guifg=Blue', 'FAIL': 'ctermbg=Red
 
 " See |highlight-args| for a full description of the syntax.
 
-""
-"" Highlight search
-""
+"
+" Highlight search
+"
 
 nnoremap <silent> <esc> :noh<cr><esc>
 
-""
-"" Git
-""
+"
+" Git
+"
 
-" Turn on plugin indenting for git commit messages
+" Turn on plugin indenting for git commit messages.
 filetype indent plugin on
 
-""
-"" Whitespace
-""
+"
+" Whitespace
+"
 
 function! TrimWhiteSpace()
   %s/\s\+$//e
@@ -178,9 +178,9 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 " au InsertEnter * match ExtraWhitespace /\S\zs\s\+\%#\@<!$/
 " au InsertLeave * match ExtraWhiteSpace /\S\zs\s\+$/
 
-""
-"" Airline customization
-""
+"
+" Airline customization
+"
 
 " Smarter tab line
 let g:airline#extensions#tabline#enabled = 1
@@ -192,16 +192,16 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 " Ensure powerline symbols are loaded
 let g:airline_powerline_fonts = 1
 
-""
-"" Typewriter mode
-""
+"
+" Typewriter mode
+"
 
 " Keep the focus on the current line
 " set scrolloff=999
 
-""
-"" Unimpaired
-""
+"
+" Unimpaired
+"
 
 " Exchange single lines
 nmap <C-K> [e
@@ -211,19 +211,19 @@ nmap <C-J> ]e
 vmap <C-K> [egv
 vmap <C-J> ]egv
 
-""
-"" Miscellaneous
-""
+"
+" Miscellaneous
+"
 
-" Visually select the text that was last edited/pasted
+" Visually select the text that was last edited/pasted.
 nmap gV `[v`]
 
-" Use Ag instead of Ack with ack.vim
-let g:ackprg = 'ag --nogroup --nocolor --column'
+" Use Ag instead of Ack with ack.vim.
+  let g:ackprg = 'ag --nogroup --nocolor --column'
 
-""
-"" Window splitting
-""
+"
+" Window splitting
+"
 
 " More natural splitting
 set splitbelow
@@ -235,16 +235,16 @@ set splitright
 " nnoremap <C-L> <C-W><C-L>
 " nnoremap <C-H> <C-W><C-H>
 
-""
-"" Clam settings
-""
+"
+" Clam settings
+"
 
 nnoremap ! :Clam<space>
 vnoremap ! :ClamVisual<space>
 
-""
-"" Reassign arrow keys for line movement
-""
+"
+" Reassign arrow keys for line movement
+"
 
 nmap <Up> [e
 vmap <Up> [egv
@@ -255,33 +255,33 @@ vmap <Left> <gv
 nmap <Right> >>
 vmap <Right> >gv
 
-""
-"" Formatting
-""
+"
+" Formatting
+"
 
-" set tab formatting to 4 column tabs -> like Windows developers
+" Set tab formatting to 4 column tabs -> like Windows developers.
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
-" set tab formatting to 8 column tabs -> like Linux kernel developers
+" Set tab formatting to 8 column tabs -> like Linux kernel developers.
 " set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 
-" allow for word wrapping
+" Allow for word wrapping.
 set wrap
 set linebreak
 set nolist
 set breakindent " indent with text
 set showbreak=╎ " break character
 
-" folding settings
+" Folding settings.
 set foldmethod=indent   " fold based on indent
 set foldnestmax=10      " deepest fold is 10 levels
 set nofoldenable        " dont fold by default
 set foldlevel=1         " this is just what I use
 
-" Shortcut to rapidly toggle `set list`
+" Shortcut to rapidly toggle `set list`.
 nmap <leader><leader>l :set list!<CR>
 
-" Use the same symbols as TextMate for tabstops and EOLs
+" Use the same symbols as TextMate for tabstops and EOLs.
 set listchars+=tab:▸\ ,eol:¬
 
 "
@@ -303,21 +303,21 @@ let g:languagetool_jar='/Applications/LanguageTool-2.6/languagetool-commandline.
 au! BufNewFile,BufRead *.plt,*.gnuplot setf gnuplot
 au! BufNewFile,BufRead *.applescript setf applescript
 
-""
-"" Jekyll
-""
+"
+" Jekyll
+"
 
 let g:jekyll_site_dir = '_site'
 
-""
-"" BufferGator fix
-""
+"
+" BufferGator fix
+"
 
 nmap <leader>b :BuffergatorToggle<CR>
 
-""
-"" prevent vim from writing newlines
-""
+"
+" Prevent vim from writing newlines.
+"
 
 " :set wrap
 " :set linebreak
@@ -325,10 +325,10 @@ nmap <leader>b :BuffergatorToggle<CR>
 " :set textwidth=0
 " :set wrapmargin=0
 
-""
-"" easily open files with edit
-""	 http://vimcasts.org/episodes/the-edit-command/
-""
+"
+" Easily open files with edit.
+"	NOTE: http://vimcasts.org/episodes/the-edit-command/
+"
 
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<CR>
 map <leader>ew :e %%
@@ -527,20 +527,20 @@ endfunction
 inoremap <space> <C-R>=Ulti_ExpandOrEnter()<CR>
 
 "
-" Preserve EOL
+" Preserve EOL.
 "
 
 let g:PreserveNoEOL = 1
 
 "
-" Nginx syntax highlighting
+" Nginx syntax highlighting.
 "
 
 au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
 
 "
-" Paragraph formatting with par
-" brew install par
+" Paragraph formatting with par.
+" NOTE: brew install par
 "
 
 if executable('par')
