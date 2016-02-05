@@ -3,7 +3,8 @@
 #
 
 #
-# Load a custom profile for the local machine and each domain or subdomain it belongs to. (e.g. com, example.com and foo.example.com)
+# Load a custom profile for the local machine and each domain or subdomain it
+# belongs to. (e.g. com, example.com and www.example.com)
 #
 
 parts=(${(s:.:)"$(hostname)"})
@@ -93,10 +94,12 @@ function die() {
 
 #
 # Command highlighting patterns
-# NOTE: Requires syntax highlighting plugin
+#   NOTE: Requires syntax highlighting plugin
 #
 
-ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=(
+  'rm -rf *' 'fg=white,bold,bg=red'
+)
 
 #
 # Ctrl+Z
@@ -407,11 +410,26 @@ function myip() {
 
   echo "public    : $(curl -s ip.appspot.com)"
 
-  ifconfig lo0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "lo0       : " $2}'
-  ifconfig en0 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
-  ifconfig en0 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
-  ifconfig en1 | grep 'inet ' | sed -e 's/:/ /' | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
-  ifconfig en1 | grep 'inet6 ' | sed -e 's/ / /' | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig lo0 \
+    | grep 'inet ' \
+    | sed -e 's/:/ /' \
+    | awk '{print "lo0       : " $2}'
+  ifconfig en0 \
+    | grep 'inet ' \
+    | sed -e 's/:/ /' \
+    | awk '{print "en0 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig en0 \
+    | grep 'inet6 ' \
+    | sed -e 's/ / /' \
+    | awk '{print "en0 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig en1 \
+    | grep 'inet ' \
+    | sed -e 's/:/ /' \
+    | awk '{print "en1 (IPv4): " $2 " " $3 " " $4 " " $5 " " $6}'
+  ifconfig en1 \
+    | grep 'inet6 ' \
+    | sed -e 's/ / /' \
+    | awk '{print "en1 (IPv6): " $2 " " $3 " " $4 " " $5 " " $6}'
 }
 
 #
@@ -476,7 +494,11 @@ if (( $+commands[fzf] )); then
 
   # fkill - kill process
   function fkill() {
-    ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -"${1:-9}"
+    ps -ef \
+      | sed 1d \
+      | fzf -m \
+      | awk '{print $2}' \
+      | xargs kill -"${1:-9}"
   }
 
   # fbr - checkout git branch
@@ -638,12 +660,16 @@ function pbcopy-last {
   mkdir -p "${nvalt_root}"
 
   # Copy the command to the clipboard.
-  history -1 | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' | pbcopy
+  history -1 \
+    | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' \
+    | pbcopy
 
   # Make a new note for nvALT.
-  echo "Press \"^C\" to copy to the pasteboard"
-  echo "OR"
-  echo "Type the title of the nvALT note you want to create, followed by [ENTER]:"
+cat << EOF
+Press "^C" to copy to the pasteboard
+  OR
+Type the title of the nvALT note you want to create, followed by [ENTER]:
+EOF
   read -r nvalt_note
 
   pbpaste >> "${nvalt_root}"/"${nvalt_note}"
