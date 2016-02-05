@@ -4,7 +4,8 @@
 #	signingkey = **Your GPG ID**
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = vim -c startinsert
+	editor = vim
+	; editor = vim -c startinsert
 #	pager = !less -FRSX
 #	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [alias]
