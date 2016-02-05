@@ -604,7 +604,7 @@ function tower() {
     return
   fi
 
-  if [[ $@ ]]; then
+  if (( $@ )); then
     gittower "$@"
   else
     gittower .
@@ -625,7 +625,7 @@ function mark() {
     return
   fi
 
-  if [[ $@ ]]; then
+  if (( $@ )); then
     open -a "${marked}" "$@"
   else
     open -a "${marked}"
