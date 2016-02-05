@@ -242,6 +242,10 @@ vmap <C-J> ]egv
 " Miscellaneous
 "
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+" NOTE: http://stackoverflow.com/a/7078429
+cmap w!! w !sudo tee > /dev/null %
+
 " Visually select the text that was last edited/pasted.
 nmap gV `[v`]
 
