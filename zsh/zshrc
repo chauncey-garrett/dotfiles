@@ -41,6 +41,57 @@ fi
 #
 
 #
+# Time
+#
+
+function datetime() {
+  date +'%Y-%m-%d %H:%M:%S.%3N'
+}
+
+#
+# Timestamp
+#
+
+function timestamp() {
+  echo "[$(datetime)]"
+}
+
+#
+# Print an info message to the term
+#   USAGE: info "Information."
+#
+
+function message() {
+  # echo -e "\n\e[34m$(timestamp)\e[0m $0: $@ \n" >&2
+  echo -e "\n$FG[blue]$(timestamp) $FX[bold]$FG[yellow]$0$FX[no-bold]$FG[blue]:$FG[none] $@ \n" >&2
+}
+
+#
+# Print a warning message to the term
+#   USAGE: warn "Warning."
+#
+
+function warn() {
+  # echo -e "\n\e[31m$(timestamp)\e[0m $0: $@ \n" >&2
+  echo -e "\n$FG[red]$(timestamp) $FX[bold]$FG[yellow]$0$FX[no-bold]$FG[red]:$FG[none] $@ \n" >&2
+}
+
+#
+# Exit while specifying a return code and message
+#   USAGE: die 127 "Syntax Error."
+#
+
+function die() {
+  local exit_code
+
+  exit_code="$1"
+
+  shift
+  warn "$@"
+  exit "${exit_code}"
+}
+
+#
 # Command highlighting patterns
 # NOTE: Requires syntax highlighting plugin
 #
@@ -84,7 +135,7 @@ function cdln() {
 
 function copydir() {
   if (( ! $+commands[pbcopy] )); then
-    # die 1 "pbcopy is not an available command."
+    warn "pbcopy is not an available command."
     return
   fi
 
@@ -97,7 +148,7 @@ function copydir() {
 
 function tv() {
   if (( ! $+commands[terminal_velocity] )); then
-    # die 1 "terminal_velocity is not an available command."
+    warn "terminal_velocity is not an available command."
     return
   fi
 
@@ -120,7 +171,7 @@ fi
 
 function brews() {
   if (( ! $+commands[brew] )); then
-    # die 1 "brew is not an available command."
+    warn "brew is not an available command."
     return
   fi
 
@@ -128,12 +179,13 @@ function brews() {
 }
 
 #
-# cd to the directory a symlink is pointing to or that directory containing the file the symlink is pointing to
+# cd to the directory a symlink is pointing to or that directory containing the
+# file the symlink is pointing to
 #
 
 function cdlink() {
   for file in "$@"; do
-    cd "${file}(:A:h)" || exit
+    cd "${file}(:A:h)" || warn "Can't cd to $file"
   done
 }
 
@@ -162,7 +214,7 @@ function cdlink() {
 
 function shell() {
   if (( ! $+commands[awk] )); then
-    # die 1 "brew is not an available command."
+    warn "brew is not an available command."
     return
   fi
 
@@ -182,7 +234,6 @@ export HELPDIR="/usr/local/share/zsh/helpfiles"
 #
 
 if (( $+commands[vim] )); then
-  # die 1 "vim is not an available command."
 
   # @ssh
   if [[ -n "${SSH_CLIENT}" || -n "${SSH2_CLIENT}" ]]; then
@@ -214,7 +265,7 @@ fi
 
 function ical() {
   if (( ! $+commands[icalBuddy] )); then
-    # die 1 "icalBuddy is not an available command."
+    warn "icalBuddy is not an available command."
     return
   fi
 
@@ -231,7 +282,7 @@ function ical() {
 
 function wifi() {
   if (( ! $+commands[networksetup] )); then
-    # die 1 "networksetup is not an available command."
+    warn "networksetup is not an available command."
     return
   fi
 
@@ -244,17 +295,17 @@ function wifi() {
 
 function nino() {
   if (( ! $+commands[nino] )); then
-    # die 1 "nino is not an available command."
+    warn "nino is not an available command."
     return
   fi
 
   if (( ! $+WEATHER_ZIP )); then
-    # die 1 "WEATHER_ZIP must be set."
+    warn "WEATHER_ZIP must be set in your environment."
     return
   fi
 
   if (( ! $+WEATHER_WUNDERGROUND_API  )); then
-    # die 1 "WEATHER_WUNDERGROUND_API must be set."
+    warn "WEATHER_WUNDERGROUND_API must be set in your environment."
     return
   fi
 
@@ -267,7 +318,7 @@ function nino() {
 
 function nv() {
   if (( ! $+commands[emacs] )); then
-    # die 1 "emacs is not an available command."
+    warn "emacs is not an available command."
     return
   fi
 
@@ -281,12 +332,12 @@ function nv() {
 # Search with Ack, then open resulting files in vim
 function ack2vim() {
   if (( ! $+commands[ack] )); then
-    # die 1 "ack is not an available command."
+    warn "ack is not an available command."
     return
   fi
 
   if (( ! $+commands[vim] )); then
-    # die 1 "vim is not an available command."
+    warn "vim is not an available command."
     return
   fi
 
@@ -298,30 +349,34 @@ function ack2vim() {
 # Internet troubleshooting
 #
 
-# ping bing
+# Ping bing 100x.
 function bing() {
   if (( ! $+commands[ping] )); then
-    # die 1 "ping is not an available command."
+    warn "ping is not an available command."
     return
   fi
+
+  info "Pinging bing.com 100x"
 
   ping -c 100 "bing.com"
 }
 
-# ping google
+# Ping google 3x.
 function poogle() {
   if (( ! $+commands[ping] )); then
-    # die 1 "ping is not an available command."
+    warn "ping is not an available command."
     return
   fi
+
+  info "Pinging google.com 3x"
 
   ping -c 3 "google.com"
 }
 
-# speedtest 500MB
+# Speedtest 500MB.
 function speedtest() {
   if (( ! $+commands[wget] )); then
-    # die 1 "wget is not an available command."
+    warn "wget is not an available command."
     return
   fi
 
@@ -331,22 +386,22 @@ function speedtest() {
 # print out my IP address
 function myip() {
   if (( ! $+commands[ifconfig] )); then
-    # die 1 "ifconfig is not an available command."
+    warn "ifconfig is not an available command."
     return
   fi
 
   if (( ! $+commands[sed] )); then
-    # die 1 "sed is not an available command."
+    warn "sed is not an available command."
     return
   fi
 
   if (( ! $+commands[awk] )); then
-    # die 1 "awk is not an available command."
+    warn "awk is not an available command."
     return
   fi
 
   if (( ! $+commands[curl] )); then
-    # die 1 "curl is not an available command."
+    warn "curl is not an available command."
     return
   fi
 
@@ -364,12 +419,16 @@ function myip() {
 #
 
 function xcode() {
-  if [[ -f "/Developer/Applications/Xcode.app" ]]; then
-    # die 1 "Xcode.app is not available installed."
+  local xcode
+
+  xcode="/Developer/Applications/Xcode.app"
+
+  if [[ -f "${xcode}" ]]; then
+    warn "Xcode.app is not available installed."
     return
   fi
 
-  open -a "/Developer/Applications/Xcode.app"
+  open -a "${xcode}"
 }
 
 #
@@ -474,7 +533,7 @@ fi
 
 function f95() {
   if (( ! $+commands[gfortran] )); then
-    # die 1 "gfortran is not an available command."
+    warn "gfortran is not an available command."
     return
   fi
 
@@ -483,7 +542,7 @@ function f95() {
 
 function f77() {
   if (( ! $+commands[gfortran] )); then
-    # die 1 "gfortran is not an available command."
+    warn "gfortran is not an available command."
     return
   fi
 
@@ -506,7 +565,7 @@ fi
 
 function disk-usage() {
   if (( ! $+commands[dfc] )); then
-    # die 1 "dfc is not an available command."
+    warn "dfc is not an available command."
     return
   fi
 
@@ -519,7 +578,7 @@ function disk-usage() {
 
 function tower() {
   if (( ! $+commands[gittower] )); then
-    # die 1 "gittower is not an available command."
+    warn "gittower is not an available command."
     return
   fi
 
@@ -540,7 +599,7 @@ function mark() {
   marked="/Applications/Marked 2.app"
 
   if [[ -f "${marked}" ]]; then
-    # die 1 "Marked is not an available application."
+    warn "Marked is not an available application."
     return
   fi
 
@@ -556,23 +615,23 @@ function mark() {
 #
 
 function pbcopy-last {
-  # Set nvALT folder.
   local nvalt_root
 
+  # Set nvALT notes folder.
   nvalt_root="${HOME}/Dropbox/Notes"
 
   if (( ! $+commands[pbcopy] )); then
-    # die 1 "pbcopy is not an available command."
+    warn "pbcopy is not an available command."
     return
   fi
 
   if (( ! $+commands[pbpaste] )); then
-    # die 1 "pbpaste is not an available command."
+    warn "pbpaste is not an available command."
     return
   fi
 
   if (( ! $+commands[awk] )); then
-    # die 1 "awk is not an available command."
+    warn "awk is not an available command."
     return
   fi
 
@@ -601,13 +660,13 @@ export SAVEHIST=100000
 # http://brettterpstra.com/2015/11/24/shell-tricks-quick-line-numbering/
 lno() {
   if (( ! $+commands[sed] )); then
-    # die 1 "sed is not an available command."
+    warn "sed is not an available command."
     return
   fi
 
   if (( $# == 0 )); then
-    # die 1 "No filename provided."
-    echo "No filename provided."
+    warn "No filename provided."
+    return
   else
     sed = "$1" | paste -s -d '\t\n' - -
   fi
