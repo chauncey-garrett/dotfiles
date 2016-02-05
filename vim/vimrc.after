@@ -131,6 +131,9 @@ endif
 " Turn on plugin indenting for git commit messages.
 filetype indent plugin on
 
+" Insert at the end of the first line in a git commit message.
+autocmd VimEnter * execute "normal A"
+
 "
 " Whitespace
 "
