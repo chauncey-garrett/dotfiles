@@ -345,6 +345,9 @@ HOMEBREW_FORMULAS=(
 	# directory hierarchy
 	tree
 
+	# truncate files
+	truncate
+
 	# insert a line rule in the terminal window for reference
 	hr
 
