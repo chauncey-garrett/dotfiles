@@ -435,7 +435,7 @@ HOMEBREW_FORMULAS=(
 	onepass
 
 	# htop
-	htop-osx
+	htop
 
 	# wifi-password
 	wifi-password
