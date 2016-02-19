@@ -594,6 +594,8 @@ HOMEBREW_FORMULAS=(
 	colorsvn
 	colortail
 	source-highlight
+	icdiff
+	diff-so-fancy
 
 	################################################################################
 	# dnsmasq
