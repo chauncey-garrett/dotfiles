@@ -1,0 +1,86 @@
+[user]
+	name = Chauncey Garrett
+	email = git@chauncey.io
+#	signingkey = **Your GPG ID**
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = vim -c startinsert
+#	pager = !less -FRSX
+#	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[alias]
+	switch = !legit switch \"$@\"
+	branches = !legit branches
+	sprout = !legit sprout \"$@\"
+	unpublish = !legit unpublish \"$@\"
+	harvest = !legit harvest \"$@\"
+	sync = !legit sync \"$@\"
+	publish = !legit publish \"$@\"
+	graft = !legit graft \"$@\"
+	root = !pwd -P
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[credential]
+	helper = osxkeychain
+[push]
+	default = current
+[commit]
+	template = ~/.gitmessage
+[branch]
+	autosetupmerge = true
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
+	pager = true
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = white reverse
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+	branch = magenta
+[diff]
+	tool = Kaleidoscope
+	mnemonicprefix = true # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject instead of a/b/c/d as prefixes for patches
+[diff "spaceman-diff"]
+	command = /usr/local/bin/spaceman-diff
+[mergetool]
+	prompt = false
+	keepBackup = true
+[merge]
+	tool = Kaleidoscope
+	summary = true
+	verbosity = 1
+[format]
+	pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+[apply]
+	whitespace = nowarn
+[rerere] # Remember my merges http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
+	enabled = true
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
