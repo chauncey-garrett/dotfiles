@@ -223,3 +223,6 @@
 [submodule "git/external/gitignore"]
 	path = git/external/gitignore
 	url = https://github.com/chauncey-garrett/gitignore.git
+[submodule "vifm/colors"]
+	path = vifm/colors
+	url = https://github.com/chauncey-garrett/vifm-colors.git
