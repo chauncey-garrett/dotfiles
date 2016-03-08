@@ -364,7 +364,14 @@ HOMEBREW_FORMULAS=(
 	fasd
 	figlet
 	midnight-commander
+
+  # ncurses based file navigation
 	ranger
+
+  # for video previews in ranger
+  # https://github.com/hut/ranger/wiki/Video-Previews
+  w3m
+  ffmpegthumbnailer
 
 	# a random thought for the day
 	fortune
