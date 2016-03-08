@@ -1,2 +1,9 @@
 # Automatically normalize line endings for all text-based files
 * text=auto
+
+# Allow command line image diffing
+#   brew install spaceman-diff
+*.png diff=spaceman-diff
+*.jpg diff=spaceman-diff
+*.jpeg diff=spaceman-diff
+*.gif diff=spaceman-diff
