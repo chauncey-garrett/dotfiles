@@ -55,7 +55,7 @@ def main():
   event = sys.argv[1]
   lines = sys.stdin.readlines()
   fields = dict([line.strip().split("=", 1) for line in lines])
-  
+
   # fields: title, artist, album, songDuration, songPlayed, rating, stationName, pRet, pRetStr, wRet, wRetStr, rating
   artist = fields["artist"]
   title = fields["title"]
@@ -75,7 +75,7 @@ def main():
     if rating == 1:
       track.love()
     elif rating == 2:
-      track.ban() 
+      track.ban()
 
 if __name__ == "__main__":
   main()

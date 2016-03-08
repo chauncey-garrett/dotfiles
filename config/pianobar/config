@@ -1,5 +1,5 @@
 # User settings
-user = chauncey.garrett+pandora@gmail.com
+user = pandora@chauncey.io
 password_command = security find-generic-password -a "pianobar" -g 2>&1 | grep password | sed -e "s/password: \"//" -e "s/\"//"
 
 # Keybindings
