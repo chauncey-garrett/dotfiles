@@ -698,3 +698,11 @@ lno() {
   fi
 }
 
+#
+# Print out readable path
+#
+
+path() {
+  echo "${PATH}" | tr : '\n'
+}
+

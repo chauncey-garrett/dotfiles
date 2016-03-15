@@ -178,7 +178,7 @@ path=(
 	${HOME}/{.bin,bin}
 	${HOME}/.rbenv/shims
 	${HOME}/.pyenv/shims
-	${HOME}/.linuxbrew/bin
+	${HOME}/.linuxbrew/{bin,sbin}
 	/usr/local/share/npm/bin
 	/usr/local/mysql/bin
 	/usr/local/MacGPG2/bin
