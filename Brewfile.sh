@@ -4,16 +4,22 @@
 #
 
 HOMEBREW_TAPS=(
+    # caskroom/cask
+    # caskroom/fonts
+    # caskroom/versions
+    homebrew/bundle
+    homebrew/command-not-found
     homebrew/dupes
     homebrew/games
     homebrew/science
     homebrew/versions
-    caskroom/cask
-    caskroom/fonts
-    caskroom/versions
 )
 
 HOMEBREW_FORMULAS=(
+	# Required for gfortran
+	gcc --with-all-languages
+	# apple-gcc42 --with-gfortran-symlink
+
 	pyenv
 	rbenv
 
@@ -24,35 +30,53 @@ HOMEBREW_FORMULAS=(
 	# OpenSSL
 	openssl
 
+	# curl
+	curl --with-c-ares --with-gssapi --with-libidn --with-libmetalink --with-libssh2 --with-nghttp2 --with-rtmpdump
+
+	# wget
+	wget --with-debug --with-gpgme --with-iri --with-libmetalink --with-pcre
+
+	# SQLite
+	sqlite --with-dbstat --with-docs --with-fts --with-functions --with-icu4c --with-json1 --with-unlock-notify
+
+	# MySQL
+	mysql
+
+	# PostGreSQL
+	postgresql --with-dtrace --with-python
+
 	tcl-tk --enable-threads
 
-	python --with-brewed-tk --with-docs
-	python3 --with-brewed-tk --with-docs
+	python --with-berkeley-db4 --with-tcl-tk --with-docs
+	python3 --with-tcl-tk --with-docs
 	ruby --with-doc --with-gdbm --with-gmp --with-libffi --with-suffix --with-tcltk
 	lua --with-completion
-	luajit --enable-debug
-	qt --with-d-bus --with-docs --with-mysql
-	gtk --with-jasper
+	luajit --with-52compat --with-debug
+	qt --with-d-bus --with-docs --with-mysql --with-postgresql --with-qt3support
+	gtk --with-jasper --with-quartz-relocation
 	swig
-	subversion --perl --ruby --with-python
+	# subversion --perl --ruby --with-python
 
 	# Imagemagick
 	ghostscript --with-djvu --with-x11
-	librsvg --with-libgsf
+	librsvg --with-gtk+3 --with-libgsf
 	libtiff --with-c++11
 	little-cms --with-python
-	webp --with-giflib
-	imagemagick --with-fontconfig --with-jp2 --with-liblqr --with-librsvg --with-libtiff --withlibwmf --with-little-cms2 --with-little-cms2 --with-openexr --with-perl --with-webp --with-x11
+	webp --with-giflib --with-libtiff
+	imagemagick --with-fftw --with-fontconfig --with-ghostscript --with-hdri --with-jp2 --with-liblqr --with-librsvg --withlibwmf --with-little-cms --with-little-cms2 --with-openexr --with-openmp --with-pango --with-perl --with-webp --with-x11
 
 	# Graphicsmagick
-	graphicsmagick --with-ghostscript --with-jasper --with-libtiff --with-libwmf --with-little-cms --with-little-cms2 --with-perl --with-x11
+	graphicsmagick --with-ghostscript --with-jasper --with-libwmf --with-little-cms2 --with-perl --with-webp --with-x11
 
 	# GNU Plot
 	# NOTE: If you use Aquaterm, it must be installed prior to building gnuplot!
-	gnuplot --cairo --latex --pdf --qt --tests --with-x --wx
+	gnuplot --with-aquaterm --with-cairo --with-latex --with-pdflib-lite --with-qt --with-test --with-x11
 
 	# Fonts
-	fontforge --with-cairo --with-czmq --with-gif --with-libspiro --with-pango --with-python --with-x
+	# fontforge --with-extra-tools --with-giflib --with-libspiro
+
+	# Git
+	git --with-blk-sha1 --with-brewed-svn --with-gettext --with-pcre --with-persistent-https
 
 	################################################################################
 
@@ -60,7 +84,7 @@ HOMEBREW_FORMULAS=(
 	# Go
 	#
 
-	go
+	# go
 
 	#
 	# Ruby
@@ -72,7 +96,6 @@ HOMEBREW_FORMULAS=(
 	graphviz
 	rbenv-binstubs
 	rbenv-default-gems
-	rbenv-gem-rehash
 	rbenv-whatis
 	rbenv-vars
 	rbenv-ctags
@@ -99,7 +122,6 @@ HOMEBREW_FORMULAS=(
 	# Python
 	#
 
-	pyenv-pip-rehash
 	pyenv-virtualenv
 	pygtk --with-libglade
 	py2cairo
@@ -114,27 +136,24 @@ HOMEBREW_FORMULAS=(
 	# R
 	#
 
-	r
+	# r
 
 	#
 	# Open Babel
 	#
 
-	open-babel --with-cairo --with-python --with-wxmac
+	# open-babel
 
 	#
 	# LaTeX
 	#
 
 	# automated compilation of documents
-	rubber
+	# rubber
 
 	#
 	# Git
 	#
-
-	# git itself
-	git --with-blk-sha1 --with-brewed-curl --with-brewedopenssl --with-brewed-svn --with-gettext --with-pcre --with-persistent-https
 
 	# upload to github gist
 	gist
@@ -151,14 +170,14 @@ HOMEBREW_FORMULAS=(
 	git-flow
 	hub
 	tig --with-docs
-	git-latexdiff
+	# git-latexdiff
 
 	#
 	# Shells
 	#
 
 	# fish
-	fish
+	# fish
 
 	# zsh
 	zsh
@@ -180,12 +199,8 @@ HOMEBREW_FORMULAS=(
 	# GNU Utilities
 	#
 
-	# required for gfortran
-	gcc --with-all-languages --with-profiled-build
-	# apple-gcc42 --with-gfortran-symlink
-
 	# GNU privacy guard
-	gnupg --8192
+	gnupg
 
 	coreutils
 	gnu-getopt
@@ -193,7 +208,8 @@ HOMEBREW_FORMULAS=(
 	gawk
 	gnu-tar
 	gnutls --with-guile --with-p11-kit
-	dos2unix
+	dos2unix --with-gettext
+	unix2dos --with-gettext
 	findutils
 	grep
 	gnu-indent
@@ -216,7 +232,7 @@ HOMEBREW_FORMULAS=(
 	# Emacs
 	#
 
-	emacs --cocoa --srgb --with-d-bus --with-gnutls --with-imagemagick --with-librsvg --with-x
+	# emacs --cocoa --srgb --with-d-bus --with-gnutls --with-imagemagick --with-librsvg --with-x
 	# auctex
 
 	#
@@ -244,7 +260,7 @@ HOMEBREW_FORMULAS=(
 	lorem
 
 	# math on the commandline
-	mathomatic
+	# mathomatic
 
 	# fuzzy finder
 	fzf
@@ -308,7 +324,7 @@ HOMEBREW_FORMULAS=(
 	pdfgrep
 
 	# plots from FORTRAN and C
-	pgplot --with-button
+	# pgplot --with-button
 
 	# parallelized gzip
 	pigz
@@ -320,6 +336,7 @@ HOMEBREW_FORMULAS=(
 	roundup
 
 	# rsync # use Bombich's rsync instead - http://bombich.com/kb/ccc4/credits
+	rsync
 	autossh
 	unrar
 	tmpwatch
@@ -409,15 +426,9 @@ HOMEBREW_FORMULAS=(
 	# Pandora
 	pianobar
 
-	# curl
-	curl --with-ares --with-gssapi --with-idn --with-libmetalink --with-rtmp --with-ssh
-
-	# wget
-	wget --enable-debug --enable-iri
-
 	# YouTube
 	# youtube-dl
-	mplayer --with-libcaca --with-x11
+	mplayer --with-libcaca
 
 	# Speedtest
 	speedtest_cli
@@ -425,65 +436,61 @@ HOMEBREW_FORMULAS=(
 	# netcat
 	netcat
 
-	#
-	# OS X
-	#
+	# #
+	# # OS X
+	# #
 
-	# use Trash instead of rm
-	trash
+	# # use Trash instead of rm
+	# trash
 
-	# bluetooth toggling
-	blueutil
+	# # bluetooth toggling
+	# blueutil
 
-	# terminal notifications
-	terminal-notifier
+	# # terminal notifications
+	# terminal-notifier
 
-	# 1Password
-	onepass
+	# # 1Password
+	# onepass
 
 	# htop
 	htop
 
+	# # wifi-password
 	# wifi-password
-	wifi-password
 
-	# Calendar
-	ical-buddy
+	# # Calendar
+	# ical-buddy
 
-	# web location thumbnails
-	setweblocthumb
+	# # web location thumbnails
+	# setweblocthumb
 
-	# change the audio source
-	switchaudio-osx
+	# # change the audio source
+	# switchaudio-osx
 
-	# set the screen brightness
-	screenbrightness
+	# # set the screen brightness
+	# screenbrightness
 
-	# set the screen resolution
-	screenresolution
+	# # set the screen resolution
+	# screenresolution
 
-	# OS X preference files back
-	# mackup
+	# # OS X preference files back
+	# # mackup
 
-	# unarchiver cli
-	unar
+	# # unarchiver cli
+	# unar
 
-	# manipulate tags
-	tag
+	# # manipulate tags
+	# tag
 
-	# manage the Dock
-	dockutil
+	# # manage the Dock
+	# dockutil
 
 	#
 	# Wine
 	#
 
-	wine --with-libgsm
-	winetricks
-
-	#
-	# Web development
-	#
+	# wine --with-libgsm
+	# winetricks
 
 	#
 	# Writing
@@ -497,7 +504,7 @@ HOMEBREW_FORMULAS=(
 	# Coding
 	#
 
-	task --with-gnutls
+	task
 
 	# POSIX compatibility check for bash scripts
 	checkbashisms
@@ -513,7 +520,7 @@ HOMEBREW_FORMULAS=(
 	#
 
 	tmux
-	reattach-to-user-namespace --wrap-launchctl --wrap-pbcopy-and-pbpaste
+	reattach-to-user-namespace --with-wrap-launchctl --with-wrap-pbcopy-and-pbpaste
 
 	#
 	# Fun
@@ -603,6 +610,7 @@ HOMEBREW_FORMULAS=(
 	source-highlight
 	icdiff
 	diff-so-fancy
+  wdiff
 
 	################################################################################
 	# dnsmasq
