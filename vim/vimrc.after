@@ -590,7 +590,7 @@ if executable('par')
 endif
 
 "
-" HTML indentation
+" HTML5 indentation
 "
 
 let g:html_indent_script1 = "inc"
