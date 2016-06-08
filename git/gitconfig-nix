@@ -48,7 +48,7 @@
   # pager = !less -FRSX
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [credential]
-  helper = osxkeychain
+	helper = cache --timeout=3600
 [diff]
   tool = vimdiff
   mnemonicprefix = true # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject instead of a/b/c/d as prefixes for patches
@@ -58,6 +58,9 @@
   prompt = false
 [difftool "Kaleidoscope"]
   cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	path =
 [filter "hawser"]
   clean = git hawser clean %f
   smudge = git hawser smudge %f
@@ -70,6 +73,8 @@
   required = true
   clean = git media clean %f
   smudge = git media smudge %f
+[filter "trimWhitespace"]
+  clean = git-stripspace %f
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [merge]
@@ -82,6 +87,9 @@
 [mergetool "Kaleidoscope"]
   cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
   trustExitCode = true
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
 [pager]
   diff = less
   show = less
