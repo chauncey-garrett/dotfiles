@@ -620,3 +620,11 @@ if exists(":investigate")
   let g:investigate_use_dash=1
 endif
 
+"
+" Tagbar
+"
+
+if exists(":Tagbar")
+  nmap <leader>rt :TagbarOpenAutoClose<CR>
+endif
+
