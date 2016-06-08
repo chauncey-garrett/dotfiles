@@ -612,3 +612,11 @@ if exists(":SyntasticCheck")
   let g:syntastic_javascript_checkers = ['jshint']
 endif
 
+"
+" Investigate
+"
+
+if exists(":investigate")
+  let g:investigate_use_dash=1
+endif
+
