@@ -21,6 +21,14 @@ if (system('uname') =~ "darwin")
 
   " Preserve indentation while pasting text from the OS X clipboard.
   noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+
+  "
+  " Marked
+  "
+
+  " Open with Marked.
+  nnoremap <leader>m :MarkedOpen!<CR>
+  " :nnoremap <leader>m :silent !open -a "Marked 2.app" '%:p'<cr>
 endif
 
 "
@@ -53,14 +61,6 @@ syntax enable
 set background=dark
 " set background=light
 colorscheme solarized
-
-"
-" Marked
-"
-
-" Open with Marked.
-nnoremap <leader>m :MarkedOpen!<CR>
-" :nnoremap <leader>m :silent !open -a "Marked 2.app" '%:p'<cr>
 
 "
 " Spell checking
