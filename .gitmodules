@@ -259,3 +259,6 @@
 [submodule "janus/obsession"]
 	path = janus/obsession
 	url = https://github.com/chauncey-garrett/vim-obsession.git
+[submodule "janus/consolation"]
+	path = janus/consolation
+	url = https://github.com/chauncey-garrett/vim-consolation.git
