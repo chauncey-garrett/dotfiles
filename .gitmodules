@@ -229,3 +229,6 @@
 [submodule "janus/investigate"]
 	path = janus/investigate
 	url = https://github.com/chauncey-garrett/vim-investigate.git
+[submodule "janus/emmet"]
+	path = janus/emmet
+	url = https://github.com/chauncey-garrett/vim-emmet.git
