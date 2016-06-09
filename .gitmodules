@@ -232,3 +232,6 @@
 [submodule "janus/emmet"]
 	path = janus/emmet
 	url = https://github.com/chauncey-garrett/vim-emmet.git
+[submodule "janus/webapi"]
+	path = janus/webapi
+	url = https://github.com/chauncey-garrett/vim-webapi.git
