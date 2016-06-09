@@ -641,3 +641,9 @@ if exists(":Emmet")
   autocmd FileType md EmmetInstall
 endif
 
+"
+" Easytags
+"
+
+let g:easytags_events = ['BufWritePost']
+
