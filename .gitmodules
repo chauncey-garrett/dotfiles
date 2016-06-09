@@ -247,3 +247,6 @@
 [submodule "janus/characterize"]
 	path = janus/characterize
 	url = https://github.com/chauncey-garrett/vim-characterize.git
+[submodule "janus/speeddating"]
+	path = janus/speeddating
+	url = https://github.com/chauncey-garrett/vim-speeddating.git
