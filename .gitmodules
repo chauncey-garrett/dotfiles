@@ -244,3 +244,6 @@
 [submodule "janus/dispatch"]
 	path = janus/dispatch
 	url = https://github.com/chauncey-garrett/vim-dispatch.git
+[submodule "janus/characterize"]
+	path = janus/characterize
+	url = https://github.com/chauncey-garrett/vim-characterize.git
