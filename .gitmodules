@@ -235,3 +235,9 @@
 [submodule "janus/webapi"]
 	path = janus/webapi
 	url = https://github.com/chauncey-garrett/vim-webapi.git
+[submodule "janus/misc"]
+	path = janus/misc
+	url = https://github.com/chauncey-garrett/vim-misc.git
+[submodule "janus/easytags"]
+	path = janus/easytags
+	url = https://github.com/chauncey-garrett/vim-easytags.git
