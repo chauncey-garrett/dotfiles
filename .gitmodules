@@ -241,3 +241,6 @@
 [submodule "janus/easytags"]
 	path = janus/easytags
 	url = https://github.com/chauncey-garrett/vim-easytags.git
+[submodule "janus/dispatch"]
+	path = janus/dispatch
+	url = https://github.com/chauncey-garrett/vim-dispatch.git
