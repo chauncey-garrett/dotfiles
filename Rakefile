@@ -99,6 +99,15 @@ namespace :install do
 		end
 	end
 
+	desc "Install tern (Vim plugin)"
+	task :vim_tern do
+  		if want_to_install?('tern (Vim plugin)')
+			message_installing("tern")
+			install_tern
+			message_installed("tern")
+		end
+	end
+
 	desc "Install Janus (Vim distribution)"
 	task :janus do
   		if want_to_install?('Janus (Vim distribution)')
@@ -341,7 +350,11 @@ def update_homebrew
 	run %{ brew outdated }
 end
 
-def install_def install_janus
+def install_tern
+  run %{ cd "$HOME/.dotfiles/janus/tern" && npm install }
+end
+
+def install_janus
 	puts "Janus requires Vim >= 7.3, ack, ctags, git, ruby and rake."
 	run %{ curl -Lo- https://bit.ly/janus-bootstrap | bash }
 end
