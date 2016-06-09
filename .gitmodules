@@ -253,3 +253,6 @@
 [submodule "janus/repeat"]
 	path = janus/repeat
 	url = https://github.com/chauncey-garrett/vim-repeat.git
+[submodule "janus/rhubarb"]
+	path = janus/rhubarb
+	url = https://github.com/chauncey-garrett/vim-rhubarb.git
