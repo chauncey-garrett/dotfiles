@@ -250,3 +250,6 @@
 [submodule "janus/speeddating"]
 	path = janus/speeddating
 	url = https://github.com/chauncey-garrett/vim-speeddating.git
+[submodule "janus/repeat"]
+	path = janus/repeat
+	url = https://github.com/chauncey-garrett/vim-repeat.git
