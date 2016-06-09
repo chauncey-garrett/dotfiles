@@ -256,3 +256,6 @@
 [submodule "janus/rhubarb"]
 	path = janus/rhubarb
 	url = https://github.com/chauncey-garrett/vim-rhubarb.git
+[submodule "janus/obsession"]
+	path = janus/obsession
+	url = https://github.com/chauncey-garrett/vim-obsession.git
