@@ -262,3 +262,6 @@
 [submodule "janus/consolation"]
 	path = janus/consolation
 	url = https://github.com/chauncey-garrett/vim-consolation.git
+[submodule "janus/jdaddy"]
+	path = janus/jdaddy
+	url = https://github.com/chauncey-garrett/vim-jdaddy.git
