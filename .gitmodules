@@ -274,3 +274,6 @@
 [submodule "janus/indent-line"]
 	path = janus/indent-line
 	url = https://github.com/chauncey-garrett/vim-indent-line.git
+[submodule "janus/space"]
+	path = janus/space
+	url = https://github.com/chauncey-garrett/vim-space.git
