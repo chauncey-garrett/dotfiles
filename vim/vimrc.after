@@ -647,3 +647,10 @@ endif
 
 let g:easytags_events = ['BufWritePost']
 
+"
+" Disable Ex mode -> Why? Never use it.
+" http://www.bestofvim.com/tip/leave-ex-mode-good/
+"
+
+nnoremap Q <nop>
+
