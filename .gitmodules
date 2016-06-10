@@ -274,3 +274,6 @@
 [submodule "janus/nerdtree-plugin-git"]
 	path = janus/nerdtree-plugin-git
 	url = https://github.com/chauncey-garrett/vim-nerdtree-plugin-git.git
+[submodule "janus/polyglot"]
+	path = janus/polyglot
+	url = https://github.com/chauncey-garrett/vim-polyglot.git
