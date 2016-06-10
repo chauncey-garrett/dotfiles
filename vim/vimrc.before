@@ -1,18 +1,12 @@
-""
-"" Set leader
-""
+"
+" Set leader
+"
 
 let mapleader=","
 
-""
-"" Disable NERDcommenter
-""
-
-" call janus#disable_plugin('nerdcommenter')
-
-""
-"" Airline
-""
+"
+" Airline
+"
 
 " Enable
 let g:airline_powerline_fonts = 1
@@ -20,9 +14,9 @@ let g:airline_powerline_fonts = 1
 " Display all buffers when there's only one tab open
 let g:airline#extensions#tabline#enabled = 1
 
-""
-"" Distraction free writing
-""
+"
+" Distraction free writing
+"
 
 let g:fullscreen_colorscheme = "iawriter"
 let g:fullscreen_font = "Cousine:h14"
