@@ -76,9 +76,6 @@
 [submodule "bin/external/remotecopy"]
 	path = bin/external/remotecopy
 	url = https://github.com/chauncey-garrett/bin-remotecopy.git
-[submodule "janus/colorizer"]
-	path = janus/colorizer
-	url = https://github.com/chauncey-garrett/vim-colorizer.git
 [submodule "janus/numbers"]
 	path = janus/numbers
 	url = https://github.com/chauncey-garrett/vim-numbers.git
