@@ -265,3 +265,6 @@
 [submodule "janus/jdaddy"]
 	path = janus/jdaddy
 	url = https://github.com/chauncey-garrett/vim-jdaddy.git
+[submodule "janus/search-complete"]
+	path = janus/search-complete
+	url = https://github.com/chauncey-garrett/SearchComplete.git
