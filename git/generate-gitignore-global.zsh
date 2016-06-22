@@ -22,15 +22,19 @@ globals=(
   Linux
   MicrosoftOffice
   OSX
+  SublimeText
   SVN
   Tags
   TextMate
   Vagrant
   Vim
+  Windows
 )
 
 languages=(
-  # Ruby
+  ExtJs
+  Node
+  Sass
 )
 
 #
@@ -87,7 +91,11 @@ function clean() {
 
 function main() {
   touch "${destination}"
-  rm "${tmp_file}"
+
+  # Remove tmp file
+  if [[ -f "${tmp_file}" ]]; then
+    rm "${tmp_file}"
+  fi
 
   add-globals
   add-languages
