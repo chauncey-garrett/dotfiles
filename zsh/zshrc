@@ -776,3 +776,10 @@ path() {
   echo "${PATH}" | tr : '\n'
 }
 
+#
+# Gulp
+#
+
+# Autocompletion
+eval "$(gulp --completion=zsh)"
+
