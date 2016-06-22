@@ -776,7 +776,6 @@ path() {
   echo "${PATH}" | tr : '\n'
 }
 
-
 # Place this after nvm initialization!
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -789,3 +788,11 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+#
+# Gulp
+#
+
+# Autocompletion
+eval "$(gulp --completion=zsh)"
+

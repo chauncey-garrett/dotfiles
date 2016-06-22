@@ -610,6 +610,7 @@ if exists(":SyntasticCheck")
   let g:syntastic_auto_jump = 1
 
   let g:syntastic_javascript_checkers = ['jshint']
+  let g:syntastic_scss_checkers = ['scss_lint']
 endif
 
 "
@@ -619,4 +620,74 @@ endif
 if exists(":investigate")
   let g:investigate_use_dash=1
 endif
+
+"
+" Tagbar
+"
+
+if exists(":Tagbar")
+  nmap <leader>rt :TagbarOpenAutoClose<CR>
+endif
+
+"
+" Emmet
+"
+
+if exists(":Emmet")
+
+  " Only enable Emmet where it's needed.
+  let g:user_emmet_install_global = 0
+  autocmd FileType html EmmetInstall
+  autocmd FileType css EmmetInstall
+  autocmd FileType md EmmetInstall
+endif
+
+"
+" Easytags
+"
+
+let g:easytags_events = ['BufWritePost']
+
+"
+" Disable Ex mode -> Why? Never use it.
+" http://www.bestofvim.com/tip/leave-ex-mode-good/
+"
+
+nnoremap Q <nop>
+
+"
+" Put output of shell command in a tmp buffer
+" http://vim.wikia.com/wiki/Display_output_of_shell_commands_in_new_window
+" https://svn.mageekbox.net/repositories/vim/trunk/.vimrc
+"
+
+function! s:ExecuteInShell(command, bang)
+  let _ = a:bang != '' ? s:_ : a:command == '' ? '' : join(map(split(a:command), 'expand(v:val)'))
+
+  if (_ != '')
+    let s:_ = _
+    let bufnr = bufnr('%')
+    let winnr = bufwinnr('^' . _ . '$')
+    silent! execute  winnr < 0 ? 'belowright new ' . fnameescape(_) : winnr .  'wincmd w'
+    setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile wrap number
+    silent! :%d
+    let message = 'Execute ' . _ . '...'
+    call append(0, message)
+    echo message
+    silent! 2d | resize 1 | redraw
+    silent! execute 'silent! %!'. _
+    silent! execute 'resize ' . line('$')
+    silent! execute 'syntax on'
+    silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
+    silent! execute 'autocmd BufEnter <buffer> execute ''resize '' .  line(''$'')'
+    silent! execute 'nnoremap <silent> <buffer> <CR> :call <SID>ExecuteInShell(''' . _ . ''', '''')<CR>'
+    silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . _ . ''', '''')<CR>'
+    silent! execute 'nnoremap <silent> <buffer> <LocalLeader>g :execute bufwinnr(' . bufnr . ') . ''wincmd w''<CR>'
+    nnoremap <silent> <buffer> <C-W>_ :execute 'resize ' . line('$')<CR>
+    silent! syntax on
+  endif
+endfunction
+
+command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
+cabbrev shell Shell
 

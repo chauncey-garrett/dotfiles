@@ -9,6 +9,15 @@ task :default => 'install:default'
 
 namespace :install do
 
+	desc "Install node_modules"
+	task :node_modules do
+  		if want_to_install?('node_modules')
+			message_installing("node_modules")
+			install_node_modules
+			message_installed("node_modules")
+		end
+	end
+
 	desc "Install dotfiles"
 	task :dotfiles do
   		if want_to_install?('dotfiles')
@@ -96,6 +105,15 @@ namespace :install do
 			message_installing("iTerm2 solarized theme")
 		    install_iterm2_theme_solarized if RUBY_PLATFORM.downcase.include?("darwin")
 			message_installed("iTerm2 solarized theme")
+		end
+	end
+
+	desc "Install tern (Vim plugin)"
+	task :vim_tern do
+  		if want_to_install?('tern (Vim plugin)')
+			message_installing("tern")
+			install_tern
+			message_installed("tern")
 		end
 	end
 
@@ -341,9 +359,30 @@ def update_homebrew
 	run %{ brew outdated }
 end
 
-def install_def install_janus
+def install_tern
+  run %{ cd "$HOME/.dotfiles/janus/tern" && npm install }
+end
+
+def install_janus
 	puts "Janus requires Vim >= 7.3, ack, ctags, git, ruby and rake."
 	run %{ curl -Lo- https://bit.ly/janus-bootstrap | bash }
+end
+
+def install_node_modules
+  node_modules = [
+    'browser-sync',
+    'csslint',
+    'docco',
+    'jsctags',
+    'jshint',
+    'tern',
+    'tldr'
+  ]
+
+  node_modules.each do |node_module|
+    puts "Installing npm node_module: #{node_module}."
+    run %{ sudo npm install -g #{node_module} }
+  end
 end
 
 def install_dotfiles

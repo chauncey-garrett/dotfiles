@@ -76,9 +76,6 @@
 [submodule "bin/external/remotecopy"]
 	path = bin/external/remotecopy
 	url = https://github.com/chauncey-garrett/bin-remotecopy.git
-[submodule "janus/colorizer"]
-	path = janus/colorizer
-	url = https://github.com/chauncey-garrett/vim-colorizer.git
 [submodule "janus/numbers"]
 	path = janus/numbers
 	url = https://github.com/chauncey-garrett/vim-numbers.git
@@ -229,3 +226,54 @@
 [submodule "janus/investigate"]
 	path = janus/investigate
 	url = https://github.com/chauncey-garrett/vim-investigate.git
+[submodule "janus/emmet"]
+	path = janus/emmet
+	url = https://github.com/chauncey-garrett/vim-emmet.git
+[submodule "janus/webapi"]
+	path = janus/webapi
+	url = https://github.com/chauncey-garrett/vim-webapi.git
+[submodule "janus/misc"]
+	path = janus/misc
+	url = https://github.com/chauncey-garrett/vim-misc.git
+[submodule "janus/easytags"]
+	path = janus/easytags
+	url = https://github.com/chauncey-garrett/vim-easytags.git
+[submodule "janus/dispatch"]
+	path = janus/dispatch
+	url = https://github.com/chauncey-garrett/vim-dispatch.git
+[submodule "janus/characterize"]
+	path = janus/characterize
+	url = https://github.com/chauncey-garrett/vim-characterize.git
+[submodule "janus/speeddating"]
+	path = janus/speeddating
+	url = https://github.com/chauncey-garrett/vim-speeddating.git
+[submodule "janus/rhubarb"]
+	path = janus/rhubarb
+	url = https://github.com/chauncey-garrett/vim-rhubarb.git
+[submodule "janus/obsession"]
+	path = janus/obsession
+	url = https://github.com/chauncey-garrett/vim-obsession.git
+[submodule "janus/consolation"]
+	path = janus/consolation
+	url = https://github.com/chauncey-garrett/vim-consolation.git
+[submodule "janus/jdaddy"]
+	path = janus/jdaddy
+	url = https://github.com/chauncey-garrett/vim-jdaddy.git
+[submodule "janus/search-complete"]
+	path = janus/search-complete
+	url = https://github.com/chauncey-garrett/SearchComplete.git
+[submodule "janus/javascript"]
+	path = janus/javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "janus/nerdtree-plugin-git"]
+	path = janus/nerdtree-plugin-git
+	url = https://github.com/chauncey-garrett/vim-nerdtree-plugin-git.git
+[submodule "janus/polyglot"]
+	path = janus/polyglot
+	url = https://github.com/chauncey-garrett/vim-polyglot.git
+[submodule "janus/indent-line"]
+	path = janus/indent-line
+	url = https://github.com/chauncey-garrett/vim-indent-line.git
+[submodule "janus/space"]
+	path = janus/space
+	url = https://github.com/chauncey-garrett/vim-space.git
