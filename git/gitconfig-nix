@@ -7,7 +7,37 @@
   sync = !legit sync \"$@\"
   publish = !legit publish \"$@\"
   graft = !legit graft \"$@\"
+
+  #
+  # Change to working directory to the root of the git repo.
+  #
+  # @usage
+  #   git root
+  #
   root = !pwd -P
+
+  #
+  # Diffs the changes git stash would apply.
+  #
+  # @usage
+  #   git stash-diff <stash-number>
+  # @arg 1 {number}
+  #   The stash number to rename; e.g., to rename stash@{1}, use 1.
+  #
+  stash-diff = "!_() { git stash show -p \"stash@{$1}\"; }; _"
+
+  #
+  # Renames the provided stash.
+  # http://stackoverflow.com/a/25935360/256429
+  #
+  # @usage
+  #   git stash-rename <stash-number> [<description>]
+  # @arg 1 {number}
+  #   The stash number to rename; e.g., to rename stash@{1}, use 1.
+  # @arg 2 {string} [description]
+  #   The text to rename the stash to.
+  #
+	stash-rename = "!_() { rev=$(git rev-parse \"stash@{$1}\") && git stash drop \"stash@{$1}\" || exit 1; git stash store -m \"$2\" $rev; }; _"
 [apply]
   whitespace = nowarn
 [branch]
