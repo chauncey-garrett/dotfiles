@@ -678,6 +678,12 @@ EOF
 export HISTSIZE=100000
 export SAVEHIST=100000
 
+export HISTORY_IGNORE="(rm -rf|ls) *"
+zshaddhistory() {
+  emulate -L zsh
+  [[ $1 != ${~HISTORY_IGNORE} ]]
+}
+
 #
 # Print out line numbers
 #
