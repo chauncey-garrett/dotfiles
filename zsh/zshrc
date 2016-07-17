@@ -678,6 +678,12 @@ EOF
 export HISTSIZE=100000
 export SAVEHIST=100000
 
+export HISTORY_IGNORE="(rm -rf|ls) *"
+zshaddhistory() {
+  emulate -L zsh
+  [[ $1 != ${~HISTORY_IGNORE} ]]
+}
+
 #
 # Print out line numbers
 #
@@ -780,7 +786,7 @@ path() {
 autoload -U add-zsh-hook
 load-nvmrc() {
   if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use --delete-prefix
+    nvm use --delete-prefix "$(cat .nvmrc)"
   elif [[ $(nvm version) != $(nvm version default)   ]]; then
     echo "Reverting to nvm default version"
     nvm use --delete-prefix default
