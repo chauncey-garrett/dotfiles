@@ -796,3 +796,11 @@ load-nvmrc
 # Autocompletion
 eval "$(gulp --completion=zsh)"
 
+#
+# ASSH
+#
+
+if (( $+commands[assh] )); then
+  alias ssh="assh wrapper ssh"
+fi
+
