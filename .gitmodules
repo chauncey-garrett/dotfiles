@@ -262,9 +262,6 @@
 [submodule "janus/search-complete"]
 	path = janus/search-complete
 	url = https://github.com/chauncey-garrett/SearchComplete.git
-[submodule "janus/javascript"]
-	path = janus/javascript
-	url = https://github.com/pangloss/vim-javascript.git
 [submodule "janus/polyglot"]
 	path = janus/polyglot
 	url = https://github.com/chauncey-garrett/vim-polyglot.git
