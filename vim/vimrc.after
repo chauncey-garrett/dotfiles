@@ -80,9 +80,9 @@ if exists(":NERDTree")
 
   " Ignore files.
   let NERDTreeIgnore=[
-        \ '\.DS_Store$',
-        \ '\.vim$'
-        \ ]
+  \   '\.DS_Store$',
+  \   '\.vim$'
+  \ ]
 
   " Close NERDTree on open.
   let NERDTreeQuitOnOpen = 1
