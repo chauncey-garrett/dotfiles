@@ -38,6 +38,15 @@
   #   The text to rename the stash to.
   #
 	stash-rename = "!_() { rev=$(git rev-parse \"stash@{$1}\") && git stash drop \"stash@{$1}\" || exit 1; git stash store -m \"$2\" $rev; }; _"
+
+  #
+  # Removes all local branches that have already been merged into master.
+  # http://stackoverflow.com/a/16906759/256429
+  #
+  # @usage
+  #   git rm-merged-branches
+  #
+  rm-merged-branches = git branch --merged master | grep -v 'master$' | xargs git branch -d
 [apply]
   whitespace = nowarn
 [branch]
