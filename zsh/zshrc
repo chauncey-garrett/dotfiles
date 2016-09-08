@@ -787,8 +787,9 @@ path() {
 #
 
 # Autocompletion
-eval "$(gulp --completion=zsh)"
-
+if (( $+commands[gulp] )); then
+  eval "$(gulp --completion=zsh)"
+fi
 
 #
 # iTerm
