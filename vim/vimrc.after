@@ -610,6 +610,10 @@ if exists(":SyntasticCheck")
   let g:syntastic_auto_jump = 1
 
   let g:syntastic_javascript_checkers = ['jshint']
+  let g:syntastic_html_checkers = [
+  \ 'jshint',
+  \ 'tidy'
+  \ ]
   let g:syntastic_scss_checkers = ['scss_lint']
 endif
 
