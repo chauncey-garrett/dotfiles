@@ -695,3 +695,10 @@ endfunction
 command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
 cabbrev shell Shell
 
+"
+" vim-javascript
+"
+
+" Enable JSDoc syntax highlighting
+let g:javascript_plugin_jsdoc = 1
+
