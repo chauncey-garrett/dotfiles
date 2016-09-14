@@ -273,4 +273,4 @@
 	url = https://github.com/chauncey-garrett/vim-space.git
 [submodule "janus/splitjoin"]
 	path = janus/splitjoin
-	url = git@github.com:chauncey-garrett/vim-splitjoin.git
+	url = https://github.com/chauncey-garrett/vim-splitjoin.git
