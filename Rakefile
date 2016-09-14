@@ -369,20 +369,7 @@ def install_janus
 end
 
 def install_node_modules
-  node_modules = [
-    'browser-sync',
-    'csslint',
-    'docco',
-    'jsctags',
-    'jshint',
-    'tern',
-    'tldr'
-  ]
-
-  node_modules.each do |node_module|
-    puts "Installing npm node_module: #{node_module}."
-    run %{ sudo npm install -g #{node_module} }
-  end
+  run %{ npm install }
 end
 
 def install_dotfiles
