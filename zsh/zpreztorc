@@ -50,10 +50,10 @@ zstyle ':prezto:load' pmodule \
   'wakeonlan' \
   'weather' \
   'autoenv' \
+  'prompt' \
   'syntax-highlighting' \
   'history-substring-search' \
   'autosuggestions' \
-  'prompt'
 
 #
 # Autosuggestions
