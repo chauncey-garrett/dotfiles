@@ -274,3 +274,6 @@
 [submodule "janus/splitjoin"]
 	path = janus/splitjoin
 	url = https://github.com/chauncey-garrett/vim-splitjoin.git
+[submodule "tmux/tmux/plugins/tpm"]
+	path = tmux/tmux/plugins/tpm
+	url = https://github.com/chauncey-garrett/tmux-plugin-manager.git
