@@ -277,3 +277,6 @@
 [submodule "tmux/tmux/plugins/tpm"]
 	path = tmux/tmux/plugins/tpm
 	url = https://github.com/chauncey-garrett/tmux-plugin-manager.git
+[submodule "janus/tmux"]
+	path = janus/tmux
+	url = https://github.com/chauncey-garrett/vim-tmux
