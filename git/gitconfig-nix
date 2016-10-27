@@ -130,8 +130,8 @@
 	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 [pager]
-  diff = less
-  show = less
+  diff = diff-so-fancy
+  show = diff-so-fancy
 [pager "diff-so-fancy"]
   cmd = diff-so-fancy | less --tabs=1,5 -RFX
 [push]

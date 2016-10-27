@@ -28,6 +28,7 @@
     "cpy-cli": "^1.0.1",
     "csslint": "^1.0.2",
     "default-browser-cli": "^1.0.0",
+    "diff-so-fancy": "^0.11.2",
     "docco": "^0.7.0",
     "empty-trash-cli": "^1.0.1",
     "fast-cli": "^0.2.1",
