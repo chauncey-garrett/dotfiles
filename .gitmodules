@@ -280,3 +280,6 @@
 [submodule "janus/tmux"]
 	path = janus/tmux
 	url = https://github.com/chauncey-garrett/vim-tmux
+[submodule "janus/dockerfile"]
+	path = janus/dockerfile
+	url = https://github.com/chauncey-garrett/vim-dockerfile.git
