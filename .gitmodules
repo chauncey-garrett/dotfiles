@@ -187,9 +187,6 @@
 [submodule "janus/colors-pencil"]
 	path = janus/colors-pencil
 	url = https://github.com/chauncey-garrett/vim-colors-pencil.git
-[submodule "osx-quicklook-plugins/external/MMD-QuickLook"]
-	path = osx-quicklook-plugins/external/MMD-QuickLook
-	url = https://github.com/chauncey-garrett/osx-quicklook-MMD-QuickLook.git
 [submodule "janus/auto-pairs"]
 	path = janus/auto-pairs
 	url = https://github.com/chauncey-garrett/auto-pairs.git
