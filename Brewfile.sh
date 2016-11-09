@@ -720,13 +720,15 @@ HOMEBREW_FORMULAS=(
 	#     font-meslo-lg
 
 		# QuickLook Plugins
-	#     qlcolorcode
-	#     qlmarkdown
-	#     qlprettypatch
-	#     qlstephen
-	#     quicklook-csv
-	#     quicklook-json
-	#     webp-quicklook
+    provisionql
+    qlcolorcode
+    qlimagesize
+    qlmarkdown
+    qlstephen
+    qlvideo
+    quicklook-json
+    quicklookase
+    sqriptql
 
 		# Apps
 	#     google-chrome
