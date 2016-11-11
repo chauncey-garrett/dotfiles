@@ -127,9 +127,6 @@
 [submodule "fonts/external/redacted"]
 	path = fonts/external/redacted
 	url = https://github.com/chauncey-garrett/font-redacted.git
-[submodule "fonts/external/consolas-for-powerline"]
-	path = fonts/external/consolas-for-powerline
-	url = https://github.com/chauncey-garrett/font-consolas-powerline-vim.git
 [submodule "colors/external/iterm2"]
 	path = colors/external/iterm2
 	url = https://github.com/chauncey-garrett/colors-iterm2.git
@@ -142,39 +139,24 @@
 [submodule "fonts/external/chunk"]
 	path = fonts/external/chunk
 	url = https://github.com/chauncey-garrett/font-chunk.git
-[submodule "fonts/external/font-awesome"]
-	path = fonts/external/font-awesome
-	url = https://github.com/chauncey-garrett/font-font-awesome.git
 [submodule "fonts/external/junction"]
 	path = fonts/external/junction
 	url = https://github.com/chauncey-garrett/font-junction.git
 [submodule "fonts/external/knewave"]
 	path = fonts/external/knewave
 	url = https://github.com/chauncey-garrett/font-knewave.git
-[submodule "fonts/external/league-gothic"]
-	path = fonts/external/league-gothic
-	url = https://github.com/chauncey-garrett/font-league-gothic.git
 [submodule "fonts/external/league-script-number-one"]
 	path = fonts/external/league-script-number-one
 	url = https://github.com/chauncey-garrett/font-league-script-number-one.git
 [submodule "fonts/external/ostrich-sans"]
 	path = fonts/external/ostrich-sans
 	url = https://github.com/chauncey-garrett/font-ostrich-sans.git
-[submodule "fonts/external/sniglet"]
-	path = fonts/external/sniglet
-	url = https://github.com/chauncey-garrett/font-sniglet.git
-[submodule "fonts/external/sorts-mill-goudy"]
-	path = fonts/external/sorts-mill-goudy
-	url = https://github.com/chauncey-garrett/font-sorts-mill-goudy.git
 [submodule "fonts/external/powerline-fonts"]
 	path = fonts/external/powerline-fonts
 	url = https://github.com/chauncey-garrett/font-powerline-fonts.git
 [submodule "dir-colors/external/dircolors-solarized"]
 	path = dir-colors/external/dircolors-solarized
 	url = https://github.com/chauncey-garrett/dircolors-solarized.git
-[submodule "fonts/external/fanwood"]
-	path = fonts/external/fanwood
-	url = https://github.com/chauncey-garrett/font-fanwood.git
 [submodule "janus/tasklist"]
 	path = janus/tasklist
 	url = https://github.com/chauncey-garrett/vim-tasklist.git
