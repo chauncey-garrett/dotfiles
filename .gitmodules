@@ -274,3 +274,24 @@
 [submodule "janus/dockerfile"]
 	path = janus/dockerfile
 	url = https://github.com/chauncey-garrett/vim-dockerfile.git
+[submodule "tmux/tmux/plugins/tmux-yank"]
+	path = tmux/tmux/plugins/tmux-yank
+	url = https://github.com/chauncey-garrett/tmux-yank.git
+[submodule "tmux/tmux/plugins/tmux-urlview"]
+	path = tmux/tmux/plugins/tmux-urlview
+	url = https://github.com/chauncey-garrett/tmux-urlview.git
+[submodule "tmux/tmux/plugins/tmux-sensible"]
+	path = tmux/tmux/plugins/tmux-sensible
+	url = https://github.com/chauncey-garrett/tmux-sensible.git
+[submodule "tmux/tmux/plugins/tmux-pain-control"]
+	path = tmux/tmux/plugins/tmux-pain-control
+	url = https://github.com/chauncey-garrett/tmux-pain-control.git
+[submodule "tmux/tmux/plugins/tmux-open"]
+	path = tmux/tmux/plugins/tmux-open
+	url = https://github.com/chauncey-garrett/tmux-open.git
+[submodule "tmux/tmux/plugins/tmux-logging"]
+	path = tmux/tmux/plugins/tmux-logging
+	url = https://github.com/chauncey-garrett/tmux-logging.git
+[submodule "tmux/tmux/plugins/tmux-copycat"]
+	path = tmux/tmux/plugins/tmux-copycat
+	url = https://github.com/chauncey-garrett/tmux-copycat.git
