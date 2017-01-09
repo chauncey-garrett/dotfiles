@@ -4,7 +4,7 @@ module.exports = {
     fontSize: 15,
 
     // font family with optional fallbacks
-    fontFamily: '"Essential Pragmata Pro", "Input Mono Condensed", Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
+    fontFamily: '"Essential Pragmata Pro", "Input Mono Narrow Regular", Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(248,28,229,0.8)',
@@ -67,7 +67,7 @@ module.exports = {
     bell: 'SOUND',
 
     // if true, selected text will automatically be copied to the clipboard
-    copyOnSelect: false
+    copyOnSelect: true
 
     // URL to custom bell
     // bellSoundURL: 'http://example.com/bell.mp3',

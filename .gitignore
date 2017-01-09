@@ -1,7 +1,7 @@
-config/pianobar/state
-config/ranger/bookmarks
-config/ranger/history
-config/ranger/tagged
+pianobar/state
+ranger/bookmarks
+ranger/history
+ranger/tagged
 dotsyncrc
 node_modules
 TODO.taskpaper
