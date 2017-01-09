@@ -88,9 +88,6 @@
 [submodule "janus/criticmarkup"]
 	path = janus/criticmarkup
 	url = https://github.com/chauncey-garrett/vim-criticmarkup.git
-[submodule "emacs/emacs.d/deft"]
-	path = emacs/emacs.d/deft
-	url = https://github.com/chauncey-garrett/emacs-deft.git
 [submodule "janus/funcoo"]
 	path = janus/funcoo
 	url = https://github.com/chauncey-garrett/vim-funcoo.git
