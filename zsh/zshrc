@@ -795,3 +795,11 @@ if (( $+commands[assh] )); then
   alias ssh="assh wrapper ssh"
 fi
 
+#
+# TODO
+#
+
+function todo() {
+  ag "TODO"
+  ag "FIXME"
+}
