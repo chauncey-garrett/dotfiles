@@ -293,29 +293,6 @@ function wifi() {
 }
 
 #
-# Nino (weather)
-#
-
-function nino() {
-  if (( ! $+commands[nino] )); then
-    warn "nino is not an available command."
-    return
-  fi
-
-  if (( ! $+WEATHER_ZIP )); then
-    warn "WEATHER_ZIP must be set in your environment."
-    return
-  fi
-
-  if (( ! $+WEATHER_WUNDERGROUND_API  )); then
-    warn "WEATHER_WUNDERGROUND_API must be set in your environment."
-    return
-  fi
-
-  nino "${WEATHER_WUNDERGROUND_API}" "${WEATHER_ZIP}"
-}
-
-#
 # Deft
 #
 
