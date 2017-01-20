@@ -70,9 +70,6 @@
 [submodule "janus/abolish"]
 	path = janus/abolish
 	url = https://github.com/chauncey-garrett/vim-abolish.git
-[submodule "bin/external/nino"]
-	path = bin/external/nino
-	url = https://github.com/chauncey-garrett/bin-nino.git
 [submodule "bin/external/remotecopy"]
 	path = bin/external/remotecopy
 	url = https://github.com/chauncey-garrett/bin-remotecopy.git
