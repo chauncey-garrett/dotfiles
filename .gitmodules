@@ -271,3 +271,6 @@
 [submodule "tmux/tmux/plugins/tmux-copycat"]
 	path = tmux/tmux/plugins/tmux-copycat
 	url = https://github.com/chauncey-garrett/tmux-copycat.git
+[submodule "emacs/spacemacs.d"]
+	path = emacs/spacemacs.d
+	url = https://github.com/syl20bnr/spacemacs
