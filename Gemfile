@@ -22,3 +22,8 @@ gem 'tmuxinator'
 gem 'cowsay'
 gem 'lolcat'
 
+#
+# NeoVim
+#
+
+gem 'neovim'

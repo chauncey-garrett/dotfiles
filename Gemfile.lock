@@ -19,6 +19,9 @@ GEM
     lolcat (42.1.43)
       paint (~> 1.0.0)
       trollop (~> 2.1.2)
+    msgpack (1.0.2)
+    neovim (0.3.1)
+      msgpack (~> 1.0)
     paint (1.0.1)
     rake (11.3.0)
     spruz (0.2.13)
@@ -39,8 +42,9 @@ DEPENDENCIES
   gist
   github
   lolcat
+  neovim
   rake
   tmuxinator
 
 BUNDLED WITH
-   1.13.1
+   1.13.6
