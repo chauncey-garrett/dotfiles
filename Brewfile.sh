@@ -80,6 +80,12 @@ HOMEBREW_FORMULAS=(
 
 	################################################################################
 
+  #
+  # Docker
+  #
+
+  dockviz
+
 	#
 	# Go
 	#
@@ -105,6 +111,7 @@ HOMEBREW_FORMULAS=(
 	#
 
 	node
+  yarn
 
 	#
 	# Sass
@@ -221,7 +228,7 @@ HOMEBREW_FORMULAS=(
 	# Vim
 	#
 
-	vim --override-system-vi --with-lua --with-luajit --with-mzscheme --with-perl --with-tcl --with-client-server
+	vim --with-override-system-vi --with-lua --with-luajit
 	vimpager
 	macvim --with-lua --with-luajit
 	vifm
@@ -273,6 +280,9 @@ HOMEBREW_FORMULAS=(
 
 	# show network usage
 	iftop
+
+  # show statistics about an http request
+  httpstat
 
 	# environment module support
 	modules --with-x11
@@ -436,9 +446,12 @@ HOMEBREW_FORMULAS=(
 	# netcat
 	netcat
 
-	# #
-	# # OS X
-	# #
+	#
+	# macOS
+	#
+
+  # macOS commands
+  m-cli
 
 	# # use Trash instead of rm
 	# trash
@@ -578,6 +591,9 @@ HOMEBREW_FORMULAS=(
 	# also includes xls2csv to convert Excel to csv format
 	# catdoc
 
+  # Diff excel files
+  excel-compare
+
 	# PDF -> HTML
 	pdf2htmlex
 
@@ -609,7 +625,6 @@ HOMEBREW_FORMULAS=(
 	colortail
 	source-highlight
 	icdiff
-	diff-so-fancy
   wdiff
 
 	################################################################################
@@ -732,7 +747,6 @@ HOMEBREW_FORMULAS=(
 
 		# Apps
 	#     google-chrome
-	#     firefox
 	#     caffeine
 	#     alfred
 	#     spectacle
@@ -743,15 +757,11 @@ HOMEBREW_FORMULAS=(
 	#     the-unarchiver
 	#     sketch
 	#     skype
-	#     wunderlist
-	#     lime-chat
 	#     transmit
 	#     vlc
-	#     hipchat
 	#     betterzipql
 	#     recordit
 	#     appcleaner
-	#     virtualbox
 	#     vagrant
 	#     vagrant-manager
 )
