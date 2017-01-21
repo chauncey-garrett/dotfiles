@@ -49,6 +49,7 @@
     "macos-version-cli": "^1.0.1",
     "neovim-client": "^2.1.0",
     "nodemon": "^1.10.2",
+    "onepass-cli": "^0.6.1",
     "pageres-cli": "^3.1.0",
     "parse-columns-cli": "^2.0.0",
     "public-ip-cli": "^1.0.0",
