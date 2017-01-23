@@ -140,6 +140,22 @@
   default = current
 [rerere] # Remember my merges http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = true
+
+# Rewrites Github repo paths
+[url "git@github.com:"]
+	insteadOf = "gh:"
+	insteadOf = "git://github.com"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
+    pushInsteadOf = "https://github.com/"
+
+# Rewrites Github Gist repo paths
+[url "git@gist.github.com:"]
+	insteadOf = "gst:"
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "git://gist.github.com/"
+	pushInsteadOf = "https://gist.github.com/"
+
 [user]
   name = Chauncey Garrett
   email = git@chauncey.io
