@@ -4,4 +4,5 @@ pianobar/state
 ranger/bookmarks
 ranger/history
 ranger/tagged
+tmux/**/*.log
 TODO.taskpaper
