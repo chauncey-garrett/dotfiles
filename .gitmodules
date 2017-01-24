@@ -271,3 +271,6 @@
 [submodule "tmux/tmux/plugins/tmux-copycat"]
 	path = tmux/tmux/plugins/tmux-copycat
 	url = https://github.com/chauncey-garrett/tmux-copycat.git
+[submodule "tmux/tmux/plugins/tmux-prefix-highlight"]
+	path = tmux/tmux/plugins/tmux-prefix-highlight
+	url = https://github.com/chauncey-garrett/tmux-prefix-highlight.git
