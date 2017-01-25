@@ -177,9 +177,6 @@ path=(
 	${GAUSSIAN_TOOLS_DIRECTORY}
 	${HOME}/{.bin,bin}
 	${HOME}/.dotfiles/node_modules/.bin
-	${HOME}/.rbenv/bin
-  ${HOME}/.nodenv/bin
-	${HOME}/.pyenv/bin
 	${HOME}/.linuxbrew/{bin,sbin}
 	/usr/local/share/npm/bin
 	/usr/local/mysql/bin
