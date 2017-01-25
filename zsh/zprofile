@@ -31,18 +31,14 @@ fi
 # Editors
 #
 
-# @ssh
-if [[ -n "${SSH_CLIENT}" || -n "${SSH2_CLIENT}" ]]; then
-	export EDITOR="vi -e"
-	export VISUAL="vim"
-	export PAGER="less"
+export EDITOR="vi -e"
+export VISUAL="vim"
 
-# @local
-else
-	export EDITOR="vi -e"
-	export VISUAL="vim"
-	export PAGER="less"
-fi
+#
+# Pager
+#
+
+export PAGER="less"
 
 #
 # Language
