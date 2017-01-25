@@ -169,10 +169,21 @@ function tv() {
 #
 
 tmuxinator="${HOME}/.tmuxinator/scripts/tmuxinator"
-
 if [[ -s "$tmuxinator" ]]; then
   source "$tmuxinator"
 fi
+
+function mux() {
+  RBENV_VERSION="$(cat $HOME/.dotfiles/.ruby-version)" tmuxinator "$@"
+}
+
+function start() {
+  RBENV_VERSION="$(cat $HOME/.dotfiles/.ruby-version)" tmuxinator start "$@"
+}
+
+function stop() {
+  RBENV_VERSION="$(cat $HOME/.dotfiles/.ruby-version)" tmuxinator stop "$@"
+}
 
 #
 # Homebrew
