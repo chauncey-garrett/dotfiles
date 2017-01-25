@@ -1,0 +1,7 @@
+
+"
+" Switch
+"
+
+nnoremap - :Switch<cr>
+
