@@ -42,12 +42,6 @@ fi
 #
 
 #
-# Hostname
-#
-
-export HOSTNAME="${HOST}"
-
-#
 # Time
 #
 

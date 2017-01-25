@@ -10,6 +10,16 @@
 # fi
 
 #
+# Hostname
+# NOTE: HOSTNAME is (unfortunately) often called by external shell scripts and
+# not having it set can be a problem.
+#
+
+if [[ -z "${HOSTNAME}" ]]; then
+  export HOSTNAME="${HOST}"
+fi
+
+#
 # Browser
 #
 
