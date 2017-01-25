@@ -102,9 +102,9 @@ fi
 # Source private config files
 #
 
-if test -n "$(find "${HOME}/.dotfiles/zsh/profile" -maxdepth 1 -name '*.rc' -print -quit)"; then
-	for config_file in $(ls "${HOME}/.dotfiles/zsh/profile/*.rc"); do
-		source "${config_file}"
+if [[ -n "$(find "${HOME}/.dotfiles/zsh/profiles" -name '*.rc' -print -quit)" ]]; then
+	for file in ${HOME}/.dotfiles/zsh/profiles/**/*.rc; do
+		source "${file}"
 	done
 fi
 
