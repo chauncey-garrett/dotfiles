@@ -1,5 +1,7 @@
 # Dotfiles
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/chauncey-garrett/dotfiles.svg)](https://greenkeeper.io/)
+
 ## Like it?
 
 If you've found this project useful, would you consider sending your support?
