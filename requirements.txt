@@ -1,0 +1,5 @@
+glances
+jrnl
+pylint
+setuptools
+terminal_velocity
