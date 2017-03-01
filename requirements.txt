@@ -1,5 +1,11 @@
+ansible-lint
 glances
 jrnl
+jsonschema
+neovim
+powerline-status
+proselint
 pylint
 setuptools
 terminal_velocity
+yamllint
