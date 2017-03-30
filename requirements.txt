@@ -9,3 +9,4 @@ pylint
 setuptools
 terminal_velocity
 yamllint
+vim-vint
