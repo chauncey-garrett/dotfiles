@@ -8,15 +8,17 @@
   "homepage": "https://hyper.is",
   "dependencies": {
     "hyper-solarized-dark": "latest",
-    "opaque-cursor": "latest",
     "hyper-font-smoothing": "latest",
-    "hyperambient": "latest",
-    "hyper-blink": "latest",
     "hypercwd": "latest",
-    "hyperterm-mactabs": "latest",
     "hyperterm-1password": "latest",
     "hyperlinks": "latest",
     "hyperterm-focus-reporting": "latest",
-    "hyperterm-dibdabs": "latest"
+    "hyperterm-dibdabs": "latest",
+    "config-hyperterm": "latest",
+    "hyperterm-tabs": "latest",
+    "hyperterm-open-devtools": "latest",
+    "hyperterm-alternatescroll": "latest",
+    "hyperterm-visor": "latest",
+    "hyperterm-paste": "latest"
   }
 }

@@ -2,12 +2,6 @@
 # yarn lockfile v1
 
 
-ambientlight@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/ambientlight/-/ambientlight-0.1.2.tgz#225596dd9a024abcdebe04287638f6897c420bd1"
-  dependencies:
-    execa "^0.4.0"
-
 array-find-index@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/array-find-index/-/array-find-index-1.0.2.tgz#df010aa1287e164bbda6f9723b0a96a1ec4187a1"
@@ -27,12 +21,18 @@ camelcase@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-2.1.1.tgz#7c1d16d679a1bbe59ca02cacecfb011e201f5a1f"
 
-cross-spawn-async@^2.1.1:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/cross-spawn-async/-/cross-spawn-async-2.2.5.tgz#845ff0c0834a3ded9d160daca6d390906bb288cc"
+camelcase@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
+
+config-hyperterm@latest:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/config-hyperterm/-/config-hyperterm-1.0.1.tgz#c55ebca695269e52025bdeb3b7dbca91b56e23e2"
   dependencies:
-    lru-cache "^4.0.0"
-    which "^1.2.8"
+    camelcase "^3.0.0"
+    expand-tilde "^1.2.2"
+    meow "^3.7.0"
+    ramda "^0.21.0"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -43,6 +43,22 @@ currently-unhandled@^0.4.1:
 decamelize@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
+
+drip@1.1.x:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/drip/-/drip-1.1.0.tgz#ccefb1e686d86fc115b70c9ec126f8f871bdfd7e"
+  dependencies:
+    tea-concat "0.1.0"
+
+electron-log@^1.2.2:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/electron-log/-/electron-log-1.3.0.tgz#d05544114b971a16c86739c79d0d236103ad0a16"
+
+electron@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-0.4.1.tgz#a78a051a7882f4e542d6e207d8a1a73076b30144"
+  dependencies:
+    drip "1.1.x"
 
 email-regex@1.0.0:
   version "1.0.0"
@@ -58,16 +74,11 @@ escape-html@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
 
-execa@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-0.4.0.tgz#4eb6467a36a095fabb2970ff9d5e3fb7bce6ebc3"
+expand-tilde@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/expand-tilde/-/expand-tilde-1.2.2.tgz#0b81eba897e5a3d31d1c3d102f8f01441e559449"
   dependencies:
-    cross-spawn-async "^2.1.1"
-    is-stream "^1.1.0"
-    npm-run-path "^1.0.0"
-    object-assign "^4.0.1"
-    path-key "^1.0.0"
-    strip-eof "^1.0.0"
+    os-homedir "^1.0.1"
 
 find-up@^1.0.0:
   version "1.1.2"
@@ -95,12 +106,6 @@ hosted-git-info@^2.1.4:
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.1.5.tgz#0ba81d90da2e25ab34a332e6ec77936e1598118b"
 
-hyper-blink@latest:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/hyper-blink/-/hyper-blink-1.1.2.tgz#f804c9797a7c6ed53c02aa65b8487d19761fc72a"
-  dependencies:
-    lodash.throttle "^4.0.1"
-
 hyper-font-smoothing@latest:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/hyper-font-smoothing/-/hyper-font-smoothing-1.0.0.tgz#4deb617e17fc057d4fc9716d1d94ea1566333368"
@@ -108,14 +113,6 @@ hyper-font-smoothing@latest:
 hyper-solarized-dark@latest:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/hyper-solarized-dark/-/hyper-solarized-dark-0.1.1.tgz#e288190c40e88b4111efa6f1f46d6e854bae2f59"
-
-hyperambient@latest:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/hyperambient/-/hyperambient-0.4.1.tgz#c792174c1363ec78f5faf8f0e89902162c94d066"
-  dependencies:
-    ambientlight "^0.1.2"
-    hyperterm-solarized-dark "^0.1.6"
-    hyperterm-solarized-light "^0.1.1"
 
 hypercwd@latest:
   version "0.1.7"
@@ -136,6 +133,10 @@ hyperterm-1password@latest:
   dependencies:
     onepass "^2.0.0"
 
+hyperterm-alternatescroll@latest:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/hyperterm-alternatescroll/-/hyperterm-alternatescroll-1.3.0.tgz#96b81a8b397edd6c83c7996d27113bdcd902cbea"
+
 hyperterm-dibdabs@latest:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/hyperterm-dibdabs/-/hyperterm-dibdabs-0.0.8.tgz#dcaf978fac2204f8a6f57e804f4d6407f942e3a6"
@@ -146,17 +147,27 @@ hyperterm-focus-reporting@latest:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/hyperterm-focus-reporting/-/hyperterm-focus-reporting-2.0.0.tgz#67c02be69f876d5cbe5f2de04b80310a3757d54f"
 
-hyperterm-mactabs@latest:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/hyperterm-mactabs/-/hyperterm-mactabs-1.0.6.tgz#a9c17830e72d208561acb6837ac20713fad835af"
+hyperterm-open-devtools@latest:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/hyperterm-open-devtools/-/hyperterm-open-devtools-1.0.4.tgz#181178f37ac9b9e11aeb6796710b3e688eb494a0"
 
-hyperterm-solarized-dark@^0.1.6:
-  version "0.1.8"
-  resolved "https://registry.yarnpkg.com/hyperterm-solarized-dark/-/hyperterm-solarized-dark-0.1.8.tgz#642d0c756079e9931f8004dbc8d4837680ed785e"
+hyperterm-paste@latest:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/hyperterm-paste/-/hyperterm-paste-1.1.0.tgz#86d2e28c02408d34db7fddccf2a39432935ee958"
 
-hyperterm-solarized-light@^0.1.1:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/hyperterm-solarized-light/-/hyperterm-solarized-light-0.1.2.tgz#7471b128daa1c101d1ff16f1de95993ece2c33e4"
+hyperterm-tabs@latest:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/hyperterm-tabs/-/hyperterm-tabs-1.3.4.tgz#cc65f27fa68d7901f74a3778cc617f3e0cdaa563"
+  dependencies:
+    mousetrap "^1.6.0"
+
+hyperterm-visor@latest:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/hyperterm-visor/-/hyperterm-visor-0.2.0.tgz#8496604a805c84a5d7b9ff05a8a4ace2a9d0dac7"
+  dependencies:
+    electron "^0.4.1"
+    electron-log "^1.2.2"
+    lodash.remove "^4.5.0"
 
 indent-string@^2.1.0:
   version "2.1.0"
@@ -184,17 +195,9 @@ is-finite@^1.0.0:
   dependencies:
     number-is-nan "^1.0.0"
 
-is-stream@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
-
 is-utf8@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/is-utf8/-/is-utf8-0.2.1.tgz#4b0da1442104d1b336340e80797e865cf39f7d72"
-
-isexe@^1.1.1:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/isexe/-/isexe-1.1.2.tgz#36f3e22e60750920f5e7241a476a8c6a42275ad0"
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -206,9 +209,9 @@ load-json-file@^1.0.0:
     pinkie-promise "^2.0.0"
     strip-bom "^2.0.0"
 
-lodash.throttle@^4.0.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/lodash.throttle/-/lodash.throttle-4.1.1.tgz#c23e91b710242ac70c37f1e1cda9274cc39bf2f4"
+lodash.remove@^4.5.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/lodash.remove/-/lodash.remove-4.7.0.tgz#f31d31e7c39a0690d5074ec0d3627162334ee626"
 
 loud-rejection@^1.0.0:
   version "1.6.0"
@@ -217,18 +220,11 @@ loud-rejection@^1.0.0:
     currently-unhandled "^0.4.1"
     signal-exit "^3.0.0"
 
-lru-cache@^4.0.0:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.0.2.tgz#1d17679c069cda5d040991a09dbc2c0db377e55e"
-  dependencies:
-    pseudomap "^1.0.1"
-    yallist "^2.0.0"
-
 map-obj@^1.0.0, map-obj@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-1.0.1.tgz#d933ceb9205d82bdcf4886f6742bdc2b4dea146d"
 
-meow@3.7.0:
+meow@3.7.0, meow@^3.7.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/meow/-/meow-3.7.0.tgz#72cb668b425228290abbfa856892587308a801fb"
   dependencies:
@@ -247,6 +243,10 @@ minimist@^1.1.3:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
 
+mousetrap@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/mousetrap/-/mousetrap-1.6.0.tgz#0168fcabb11d07669e87490324c981208121ac4d"
+
 normalize-package-data@^2.3.2, normalize-package-data@^2.3.4:
   version "2.3.5"
   resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.3.5.tgz#8d924f142960e1777e7ffe170543631cc7cb02df"
@@ -255,12 +255,6 @@ normalize-package-data@^2.3.2, normalize-package-data@^2.3.4:
     is-builtin-module "^1.0.0"
     semver "2 || 3 || 4 || 5"
     validate-npm-package-license "^3.0.1"
-
-npm-run-path@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-1.0.0.tgz#f5c32bf595fe81ae927daec52e82f8b000ac3c8f"
-  dependencies:
-    path-key "^1.0.0"
 
 number-is-nan@^1.0.0:
   version "1.0.1"
@@ -276,13 +270,13 @@ onepass@^2.0.0:
   dependencies:
     ws "^1.1.1"
 
-opaque-cursor@latest:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/opaque-cursor/-/opaque-cursor-0.1.0.tgz#d250cb9db714591481306ae2e7951c8eaa7ac432"
-
 options@>=0.0.5:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/options/-/options-0.0.6.tgz#ec22d312806bb53e731773e7cdaefcf1c643128f"
+
+os-homedir@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/os-homedir/-/os-homedir-1.0.2.tgz#ffbc4988336e0e833de0c168c7ef152121aa7fb3"
 
 parse-json@^2.2.0:
   version "2.2.0"
@@ -295,10 +289,6 @@ path-exists@^2.0.0:
   resolved "https://registry.yarnpkg.com/path-exists/-/path-exists-2.1.0.tgz#0feb6c64f0fc518d9a754dd5efb62c7022761f4b"
   dependencies:
     pinkie-promise "^2.0.0"
-
-path-key@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/path-key/-/path-key-1.0.0.tgz#5d53d578019646c0d68800db4e146e6bdc2ac7af"
 
 path-type@^1.0.0:
   version "1.1.0"
@@ -322,9 +312,9 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
-pseudomap@^1.0.1:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
+ramda@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.21.0.tgz#a001abedb3ff61077d4ff1d577d44de77e8d0a35"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -382,15 +372,15 @@ strip-bom@^2.0.0:
   dependencies:
     is-utf8 "^0.2.0"
 
-strip-eof@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/strip-eof/-/strip-eof-1.0.0.tgz#bb43ff5598a6eb05d89b59fcd129c983313606bf"
-
 strip-indent@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/strip-indent/-/strip-indent-1.0.1.tgz#0c7962a6adefa7bbd4ac366460a638552ae1a0a2"
   dependencies:
     get-stdin "^4.0.1"
+
+tea-concat@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/tea-concat/-/tea-concat-0.1.0.tgz#ea2e907400fdd78a6334ce020fa3c69502d99e84"
 
 tie-dye@1.0.3:
   version "1.0.3"
@@ -417,19 +407,9 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
 
-which@^1.2.8:
-  version "1.2.12"
-  resolved "https://registry.yarnpkg.com/which/-/which-1.2.12.tgz#de67b5e450269f194909ef23ece4ebe416fa1192"
-  dependencies:
-    isexe "^1.1.1"
-
 ws@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ws/-/ws-1.1.1.tgz#082ddb6c641e85d4bb451f03d52f06eabdb1f018"
   dependencies:
     options ">=0.0.5"
     ultron "1.0.x"
-
-yallist@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.0.0.tgz#306c543835f09ee1a4cb23b7bce9ab341c91cdd4"
