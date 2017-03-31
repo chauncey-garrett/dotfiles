@@ -24,7 +24,10 @@ let g:solarized_bold=1
 " Set Font
 "
 
-set guifont=InputMonoNarrow:h16
+set macligatures
+set guifont=FuraCode\ Nerd\ Font:h16
+
+" set guifont=InputMonoNarrow:h16
 " set guifont=Essential\ PragmataPro:h16
 " set guifont=Liberation\ Mono\ for\ Powerline:h16
 " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
