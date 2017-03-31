@@ -4,15 +4,15 @@
 #
 
 HOMEBREW_TAPS=(
-    # caskroom/cask
-    # caskroom/fonts
-    # caskroom/versions
-    homebrew/bundle
-    homebrew/command-not-found
-    homebrew/dupes
-    homebrew/games
-    homebrew/science
-    homebrew/versions
+  # caskroom/cask
+  # caskroom/fonts
+  # caskroom/versions
+  homebrew/bundle
+  homebrew/command-not-found
+  homebrew/dupes
+  homebrew/games
+  homebrew/science
+  homebrew/versions
 )
 
 HOMEBREW_FORMULAS=(
@@ -112,6 +112,8 @@ HOMEBREW_FORMULAS=(
 
 	node
   yarn
+  nodenv
+  nodenv/nodenv/nodenv-default-packages
 
 	#
 	# Sass
@@ -707,46 +709,46 @@ HOMEBREW_FORMULAS=(
 	# yasm
 	# zsh-completions
 	# zssh
-	)
+)
 
-	HOMEBREW_CASKS=(
-		# fonts
-	#     font-inconsolata-dz-for-powerline
-	#     font-inconsolata
-	#     font-source-code-pro
-	#     font-droid-sans-mono
-	#     font-meslo-lg
+HOMEBREW_CASKS=(
+  # fonts
+  # font-inconsolata-dz-for-powerline
+  # font-inconsolata
+  # font-source-code-pro
+  # font-droid-sans-mono
+  # font-meslo-lg
 
-		# QuickLook Plugins
-    provisionql
-    qlcolorcode
-    qlimagesize
-    qlmarkdown
-    qlstephen
-    qlvideo
-    quicklook-json
-    quicklookase
-    sqriptql
+  # QuickLook Plugins
+  provisionql
+  qlcolorcode
+  qlimagesize
+  qlmarkdown
+  qlstephen
+  qlvideo
+  quicklook-json
+  quicklookase
+  sqriptql
 
-		# Apps
-	#     google-chrome
-	#     caffeine
-	#     alfred
-	#     spectacle
-	#     imagealpha
-	#     imageoptim
-	#     iterm2
-	#     sequel-pro
-	#     the-unarchiver
-	#     sketch
-	#     skype
-	#     transmit
-	#     vlc
-	#     betterzipql
-	#     recordit
-	#     appcleaner
-	#     vagrant
-	#     vagrant-manager
+  # Apps
+  # google-chrome
+  # caffeine
+  # alfred
+  # spectacle
+  # imagealpha
+  # imageoptim
+  # iterm2
+  # sequel-pro
+  # the-unarchiver
+  # sketch
+  # skype
+  # transmit
+  # vlc
+  # betterzipql
+  # recordit
+  # appcleaner
+  # vagrant
+  # vagrant-manager
 )
 
 #
