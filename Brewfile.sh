@@ -134,24 +134,6 @@ HOMEBREW_FORMULAS=(
 	py2cairo
 
 	#
-	# Perl
-	#
-
-	cpanminus
-
-	#
-	# R
-	#
-
-	# r
-
-	#
-	# Open Babel
-	#
-
-	# open-babel
-
-	#
 	# LaTeX
 	#
 
@@ -184,7 +166,7 @@ HOMEBREW_FORMULAS=(
 	#
 
 	# fish
-	# fish
+  fish
 
 	# zsh
 	zsh
@@ -446,6 +428,10 @@ HOMEBREW_FORMULAS=(
 	# netcat
 	netcat
 
+	htop
+  ctop
+  exa
+
 	#
 	# macOS
 	#
@@ -464,9 +450,6 @@ HOMEBREW_FORMULAS=(
 
 	# # 1Password
 	# onepass
-
-	# htop
-	htop
 
 	# # wifi-password
 	# wifi-password
