@@ -1,0 +1,9 @@
+Bootstrap:
+
+- Install Spacemacs
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+- hyper
+cd ~/.dotfiles/hyper/hyper_plugins && yarn
+
+
