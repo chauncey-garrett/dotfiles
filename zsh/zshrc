@@ -813,3 +813,9 @@ function todo() {
   ag "TODO"
   ag "FIXME"
 }
+
+#
+# RipGrep
+#
+
+alias rg="rg --colors 'path:fg:green' --colors 'path:style:intense' --colors 'line:style:intense' --colors 'line:fg:green' --colors 'line:style:intense' --colors 'match:fg:magenta' --colors 'match:style:nobold' --smart-case"
