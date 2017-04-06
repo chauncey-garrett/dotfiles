@@ -2,11 +2,15 @@ ansible-lint
 glances
 jrnl
 jsonschema
+LinkChecker
 neovim
 powerline-status
+pgsanity
 proselint
 pylint
+restructuredtext_lint
 setuptools
 terminal_velocity
 yamllint
 vim-vint
+yapf

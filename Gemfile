@@ -33,3 +33,16 @@ gem 'neovim'
 #
 
 gem 'terjira'
+
+#
+# Linters
+#
+
+gem 'rubocop'
+gem 'reek'
+
+#
+# For vim-autoformat
+#
+
+gem 'sass'
