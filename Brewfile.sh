@@ -7,6 +7,7 @@ HOMEBREW_TAPS=(
   # caskroom/cask
   # caskroom/fonts
   # caskroom/versions
+  lukechilds/tap
   homebrew/bundle
   homebrew/command-not-found
   homebrew/dupes
@@ -90,7 +91,7 @@ HOMEBREW_FORMULAS=(
 	# Go
 	#
 
-	# go
+  go
 
 	#
 	# Ruby
@@ -207,6 +208,10 @@ HOMEBREW_FORMULAS=(
 	gnu-time
 	gnu-units
 	gnu-which
+  less
+
+  # show progress for GNU Coreutils
+  progress
 
 	#
 	# Vim
@@ -235,6 +240,15 @@ HOMEBREW_FORMULAS=(
 	#
 	# Utilities
 	#
+
+  # SQL statements on CSV/TSV files
+  q
+
+  # log aggregator / viewer
+  lnav --with-curl
+
+  # web access logs
+  goaccess
 
 	# website load testing
 	siege
@@ -267,6 +281,9 @@ HOMEBREW_FORMULAS=(
 
   # show statistics about an http request
   httpstat
+
+  # http requests
+  httpie
 
 	# environment module support
 	modules --with-x11
@@ -368,6 +385,7 @@ HOMEBREW_FORMULAS=(
 	# search
 	ack
 	the_silver_searcher
+  ripgrep
 
 	# set the environment based on the directory
 	autoenv
@@ -590,6 +608,9 @@ HOMEBREW_FORMULAS=(
 
 	# Gif manipulation
 	gifsicle --with-x11
+
+  # 2-pass encoding for great results
+  gifgen
 
 	# RTF -> LaTeX2e
 	rtf2latex2e
