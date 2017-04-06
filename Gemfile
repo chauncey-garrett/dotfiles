@@ -27,3 +27,9 @@ gem 'lolcat'
 #
 
 gem 'neovim'
+
+#
+# Jira
+#
+
+gem 'terjira'
