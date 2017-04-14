@@ -83,10 +83,8 @@
   template = ~/.gitmessage
 [core]
   autocrlf = input
-  editor = vim
+  editor = nvim -c startinsert
   excludesfile = ~/.gitignore_global
-  # editor = vim -c startinsert
-  # pager = !less -FRSX
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [credential]
   helper = osxkeychain
