@@ -241,36 +241,9 @@
 [submodule "janus/splitjoin"]
 	path = janus/splitjoin
 	url = https://github.com/chauncey-garrett/vim-splitjoin.git
-[submodule "tmux/tmux/plugins/tpm"]
-	path = tmux/tmux/plugins/tpm
-	url = https://github.com/chauncey-garrett/tmux-plugin-manager.git
 [submodule "janus/tmux"]
 	path = janus/tmux
 	url = https://github.com/chauncey-garrett/vim-tmux
 [submodule "janus/dockerfile"]
 	path = janus/dockerfile
 	url = https://github.com/chauncey-garrett/vim-dockerfile.git
-[submodule "tmux/tmux/plugins/tmux-yank"]
-	path = tmux/tmux/plugins/tmux-yank
-	url = https://github.com/chauncey-garrett/tmux-yank.git
-[submodule "tmux/tmux/plugins/tmux-urlview"]
-	path = tmux/tmux/plugins/tmux-urlview
-	url = https://github.com/chauncey-garrett/tmux-urlview.git
-[submodule "tmux/tmux/plugins/tmux-sensible"]
-	path = tmux/tmux/plugins/tmux-sensible
-	url = https://github.com/chauncey-garrett/tmux-sensible.git
-[submodule "tmux/tmux/plugins/tmux-pain-control"]
-	path = tmux/tmux/plugins/tmux-pain-control
-	url = https://github.com/chauncey-garrett/tmux-pain-control.git
-[submodule "tmux/tmux/plugins/tmux-open"]
-	path = tmux/tmux/plugins/tmux-open
-	url = https://github.com/chauncey-garrett/tmux-open.git
-[submodule "tmux/tmux/plugins/tmux-logging"]
-	path = tmux/tmux/plugins/tmux-logging
-	url = https://github.com/chauncey-garrett/tmux-logging.git
-[submodule "tmux/tmux/plugins/tmux-copycat"]
-	path = tmux/tmux/plugins/tmux-copycat
-	url = https://github.com/chauncey-garrett/tmux-copycat.git
-[submodule "tmux/tmux/plugins/tmux-prefix-highlight"]
-	path = tmux/tmux/plugins/tmux-prefix-highlight
-	url = https://github.com/chauncey-garrett/tmux-prefix-highlight.git
