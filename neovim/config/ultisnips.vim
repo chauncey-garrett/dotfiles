@@ -3,6 +3,6 @@
 " UltiSnips
 "
 
-" :UltiSnipsEdit will splite the window vertically
+" :UltiSnipsEdit will split the window vertically
 let g:UltiSnipsEditSplit="vertical"
 

@@ -15,12 +15,6 @@ if executable('mmd')
 endif
 
 "
-" Numbers in sidebar
-"
-
-nnoremap <F3> :NumbersToggle<CR>
-
-"
 " Spell checking
 "
 
@@ -96,8 +90,8 @@ let g:languagetool_jar='/Applications/LanguageTool-2.6/languagetool-commandline.
 " Set abnormal filetypes
 "
 
+" TODO remove once polyglot supports this
 au! BufNewFile,BufRead *.plt,*.gnuplot setf gnuplot
-au! BufNewFile,BufRead *.applescript setf applescript
 
 "
 " Prevent vim from writing newlines.
@@ -119,12 +113,6 @@ map <leader>ew :e %%
 map <leader>es :sp %%
 map <leader>ev :vsp %%
 map <leader>et :tabe %%
-
-"
-" Nginx syntax highlighting.
-"
-
-au BufRead,BufNewFile /etc/nginx/*,/usr/local/nginx/conf/* if &ft == '' | setfiletype nginx | endif
 
 "
 " HTML5 indentation
