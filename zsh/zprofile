@@ -93,9 +93,25 @@ fi
 export LESS='-F -g -i -M -R -w -X -z-4'
 
 # Set the Less input preprocessor.
+
+# Use the highlight command.
+if (( $+commands[highlight] )); then
+  export LESSOPEN="| /usr/bin/env highlight %s --out-format ansi --quiet --force --style solarized-dark"
+
 # Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
-if (( $#commands[(i)lesspipe(|.sh)] )); then
+elif (( $#commands[(i)lesspipe(|.sh)] )); then
 	export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+
+elif [[ -f /usr/bin/src-hilite-lesspipe.sh ]]; then
+	export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s 2>&-"
+
+# Use Neovim's runtime highlighting.
+elif [[ -f /usr/share/nvim/runtime/macros/less.sh ]]; then
+	export LESSOPEN="| /usr/share/nvim/runtime/macros/less.sh 2>&-"
+
+# Use Vim's runtime highlighting.
+elif [[ -f /usr/share/vim/runtime/macros/less.sh ]]; then
+	export LESSOPEN="| /usr/share/vim/runtime/macros/less.sh 2>&-"
 fi
 
 #
