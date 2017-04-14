@@ -1,0 +1,11 @@
+# A tmux terminfo
+# https://alexpearce.me/2014/05/italics-in-iterm2-vim-tmux/#tmux-21-and-above
+# https://github.com/tmux/tmux/blob/2.1/FAQ#L355-L383
+tmux|tmux terminal multiplexer,
+  ritm=\E[23m, rmso=\E[27m, sitm=\E[3m, smso=\E[7m, Ms@,
+  use=xterm+tmux, use=screen,
+
+# A xterm-256color based TERMINFO.
+tmux-256color|tmux with 256 colors,
+  use=xterm+256setaf, use=tmux,
+
