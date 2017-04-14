@@ -6,6 +6,13 @@
 " Enable JSDoc syntax highlighting
 let g:javascript_plugin_jsdoc = 1
 
+" Enable NGDock syntax highlighting
+" NOTE: Requires that JSDoc is enabled
+let g:javascript_plugin_ngdoc = 1
+
+" Enable Flow syntax highlighting
+let g:javascript_plugin_flow = 1
+
 " JS conceal characters
 let g:javascript_conceal_function = "ƒ"
 let g:javascript_conceal_null = "ø"
