@@ -134,7 +134,7 @@
   diff = diff-so-fancy
   show = diff-so-fancy
 [pager "diff-so-fancy"]
-  cmd = diff-so-fancy | less --tabs=1,5 -RFX
+  cmd = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [push]
   default = current
 [rerere] # Remember my merges http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
