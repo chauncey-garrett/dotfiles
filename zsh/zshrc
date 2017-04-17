@@ -247,32 +247,21 @@ autoload run-help
 export HELPDIR="/usr/local/share/zsh/helpfiles"
 
 #
-# Always use vim
+# Always use vim for the proper command
 #
 
-if (( $+commands[vim] )); then
+# Use regular vim
+alias vi='vim'
 
-  # @ssh
-  if [[ -n "${SSH_CLIENT}" || -n "${SSH2_CLIENT}" ]]; then
-    alias vi='vim'
-    alias mvim='vim'
-    alias gvim='vim'
+# Use MacVim as GUI, if available
+if (( $+commands[mvim] )); then
+  alias gvim='mvim'
+fi
 
-  # @local
-  else
-
-    # Use MacVim if available
-    if (( $+commands[mvim] )); then
-      alias vi='vim'
-      alias gvim='mvim'
-
-    # Use regular vim
-    else
-      alias vi='vim'
-      alias mvim='vim'
-      alias gvim='vim'
-    fi
-  fi
+# Use Neovim if available
+if (( $+commands[nvim] )); then
+  alias vi='nvim'
+  alias vim='nvim'
 fi
 
 #
