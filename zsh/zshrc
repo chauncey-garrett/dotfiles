@@ -41,6 +41,9 @@ fi
 # Customize to your needs...
 #
 
+# Import secret stuff
+source ~/.secrets/zsh
+
 #
 # Time
 #
