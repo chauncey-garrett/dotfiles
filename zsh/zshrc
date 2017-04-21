@@ -879,3 +879,13 @@ function todo() {
 #
 
 alias rg="rg --colors 'path:fg:green' --colors 'path:style:intense' --colors 'line:style:intense' --colors 'line:fg:green' --colors 'line:style:intense' --colors 'match:fg:magenta' --colors 'match:style:nobold' --smart-case"
+
+#
+# Siesta
+#
+
+function spec() {
+   egrep 'test.describe|test.it' "${@}" \
+     | sed -r "s/test.it\('|test.describe\('//g" \
+     | sed -r "s/', function \(test\) \{//g"
+}
