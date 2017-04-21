@@ -889,3 +889,12 @@ function spec() {
      | sed -r "s/test.it\('|test.describe\('//g" \
      | sed -r "s/', function \(test\) \{//g"
 }
+
+#
+# tldr
+#
+
+if (( $+commands[tldr] )); then
+  alias tldr="tldr --theme ocean"
+fi
+
