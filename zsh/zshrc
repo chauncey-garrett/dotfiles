@@ -898,3 +898,9 @@ if (( $+commands[tldr] )); then
   alias tldr="tldr --theme ocean"
 fi
 
+#
+# cdiff
+#
+
+export CDIFF_OPTIONS='-s -w0'
+
