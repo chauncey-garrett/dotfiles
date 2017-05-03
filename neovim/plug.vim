@@ -13,15 +13,6 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 "
-" Load UltiSnips and YouCompleteMe on insert mode
-"
-augroup load_us_ycm
-  autocmd!
-  autocmd InsertEnter * call plug#load('ultisnips', 'YouCompleteMe')
-    \| autocmd! load_us_ycm
-augroup END
-
-"
 " Setup YouCompleteMe
 "
 function! BuildYouCompleteMe(info)
@@ -117,6 +108,7 @@ Plug 'vim-scripts/TaskList.vim'
 Plug 'wellle/tmux-complete.vim'
 
 " macOS
+" TODO optimize check for system in global before file
 if (system('uname') =~? 'darwin')
   Plug 'rizzatti/dash.vim'
   Plug 'chauncey-garrett/vim-marked'
@@ -191,16 +183,13 @@ Plug 'marijnh/tern_for_vim', {
 
 " UltiSnips
 " NOTE: vim-snippets depends on UltiSnips
-Plug 'SirVer/ultisnips', {
-  \'on': []
-\}
+Plug 'SirVer/ultisnips', {}
   \| Plug 'chauncey-garrett/vim-snippets'
 
 " YouCompleteMe
 " NOTE: Must be loaded after supertab for it's completion to work
 " NOTE: Must be loaded after UltiSnips for it's completion to work
 Plug 'Valloric/YouCompleteMe', {
-  \'on': [],
   \'do': function('BuildYouCompleteMe')
 \}
 
