@@ -279,3 +279,4 @@ typeset -U infopath
 # than anything.
 rationalize-path infopath
 
+# vim: set filetype=zsh:

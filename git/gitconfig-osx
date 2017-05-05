@@ -159,3 +159,5 @@
   name = Chauncey Garrett
   email = git@chauncey.io
   # signingkey = **Your GPG ID**
+
+# vim: set filetype=gitconfig:

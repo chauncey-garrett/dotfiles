@@ -30,3 +30,4 @@ if (( $+commands[fortune] )); then
   fi
 fi
 
+# vim: set filetype=zsh:
