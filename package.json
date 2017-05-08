@@ -104,6 +104,7 @@
     "trash-cli": "^1.3.0",
     "typescript-formatter": "^5.1.2",
     "underscore-cli": "^0.2.19",
+    "vtop": "^0.5.7",
     "wallpaper-cli": "^1.1.0",
     "website-popup-cli": "^1.0.0",
     "write-good": "^0.11.0"
