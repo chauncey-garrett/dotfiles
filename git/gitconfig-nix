@@ -37,7 +37,7 @@
   # @arg 2 {string} [description]
   #   The text to rename the stash to.
   #
-	stash-rename = "!_() { rev=$(git rev-parse \"stash@{$1}\") && git stash drop \"stash@{$1}\" || exit 1; git stash store -m \"$2\" $rev; }; _"
+  stash-rename = "!_() { rev=$(git rev-parse \"stash@{$1}\") && git stash drop \"stash@{$1}\" || exit 1; git stash store -m \"$2\" $rev; }; _"
 
   #
   # Removes all local branches that have already been merged into master.
@@ -87,7 +87,7 @@
   excludesfile = ~/.gitignore_global
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [credential]
-	helper = cache --timeout=3600
+  helper = cache --timeout=3600
 [diff]
   tool = vimdiff
   mnemonicprefix = true # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject instead of a/b/c/d as prefixes for patches
@@ -95,11 +95,9 @@
   command = /usr/local/bin/spaceman-diff
 [difftool]
   prompt = false
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path =
+  cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+  path =
 [filter "hawser"]
   clean = git hawser clean %f
   smudge = git hawser smudge %f
@@ -117,19 +115,13 @@
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [merge]
-	conflictstyle = diff3
+  conflictstyle = diff3
   tool = vimdiff
   summary = true
   verbosity = 1
 [mergetool]
   prompt = false
   keepBackup = true
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustExitCode = true
-[mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
 [pager]
   diff = diff-so-fancy
   show = diff-so-fancy
@@ -142,18 +134,18 @@
 
 # Rewrites Github repo paths
 [url "git@github.com:"]
-	insteadOf = "gh:"
-	insteadOf = "git://github.com"
-	pushInsteadOf = "github:"
-	pushInsteadOf = "git://github.com/"
-    pushInsteadOf = "https://github.com/"
+  insteadOf = "gh:"
+  insteadOf = "git://github.com"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+  pushInsteadOf = "https://github.com/"
 
 # Rewrites Github Gist repo paths
 [url "git@gist.github.com:"]
-	insteadOf = "gst:"
-	pushInsteadOf = "gist:"
-	pushInsteadOf = "git://gist.github.com/"
-	pushInsteadOf = "https://gist.github.com/"
+  insteadOf = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
+  pushInsteadOf = "https://gist.github.com/"
 
 [user]
   name = Chauncey Garrett
