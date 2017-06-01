@@ -3,10 +3,8 @@
 ---
 name: dotfiles
 root: ~/.dotfiles
-
 windows:
   - dev:
       layout: main-vertical
       panes:
-        - clear && figlet dotfiles
         - vim
