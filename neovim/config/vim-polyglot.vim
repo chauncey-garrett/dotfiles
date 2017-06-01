@@ -20,5 +20,5 @@ let g:polyglot_disabled = [
 let g:jsx_ext_required = 1
 
 " Conceal double quotes in JSON
-let g:vim_json_syntax_conceal = 1
+" let g:vim_json_syntax_conceal = 1
 
