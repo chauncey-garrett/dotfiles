@@ -96,15 +96,6 @@ function die() {
 }
 
 #
-# Command highlighting patterns
-#   NOTE: Requires syntax highlighting plugin
-#
-
-ZSH_HIGHLIGHT_PATTERNS+=(
-  'rm -rf *' 'fg=white,bold,bg=red'
-)
-
-#
 # Ctrl+Z
 #
 
@@ -762,76 +753,6 @@ lno() {
 }
 
 #
-# Archive
-#
-
-archive() {
-
-  # Usage.
-  if [[ $# -lt 2 ]]; then
-
-cat <<-'EOF'
-  Usage: $0
-    archive destination.extension source
-EOF
-
-    return 1
-  fi
-
-  # Error if destination already exists.
-  if [[ -f "$1" ]]; then
-    echo "[ERROR]: $1 already exists."
-
-    return 1
-  fi
-
-  local file
-
-  # Lowercase filename for case matching.
-  file="${(L)1}"
-
-  case "${file}" in
-    *.7z )
-      7za a -t7z -mmt "$@"
-      ;;
-    *.bz2 )
-      7za a -tbzip2 "$@"
-      ;;
-    *.gz )
-      7za a -tgzip "$@"
-      ;;
-    *.tar.bz2 )
-      tar -cvjf "$@"
-      ;;
-    *.tar.gz )
-      tar -cvzf "$@"
-      ;;
-    *.tar.lzma )
-      tar --lzma -cvf "$@"
-      ;;
-    *.tar.xz )
-      tar -cvJf "$@"
-      ;;
-    *.tar )
-      tar -cvf "$@"
-      ;;
-    *.tbz2 )
-      tar -cvjf "$@"
-      ;;
-    *.tgz )
-      tar -cvzf "$@"
-      ;;
-    *.zip )
-      zip -r "$@"
-      ;;
-    * )
-      echo "${file} has an unknown file extension."
-      exit 1
-      ;;
-  esac
-}
-
-#
 # Print out readable path
 #
 
@@ -904,3 +825,17 @@ fi
 
 export CDIFF_OPTIONS='-s -w0'
 
+#
+# git
+#
+
+alias ..g='git rev-parse && cd "$(git rev-parse --show-cdup)"'
+alias git-url='git config --get remote.origin.url'
+
+#
+# aliases
+#
+
+function aliases() {
+  alias | ag "${@}"
+}
