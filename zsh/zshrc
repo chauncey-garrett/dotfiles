@@ -840,3 +840,12 @@ alias git-url='git config --get remote.origin.url'
 function aliases() {
   alias | ag "${@}"
 }
+
+#
+# Finda
+#
+
+function finda() {
+  find . | ag "${@}"
+}
+
