@@ -92,6 +92,7 @@
     "remark-cli": "^3.0.1",
     "remark-lint": "^6.0.0",
     "sass-lint": "^1.10.2",
+    "sitespeed.io": "^5.2.1",
     "speed-test": "^1.8.0",
     "strip-indent-cli": "^1.0.0",
     "strip-json-comments-cli": "^1.0.1",
