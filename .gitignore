@@ -1,11 +1,4 @@
 **/*.log
 TODO.taskpaper
 dotsyncrc
-hyper/hyper_plugins
-neovim/autoload/plug.vim
-neovim/plugged
 node_modules
-pianobar/state
-ranger/bookmarks
-ranger/history
-ranger/tagged
