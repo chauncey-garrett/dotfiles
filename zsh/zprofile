@@ -52,6 +52,14 @@ if [[ -z "${LANG}" ]]; then
 fi
 
 #
+# Disable Ctrl+d killing my terminal in tmux
+#
+
+if [[ -n "$TMUX" ]]; then
+  setopt ignoreeof
+fi
+
+#
 # Zsh custom directory
 #
 
