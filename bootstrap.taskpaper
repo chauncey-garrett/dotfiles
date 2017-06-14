@@ -1,9 +1,68 @@
 Bootstrap:
 
-- Install Spacemacs
+Install Spacemacs:
+
+```sh
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+```
 
-- hyper
+hyper:
+
+```sh
 cd ~/.dotfiles/hyper/hyper_plugins && yarn
+```
 
+Clone the repo:
+
+```sh
+git clone --recursive https://github.com/chauncey-garrett/dotfiles.git ~/.dotfiles
+```
+
+## dotsync:
+  - Symlink with dotsyncrc
+
+```sh
+dotsync -L
+```
+
+## homebrew:
+  - Run Brewfile.sh to install homebrew dependencies
+
+```sh
+./Brewfile.sh
+```
+
+# ruby:
+  - Install gems
+
+```sh
+bundle
+```
+
+# neovim:
+
+
+# tmux:
+  - Setup 256 colors and italics in terminal
+
+```sh
+  tic -x ~/.dotfiles/tmux/tmux.terminfo
+  tic -x ~/.dotfiles/tmux/tmux-256color-italic.terminfo
+  tic -x ~/.dotfiles/tmux/screen-256color-italic.terminfo
+```
+
+## python:
+	- Install python packages
+
+```sh
+pip install --upgrade -r ~/.dotfiles/requirements.txt
+```
+
+## node_modules:
+	- Install yarn
+  - Install node modules with yarn
+
+```sh
+yarn
+```
 
