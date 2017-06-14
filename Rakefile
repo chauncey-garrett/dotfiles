@@ -369,7 +369,7 @@ def install_janus
 end
 
 def install_node_modules
-  run %{ npm install }
+  run %{ yarn }
 end
 
 def install_dotfiles
