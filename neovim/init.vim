@@ -30,11 +30,11 @@ source ~/.config/nvim/config/vim-polyglot.vim
 " source ~/.config/nvim/config/surround.vim
 " source ~/.config/nvim/config/tmuxline.vim
 " source ~/.config/nvim/config/vim-nerdtree-syntax-highlight.vim
-" source ~/.config/nvim/config/vim-solarized8.vim
+source ~/.config/nvim/config/vim-solarized8.vim
 source ~/.config/nvim/config/CamelCaseMotion.vim
 source ~/.config/nvim/config/Dockerfile.vim
 source ~/.config/nvim/config/vim-sort-motion.vim
-source ~/.config/nvim/config/NeoSolarized.vim
+" source ~/.config/nvim/config/NeoSolarized.vim
 source ~/.config/nvim/config/TaskList.vim
 source ~/.config/nvim/config/ansible-vim.vim
 source ~/.config/nvim/config/auto-pairs.vim

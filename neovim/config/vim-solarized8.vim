@@ -1,6 +1,7 @@
 
 "
 " Solarized8
+" https://github.com/lifepillar/vim-solarized8
 "
 
 colorscheme solarized8_dark
