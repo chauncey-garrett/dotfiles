@@ -103,6 +103,7 @@
     "to-double-quotes-cli": "^2.0.0",
     "to-single-quotes-cli": "^2.0.0",
     "trash-cli": "^1.3.0",
+    "typescript": "^2.4.2",
     "typescript-formatter": "^5.2.0",
     "underscore-cli": "^0.2.19",
     "vtop": "^0.5.7",
