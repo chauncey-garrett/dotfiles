@@ -8,6 +8,7 @@ neovim
 powerline-status
 pgsanity
 proselint
+pycodestyle
 pydf
 pylint
 restructuredtext_lint
