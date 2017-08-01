@@ -13,6 +13,142 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 "
+" Automatically install missing plugins on startup
+" March 14, 2017
+" https://github.com/junegunn/vim-plug/wiki/extra#automatically-install-missing-plugins-on-startup
+"
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
+
+"
+" H to open help docs
+" March 14, 2017
+" https://github.com/junegunn/vim-plug/wiki/extra#h-to-open-help-docs
+"
+function! s:plug_doc()
+  let l:name = matchstr(getline('.'), '^- \zs\S\+\ze:')
+  if has_key(g:plugs, l:name)
+    for l:doc in split(globpath(g:plugs[l:name].dir, 'doc/*.txt'), '\n')
+      execute 'tabe' l:doc
+    endfor
+  endif
+endfunction
+
+augroup PlugHelp
+  autocmd!
+  autocmd FileType vim-plug nnoremap <buffer> <silent> H :call <sid>plug_doc()<cr>
+augroup END
+
+"
+" gx to open GitHub URLs on browser
+" March 14, 2017
+" https://github.com/junegunn/vim-plug/wiki/extra#gx-to-open-github-urls-on-browser
+"
+function! s:plug_gx()
+  let l:line = getline('.')
+  let l:sha  = matchstr(l:line, '^  \X*\zs\x\{7,9}\ze ')
+  let l:name = empty(l:sha) ? matchstr(l:line, '^[-x+] \zs[^:]\+\ze:')
+                      \ : getline(search('^- .*:$', 'bn'))[2:-2]
+  let l:uri  = get(get(g:plugs, l:name, {}), 'uri', '')
+  if l:uri !~# 'github.com'
+    return
+  endif
+  let l:repo = matchstr(l:uri, '[^:/]*/'.l:name)
+  let l:url  = empty(l:sha) ? 'https://github.com/'.l:repo
+                      \ : printf('https://github.com/%s/commit/%s', l:repo, l:sha)
+  call netrw#BrowseX(l:url, 0)
+endfunction
+
+augroup PlugGx
+  autocmd!
+  autocmd FileType vim-plug nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
+augroup END
+
+"
+" Extra key bindings for PlugDiff
+" March 14, 2017
+" https://github.com/junegunn/vim-plug/wiki/extra#extra-key-bindings-for-plugdiff
+"   - J / K to scroll the preview window
+"   - CTRL-N / CTRL-P to move between the commits
+"   - CTRL-J / CTRL-K to move between the commits and synchronize the preview window
+"
+function! s:scroll_preview(down)
+  silent! wincmd P
+  if &previewwindow
+    execute 'normal!' a:down ? "\<c-e>" : "\<c-y>"
+    wincmd p
+  endif
+endfunction
+
+function! s:setup_extra_keys()
+  nnoremap <silent> <buffer> J :call <sid>scroll_preview(1)<cr>
+  nnoremap <silent> <buffer> K :call <sid>scroll_preview(0)<cr>
+  nnoremap <silent> <buffer> <c-n> :call search('^  \X*\zs\x')<cr>
+  nnoremap <silent> <buffer> <c-p> :call search('^  \X*\zs\x', 'b')<cr>
+  nmap <silent> <buffer> <c-j> <c-n>o
+  nmap <silent> <buffer> <c-k> <c-p>o
+endfunction
+
+augroup PlugDiffExtra
+  autocmd!
+  autocmd FileType vim-plug call s:setup_extra_keys()
+augroup END
+
+"
+" vimawesome.com completions for vim files
+" https://gist.github.com/junegunn/5dff641d68d20ba309ce
+"
+function! VimAwesomeComplete() abort
+  let l:prefix = matchstr(strpart(getline('.'), 0, col('.') - 1), '[.a-zA-Z0-9_/-]*$')
+  echohl WarningMsg
+  echo 'Downloading plugin list from VimAwesome'
+  echohl None
+ruby << EOF
+  require 'json'
+  require 'open-uri'
+
+  query = VIM::evaluate('l:prefix').gsub('/', '%20')
+  items = 1.upto(max_pages = 3).map do |page|
+    Thread.new do
+      url  = "http://vimawesome.com/api/plugins?page=#{page}&query=#{query}"
+      data = open(url).read
+      json = JSON.parse(data, symbolize_names: true)
+      json[:plugins].map do |info|
+        pair = info.values_at :github_owner, :github_repo_name
+        next if pair.any? { |e| e.nil? || e.empty? }
+        {word: pair.join('/'),
+         menu: info[:category].to_s,
+         info: info.values_at(:short_desc, :author).compact.join($/)}
+      end.compact
+    end
+  end.each(&:join).map(&:value).inject(:+)
+  VIM::command("let l:cands = #{JSON.dump items}")
+EOF
+" vint: -ProhibitUsingUndeclaredVariable
+  if !empty(l:cands)
+" vint: +ProhibitUsingUndeclaredVariable
+    inoremap <buffer> <c-v> <c-n>
+    augroup _VimAwesomeComplete
+      autocmd!
+      autocmd CursorMovedI,InsertLeave * iunmap <buffer> <c-v>
+            \| autocmd! _VimAwesomeComplete
+    augroup END
+
+" vint: -ProhibitUsingUndeclaredVariable
+    call complete(col('.') - strchars(l:prefix), l:cands)
+" vint: +ProhibitUsingUndeclaredVariable
+  endif
+  return ''
+endfunction
+
+augroup VimAwesomeComplete
+  autocmd!
+  autocmd FileType vim inoremap <c-x><c-v> <c-r>=VimAwesomeComplete()<cr>
+augroup END
+
+"
 " Setup YouCompleteMe
 "
 function! BuildYouCompleteMe(info)
