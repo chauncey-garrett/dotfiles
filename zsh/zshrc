@@ -849,3 +849,9 @@ function finda() {
   find . | ag "${@}"
 }
 
+#
+# Linuxbrew
+#
+
+export XDG_DATA_DIRS="$HOME/.linuxbrew/share:$XDG_DATA_DIRS"
+
