@@ -2,4 +2,4 @@
 editor=vim
 extension=.md
 extensions=.txt,.text,.md,.markdown,.mdown,.mdwn,.mkdn,.mkd,.rst
-notes_dir=~/Dropbox/Notes
+notes_dir=~/notes
