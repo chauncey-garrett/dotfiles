@@ -191,12 +191,12 @@ call Plugged('godlygeek/tabular')
 
 call Plugged('pangloss/vim-javascript')
 " call Plugged('majutsushi/tagbar')
+" call Plugged('airblade/vim-gitgutter')
 
 " Plug 'neovim/node-host', {
   " \'do': 'yarn'
 " \}
 
-" Plug 'airblade/vim-gitgutter'
 " Plug 'tpope/vim-surround' " See machakann/vim-sandwich
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'

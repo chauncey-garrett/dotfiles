@@ -84,7 +84,6 @@ source ~/.config/nvim/config/vim-expand-region.vim
 source ~/.config/nvim/config/vim-expand-region.vim
 source ~/.config/nvim/config/vim-follow-my-lead.vim
 source ~/.config/nvim/config/vim-fugitive.vim
-source ~/.config/nvim/config/vim-gitgutter.vim
 source ~/.config/nvim/config/vim-indent-object.vim
 source ~/.config/nvim/config/vim-jsdoc.vim
 source ~/.config/nvim/config/vim-json.vim
