@@ -34,9 +34,6 @@ filetype indent plugin on
 let g:mapleader = "\<Space>"
 " let mapleader = ","
 
-" Makes the cursor a pipe in insert-mode, and a block in normal-mode
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
 " Automatically jump to the end of the text you pasted
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
