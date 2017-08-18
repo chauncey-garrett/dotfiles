@@ -235,7 +235,6 @@ Plug 'myusuf3/numbers.vim'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/jspc.vim'
-Plug 'pearofducks/ansible-vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-lexical'
 Plug 'rhysd/committia.vim'
@@ -286,6 +285,10 @@ Plug 'mhinz/vim-startify', {
   \'on': [
     \'Startify'
   \]
+\}
+
+Plug 'pearofducks/ansible-vim', {
+  \'do': './UltiSnips/generate.py'
 \}
 
 Plug 'vim-scripts/SpellCheck', {
