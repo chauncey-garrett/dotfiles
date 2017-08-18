@@ -620,16 +620,32 @@ let g:html_indent_inctags = "address,article,aside,audio,blockquote,canvas,dd,di
 if exists(":SyntasticCheck")
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_check_on_open = 1
+
   let g:syntastic_check_on_wq = 0
   let g:syntastic_aggregate_errors = 1
   let g:syntastic_auto_loc_list = 1
   let g:syntastic_auto_jump = 1
 
+  " Javascript
   let g:syntastic_javascript_checkers = ['jshint']
+
+  " HTML5
   let g:syntastic_html_checkers = [
   \ 'jshint',
   \ 'tidy'
   \ ]
+
+  " Ignore @ng html tags
+  let g:syntastic_html_tidy_ignore_errors=[
+  \ "discarding unexpected",
+  \ "is not recognized!",
+  \ "lacks action",
+  \ "proprietary attribute",
+  \ "trimming empty <",
+  \ "unescaped &"
+  \ ]
+
+  " SCSS
   let g:syntastic_scss_checkers = ['scss_lint']
 endif
 
@@ -736,3 +752,4 @@ let g:javascript_conceal_arrow_function = "⇒"
 
 " Ignore files listed in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
