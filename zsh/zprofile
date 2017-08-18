@@ -211,6 +211,8 @@ path=(
 	${HOME}/{.bin,bin}
 	${HOME}/.dotfiles/node_modules/.bin
 	${HOME}/.linuxbrew/{bin,sbin}
+  /home/linuxbrew/.linuxbrew/opt/python/libexec/bin
+	/home/linuxbrew/.linuxbrew/{bin,sbin}
 	/usr/local/share/npm/bin
 	/usr/local/mysql/bin
 	/usr/local/MacGPG2/bin
@@ -252,6 +254,7 @@ rationalize-path path
 manpath=(
 	${HOME}/{.man,man}
 	${HOME}/.linuxbrew/share/man
+  /home/linuxbrew/.linuxbrew/share/man
 	/usr/local/git/man
 	/usr/local/mysql/man
 	/usr/local/{man,sbin}
@@ -278,6 +281,7 @@ rationalize-path manpath
 # NOTE: Top items appear in PATH first
 infopath=(
 	${HOME}/.linuxbrew/share/info
+  /home/linuxbrew/.linuxbrew/share/info
 	"$infopath[@]"
 )
 
@@ -289,5 +293,22 @@ typeset -U infopath
 # Remove entries that don't exist on this system -- just for sanity's sake more
 # than anything.
 rationalize-path infopath
+
+# Set the list of directories that Zsh searches for XDG data.
+# NOTE: Top items appear in PATH first
+xdg_data_dirs=(
+  ${HOME}/.linuxbrew/share
+  /home/linuxbrew/.linuxbrew/share
+	"$xdg_data_dirs[@]"
+)
+
+export XDG_DATA_DIRS
+
+# Add only unique entries.
+typeset -U xdg_data_dirs
+
+# Remove entries that don't exist on this system -- just for sanity's sake more
+# than anything.
+rationalize-path xdg_data_dirs
 
 # vim: set filetype=zsh:

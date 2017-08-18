@@ -293,7 +293,7 @@ if (system('uname') =~? 'darwin')
 
 " On linux, use linuxbrew's fzf
 else
-  Plug '~/.linuxbrew/opt/fzf'
+  Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
     \| Plug 'junegunn/fzf.vim'
 endif
 
