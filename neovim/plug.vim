@@ -196,8 +196,7 @@ call Plugged('pangloss/vim-javascript')
 " \}
 
 " Plug 'airblade/vim-gitgutter'
-" Plug 'edkolev/tmuxline.vim'
-" Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround' " See machakann/vim-sandwich
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'Chiel92/vim-autoformat'
