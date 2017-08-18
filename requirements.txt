@@ -13,7 +13,8 @@ pydf
 pylint
 restructuredtext_lint
 setuptools
-terminal_velocity
 yamllint
 vim-vint
 yapf
+
+terminal_velocity
