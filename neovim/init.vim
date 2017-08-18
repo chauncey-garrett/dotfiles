@@ -23,7 +23,7 @@ endif
 
 " Polyglot
 " NOTE: Loading before to avoid overriding any file-specific plugins
-source ~/.config/nvim/config/vim-polyglot.vim
+" source ~/.config/nvim/config/vim-polyglot.vim
 
 " source ~/.config/nvim/config/ack.vim
 " source ~/.config/nvim/config/ctrl-p.vim
@@ -87,7 +87,6 @@ source ~/.config/nvim/config/vim-follow-my-lead.vim
 source ~/.config/nvim/config/vim-fugitive.vim
 source ~/.config/nvim/config/vim-gitgutter.vim
 source ~/.config/nvim/config/vim-indent-object.vim
-source ~/.config/nvim/config/vim-javascript.vim
 source ~/.config/nvim/config/vim-jsdoc.vim
 source ~/.config/nvim/config/vim-json.vim
 source ~/.config/nvim/config/vim-jspc.vim

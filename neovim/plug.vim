@@ -167,18 +167,29 @@ function! BuildMarkdownComposer(info)
 endfunction
 
 "
+" Plugged
+" Use Plug to source the plugin and then source the pluin's config file.
+"
+function! Plugged(repo)
+  let l:repoName = substitute(a:repo, '^.*\/', '', 'g')
+
+  Plug a:repo
+    \| exec 'source' '~/.dotfiles/neovim/config/' . l:repoName . '.vim'
+endfunction
+
+"
 " Plug plugged
 " NOTE: This is the directory that the plugins will be installed to.
 "
 call plug#begin('~/.config/nvim/plugged')
 
-" Polyglot
-" NOTE: Loading before to avoid overriding any file-specific plugins
-Plug 'sheerun/vim-polyglot'
+" NOTE: Loading first to avoid overriding any file-specific plugins
+call Plugged('sheerun/vim-polyglot')
 
-" Tabular
-" NOTE: Must be loaded before Markdown
-Plug 'godlygeek/tabular'
+" NOTE: Must be loaded before plasticboy/vim-markdown
+call Plugged('godlygeek/tabular')
+
+call Plugged('pangloss/vim-javascript')
 
 " Plug 'neovim/node-host', {
   " \'do': 'yarn'
@@ -225,7 +236,6 @@ Plug 'myusuf3/numbers.vim'
 Plug 'neomake/neomake'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'othree/jspc.vim'
-Plug 'pangloss/vim-javascript'
 Plug 'pearofducks/ansible-vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'reedes/vim-lexical'
