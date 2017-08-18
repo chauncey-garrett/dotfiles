@@ -62,7 +62,6 @@ source ~/.config/nvim/config/splitjoin.vim
 source ~/.config/nvim/config/supertab.vim
 source ~/.config/nvim/config/switch.vim
 source ~/.config/nvim/config/tabular.vim
-source ~/.config/nvim/config/tagbar.vim
 source ~/.config/nvim/config/taskpaper.vim
 source ~/.config/nvim/config/tern_for_vim.vim
 source ~/.config/nvim/config/thematic.vim

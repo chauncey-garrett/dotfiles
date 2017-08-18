@@ -190,6 +190,7 @@ call Plugged('sheerun/vim-polyglot')
 call Plugged('godlygeek/tabular')
 
 call Plugged('pangloss/vim-javascript')
+" call Plugged('majutsushi/tagbar')
 
 " Plug 'neovim/node-host', {
   " \'do': 'yarn'
@@ -225,7 +226,6 @@ Plug 'kassio/neoterm'
 Plug 'kshenoy/vim-signature'
 Plug 'ktonga/vim-follow-my-lead'
 Plug 'machakann/vim-sandwich'
-Plug 'majutsushi/tagbar'
 Plug 'mattn/emmet-vim'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'metakirby5/codi.vim'
