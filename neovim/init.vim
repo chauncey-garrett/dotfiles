@@ -112,13 +112,8 @@ else
   source ~/.config/nvim/config/vim-markdown-composer.vim
 endif
 
-" EasyTags
-" NOTE: EasyTags requires Misc
-source ~/.config/nvim/config/vim-misc.vim
-source ~/.config/nvim/config/vim-easytags.vim
-
 " Markdown
-" NOTE: Must be loaded after tabular
+" NOTE: Must be loaded after godlygeek/tabular
 source ~/.config/nvim/config/vim-markdown.vim
 
 " YouCompleteMe

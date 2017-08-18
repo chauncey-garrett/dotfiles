@@ -268,8 +268,8 @@ endif
 call Plugged('tpope/vim-fugitive')
     \| call Plugged('tpope/vim-rhubarb')
 
-Plug 'xolox/vim-misc'
-    \| Plug 'xolox/vim-easytags'
+call Plugged('xolox/vim-misc')
+    \| call Plugged('xolox/vim-easytags')
 
 Plug 'terryma/vim-expand-region'
     \| Plug 'michaeljsmith/vim-indent-object'
