@@ -247,7 +247,6 @@ Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-scripts/TaskList.vim'
@@ -265,6 +264,9 @@ else
     \'do': function('BuildMarkdownComposer')
   \}
 endif
+
+call Plugged('tpope/vim-fugitive')
+    \| call Plugged('tpope/vim-rhubarb')
 
 Plug 'xolox/vim-misc'
     \| Plug 'xolox/vim-easytags'

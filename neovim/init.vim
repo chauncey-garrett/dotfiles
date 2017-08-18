@@ -28,7 +28,6 @@ endif
 " source ~/.config/nvim/config/ack.vim
 " source ~/.config/nvim/config/ctrl-p.vim
 " source ~/.config/nvim/config/surround.vim
-" source ~/.config/nvim/config/tmuxline.vim
 " source ~/.config/nvim/config/vim-nerdtree-syntax-highlight.vim
 source ~/.config/nvim/config/vim-solarized8.vim
 source ~/.config/nvim/config/CamelCaseMotion.vim
@@ -83,7 +82,6 @@ source ~/.config/nvim/config/vim-expand-region.vim
 source ~/.config/nvim/config/vim-expand-region.vim
 source ~/.config/nvim/config/vim-expand-region.vim
 source ~/.config/nvim/config/vim-follow-my-lead.vim
-source ~/.config/nvim/config/vim-fugitive.vim
 source ~/.config/nvim/config/vim-indent-object.vim
 source ~/.config/nvim/config/vim-jsdoc.vim
 source ~/.config/nvim/config/vim-json.vim
@@ -152,12 +150,10 @@ source ~/.config/nvim/config/_global.after.vim
 " plist
 " preserve-no-eol
 " remotecopy
-" rhubarb
 " search-complete
 " space
 " syntax-nginx
 " tag-highlight
-" tmux
 " vimux
 " wordy
 
