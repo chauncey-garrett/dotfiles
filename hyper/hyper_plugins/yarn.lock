@@ -118,13 +118,13 @@ hypercwd@latest:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/hypercwd/-/hypercwd-0.1.7.tgz#308b38f3202f02843edb7662997b79988bcb66fe"
 
-hyperlinks@latest:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/hyperlinks/-/hyperlinks-0.4.0.tgz#97a4fce70778c61902a01921505449ceccf373ce"
+hyperlinks@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/hyperlinks/-/hyperlinks-0.5.0.tgz#e2e824d6f503653d26bf4e2735a3db24743f4d4e"
   dependencies:
     email-regex "1.0.0"
     escape-html "1.0.3"
-    ip-regex "1.0.3"
+    ip-regex "2.0.0"
     url-regex "4.0.0"
 
 hyperterm-1password@latest:
@@ -175,7 +175,11 @@ indent-string@^2.1.0:
   dependencies:
     repeating "^2.0.0"
 
-ip-regex@1.0.3, ip-regex@^1.0.1:
+ip-regex@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-2.0.0.tgz#913a92db023723d6d1a38b874c543893165b24ff"
+
+ip-regex@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-1.0.3.tgz#dc589076f659f419c222039a33316f1c7387effd"
 
