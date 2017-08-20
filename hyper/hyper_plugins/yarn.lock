@@ -110,9 +110,9 @@ hyper-font-smoothing@latest:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/hyper-font-smoothing/-/hyper-font-smoothing-1.0.0.tgz#4deb617e17fc057d4fc9716d1d94ea1566333368"
 
-hyper-solarized-dark@latest:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/hyper-solarized-dark/-/hyper-solarized-dark-0.1.1.tgz#e288190c40e88b4111efa6f1f46d6e854bae2f59"
+hyper-solarized-dark@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/hyper-solarized-dark/-/hyper-solarized-dark-0.1.3.tgz#8fc45a6689eb6bd276e2970ffb5cbbddf1d74112"
 
 hypercwd@latest:
   version "0.1.7"
