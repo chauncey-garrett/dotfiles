@@ -1,0 +1,51 @@
+collectors:
+
+- type: python-pip
+  path: requirements.txt
+  actors:
+  # pull requests for updates to our major version
+  - type: python-pip
+    versions: "L.Y.Y"
+  # create issues for new major versions
+  - type: repo-issue
+    versions: "Y.0.0"
+
+- type: ruby-bundler
+  path: /
+  actors:
+  # pull requests for updates to our major version
+  - type: ruby-bundler
+    versions: "L.Y.Y"
+  # create issues for new major versions
+  - type: repo-issue
+    versions: "Y.0.0"
+
+- type: python-pip
+  path: requirements3.txt
+  actors:
+  # pull requests for updates to our major version
+  - type: python-pip
+    versions: "L.Y.Y"
+  # create issues for new major versions
+  - type: repo-issue
+    versions: "Y.0.0"
+
+- type: js-npm
+  path: hyper/hyper_plugins
+  actors:
+  # pull requests for updates to our major version
+  - type: js-npm
+    versions: "L.Y.Y"
+  # create issues for new major versions
+  - type: repo-issue
+    versions: "Y.0.0"
+
+- type: js-npm
+  path: /
+  actors:
+  # pull requests for updates to our major version
+  - type: js-npm
+    versions: "L.Y.Y"
+  # create issues for new major versions
+  - type: repo-issue
+    versions: "Y.0.0"
