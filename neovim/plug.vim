@@ -190,6 +190,7 @@ call Plugged('sheerun/vim-polyglot')
 call Plugged('godlygeek/tabular')
 
 call Plugged('pangloss/vim-javascript')
+call Plugged('martinda/Jenkinsfile-vim-syntax')
 " call Plugged('majutsushi/tagbar')
 " call Plugged('airblade/vim-gitgutter')
 
