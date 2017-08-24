@@ -74,13 +74,7 @@ acorn-jsx@^3.0.0, acorn-jsx@^3.0.1:
   dependencies:
     acorn "^4.0.2"
 
-acorn-jsx@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-4.0.1.tgz#ada5a01573727a237774ce625564d079ec9de12a"
-  dependencies:
-    acorn "^5.0.3"
-
-acorn-jsx@ramitos/acorn-jsx#6683232:
+acorn-jsx@^4.0.1, acorn-jsx@ramitos/acorn-jsx#6683232:
   version "4.0.1"
   resolved "https://codeload.github.com/ramitos/acorn-jsx/tar.gz/6683232"
   dependencies:
@@ -3779,6 +3773,14 @@ form-data2@^1.0.0:
     mime "^1.2.11"
     uuid "^2.0.1"
 
+form-data@^2.1.2:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.2.0.tgz#9a5e3b9295f980b2623cf64fa238b14cebca707b"
+  dependencies:
+    asynckit "^0.4.0"
+    combined-stream "^1.0.5"
+    mime-types "^2.1.12"
+
 form-data@~0.0.3:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-0.0.10.tgz#db345a5378d86aeeb1ed5d553b869ac192d2f5ed"
@@ -5682,6 +5684,15 @@ iterm2-version@^2.1.0:
     app-path "^2.1.0"
     plist "^2.0.1"
 
+jflint@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/jflint/-/jflint-0.2.0.tgz#bc04e41f97d84bfa79518a7f899f2c6b3842263f"
+  dependencies:
+    commander "^2.9.0"
+    form-data "^2.1.2"
+    js-base64 "^2.1.9"
+    node-fetch "^1.6.3"
+
 jodid25519@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/jodid25519/-/jodid25519-1.0.2.tgz#06d4912255093419477d425633606e0e90782967"
@@ -7148,6 +7159,13 @@ node-emoji@^1.4.1:
 node-fetch@^1.0.1:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.6.3.tgz#dc234edd6489982d58e8f0db4f695029abcd8c04"
+  dependencies:
+    encoding "^0.1.11"
+    is-stream "^1.0.1"
+
+node-fetch@^1.6.3:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.2.tgz#c54e9aac57e432875233525f3c891c4159ffefd7"
   dependencies:
     encoding "^0.1.11"
     is-stream "^1.0.1"
@@ -10304,9 +10322,9 @@ tern-jsx@ramitos/tern-jsx#bb32547:
   version "1.0.0"
   resolved "https://codeload.github.com/ramitos/tern-jsx/tar.gz/bb32547"
   dependencies:
-    acorn "^5.0.3"
-    acorn-jsx ramitos/acorn-jsx#6683232
-    tern "^0.21.0"
+    acorn "^4.0.2"
+    acorn-jsx ramitos/acorn-jsx#209f7ec
+    tern "^0.20.0"
 
 tern@^0.21.0:
   version "0.21.0"
