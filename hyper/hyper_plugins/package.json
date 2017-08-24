@@ -7,18 +7,18 @@
   "license": "MIT",
   "homepage": "https://hyper.is",
   "dependencies": {
-    "hyper-solarized-dark": "latest",
-    "hyper-font-smoothing": "latest",
-    "hypercwd": "latest",
-    "hyperterm-1password": "latest",
-    "hyperlinks": "latest",
-    "hyperterm-focus-reporting": "latest",
-    "hyperterm-dibdabs": "latest",
     "config-hyperterm": "latest",
-    "hyperterm-tabs": "latest",
-    "hyperterm-open-devtools": "latest",
+    "hyper-font-smoothing": "latest",
+    "hyper-solarized-dark": "latest",
+    "hypercwd": "latest",
+    "hyperlinks": "latest",
+    "hyperterm-1password": "latest",
     "hyperterm-alternatescroll": "latest",
-    "hyperterm-visor": "latest",
-    "hyperterm-paste": "latest"
+    "hyperterm-dibdabs": "latest",
+    "hyperterm-focus-reporting": "latest",
+    "hyperterm-open-devtools": "latest",
+    "hyperterm-paste": "latest",
+    "hyperterm-tabs": "latest",
+    "hyperterm-visor": "0.3.4"
   }
 }
