@@ -5862,7 +5862,7 @@ jshint@2.8.0:
     shelljs "0.3.x"
     strip-json-comments "1.0.x"
 
-jshint@^2.9.5:
+jshint@2.9.5:
   version "2.9.5"
   resolved "https://registry.yarnpkg.com/jshint/-/jshint-2.9.5.tgz#1e7252915ce681b40827ee14248c46d34e9aa62c"
   dependencies:
@@ -10322,9 +10322,9 @@ tern-jsx@ramitos/tern-jsx#bb32547:
   version "1.0.0"
   resolved "https://codeload.github.com/ramitos/tern-jsx/tar.gz/bb32547"
   dependencies:
-    acorn "^4.0.2"
-    acorn-jsx ramitos/acorn-jsx#209f7ec
-    tern "^0.20.0"
+    acorn "^5.0.3"
+    acorn-jsx ramitos/acorn-jsx#6683232
+    tern "^0.21.0"
 
 tern@^0.21.0:
   version "0.21.0"
