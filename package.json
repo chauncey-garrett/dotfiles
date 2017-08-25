@@ -88,7 +88,7 @@
     "oni-vim": "^0.1.11",
     "pageres-cli": "^4.0.0",
     "parse-columns-cli": "^2.0.0",
-    "polyjuice": "^2.2.1",
+    "polyjuice": "2.2.3",
     "public-ip-cli": "^1.0.0",
     "remark-cli": "^4.0.0",
     "remark-lint": "^6.0.0",
