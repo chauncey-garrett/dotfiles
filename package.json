@@ -40,7 +40,7 @@
     "diff-so-fancy": "^1.1.1",
     "docco": "^0.7.0",
     "dockerlint": "^0.3.1",
-    "eclint": "^2.3.0",
+    "eclint": "2.4.3",
     "empty-trash-cli": "^1.0.1",
     "eslint": "^4.3.0",
     "eslint-config-airbnb-base": "^11.3.1",
