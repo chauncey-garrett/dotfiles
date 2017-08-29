@@ -92,7 +92,7 @@
     "public-ip-cli": "^1.0.0",
     "remark-cli": "^4.0.0",
     "remark-lint": "^6.0.0",
-    "sass-lint": "^1.10.2",
+    "sass-lint": "1.11.1",
     "sitespeed.io": "^5.4.4",
     "speed-test": "^1.8.0",
     "strip-indent-cli": "^1.0.0",
