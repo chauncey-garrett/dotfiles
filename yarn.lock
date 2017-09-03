@@ -7417,9 +7417,9 @@ npm-name@^3.0.0:
     lodash.zip "^4.0.0"
     registry-url "^3.0.0"
 
-npm-package-json-lint@^2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/npm-package-json-lint/-/npm-package-json-lint-2.9.0.tgz#43d87d1b2ddbf4d3a393c1ce56058399c4be57d1"
+npm-package-json-lint@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/npm-package-json-lint/-/npm-package-json-lint-2.11.0.tgz#a19fb1093b20e5756845234d5e451e4b8d97620f"
   dependencies:
     chalk "^2.1.0"
     commander "^2.11.0"
@@ -7429,7 +7429,7 @@ npm-package-json-lint@^2.9.0:
     plur "^2.1.2"
     semver "^5.4.1"
     user-home "^2.0.0"
-    validator "^8.0.0"
+    validator "^8.1.0"
 
 npm-prefix@^1.2.0:
   version "1.2.0"
@@ -11188,7 +11188,7 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
 
-validator@^8.0.0:
+validator@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/validator/-/validator-8.1.0.tgz#89cf6b512ff71eba886afd8d10d47f8dc800eac0"
 
