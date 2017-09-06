@@ -60,7 +60,7 @@
     "gulp": "^3.9.1",
     "gzip-size-cli": "^2.0.0",
     "hasha-cli": "^3.0.0",
-    "hexo": "^3.3.8",
+    "hexo": "^3.3.9",
     "hpm-cli": "^2.0.1",
     "htmlhint": "^0.9.13",
     "http-server": "^0.10.0",
