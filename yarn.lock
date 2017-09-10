@@ -6727,6 +6727,16 @@ markdown-it@^8.3.1:
     mdurl "^1.0.1"
     uc.micro "^1.0.3"
 
+markdown-it@~8.3.2:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-8.3.2.tgz#df4b86530d17c3bc9beec3b68d770b92ea17ae96"
+  dependencies:
+    argparse "^1.0.7"
+    entities "~1.1.1"
+    linkify-it "^2.0.0"
+    mdurl "^1.0.1"
+    uc.micro "^1.0.3"
+
 markdown-table@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.0.tgz#1f5ae61659ced8808d882554c32e8b3f38dd1143"
@@ -6749,11 +6759,11 @@ markdownlint-cli@^0.3.1:
     markdownlint "~0.4.1"
     rc "~1.1.6"
 
-markdownlint@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/markdownlint/-/markdownlint-0.6.0.tgz#0c9eb422cb701719927969aff85f7a0409b51373"
+markdownlint@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/markdownlint/-/markdownlint-0.6.1.tgz#61383e2544f7819f6d4717514e57d5f62fd15818"
   dependencies:
-    markdown-it "^8.3.1"
+    markdown-it "~8.3.2"
 
 markdownlint@~0.4.1:
   version "0.4.1"
