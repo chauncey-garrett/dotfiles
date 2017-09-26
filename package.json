@@ -58,7 +58,7 @@
     "github-email": "^1.1.0",
     "github-username-cli": "^1.0.0",
     "gulp": "^3.9.1",
-    "gzip-size-cli": "^2.0.0",
+    "gzip-size-cli": "^2.1.0",
     "hasha-cli": "^3.0.0",
     "hexo": "^3.3.8",
     "hpm-cli": "^2.0.1",
