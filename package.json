@@ -78,6 +78,7 @@
     "json2yaml": "^1.1.0",
     "jsonlint": "^1.6.2",
     "latest-version-cli": "^1.0.0",
+    "lighthouse": "^2.5.0",
     "macos-version-cli": "^1.1.0",
     "markdownlint": "^0.6.0",
     "markdownlint-cli": "^0.3.1",
