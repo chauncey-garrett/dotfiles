@@ -312,7 +312,7 @@ source ~/.config/nvim/config/vim-scripts/SpellCheck.vim
 "
 " On macOS, use homebrew's fzf
 if (system('uname') =~? 'darwin')
-  call Plugged('/usr/local/opt/fzf')
+  Plug '/usr/local/opt/fzf'
     \| call Plugged('junegunn/fzf.vim')
 
 " On linux, use linuxbrew's fzf
