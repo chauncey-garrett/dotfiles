@@ -50,7 +50,7 @@
 [apply]
   whitespace = nowarn
 [branch]
-  autosetupmerge = true
+  autosetupmerge = always
 [color]
   diff = auto
   status = auto
