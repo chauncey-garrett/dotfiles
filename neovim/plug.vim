@@ -174,7 +174,7 @@ function! Plugged(repo)
   let l:repoName = substitute(a:repo, '^.*\/', '', 'g')
 
   Plug a:repo
-    \| exec 'source' '~/.dotfiles/neovim/config/' . l:repoName . '.vim'
+    \| exec 'source' '~/.dotfiles/neovim/config/' . a:repo . '.vim'
 endfunction
 
 "
@@ -198,145 +198,157 @@ call Plugged('martinda/Jenkinsfile-vim-syntax')
   " \'do': 'yarn'
 " \}
 
-" Plug 'tpope/vim-surround' " See machakann/vim-sandwich
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'AndrewRadev/switch.vim'
-Plug 'Chiel92/vim-autoformat'
-Plug 'Yggdroot/indentLine'
-Plug 'ap/vim-css-color'
-Plug 'bkad/CamelCaseMotion'
-Plug 'brettanomyces/nvim-editcommand'
-Plug 'bronson/vim-visual-star-search'
-Plug 'chauncey-garrett/vim-applescript'
-Plug 'chauncey-garrett/vim-json'
-Plug 'chrisbra/unicode.vim'
-Plug 'christoomey/vim-sort-motion'
-Plug 'davidoc/taskpaper.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'editorconfig/editorconfig-vim'
-" Plug 'go2null/Mark--Karkat'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'ervandew/supertab'
-Plug 'heavenshell/vim-jsdoc'
-" Plug 'iCyMind/NeoSolarized'
-Plug 'lifepillar/vim-solarized8'
-Plug 'jeetsukumaran/vim-buffergator'
-Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/vim-easy-align'
-Plug 'kassio/neoterm'
-Plug 'kshenoy/vim-signature'
-Plug 'ktonga/vim-follow-my-lead'
-Plug 'machakann/vim-sandwich'
-Plug 'mattn/emmet-vim'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'metakirby5/codi.vim'
-Plug 'moll/vim-node'
-Plug 'mtth/scratch.vim'
-Plug 'myusuf3/numbers.vim'
-Plug 'neomake/neomake'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'othree/jspc.vim'
-Plug 'plasticboy/vim-markdown'
-Plug 'reedes/vim-lexical'
-Plug 'rhysd/committia.vim'
-Plug 'romainl/vim-qf'
-Plug 'roxma/vim-tmux-clipboard'
-Plug 'scrooloose/nerdcommenter'
-Plug 'sjl/gundo.vim'
-Plug 'terryma/vim-expand-region'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tmux-plugins/vim-tmux'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-unimpaired'
-Plug 'vim-scripts/TaskList.vim'
-Plug 'wellle/tmux-complete.vim'
+call Plugged('junegunn/vim-peekaboo')
+call Plugged('itchyny/vim-cursorword')
+" call Plugged('tpope/vim-surround') " See machakann/vim-sandwich
+call Plugged('AndrewRadev/splitjoin.vim')
+call Plugged('AndrewRadev/switch.vim')
+call Plugged('Chiel92/vim-autoformat')
+call Plugged('Yggdroot/indentLine')
+call Plugged('ap/vim-css-color')
+call Plugged('bkad/CamelCaseMotion')
+call Plugged('brettanomyces/nvim-editcommand')
+call Plugged('bronson/vim-visual-star-search')
+call Plugged('chauncey-garrett/vim-applescript')
+call Plugged('chauncey-garrett/vim-json')
+call Plugged('chrisbra/unicode.vim')
+call Plugged('christoomey/vim-sort-motion')
+call Plugged('davidoc/taskpaper.vim')
+call Plugged('easymotion/vim-easymotion')
+call Plugged('editorconfig/editorconfig-vim')
+" call Plugged('go2null/Mark--Karkat')
+call Plugged('ekalinin/Dockerfile.vim')
+call Plugged('ervandew/supertab')
+call Plugged('heavenshell/vim-jsdoc')
+" call Plugged('iCyMind/NeoSolarized')
+call Plugged('lifepillar/vim-solarized8')
+call Plugged('jeetsukumaran/vim-buffergator')
+call Plugged('jiangmiao/auto-pairs')
+call Plugged('junegunn/vim-easy-align')
+call Plugged('kassio/neoterm')
+call Plugged('kshenoy/vim-signature')
+call Plugged('ktonga/vim-follow-my-lead')
+call Plugged('machakann/vim-sandwich')
+call Plugged('mattn/emmet-vim')
+call Plugged('maxbrunsfeld/vim-yankstack')
+call Plugged('metakirby5/codi.vim')
+call Plugged('moll/vim-node')
+call Plugged('mtth/scratch.vim')
+call Plugged('parkr/vim-jekyll')
+call Plugged('myusuf3/numbers.vim')
+call Plugged('neomake/neomake')
+call Plugged('ntpeters/vim-better-whitespace')
+call Plugged('othree/jspc.vim')
+call Plugged('plasticboy/vim-markdown')
+call Plugged('reedes/vim-lexical')
+call Plugged('rhysd/committia.vim')
+call Plugged('romainl/vim-qf')
+call Plugged('roxma/vim-tmux-clipboard')
+call Plugged('scrooloose/nerdcommenter')
+call Plugged('sjl/gundo.vim')
+call Plugged('terryma/vim-multiple-cursors')
+call Plugged('tmux-plugins/vim-tmux')
+call Plugged('tpope/vim-abolish')
+call Plugged('tpope/vim-speeddating')
+call Plugged('tpope/vim-unimpaired')
+call Plugged('vim-scripts/TaskList.vim')
+call Plugged('wellle/tmux-complete.vim')
 
 " macOS
 " TODO optimize check for system in global before file
 if (system('uname') =~? 'darwin')
-  Plug 'rizzatti/dash.vim'
-  Plug 'chauncey-garrett/vim-marked'
+  call Plugged('rizzatti/dash.vim')
+  call Plugged('chauncey-garrett/vim-marked')
 
 " Linux / Windows
 else
+  call Plugged('KabbAmine/zeavim.vim')
   Plug 'euclio/vim-markdown-composer', {
     \'do': function('BuildMarkdownComposer')
   \}
+  source ~/.config/nvim/config/euclio/vim-markdown-composer.vim
 endif
 
 call Plugged('tpope/vim-fugitive')
     \| call Plugged('tpope/vim-rhubarb')
+    \| call Plugged('tommcdo/vim-fubitive')
+    \| call Plugged('shumphrey/fugitive-gitlab.vim')
 
 call Plugged('xolox/vim-misc')
     \| call Plugged('xolox/vim-easytags')
 
-Plug 'terryma/vim-expand-region'
-    \| Plug 'michaeljsmith/vim-indent-object'
+call Plugged('terryma/vim-expand-region')
+    \| call Plugged('michaeljsmith/vim-indent-object')
 
-Plug 'junegunn/goyo.vim'
-    \| Plug 'amix/vim-zenroom2'
-    \| Plug 'junegunn/limelight.vim'
+call Plugged('junegunn/goyo.vim')
+    \| call Plugged('amix/vim-zenroom2')
+    \| call Plugged('junegunn/limelight.vim')
 
-Plug 'reedes/vim-thematic'
-    \| Plug 'reedes/vim-pencil'
-    \| Plug 'reedes/vim-colors-pencil'
+" call Plugged('reedes/vim-thematic')
+    " \| call Plugged('reedes/vim-pencil')
+    " \| call Plugged('reedes/vim-colors-pencil')
 
 Plug 'mhinz/vim-startify', {
   \'on': [
     \'Startify'
   \]
 \}
+source ~/.config/nvim/config/mhinz/vim-startify.vim
 
 Plug 'pearofducks/ansible-vim', {
-  \'do': './UltiSnips/generate.py'
+  \'do': 'python2 ./UltiSnips/generate.py'
 \}
+source ~/.config/nvim/config/pearofducks/ansible-vim.vim
 
 Plug 'vim-scripts/SpellCheck', {
   \'on': [
     \'SpellCheck'
   \]
 \}
+source ~/.config/nvim/config/vim-scripts/SpellCheck.vim
 
 "
 " FZF
 "
 " On macOS, use homebrew's fzf
 if (system('uname') =~? 'darwin')
-  Plug '/usr/local/opt/fzf'
-    \| Plug 'junegunn/fzf.vim'
+  call Plugged('/usr/local/opt/fzf')
+    \| call Plugged('junegunn/fzf.vim')
 
 " On linux, use linuxbrew's fzf
 else
   Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
-    \| Plug 'junegunn/fzf.vim'
+    \| call Plugged('junegunn/fzf.vim')
 endif
 
-Plug 'vim-airline/vim-airline'
-  \| Plug 'vim-airline/vim-airline-themes'
+call Plugged('vim-airline/vim-airline')
+  \| call Plugged('vim-airline/vim-airline-themes')
 
 " Plug 'bigfish/vim-js-context-coloring', {
   " \'branch': 'neovim',
   " \'do': 'cd rplugin/node && yarn',
 " \}
 
-Plug 'scrooloose/nerdtree'
-    " \| Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+call Plugged('scrooloose/nerdtree')
+  " \| call Plugged('tiagofumo/vim-nerdtree-syntax-highlight')
 
 Plug 'chrisbra/csv.vim', {
   \'on': [
     \'CSVTable'
   \]
 \}
+source ~/.config/nvim/config/chrisbra/csv.vim
 
 Plug 'marijnh/tern_for_vim', {
   \'do': 'yarn'
 \}
+source ~/.config/nvim/config/marijnh/tern_for_vim.vim
 
 " UltiSnips
 " NOTE: vim-snippets depends on UltiSnips
 Plug 'SirVer/ultisnips', {}
-  \| Plug 'chauncey-garrett/vim-snippets'
+  \| call Plugged('chauncey-garrett/vim-snippets')
+source ~/.config/nvim/config/SirVer/ultisnips.vim
 
 " YouCompleteMe
 " NOTE: Must be loaded after supertab for it's completion to work
@@ -344,10 +356,11 @@ Plug 'SirVer/ultisnips', {}
 Plug 'Valloric/YouCompleteMe', {
   \'do': function('BuildYouCompleteMe')
 \}
+source ~/.config/nvim/config/Valloric/YouCompleteMe.vim
 
 " DevIcons
 " NOTE: Must be loaded after NERDTree, vim-airline, CtrlP, powerline | unite, lightline.vim, vim-startify, vimfiler, flagship
-Plug 'ryanoasis/vim-devicons'
+call Plugged('ryanoasis/vim-devicons')
 
 call plug#end()
 

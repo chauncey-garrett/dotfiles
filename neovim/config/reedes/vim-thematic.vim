@@ -3,7 +3,7 @@
 " Thematic
 "
 
-let g:thematic#theme_name = 'solarized_dark'
+let g:thematic#theme_name = 'solarized8'
 
 let g:thematic#themes = {
   \'iawriter'   : {

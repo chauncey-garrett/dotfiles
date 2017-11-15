@@ -20,6 +20,7 @@ endif
 
 " Turn on spell checking.
 set spell
+hi SpellBad cterm=undercurl
 
 "
 " Git
@@ -59,13 +60,6 @@ set splitright
 " nnoremap <C-K> <C-W><C-K>
 " nnoremap <C-L> <C-W><C-L>
 " nnoremap <C-H> <C-W><C-H>
-
-"
-" Clam settings
-"
-
-nnoremap ! :Clam<space>
-vnoremap ! :ClamVisual<space>
 
 "
 " Reassign arrow keys for line movement
