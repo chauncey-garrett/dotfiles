@@ -64,7 +64,7 @@ GEM
     powerpack (0.1.1)
     rainbow (2.2.2)
       rake
-    rake (12.2.1)
+    rake (12.3.0)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -150,4 +150,4 @@ DEPENDENCIES
   tmuxinator
 
 BUNDLED WITH
-   1.14.6
+   1.16.0
