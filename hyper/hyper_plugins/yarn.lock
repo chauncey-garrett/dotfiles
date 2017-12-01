@@ -401,9 +401,9 @@ hyperterm-open-devtools@latest:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/hyperterm-open-devtools/-/hyperterm-open-devtools-1.0.4.tgz#181178f37ac9b9e11aeb6796710b3e688eb494a0"
 
-hyperterm-paste@latest:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/hyperterm-paste/-/hyperterm-paste-1.1.0.tgz#86d2e28c02408d34db7fddccf2a39432935ee958"
+hyperterm-paste@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/hyperterm-paste/-/hyperterm-paste-1.1.2.tgz#0ad2783be24dcb45564b27acc20723aec2cf3f26"
 
 hyperterm-register-shortcut@^1.2.0:
   version "1.3.0"
