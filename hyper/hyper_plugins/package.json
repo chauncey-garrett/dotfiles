@@ -9,7 +9,7 @@
   "dependencies": {
     "config-hyperterm": "latest",
     "hyper-font-smoothing": "latest",
-    "hyper-solarized-dark": "latest",
+    "hyper-solarized-dark": "0.1.4",
     "hypercwd": "latest",
     "hyperlinks": "latest",
     "hyperterm-1password": "latest",
