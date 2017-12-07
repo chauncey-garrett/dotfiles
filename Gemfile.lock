@@ -47,11 +47,11 @@ GEM
       paint (~> 2.0.0)
       trollop (~> 2.1.2)
     minitest (4.7.5)
-    msgpack (1.1.0)
+    msgpack (1.2.0)
     multi_json (1.12.2)
     necromancer (0.4.0)
-    neovim (0.6.1)
-      msgpack (~> 1.0)
+    neovim (0.6.2)
+      msgpack (~> 1.1)
       multi_json (~> 1.0)
     oauth (0.5.3)
     paint (2.0.1)
@@ -150,4 +150,4 @@ DEPENDENCIES
   tmuxinator
 
 BUNDLED WITH
-   1.14.6
+   1.16.0
