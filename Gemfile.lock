@@ -98,7 +98,7 @@ GEM
     text-hyphen (1.0.0)
     thor (0.19.4)
     thread_safe (0.3.6)
-    tmuxinator (0.10.0)
+    tmuxinator (0.10.1)
       erubis (~> 2.6)
       thor (~> 0.19, >= 0.15.0)
       xdg (~> 2.2, >= 2.2.3)
@@ -150,4 +150,4 @@ DEPENDENCIES
   tmuxinator
 
 BUNDLED WITH
-   1.14.6
+   1.16.0
