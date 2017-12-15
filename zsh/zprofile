@@ -78,14 +78,6 @@ export TMPPREFIX="${TMPDIR%/}/zsh"
 mkdir -p "${TMPPREFIX}"
 
 #
-# Go
-#
-
-if [[ -f "${HOME}/gocode" ]]; then
-  export GOPATH="${HOME}/gocode"
-fi
-
-#
 # Java
 #
 
@@ -162,15 +154,39 @@ fi
 #
 # Paths
 #
+# NOTE: Top items appear in PATH first.
+# NOTE: typeset -U <array> keeps only unique values.
+#
 
-# Later we'll need to trim down the paths that follow because the ones given here are for all my accounts, some of which have unusual paths in them. rationalize-path will remove nonexistent directories from an array.
-#	NOTE: this works only on arrays, not colon-delimited strings. Not that this is a problem now that there is typeset -T.
-rationalize-path() {
-	local element build
+#
+# rationalize-path
+#
+# Remove entries that don't exist on this system -- just for sanity's sake more
+# than anything.
+#
+# Later we'll need to trim down the paths that follow because the ones given
+# here are for all my accounts, some of which have unusual paths in them.
+# rationalize-path will remove nonexistent directories from an array.
+#
+#	NOTE: this works only on arrays, not colon-delimited strings. Not that this is
+#	a problem now that there is typeset -T.
+#
+#	http://zsh.sourceforge.net/Contrib/startup/users/debbiep/dot.zshenv
+#
+#	@usage
+#	  rationalize-path <pathArray>
+#	@arg 1 {Array}
+#	  The array to rationalize.
+#
+function rationalize-path() {
+	local element
+  local build
 
 	build=()
 
-	# Evil quoting to survive an eval and to make sure that this works even with variables containing IFS characters, if I'm crazy enough to setopt shwordsplit.
+  # Evil quoting to survive an eval and to make sure that this works even with
+  # variables containing IFS characters, if I'm crazy enough to setopt
+  # shwordsplit.
 	eval '
 	foreach element in "$'"$1"'[@]"; do
 		if [[ -d "${element}" ]]; then
@@ -182,30 +198,36 @@ rationalize-path() {
 	'
 }
 
-typeset -gU cdpath fpath mailpath path
+#
+# CDPATH
+#
 
-# Set the list of directories that cd searches.
 cdpath=(
 	.
 	"${cdpath[@]}"
 )
 
 export CDPATH
-typeset -U cdpath # add only unique entries
+typeset -gU cdpath
+rationalize-path cdpath
 
-# Path to search for autoloadable functions.
+#
+# FPATH
+#
+
 fpath=(
 	"${HOME}/lib/zsh/func"
 	"${fpath[@]}"
 )
 
 export FPATH
+typeset -gU fpath
+rationalize-path fpath
 
-# Add only unique entries.
-typeset -U fpath
+#
+# PATH
+#
 
-# Set the list of directories that Zsh searches for programs.
-# NOTE: Top items appear in PATH first
 path=(
 	${GAUSSIAN_TOOLS_DIRECTORY}
 	${HOME}/{.bin,bin}
@@ -241,16 +263,13 @@ path=(
 )
 
 export PATH
-
-# Add only unique entries.
-typeset -U path
-
-# Remove entries that don't exist on this system -- just for sanity's sake more
-# than anything.
+typeset -gU path
 rationalize-path path
 
-# Set the list of directories that Zsh searches for manuals.
-# NOTE: Top items appear in PATH first
+#
+# MANPATH
+#
+
 manpath=(
 	${HOME}/{.man,man}
 	${HOME}/.linuxbrew/share/man
@@ -269,16 +288,15 @@ manpath=(
 )
 
 export MANPATH
-
-# Add only unique entries.
-typeset -U manpath
-
-# Remove entries that don't exist on this system -- just for sanity's sake more
-# than anything.
+typeset -gU manpath
 rationalize-path manpath
 
-# Set the list of directories that Zsh searches for info.
-# NOTE: Top items appear in PATH first
+#
+# INFOPATH
+#
+
+typeset -T INFOPATH infopath
+
 infopath=(
 	${HOME}/.linuxbrew/share/info
   /home/linuxbrew/.linuxbrew/share/info
@@ -286,16 +304,28 @@ infopath=(
 )
 
 export INFOPATH
-
-# Add only unique entries.
-typeset -U infopath
-
-# Remove entries that don't exist on this system -- just for sanity's sake more
-# than anything.
+typeset -gU infopath
 rationalize-path infopath
 
-# Set the list of directories that Zsh searches for XDG data.
-# NOTE: Top items appear in PATH first
+#
+# MAILPATH
+#
+
+mailpath=(
+  "/usr/spool/mail/$LOGNAME?You inexplicably have new mail in /usr/spool/mail/$LOGNAME"
+	"${mailpath[@]}"
+)
+
+export MAILPATH
+typeset -gU mailpath
+rationalize-path mailpath
+
+#
+# XDG_DATA_DIRS
+#
+
+typeset -T XDG_DATA_DIRS xdg_data_dirs
+
 xdg_data_dirs=(
   ${HOME}/.linuxbrew/share
   /home/linuxbrew/.linuxbrew/share
@@ -303,12 +333,22 @@ xdg_data_dirs=(
 )
 
 export XDG_DATA_DIRS
-
-# Add only unique entries.
-typeset -U xdg_data_dirs
-
-# Remove entries that don't exist on this system -- just for sanity's sake more
-# than anything.
+typeset -gU xdg_data_dirs
 rationalize-path xdg_data_dirs
+
+#
+# Go
+#
+
+typeset -T GOPATH gopath
+
+gopath=(
+  ${HOME}/gocode
+	"$gopath[@]"
+)
+
+export GOPATH
+typeset -gU gopath
+rationalize-path gopath
 
 # vim: set filetype=zsh:
