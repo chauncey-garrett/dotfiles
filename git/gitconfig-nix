@@ -14,7 +14,7 @@
   # @usage
   #   git root
   #
-  root = !pwd -P
+  root = "!_() { !pwd -P }"
 
   #
   # Diffs the changes git stash would apply.
@@ -46,11 +46,9 @@
   # @usage
   #   git rm-merged-branches
   #
-  rm-merged-branches = git branch --merged master | grep -v 'master$' | xargs git branch -d
+  rm-merged-branches = "!_() { git branch --merged master | grep -v \"master$\" | xargs git branch -d; }; _"
 [apply]
   whitespace = nowarn
-[branch]
-  autosetupmerge = always
 [color]
   diff = auto
   status = auto
@@ -131,8 +129,6 @@
   show = diff-so-fancy
 [pager "diff-so-fancy"]
   cmd = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
-[push]
-  default = current
 [rerere] # Remember my merges http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = true
 

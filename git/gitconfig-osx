@@ -14,7 +14,7 @@
   # @usage
   #   git root
   #
-  root = !pwd -P
+  root = "!_() { !pwd -P }"
 
   #
   # Diffs the changes git stash would apply.
@@ -46,7 +46,7 @@
   # @usage
   #   git rm-merged-branches
   #
-  rm-merged-branches = git branch --merged master | grep -v 'master$' | xargs git branch -d
+  rm-merged-branches = "!_() { git branch --merged master | grep -v \"master$\" | xargs git branch -d; }; _"
 [apply]
   whitespace = nowarn
 [branch]
@@ -124,7 +124,7 @@
   summary = true
   verbosity = 1
 [mergetool]
-  prompt = false
+  prompt = true
   keepBackup = true
 [mergetool "nvimMerge"]
   cmd = nvim -d \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\" -c '$wincmd w' -c 'wincmd J'
