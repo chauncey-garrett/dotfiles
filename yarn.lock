@@ -101,7 +101,13 @@ acorn-jsx@^3.0.0, acorn-jsx@^3.0.1:
   dependencies:
     acorn "^4.0.2"
 
-acorn-jsx@^4.0.1, acorn-jsx@ramitos/acorn-jsx#6683232:
+acorn-jsx@^4.0.1:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-4.1.0.tgz#e687194645bcde55e7e7e9b1859644351a27d13e"
+  dependencies:
+    acorn "^5.0.3"
+
+acorn-jsx@ramitos/acorn-jsx#6683232:
   version "4.0.1"
   resolved "https://codeload.github.com/ramitos/acorn-jsx/tar.gz/6683232"
   dependencies:
@@ -129,11 +135,7 @@ acorn@^4.0.9:
   version "4.0.11"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-4.0.11.tgz#edcda3bd937e7556410d42ed5860f67399c794c0"
 
-acorn@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.0.3.tgz#c460df08491463f028ccb82eab3730bf01087b3d"
-
-acorn@^5.2.1:
+acorn@^5.0.3, acorn@^5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.2.1.tgz#317ac7821826c22c702d66189ab8359675f135d7"
 
@@ -502,15 +504,9 @@ async@^2.1.1, async@~2.3.0:
   dependencies:
     lodash "^4.14.0"
 
-async@^2.1.4:
+async@^2.1.4, async@^2.4.1:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/async/-/async-2.6.0.tgz#61a29abb6fcc026fea77e56d1c6ec53a795951f4"
-  dependencies:
-    lodash "^4.14.0"
-
-async@^2.4.1:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/async/-/async-2.5.0.tgz#843190fd6b7357a0b9e1c956edddd5ec8462b54d"
   dependencies:
     lodash "^4.14.0"
 
@@ -2423,8 +2419,8 @@ deep-is@~0.1.3:
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
 deepmerge@^1.4.4:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-1.5.0.tgz#00bc5b88fd23b8130f9f5049071c3420e07a5465"
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-1.5.2.tgz#10499d868844cdad4fee0842df8c7f6f0c95a753"
 
 default-browser-cli@^1.0.0:
   version "1.0.0"
@@ -7947,8 +7943,8 @@ object-component@0.0.3:
   resolved "https://registry.yarnpkg.com/object-component/-/object-component-0.0.3.tgz#f0c69aa50efc95b866c186f400a33769cb2f1291"
 
 object-hash@^1.1.8:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-1.1.8.tgz#28a659cf987d96a4dabe7860289f3b5326c4a03c"
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-1.2.0.tgz#e96af0e96981996a1d47f88ead8f74f1ebc4422b"
 
 object-inspect@~1.3.0:
   version "1.3.0"
@@ -10934,13 +10930,13 @@ term-size@^1.2.0:
   dependencies:
     execa "^0.7.0"
 
-tern-jsx@ramitos/tern-jsx#bb32547:
+"tern-jsx@github:ramitos/tern-jsx#bb32547":
   version "1.0.0"
   resolved "https://codeload.github.com/ramitos/tern-jsx/tar.gz/bb3254740484f26b6fc61b1d5e1bf3c08d8c30ad"
   dependencies:
-    acorn "^4.0.2"
-    acorn-jsx ramitos/acorn-jsx#209f7ec
-    tern "^0.20.0"
+    acorn "^5.0.3"
+    acorn-jsx ramitos/acorn-jsx#6683232
+    tern "^0.21.0"
 
 tern@^0.21.0:
   version "0.21.0"
