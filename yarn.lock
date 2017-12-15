@@ -23,6 +23,12 @@
     execa "0.8.0"
     minimist "1.2.0"
 
+"@types/commander@^2.11.0":
+  version "2.12.2"
+  resolved "https://registry.yarnpkg.com/@types/commander/-/commander-2.12.2.tgz#183041a23842d4281478fa5d23c5ca78e6fd08ae"
+  dependencies:
+    commander "*"
+
 "@types/core-js@^0.9.41":
   version "0.9.43"
   resolved "https://registry.yarnpkg.com/@types/core-js/-/core-js-0.9.43.tgz#65d646c5e8c0cd1bdee37065799f9d3d48748253"
@@ -42,6 +48,10 @@
 "@types/rimraf@^0.0.28":
   version "0.0.28"
   resolved "https://registry.yarnpkg.com/@types/rimraf/-/rimraf-0.0.28.tgz#5562519bc7963caca8abf7f128cae3b594d41d06"
+
+"@types/semver@^5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-5.4.0.tgz#f3658535af7f1f502acd6da7daf405ffeb1f7ee4"
 
 JSONSelect@*:
   version "0.4.0"
@@ -1420,6 +1430,12 @@ charm@~0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/charm/-/charm-0.1.2.tgz#06c21eed1a1b06aeb67553cdc53e23274bac2296"
 
+checkstyle-formatter@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/checkstyle-formatter/-/checkstyle-formatter-1.1.0.tgz#1c4922dbac72d67242cfb85e7706917d5587b512"
+  dependencies:
+    xml-escape "^1.0.0"
+
 cheerio@^0.19.0:
   version "0.19.0"
   resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-0.19.0.tgz#772e7015f2ee29965096d71ea4175b75ab354925"
@@ -1489,6 +1505,10 @@ chrome-launcher@0.8.0:
 ci-info@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-1.0.0.tgz#dc5285f2b4e251821683681c381c3388f46ec534"
+
+ci-info@^1.1.1:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-1.1.2.tgz#03561259db48d0474c8bdc90f5b47b068b6bbfb4"
 
 circular-json@^0.3.1:
   version "0.3.3"
@@ -1762,6 +1782,10 @@ combined-stream@~0.0.4, combined-stream@~0.0.5:
 command-exists@^1.2.0:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/command-exists/-/command-exists-1.2.2.tgz#12819c64faf95446ec0ae07fe6cafb6eb3708b22"
+
+commander@*:
+  version "2.12.2"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.12.2.tgz#0f5946c427ed9ec0d91a46bb9def53e54650e555"
 
 commander@1.0.5:
   version "1.0.5"
@@ -2820,15 +2844,15 @@ ecdsa-sig-formatter@1.0.9:
     base64url "^2.0.0"
     safe-buffer "^5.0.1"
 
-eclint@2.4.3:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/eclint/-/eclint-2.4.3.tgz#6ffc28d3f8803f9797c271214184786fbc5c88d1"
+eclint@2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/eclint/-/eclint-2.5.0.tgz#c012287a1b47ca36460ce50003b929a91634382e"
   dependencies:
-    editorconfig "^0.14.1"
-    file-type "^6.1.0"
+    editorconfig "^0.15.0"
+    file-type "^7.2.0"
+    gulp-exclude-gitignore "^1.2.0"
     gulp-filter "^5.0.1"
-    gulp-gitignore "^0.1.0"
-    gulp-reporter "^2.2.1"
+    gulp-reporter "^2.4.2"
     gulp-tap "^1.0.1"
     gulp-util "^3.0.8"
     linez "^4.1.4"
@@ -2838,8 +2862,7 @@ eclint@2.4.3:
     through2 "^2.0.3"
     vinyl "^2.1.0"
     vinyl-fs "^2.4.4"
-    y18n "^3.2.1"
-    yargs "^8.0.2"
+    yargs "^10.0.3"
 
 ecstatic@^2.0.0:
   version "2.1.0"
@@ -2860,14 +2883,15 @@ editorconfig@^0.13.2:
     semver "^5.1.0"
     sigmund "^1.0.1"
 
-editorconfig@^0.14.1:
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/editorconfig/-/editorconfig-0.14.1.tgz#a7b3ce821e34250d5988c50946453d68d5e8fc3b"
+editorconfig@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/editorconfig/-/editorconfig-0.15.0.tgz#b6dd4a0b6b9e76ce48e066bdc15381aebb8804fd"
   dependencies:
-    bluebird "^3.0.5"
-    commander "^2.9.0"
-    lru-cache "^3.2.0"
-    semver "^5.1.0"
+    "@types/commander" "^2.11.0"
+    "@types/semver" "^5.4.0"
+    commander "^2.11.0"
+    lru-cache "^4.1.1"
+    semver "^5.4.1"
     sigmund "^1.0.1"
 
 ee-first@1.1.1:
@@ -2954,10 +2978,6 @@ end-of-stream@~0.1.5:
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-0.1.5.tgz#8e177206c3c80837d85632e8b9359dfe8b2f6eaf"
   dependencies:
     once "~1.3.0"
-
-ends-with@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/ends-with/-/ends-with-0.2.0.tgz#2f9da98d57a50cfda4571ce4339000500f4e6b8a"
 
 engine.io-client@1.8.0:
   version "1.8.0"
@@ -3708,9 +3728,9 @@ file-type@^3.1.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/file-type/-/file-type-3.9.0.tgz#257a078384d1db8087bc449d107d52a52672b9e9"
 
-file-type@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/file-type/-/file-type-6.1.0.tgz#5a7dba98138fa0abec7afc43e5a9a0b2aac729f1"
+file-type@^7.2.0:
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/file-type/-/file-type-7.4.0.tgz#2a7c94f62a0030150bb7d9b6c70cfa1d3e759c86"
 
 file-url@^2.0.0:
   version "2.0.2"
@@ -3820,7 +3840,7 @@ find-up@^1.0.0:
     path-exists "^2.0.0"
     pinkie-promise "^2.0.0"
 
-find-up@^2.0.0:
+find-up@^2.0.0, find-up@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-2.1.0.tgz#45d1b7e506c717ddd482775a2b77920a3c0c57a7"
   dependencies:
@@ -4090,6 +4110,14 @@ fs-extra@^0.30.0:
     klaw "^1.0.0"
     path-is-absolute "^1.0.0"
     rimraf "^2.2.8"
+
+fs-extra@^4.0.2:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-4.0.3.tgz#0d852122e5bc5beb453fb028e9c0c9bf36340c94"
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^4.0.0"
+    universalify "^0.1.0"
 
 fs-extra@~1.0.0:
   version "1.0.0"
@@ -4684,13 +4712,11 @@ gulp-decompress@^1.2.0:
     gulp-util "^3.0.1"
     readable-stream "^2.0.2"
 
-gulp-filter@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/gulp-filter/-/gulp-filter-3.0.1.tgz#7c6ffce5b563e89de7a90dfceff16ec8a8cb1562"
+gulp-exclude-gitignore@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/gulp-exclude-gitignore/-/gulp-exclude-gitignore-1.2.0.tgz#341aeb62faab428af5550da9359ceff99388f1d0"
   dependencies:
-    gulp-util "^3.0.6"
-    multimatch "^2.0.0"
-    streamfilter "^1.0.5"
+    gulp-ignore "^2.0.2"
 
 gulp-filter@^5.0.1:
   version "5.0.1"
@@ -4700,32 +4726,41 @@ gulp-filter@^5.0.1:
     multimatch "^2.0.0"
     streamfilter "^1.0.5"
 
-gulp-gitignore@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/gulp-gitignore/-/gulp-gitignore-0.1.0.tgz#ea3272b8da0d96359c990871bf1b4ad40f13d8da"
+gulp-ignore@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/gulp-ignore/-/gulp-ignore-2.0.2.tgz#5c2ea2a0a4402e0ab4a2bcd12efd9295344d78f2"
   dependencies:
-    gulp-filter "^3.0.1"
-    parse-gitignore "^0.2.0"
-    starts-with "^1.0.2"
+    gulp-match "^1.0.3"
+    through2 "^2.0.1"
+
+gulp-match@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/gulp-match/-/gulp-match-1.0.3.tgz#91c7c0d7f29becd6606d57d80a7f8776a87aba8e"
+  dependencies:
+    minimatch "^3.0.3"
 
 gulp-rename@^1.2.0:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/gulp-rename/-/gulp-rename-1.2.2.tgz#3ad4428763f05e2764dec1c67d868db275687817"
 
-gulp-reporter@^2.2.1:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/gulp-reporter/-/gulp-reporter-2.3.0.tgz#91469bc7d853e7bb33c09cbe04b3825280b09c55"
+gulp-reporter@^2.4.2:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/gulp-reporter/-/gulp-reporter-2.4.4.tgz#a96048e4ee6b5d52acd36127038707101be18e25"
   dependencies:
-    ansi-escapes "^2.0.0"
+    ansi-escapes "^3.0.0"
     buffered-spawn "^3.3.2"
     bufferstreams "^1.1.1"
-    chalk "^2.1.0"
+    chalk "^2.3.0"
+    checkstyle-formatter "^1.1.0"
+    ci-info "^1.1.1"
     cli-truncate "^1.1.0"
     emphasize "^1.5.0"
+    fs-extra "^4.0.2"
     got "^7.1.0"
     gulp-util "^3.0.8"
-    is-ci "^1.0.10"
     is-windows "^1.0.1"
+    js-yaml "^3.10.0"
+    junit-report-builder "^1.2.0"
     lodash.get "^4.4.2"
     os-locale "^2.1.0"
     string-width "^2.1.1"
@@ -5557,7 +5592,7 @@ is-callable@^1.1.1, is-callable@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.1.3.tgz#86eb75392805ddc33af71c92a0eedf74ee7604b2"
 
-is-ci@^1.0.10, is-ci@^1.0.9:
+is-ci@^1.0.9:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/is-ci/-/is-ci-1.0.10.tgz#f739336b2632365061a9d48270cd56ae3369318e"
   dependencies:
@@ -6046,7 +6081,7 @@ js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
 
-js-yaml@3.x, js-yaml@^3.5.1, js-yaml@^3.6.1, js-yaml@^3.9.0, js-yaml@^3.9.1:
+js-yaml@3.x, js-yaml@^3.10.0, js-yaml@^3.5.1, js-yaml@^3.6.1, js-yaml@^3.9.0, js-yaml@^3.9.1:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.10.0.tgz#2e78441646bd4682e963f22b6e92823c309c62dc"
   dependencies:
@@ -6306,7 +6341,7 @@ jszip@^3.1.3:
     pako "~1.0.2"
     readable-stream "~2.0.6"
 
-junit-report-builder@1.2.0:
+junit-report-builder@1.2.0, junit-report-builder@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/junit-report-builder/-/junit-report-builder-1.2.0.tgz#6897ccd5ee3d805191a4be6f12c7be850e50c0d6"
   dependencies:
@@ -6969,7 +7004,7 @@ lru-cache@^3.2.0:
   dependencies:
     pseudomap "^1.0.1"
 
-lru-cache@^4.0.0, lru-cache@^4.0.1:
+lru-cache@^4.0.0, lru-cache@^4.0.1, lru-cache@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.1.tgz#622e32e82488b49279114a4f9ecf45e7cd6bba55"
   dependencies:
@@ -8384,14 +8419,6 @@ parse-filepath@^1.0.1:
     is-absolute "^0.2.3"
     map-cache "^0.2.0"
     path-root "^0.1.1"
-
-parse-gitignore@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/parse-gitignore/-/parse-gitignore-0.2.0.tgz#98706d09f0f93ee86348b721ffee0606bc093d74"
-  dependencies:
-    ends-with "^0.2.0"
-    is-glob "^2.0.0"
-    starts-with "^1.0.0"
 
 parse-glob@3.0.4, parse-glob@^3.0.4:
   version "3.0.4"
@@ -10385,10 +10412,6 @@ stack-trace@~0.0.9:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/stack-trace/-/stack-trace-0.0.10.tgz#547c70b347e8d32b4e108ea1a2a159e5fdde19c0"
 
-starts-with@^1.0.0, starts-with@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/starts-with/-/starts-with-1.0.2.tgz#16793a729d89d4cf3d4fb2eda2f908ae357f196f"
-
 stat-mode@^0.2.0:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/stat-mode/-/stat-mode-0.2.2.tgz#e6c80b623123d7d80cf132ce538f346289072502"
@@ -10930,7 +10953,7 @@ term-size@^1.2.0:
   dependencies:
     execa "^0.7.0"
 
-"tern-jsx@github:ramitos/tern-jsx#bb32547":
+tern-jsx@ramitos/tern-jsx#bb32547:
   version "1.0.0"
   resolved "https://codeload.github.com/ramitos/tern-jsx/tar.gz/bb3254740484f26b6fc61b1d5e1bf3c08d8c30ad"
   dependencies:
@@ -12275,6 +12298,10 @@ xdg-trashdir@^2.0.0, xdg-trashdir@^2.1.0:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/xhr2/-/xhr2-0.1.4.tgz#7f87658847716db5026323812f818cadab387a5f"
 
+xml-escape@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/xml-escape/-/xml-escape-1.1.0.tgz#3904c143fa8eb3a0030ec646d2902a2f1b706c44"
+
 "xml-name-validator@>= 2.0.1 < 3.0.0":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-2.0.1.tgz#4d8b8f1eccd3419aa362061becef515e1e559635"
@@ -12399,6 +12426,12 @@ yargs-parser@^5.0.0:
   dependencies:
     camelcase "^3.0.0"
 
+yargs-parser@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-8.0.0.tgz#21d476330e5a82279a4b881345bf066102e219c6"
+  dependencies:
+    camelcase "^4.1.0"
+
 yargs@3.29.0:
   version "3.29.0"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-3.29.0.tgz#1aab9660eae79d8b8f675bcaeeab6ee34c2cf69c"
@@ -12517,23 +12550,22 @@ yargs@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-1.3.3.tgz#054de8b61f22eefdb7207059eaef9d6b83fb931a"
 
-yargs@^8.0.2:
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-8.0.2.tgz#6299a9055b1cefc969ff7e79c1d918dceb22c360"
+yargs@^10.0.3:
+  version "10.0.3"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-10.0.3.tgz#6542debd9080ad517ec5048fb454efe9e4d4aaae"
   dependencies:
-    camelcase "^4.1.0"
     cliui "^3.2.0"
     decamelize "^1.1.1"
+    find-up "^2.1.0"
     get-caller-file "^1.0.1"
     os-locale "^2.0.0"
-    read-pkg-up "^2.0.0"
     require-directory "^2.1.1"
     require-main-filename "^1.0.1"
     set-blocking "^2.0.0"
     string-width "^2.0.0"
     which-module "^2.0.0"
     y18n "^3.2.1"
-    yargs-parser "^7.0.0"
+    yargs-parser "^8.0.0"
 
 yargs@~3.10.0:
   version "3.10.0"
