@@ -5055,9 +5055,9 @@ hexo-util@^0.6.0:
     html-entities "^1.2.1"
     striptags "^2.2.1"
 
-hexo@^3.3.8:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/hexo/-/hexo-3.4.0.tgz#c5c47de914cd8f25fd49d246097ccfedf38f5e4c"
+hexo@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/hexo/-/hexo-3.4.3.tgz#dafdedbe95cbc0859f59d16aefa4c2a470350210"
   dependencies:
     abbrev "^1.0.7"
     archy "^1.0.0"
@@ -5074,8 +5074,8 @@ hexo@^3.3.8:
     js-yaml "^3.6.1"
     lodash "^4.13.1"
     minimatch "^3.0.0"
-    moment "~2.13.0"
-    moment-timezone "^0.5.4"
+    moment "^2.19.2"
+    moment-timezone "^0.5.14"
     nunjucks "^2.4.2"
     pretty-hrtime "^1.0.2"
     strip-indent "^1.0.1"
@@ -7406,7 +7406,7 @@ modify-filename@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/modify-filename/-/modify-filename-1.1.0.tgz#9a2dec83806fbb2d975f22beec859ca26b393aa1"
 
-moment-timezone@^0.5.4:
+moment-timezone@^0.5.14:
   version "0.5.14"
   resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.14.tgz#4eb38ff9538b80108ba467a458f3ed4268ccfcb1"
   dependencies:
@@ -7430,9 +7430,9 @@ moment@2.18.1:
   version "2.19.2"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.2.tgz#8a7f774c95a64550b4c7ebd496683908f9419dbe"
 
-moment@~2.13.0:
-  version "2.13.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.13.0.tgz#24162d99521e6d40f99ae6939e806d2139eaac52"
+moment@^2.19.2:
+  version "2.19.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.4.tgz#17e5e2c6ead8819c8ecfad83a0acccb312e94682"
 
 months@^1.0.0:
   version "1.0.1"
@@ -10930,7 +10930,7 @@ term-size@^1.2.0:
   dependencies:
     execa "^0.7.0"
 
-"tern-jsx@github:ramitos/tern-jsx#bb32547":
+tern-jsx@ramitos/tern-jsx#bb32547:
   version "1.0.0"
   resolved "https://codeload.github.com/ramitos/tern-jsx/tar.gz/bb3254740484f26b6fc61b1d5e1bf3c08d8c30ad"
   dependencies:
