@@ -7044,16 +7044,6 @@ markdown-it@8.3.2:
     mdurl "^1.0.1"
     uc.micro "^1.0.3"
 
-markdown-it@^8.3.1:
-  version "8.4.0"
-  resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-8.4.0.tgz#e2400881bf171f7018ed1bd9da441dac8af6306d"
-  dependencies:
-    argparse "^1.0.7"
-    entities "~1.1.1"
-    linkify-it "^2.0.0"
-    mdurl "^1.0.1"
-    uc.micro "^1.0.3"
-
 markdown-table@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.0.tgz#1f5ae61659ced8808d882554c32e8b3f38dd1143"
@@ -7064,16 +7054,16 @@ markdown@~0.5.0:
   dependencies:
     nopt "~2.1.1"
 
-markdownlint-cli@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/markdownlint-cli/-/markdownlint-cli-0.3.1.tgz#7e05809f27e7f50886bf05adc7d2d25bb3b05293"
+markdownlint-cli@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/markdownlint-cli/-/markdownlint-cli-0.5.0.tgz#5c9562667efbf3298cfedb66d50c0a891b62cb39"
   dependencies:
     commander "~2.9.0"
     deep-extend "~0.4.1"
     glob "~7.0.3"
     lodash.flatten "~4.3.0"
     lodash.values "~4.2.0"
-    markdownlint "~0.4.1"
+    markdownlint "~0.6.1"
     rc "~1.1.6"
 
 markdownlint@^0.6.0:
@@ -7082,11 +7072,11 @@ markdownlint@^0.6.0:
   dependencies:
     markdown-it "8.3.2"
 
-markdownlint@~0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/markdownlint/-/markdownlint-0.4.1.tgz#37320ca944938024fd6b421b2401ad349349588a"
+markdownlint@~0.6.1:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/markdownlint/-/markdownlint-0.6.4.tgz#7fa77e0d8c1b1c3ed7978761ce664bd23e7328ef"
   dependencies:
-    markdown-it "^8.3.1"
+    markdown-it "8.3.2"
 
 marked-terminal@^1.5.0:
   version "1.7.0"
@@ -10930,7 +10920,7 @@ term-size@^1.2.0:
   dependencies:
     execa "^0.7.0"
 
-"tern-jsx@github:ramitos/tern-jsx#bb32547":
+tern-jsx@ramitos/tern-jsx#bb32547:
   version "1.0.0"
   resolved "https://codeload.github.com/ramitos/tern-jsx/tar.gz/bb3254740484f26b6fc61b1d5e1bf3c08d8c30ad"
   dependencies:
