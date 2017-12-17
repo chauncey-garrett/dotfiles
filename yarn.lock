@@ -7076,9 +7076,9 @@ markdownlint-cli@^0.3.1:
     markdownlint "~0.4.1"
     rc "~1.1.6"
 
-markdownlint@^0.6.0:
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/markdownlint/-/markdownlint-0.6.3.tgz#e7859da1a9329575b81947e59966e34e649391cc"
+markdownlint@^0.6.4:
+  version "0.6.4"
+  resolved "https://registry.yarnpkg.com/markdownlint/-/markdownlint-0.6.4.tgz#7fa77e0d8c1b1c3ed7978761ce664bd23e7328ef"
   dependencies:
     markdown-it "8.3.2"
 
@@ -10930,7 +10930,7 @@ term-size@^1.2.0:
   dependencies:
     execa "^0.7.0"
 
-"tern-jsx@github:ramitos/tern-jsx#bb32547":
+tern-jsx@ramitos/tern-jsx#bb32547:
   version "1.0.0"
   resolved "https://codeload.github.com/ramitos/tern-jsx/tar.gz/bb3254740484f26b6fc61b1d5e1bf3c08d8c30ad"
   dependencies:
