@@ -10930,7 +10930,7 @@ term-size@^1.2.0:
   dependencies:
     execa "^0.7.0"
 
-"tern-jsx@github:ramitos/tern-jsx#bb32547":
+tern-jsx@ramitos/tern-jsx#bb32547:
   version "1.0.0"
   resolved "https://codeload.github.com/ramitos/tern-jsx/tar.gz/bb3254740484f26b6fc61b1d5e1bf3c08d8c30ad"
   dependencies:
@@ -11291,9 +11291,9 @@ typescript@2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.1.tgz#4862b662b988a4c8ff691cc7969622d24db76ae9"
 
-typescript@2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.5.1.tgz#ce7cc93ada3de19475cc9d17e3adea7aee1832aa"
+typescript@2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.6.2.tgz#3c5b6fd7f6de0914269027f03c0946758f7673a4"
 
 typpy@2.0.0:
   version "2.0.0"
