@@ -1797,7 +1797,11 @@ commander@2.9.0, "commander@>= 0.5.2", commander@^2.2.0, commander@^2.8.1, comma
   dependencies:
     graceful-readlink ">= 1.0.0"
 
-commander@^2.11.0, commander@^2.3.0, commander@^2.9.0:
+commander@^2.12.2:
+  version "2.12.2"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.12.2.tgz#0f5946c427ed9ec0d91a46bb9def53e54650e555"
+
+commander@^2.3.0, commander@^2.9.0:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.11.0.tgz#157152fd1e7a6c8d98a5b715cf376df928004563"
 
@@ -6896,7 +6900,7 @@ log-symbols@^1.0.0, log-symbols@^1.0.2:
   dependencies:
     chalk "^1.0.0"
 
-log-symbols@^2.0.0:
+log-symbols@^2.0.0, log-symbols@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.1.0.tgz#f35fa60e278832b538dc4dddcbb478a45d3e3be6"
   dependencies:
@@ -7817,19 +7821,19 @@ npm-name@^3.0.0:
     lodash.zip "^4.0.0"
     registry-url "^3.0.0"
 
-npm-package-json-lint@^2.9.0:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/npm-package-json-lint/-/npm-package-json-lint-2.11.0.tgz#a19fb1093b20e5756845234d5e451e4b8d97620f"
+npm-package-json-lint@^2.11.1:
+  version "2.11.1"
+  resolved "https://registry.yarnpkg.com/npm-package-json-lint/-/npm-package-json-lint-2.11.1.tgz#9324af75012957db665a8b9c16b524a60093ec31"
   dependencies:
-    chalk "^2.1.0"
-    commander "^2.11.0"
+    chalk "^2.3.0"
+    commander "^2.12.2"
     in-array "^0.1.2"
     is-plain-obj "^1.1.0"
-    log-symbols "^2.0.0"
+    log-symbols "^2.1.0"
     plur "^2.1.2"
     semver "^5.4.1"
     user-home "^2.0.0"
-    validator "^8.1.0"
+    validator "^9.2.0"
 
 npm-prefix@^1.2.0:
   version "1.2.0"
@@ -10930,7 +10934,7 @@ term-size@^1.2.0:
   dependencies:
     execa "^0.7.0"
 
-"tern-jsx@github:ramitos/tern-jsx#bb32547":
+tern-jsx@ramitos/tern-jsx#bb32547:
   version "1.0.0"
   resolved "https://codeload.github.com/ramitos/tern-jsx/tar.gz/bb3254740484f26b6fc61b1d5e1bf3c08d8c30ad"
   dependencies:
@@ -11748,9 +11752,9 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
 
-validator@^8.1.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/validator/-/validator-8.2.0.tgz#3c1237290e37092355344fef78c231249dab77b9"
+validator@^9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/validator/-/validator-9.2.0.tgz#ad216eed5f37cac31a6fe00ceab1f6b88bded03e"
 
 vary@~1.1.0:
   version "1.1.1"
