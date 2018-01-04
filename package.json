@@ -88,7 +88,7 @@
     "npm-package-json-lint": "^2.9.0",
     "onepass-cli": "^0.6.1",
     "oni-vim": "^0.1.11",
-    "pageres-cli": "^4.0.0",
+    "pageres-cli": "^4.1.0",
     "parse-columns-cli": "^2.0.0",
     "polyjuice": "^2.2.1",
     "public-ip-cli": "^1.0.0",
