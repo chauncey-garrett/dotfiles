@@ -949,9 +949,9 @@ bresenham@0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/bresenham/-/bresenham-0.0.3.tgz#abdab9e5b194e27c757cd314d8444314f299877a"
 
-broken-link-checker@^0.7.6:
-  version "0.7.6"
-  resolved "https://registry.yarnpkg.com/broken-link-checker/-/broken-link-checker-0.7.6.tgz#94e3b4c814521104c4dab247d7e1a8dd14616093"
+broken-link-checker@^0.7.7:
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/broken-link-checker/-/broken-link-checker-0.7.7.tgz#13c5ebfa6b2766709129643ede2fb60d17197e8d"
   dependencies:
     bhttp "^1.2.1"
     calmcard "~0.1.1"
@@ -10930,7 +10930,7 @@ term-size@^1.2.0:
   dependencies:
     execa "^0.7.0"
 
-"tern-jsx@github:ramitos/tern-jsx#bb32547":
+tern-jsx@ramitos/tern-jsx#bb32547:
   version "1.0.0"
   resolved "https://codeload.github.com/ramitos/tern-jsx/tar.gz/bb3254740484f26b6fc61b1d5e1bf3c08d8c30ad"
   dependencies:
