@@ -82,7 +82,7 @@
     "macos-version-cli": "^1.1.0",
     "markdownlint": "^0.6.0",
     "markdownlint-cli": "^0.3.1",
-    "neovim-client": "^2.1.0",
+    "neovim": "^3.5.2",
     "node-inspector": "^1.1.1",
     "nodemon": "^1.12.0",
     "npm-package-json-lint": "^2.9.0",

@@ -510,6 +510,10 @@ async@^2.1.4, async@^2.4.1:
   dependencies:
     lodash "^4.14.0"
 
+async@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/async/-/async-1.0.0.tgz#f8fc04ca3a13784ade9e1641af98578cfbd647a9"
+
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -1724,7 +1728,7 @@ colors@0.6.x, colors@~0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/colors/-/colors-0.6.2.tgz#2423fe6678ac0c5dae8852e5d0e5be08c997abcc"
 
-colors@1.0.3:
+colors@1.0.3, colors@1.0.x:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.0.3.tgz#0433f44d809680fdeb60ed260f1b0c262e82a40b"
 
@@ -3367,6 +3371,10 @@ event-emitter@^0.3.5, event-emitter@~0.3.1, event-emitter@~0.3.5:
   dependencies:
     d "1"
     es5-ext "~0.10.14"
+
+event-lite@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/event-lite/-/event-lite-0.1.1.tgz#47cf08a8d37d0b694cdb7b3b17b51faac6576086"
 
 event-stream@~0.9.8:
   version "0.9.8"
@@ -5264,6 +5272,10 @@ iconv-lite@^0.4.13, iconv-lite@^0.4.17:
   version "0.4.19"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.19.tgz#f7468f60135f5e5dad3399c0a81be9a1603a082b"
 
+ieee754@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
+
 iferr@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/iferr/-/iferr-0.1.5.tgz#c60eed69e6d8fdb6b3104a1fcbca1c192dc5b501"
@@ -5428,6 +5440,10 @@ inquirer@^3.0.3, inquirer@^3.0.6:
     string-width "^2.1.0"
     strip-ansi "^4.0.0"
     through "^2.3.6"
+
+int64-buffer@^0.1.9:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/int64-buffer/-/int64-buffer-0.1.10.tgz#277b228a87d95ad777d07c13832022406a473423"
 
 intel@1.2.0, intel@^1.1.0:
   version "1.2.0"
@@ -7474,6 +7490,15 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
+msgpack-lite@^0.1.26:
+  version "0.1.26"
+  resolved "https://registry.yarnpkg.com/msgpack-lite/-/msgpack-lite-0.1.26.tgz#dd3c50b26f059f25e7edee3644418358e2a9ad89"
+  dependencies:
+    event-lite "^0.1.1"
+    ieee754 "^1.1.8"
+    int64-buffer "^0.1.9"
+    isarray "^1.0.0"
+
 msgpack5@^3.3.0:
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/msgpack5/-/msgpack5-3.4.1.tgz#350ef35899c6c8773710fd84d881ddd3340a8114"
@@ -7574,13 +7599,22 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-neovim-client@2.1.0, neovim-client@^2.1.0:
+neovim-client@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/neovim-client/-/neovim-client-2.1.0.tgz#59df8e9d5963625a4f2384d46aa13a661d42f11c"
   dependencies:
     lodash "^4.13.1"
     msgpack5rpc "^1.0.2"
     traverse "^0.6.6"
+
+neovim@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/neovim/-/neovim-3.5.2.tgz#ef3f8f287b5966c29197dcb83d116fbc1d90ed37"
+  dependencies:
+    lodash "^4.17.4"
+    msgpack-lite "^0.1.26"
+    traverse "^0.6.6"
+    winston "^2.3.1"
 
 nested-error-stacks@^1.0.0, nested-error-stacks@^1.0.1:
   version "1.0.2"
@@ -10930,13 +10964,13 @@ term-size@^1.2.0:
   dependencies:
     execa "^0.7.0"
 
-"tern-jsx@github:ramitos/tern-jsx#bb32547":
+tern-jsx@ramitos/tern-jsx#bb32547:
   version "1.0.0"
   resolved "https://codeload.github.com/ramitos/tern-jsx/tar.gz/bb3254740484f26b6fc61b1d5e1bf3c08d8c30ad"
   dependencies:
-    acorn "^5.0.3"
-    acorn-jsx ramitos/acorn-jsx#6683232
-    tern "^0.21.0"
+    acorn "^4.0.2"
+    acorn-jsx ramitos/acorn-jsx#209f7ec
+    tern "^0.20.0"
 
 tern@^0.21.0:
   version "0.21.0"
@@ -12118,6 +12152,17 @@ winston@0.8.x:
     eyes "0.1.x"
     isstream "0.1.x"
     pkginfo "0.3.x"
+    stack-trace "0.0.x"
+
+winston@^2.3.1:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/winston/-/winston-2.4.0.tgz#808050b93d52661ed9fb6c26b3f0c826708b0aee"
+  dependencies:
+    async "~1.0.0"
+    colors "1.0.x"
+    cycle "1.0.x"
+    eyes "0.1.x"
+    isstream "0.1.x"
     stack-trace "0.0.x"
 
 with@^5.0.0:
