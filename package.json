@@ -37,7 +37,7 @@
     "csslint": "^1.0.5",
     "default-browser-cli": "^1.0.0",
     "devotions-cli": "^1.0.8",
-    "diff-so-fancy": "^1.1.1",
+    "diff-so-fancy": "^1.2.0",
     "docco": "^0.7.0",
     "dockerlint": "^0.3.1",
     "eclint": "2.4.3",
