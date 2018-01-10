@@ -25,7 +25,7 @@ GEM
     equatable (0.5.0)
     erubis (2.7.0)
     ffi (1.9.18)
-    gist (4.6.1)
+    gist (4.6.2)
     github (0.7.2)
       highline (~> 1.6)
       json_pure (~> 1.5.1)
@@ -150,4 +150,4 @@ DEPENDENCIES
   tmuxinator
 
 BUNDLED WITH
-   1.14.6
+   1.16.0
