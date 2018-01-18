@@ -258,7 +258,7 @@ call Plugged('wellle/tmux-complete.vim')
 " TODO optimize check for system in global before file
 if (system('uname') =~? 'darwin')
   call Plugged('rizzatti/dash.vim')
-  call Plugged('chauncey-garrett/vim-marked')
+  call Plugged('itspriddle/vim-marked')
 
 " Linux / Windows
 else
