@@ -3,9 +3,6 @@
 " Global Settings
 "
 
-" NOTE: Required for DevIcons
-set encoding=utf8
-
 " Minimal number of screen lines to keep above and below the cursor.
 set scrolloff=10
 
