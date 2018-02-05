@@ -32,51 +32,22 @@ source ~/.config/nvim/config/_global.after.vim
 "
 " characterize
 " consolation
-" criticmarkup
 " cucumbertables
-" funcoo
-" gitv
 " investigate
 " jdaddy
 " language-tool
 " obsession
-" plist
-" preserve-no-eol
 " remotecopy
 " search-complete
 " space
-" syntax-nginx
 " tag-highlight
-" vimux
-" wordy
 
-"
-" TODO.Janus
-"
-
-" LANGUAGES
-"
-" cucumber
-" git
-" liquid
-" nodejs
-" ruby
-" scss
-" typescript
-
-" PLUGINS
-"
-" endwise TODO?
-" eunuch
-" gist
 " kwbd
 " narrowregion
 " repeat
 " tlib
 " vim-addon-mw-utils
 " vimwiki
-" vroom
-" webapi
 " zoomwin
 
 " ├── janus
