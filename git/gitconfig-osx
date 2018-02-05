@@ -47,6 +47,14 @@
   #   git rm-merged-branches
   #
   rm-merged-branches = "!_() { git branch --merged master | grep -v \"master$\" | xargs git branch -d; }; _"
+
+  #
+  # Set upstream to the current branch's name
+  # https://zarino.co.uk/post/git-set-upstream/
+  #
+  # @usage
+  #   git set-upstream
+  set-upstream = "!git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`"
 [apply]
   whitespace = nowarn
 [branch]
@@ -102,6 +110,8 @@
   path =
 [difftool "nvimDiff"]
   cmd = nvim -d \"$BASE\" \"$MERGED\"
+[fetch]
+  prune = true
 [filter "hawser"]
   clean = git hawser clean %f
   smudge = git hawser smudge %f
@@ -118,6 +128,8 @@
   clean = git-stripspace %f
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+[github]
+  user = chauncey-garrett
 [merge]
   conflictstyle = diff3
   tool = nvimMerge
@@ -140,7 +152,8 @@
 [pager "diff-so-fancy"]
   cmd = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [push]
-  default = current
+  default = simple
+  recurseSubmodules = check
 [rerere] # Remember my merges http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = true
 
