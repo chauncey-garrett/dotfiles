@@ -24,10 +24,10 @@ fi
 #
 
 if [[ "${OSTYPE}" == darwin* ]]; then
-	export BROWSER="open"
+  export BROWSER="open"
 
 elif [[ "${OSTYPE}" == linux* ]]; then
-	export BROWSER="xdg-open"
+  export BROWSER="xdg-open"
 fi
 
 #
@@ -48,7 +48,7 @@ export PAGER="less"
 #
 
 if [[ -z "${LANG}" ]]; then
-	export LANG="en_US.UTF-8"
+  export LANG="en_US.UTF-8"
 fi
 
 #
@@ -103,18 +103,18 @@ if (( $+commands[highlight] )); then
 
 # Try both `lesspipe` and `lesspipe.sh` as either might exist on a system.
 elif (( $#commands[(i)lesspipe(|.sh)] )); then
-	export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
+  export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 
 elif [[ -f /usr/bin/src-hilite-lesspipe.sh ]]; then
-	export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s 2>&-"
+  export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s 2>&-"
 
 # Use Neovim's runtime highlighting.
 elif [[ -f /usr/share/nvim/runtime/macros/less.sh ]]; then
-	export LESSOPEN="| /usr/share/nvim/runtime/macros/less.sh 2>&-"
+  export LESSOPEN="| /usr/share/nvim/runtime/macros/less.sh 2>&-"
 
 # Use Vim's runtime highlighting.
 elif [[ -f /usr/share/vim/runtime/macros/less.sh ]]; then
-	export LESSOPEN="| /usr/share/vim/runtime/macros/less.sh 2>&-"
+  export LESSOPEN="| /usr/share/vim/runtime/macros/less.sh 2>&-"
 fi
 
 #
@@ -122,9 +122,9 @@ fi
 #
 
 if [[ -n "$(find "${HOME}/.dotfiles/zsh/profiles" -name '*.rc' -print -quit)" ]]; then
-	for file in ${HOME}/.dotfiles/zsh/profiles/**/*.rc; do
-		source "${file}"
-	done
+  for file in ${HOME}/.dotfiles/zsh/profiles/**/*.rc; do
+    source "${file}"
+  done
 fi
 
 #
@@ -168,34 +168,34 @@ fi
 # here are for all my accounts, some of which have unusual paths in them.
 # rationalize-path will remove nonexistent directories from an array.
 #
-#	NOTE: this works only on arrays, not colon-delimited strings. Not that this is
-#	a problem now that there is typeset -T.
+# NOTE: this works only on arrays, not colon-delimited strings. Not that this is
+# a problem now that there is typeset -T.
 #
-#	http://zsh.sourceforge.net/Contrib/startup/users/debbiep/dot.zshenv
+# http://zsh.sourceforge.net/Contrib/startup/users/debbiep/dot.zshenv
 #
-#	@usage
-#	  rationalize-path <pathArray>
-#	@arg 1 {Array}
-#	  The array to rationalize.
+# @usage
+#   rationalize-path <pathArray>
+# @arg 1 {Array}
+#   The array to rationalize.
 #
 function rationalize-path() {
-	local element
+  local element
   local build
 
-	build=()
+  build=()
 
   # Evil quoting to survive an eval and to make sure that this works even with
   # variables containing IFS characters, if I'm crazy enough to setopt
   # shwordsplit.
-	eval '
-	foreach element in "$'"$1"'[@]"; do
-		if [[ -d "${element}" ]]; then
-			build=("${build[@]}" "${element}")
-		fi
-	done
+  eval '
+  foreach element in "$'"$1"'[@]"; do
+    if [[ -d "${element}" ]]; then
+      build=("${build[@]}" "${element}")
+    fi
+  done
 
-	'"$1"'=( "${build[@]}" )
-	'
+  '"$1"'=( "${build[@]}" )
+  '
 }
 
 #
@@ -203,8 +203,8 @@ function rationalize-path() {
 #
 
 cdpath=(
-	.
-	"${cdpath[@]}"
+  .
+  "${cdpath[@]}"
 )
 
 export CDPATH
@@ -216,8 +216,10 @@ rationalize-path cdpath
 #
 
 fpath=(
-	"${HOME}/lib/zsh/func"
-	"${fpath[@]}"
+  "${HOME}/lib/zsh/func"
+  "${HOME}/.linuxbrew/share/zsh/site-functions"
+  "/usr/local/share/zsh/site-functions"
+  "${fpath[@]}"
 )
 
 export FPATH
@@ -229,37 +231,16 @@ rationalize-path fpath
 #
 
 path=(
-	${GAUSSIAN_TOOLS_DIRECTORY}
-	${HOME}/{.bin,bin}
-	${HOME}/.dotfiles/node_modules/.bin
-	${HOME}/.linuxbrew/{bin,sbin}
+  ${HOME}/{.bin,bin}
+  ${HOME}/.dotfiles/node_modules/.bin
+  ${HOME}/.linuxbrew/{bin,sbin}
   /home/linuxbrew/.linuxbrew/opt/python/libexec/bin
-	/home/linuxbrew/.linuxbrew/{bin,sbin}
-	/usr/local/share/npm/bin
-	/usr/local/mysql/bin
-	/usr/local/MacGPG2/bin
-	/usr/local/opt/ruby/bin
-	/usr/local/opt/go/libexec/bin
-	/usr/local/{bin,sbin}
-	/opt/openmpi/bin
-	/usr/lib64/qt-3.3/bin
-	/opt/eclipse
-	/opt/ganglia/{bin,sbin}
-	/usr/java/latest/bin
-	/opt/maven/bin
-	/opt/maui/bin
-	/opt/torque/{bin,sbin}
-	/opt/pdsh/bin
-	/opt/rocks/{bin,sbin}
-	/opt/gridengine/bin/linux-x64
-	/opt/X11/bin
-	/usr/libexec
-	/usr/X11/bin
-	/usr/texbin
-	/usr/{bin,sbin}
-	/{bin,sbin}
-	"${path[@]}"
-	"${fpath[@]}"
+  /home/linuxbrew/.linuxbrew/{bin,sbin}
+  /usr/local/{bin,sbin}
+  /usr/{bin,sbin}
+  /{bin,sbin}
+  "${path[@]}"
+  "${fpath[@]}"
 )
 
 export PATH
@@ -271,20 +252,14 @@ rationalize-path path
 #
 
 manpath=(
-	${HOME}/{.man,man}
-	${HOME}/.linuxbrew/share/man
+  ${HOME}/{.man,man}
   /home/linuxbrew/.linuxbrew/share/man
-	/usr/local/git/man
-	/usr/local/mysql/man
-	/usr/local/{man,sbin}
-	/share/utils/MPI/openmpi/intel/1.6.5/share/man
-	/share/utils/INTEL/intel13/composerxe/man/en_US
-	/share/utils/INTEL/intel13/composerxe/mkl/man/en_US
-	/usr/share/man
-	/usr/man/preformat
-	/usr/man
-	/usr/X11/man
-	"${manpath[@]}"
+  /usr/local/{man,sbin}
+  /usr/share/man
+  /usr/man/preformat
+  /usr/man
+  /usr/X11/man
+  "${manpath[@]}"
 )
 
 export MANPATH
@@ -298,9 +273,8 @@ rationalize-path manpath
 typeset -T INFOPATH infopath
 
 infopath=(
-	${HOME}/.linuxbrew/share/info
   /home/linuxbrew/.linuxbrew/share/info
-	"$infopath[@]"
+  "$infopath[@]"
 )
 
 export INFOPATH
@@ -313,7 +287,7 @@ rationalize-path infopath
 
 mailpath=(
   "/usr/spool/mail/$LOGNAME?You inexplicably have new mail in /usr/spool/mail/$LOGNAME"
-	"${mailpath[@]}"
+  "${mailpath[@]}"
 )
 
 export MAILPATH
@@ -327,9 +301,8 @@ rationalize-path mailpath
 typeset -T XDG_DATA_DIRS xdg_data_dirs
 
 xdg_data_dirs=(
-  ${HOME}/.linuxbrew/share
   /home/linuxbrew/.linuxbrew/share
-	"$xdg_data_dirs[@]"
+  "$xdg_data_dirs[@]"
 )
 
 export XDG_DATA_DIRS
@@ -344,7 +317,7 @@ typeset -T GOPATH gopath
 
 gopath=(
   ${HOME}/gocode
-	"$gopath[@]"
+  "$gopath[@]"
 )
 
 export GOPATH
