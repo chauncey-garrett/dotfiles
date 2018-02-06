@@ -139,7 +139,9 @@ zstyle ':prezto:module:history-substring-search' globbing-flags 'i'
 # Auto set to 'off' on dumb terminals.
 zstyle ':prezto:module:prompt' theme 'garrett'
 
-# Set how themes that use promptpwd function display the pwd, can be 'short', 'long', or 'full'
+# Set the working directory prompt display length.
+# By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
+# for longer or 'full' (with '~' expansion) for even longer prompt display.
 zstyle ':prezto:module:prompt' pwd-length 'short'
 
 #
@@ -163,7 +165,7 @@ zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 # SSH
 #
 
-# Set ssh-agent identities to load.
+# Set the SSH identities to load into the agent.
 zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_dsa' 'id_github' 'id_stash' 'id_dev' 'id_devnet'
 
 #
