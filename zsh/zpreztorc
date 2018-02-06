@@ -156,6 +156,16 @@ zstyle ':prezto:module:prompt' show-return-val 'yes'
 zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 
 #
+# Python
+#
+
+# Auto switch the Python virtualenv on directory change.
+zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
+
+# Automatically initialize virtualenvwrapper if pre-requisites are met.
+zstyle ':prezto:module:python:virtualenv' initialize 'yes'
+
+#
 # Screen
 #
 
