@@ -238,5 +238,13 @@ zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 # Set the default session name:
 zstyle ':prezto:module:tmux:session' name 'prezto!'
 
+#
+# Utility
+#
+
+# Enabled safe options. This aliases cp, ln, mv and rm so that they prompt
+# before deleting or overwriting files. Set to 'no' to disable this safer
+# behavior.
+zstyle ':prezto:module:utility' safe-ops 'yes'
 
 # vim: set filetype=zsh:
