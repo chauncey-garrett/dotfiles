@@ -851,3 +851,11 @@ function finda() {
   find . | ag "${@}"
 }
 
+#
+# Kaleidoscope
+#
+
+# Setup Kaleidoscope for tmux
+if (( $+commands[ksdiff] )) && (( $+commands[reattach-to-user-namespace] )); then
+  alias ksdiff='reattach-to-user-namespace -l ksdiff'
+fi
