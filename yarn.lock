@@ -2864,6 +2864,10 @@ detect-file@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/detect-file/-/detect-file-1.0.0.tgz#f0d66d03672a825cb1b73bdb3fe62310c8e552b7"
 
+detect-indent@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-5.0.0.tgz#3871cc0a6a002e8c3e5b3cf7f336264675f06b9d"
+
 detect-libc@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-0.2.0.tgz#47fdf567348a17ec25fcbf0b9e446348a76f9fb5"
@@ -4230,6 +4234,15 @@ fined@^1.0.1:
 first-chunk-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/first-chunk-stream/-/first-chunk-stream-1.0.0.tgz#59bfb50cd905f60d7c394cd3d9acaab4e6ad934e"
+
+fixjson@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/fixjson/-/fixjson-1.1.0.tgz#38e58465f17ff511e639117883a34100830ef024"
+  dependencies:
+    detect-indent "^5.0.0"
+    glob "^7.1.2"
+    json5-relaxed "^0.5.4"
+    yargs "^10.1.1"
 
 fkill-cli@^4.0.0:
   version "4.0.0"
@@ -6782,6 +6795,10 @@ json2yaml@^1.1.0:
 json3@3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/json3/-/json3-3.3.2.tgz#3c0434743df93e2f5c42aee7b19bcb483575f4e1"
+
+json5-relaxed@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/json5-relaxed/-/json5-relaxed-0.5.4.tgz#f5d90ccb8050c5d6f092a5ac92184502ffb37bf0"
 
 json@^9.0.4:
   version "9.0.6"
@@ -11776,9 +11793,9 @@ tern-jsx@ramitos/tern-jsx#bb32547:
   version "1.0.0"
   resolved "https://codeload.github.com/ramitos/tern-jsx/tar.gz/bb3254740484f26b6fc61b1d5e1bf3c08d8c30ad"
   dependencies:
-    acorn "^5.0.3"
-    acorn-jsx ramitos/acorn-jsx#6683232
-    tern "^0.21.0"
+    acorn "^4.0.2"
+    acorn-jsx ramitos/acorn-jsx#209f7ec
+    tern "^0.20.0"
 
 tern@^0.21.0:
   version "0.21.0"
@@ -13406,7 +13423,7 @@ yargs@9.0.1:
     y18n "^3.2.1"
     yargs-parser "^7.0.0"
 
-yargs@^10.0.3:
+yargs@^10.0.3, yargs@^10.1.1:
   version "10.1.2"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-10.1.2.tgz#454d074c2b16a51a43e2fb7807e4f9de69ccb5c5"
   dependencies:

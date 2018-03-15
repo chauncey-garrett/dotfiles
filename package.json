@@ -49,6 +49,7 @@
     "eslint-plugin-react": "^7.1.0",
     "fast-cli": "^2.1.0",
     "find-up-cli": "^2.0.0",
+    "fixjson": "^1.1.0",
     "fkill-cli": "^4.0.0",
     "flow-bin": "^0.63.1",
     "forecast-cli": "^0.5.4",
