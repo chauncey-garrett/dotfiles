@@ -44,6 +44,7 @@ gem 'brakeman'
 gem 'rails_best_practices'
 gem 'reek'
 gem 'rubocop'
+gem 'sqlint'
 
 #
 # For vim-autoformat
