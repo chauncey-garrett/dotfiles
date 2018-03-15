@@ -756,11 +756,35 @@ lno() {
 }
 
 #
-# Print out readable path
+# Print out readable paths
 #
+
+cdpath() {
+  echo "${CDPATH}" | tr : '\n'
+}
 
 path() {
   echo "${PATH}" | tr : '\n'
+}
+
+manpath() {
+  echo "${MANPATH}" | tr : '\n'
+}
+
+infopath() {
+  echo "${INFOPATH}" | tr : '\n'
+}
+
+mailpath() {
+  echo "${MAILPATH}" | tr : '\n'
+}
+
+xdg_data_dirs() {
+  echo "${XDG_DATA_DIRS}" | tr : '\n'
+}
+
+gopath() {
+  echo "${GOPATH}" | tr : '\n'
 }
 
 #
