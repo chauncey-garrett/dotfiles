@@ -1,6 +1,7 @@
 LinkChecker
 ansible
 ansible-lint
+gitlint
 gixy
 glances
 jrnl
