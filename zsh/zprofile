@@ -216,9 +216,9 @@ rationalize-path cdpath
 #
 
 fpath=(
-  "${HOME}/lib/zsh/func"
-  "${HOME}/.linuxbrew/share/zsh/site-functions"
-  "/usr/local/share/zsh/site-functions"
+  ${HOME}/lib/zsh/func
+  {${HOME},/home/linuxbrew}/.linuxbrew/share/zsh/site-functions
+  /usr/local/share/zsh/site-functions
   "${fpath[@]}"
 )
 
@@ -231,11 +231,11 @@ rationalize-path fpath
 #
 
 path=(
+  ${HOME}/bin/Sencha/Cmd
   ${HOME}/{.bin,bin}
   ${HOME}/.dotfiles/node_modules/.bin
-  ${HOME}/.linuxbrew/{bin,sbin}
-  /home/linuxbrew/.linuxbrew/opt/python/libexec/bin
-  /home/linuxbrew/.linuxbrew/{bin,sbin}
+  {${HOME},/home/linuxbrew}/.linuxbrew/{bin,sbin}
+  {${HOME},/home/linuxbrew}/.linuxbrew/opt/python/libexec/bin
   /usr/local/{bin,sbin}
   /usr/{bin,sbin}
   /{bin,sbin}
@@ -273,7 +273,7 @@ rationalize-path manpath
 typeset -T INFOPATH infopath
 
 infopath=(
-  /home/linuxbrew/.linuxbrew/share/info
+  {${HOME},/home/linuxbrew}/.linuxbrew/share/info
   "$infopath[@]"
 )
 
@@ -301,7 +301,7 @@ rationalize-path mailpath
 typeset -T XDG_DATA_DIRS xdg_data_dirs
 
 xdg_data_dirs=(
-  /home/linuxbrew/.linuxbrew/share
+  {${HOME},/home/linuxbrew}/.linuxbrew/share
   "$xdg_data_dirs[@]"
 )
 
