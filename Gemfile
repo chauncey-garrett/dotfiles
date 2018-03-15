@@ -39,6 +39,7 @@ gem 'terjira'
 #
 
 gem 'brakeman'
+gem 'rails_best_practices'
 gem 'reek'
 gem 'rubocop'
 
