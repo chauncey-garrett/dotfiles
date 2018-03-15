@@ -6,8 +6,8 @@ gem 'rake'
 # Git
 #
 
-gem 'github'
 gem 'gist'
+gem 'github'
 
 #
 # TMUX
@@ -38,8 +38,9 @@ gem 'terjira'
 # Linters
 #
 
-gem 'rubocop'
+gem 'brakeman'
 gem 'reek'
+gem 'rubocop'
 
 #
 # For vim-autoformat
