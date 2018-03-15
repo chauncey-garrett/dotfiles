@@ -25,7 +25,6 @@
     "babel-eslint": "^8.1.2",
     "bible": "^2.0.1",
     "bootlint": "^0.14.2",
-    "bower": "^1.8.0",
     "broken-link-checker": "^0.7.6",
     "browser-sync": "^2.18.13",
     "bundle-id-cli": "^1.0.0",
