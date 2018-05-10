@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/chauncey-garrett/dotfiles#readme",
   "dependencies": {
+    "@cacherapp/cli": "^0.1.3",
     "@rafaelrinaldi/whereami": "^1.3.1",
+    "alfred-cacher": "^1.0.2",
     "app-path-cli": "^2.0.0",
     "babel-eslint": "^8.1.2",
     "bible": "^2.0.1",
