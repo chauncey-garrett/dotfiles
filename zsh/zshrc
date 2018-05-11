@@ -252,7 +252,7 @@ fi
 # Use Neovim if available
 if (( $+commands[nvim] )); then
   function nvim() {
-    TERM=xterm-256color-italic RBENV_VERSION="$(cat "$HOME/.dotfiles/.ruby-version")" command nvim "$@"
+    TERM=xterm-256color-italic command nvim "$@"
   }
   alias vi='nvim'
   alias vim='nvim'
