@@ -3,7 +3,7 @@
 " Neoterm
 "
 
-let g:neoterm_position = 'horizontal'
+let g:neoterm_default_mod = 'aboveleft'
 let g:neoterm_automap_keys = ',tt'
 
 nnoremap <silent> <f10> :TREPLSendFile<cr>
