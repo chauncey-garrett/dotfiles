@@ -162,15 +162,15 @@ if [[ -s "$tmuxinator" ]]; then
 fi
 
 function mux() {
-  RBENV_VERSION="$(cat $HOME/.dotfiles/.ruby-version)" tmuxinator "$@"
+  tmuxinator "$@"
 }
 
 function start() {
-  RBENV_VERSION="$(cat $HOME/.dotfiles/.ruby-version)" tmuxinator start "$@"
+  tmuxinator start "$@"
 }
 
 function stop() {
-  RBENV_VERSION="$(cat $HOME/.dotfiles/.ruby-version)" tmuxinator stop "$@"
+  tmuxinator stop "$@"
 }
 
 #
