@@ -214,6 +214,7 @@ call Plugged('godlygeek/tabular')
 " call Plugged('Yggdroot/indentLine') " TODO this causes a problem with vim-markdown
 " call Plugged('chauncey-garrett/vim-plist') " TODO may not need this b/c of darfink/vim-plist; need to test on mac
 " call Plugged('go2null/Mark--Karkat')
+" call Plugged('junegunn/vim-emoji') " TODO doesn't yet integrate with YouCompleteMe
 " call Plugged('neomake/neomake')
 " call Plugged('romainl/vim-qf')
 " call Plugged('tpope/vim-surround') " See machakann/vim-sandwich
