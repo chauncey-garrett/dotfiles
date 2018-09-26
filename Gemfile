@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 
 gem 'rake'
 
+# https://github.com/flori/json/issues/253
+# gem 'json', github: 'flori/json', tag: 'v2.1.0'
+
 #
 # Git
 #
@@ -34,7 +37,7 @@ gem 'neovim'
 # Jira
 #
 
-gem 'terjira'
+gem 'terjira', "0.4.3"
 
 #
 # Linters
