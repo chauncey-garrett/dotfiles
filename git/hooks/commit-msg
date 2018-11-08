@@ -1,17 +1,24 @@
 #!/bin/bash
 # https://gist.github.com/chauncey-garrett/cc0c349b9928f174137419d270565961
+set -x
 
-# This way you can customize which branches should be skipped when
-# prepending commit message.
-if [[ -z "$BRANCHES_TO_SKIP" ]]; then
-  BRANCHES_TO_SKIP=(master develop test)
-fi
+BRANCHES_TO_SKIP=(
+  master
+  develop
+  test
+)
 
+# Get branch name
 BRANCH_NAME="$(git symbolic-ref --short HEAD)"
+
+# Strip git-flow type branch names (e.g., feature/JIRA-123 -> JIRA_123)
 BRANCH_NAME="${BRANCH_NAME##*/}"
 
+# Check for branch name in BRANCHES_TO_SKIP
 BRANCH_EXCLUDED="$(printf "%s\n" "${BRANCHES_TO_SKIP[@]}" | grep -c "^$BRANCH_NAME$")"
-BRANCH_IN_COMMIT="$(grep -c "$BRANCH_NAME" "$1")"
+
+# Check for branch name in first line of commit message
+BRANCH_IN_COMMIT="$(head -1 "$1" | grep -c "$BRANCH_NAME")"
 
 if [[ -n "$BRANCH_NAME" ]] && ! [[ "$BRANCH_EXCLUDED" -eq 1 ]] && ! [[ "$BRANCH_IN_COMMIT" -ge 1 ]]; then
   sed -i.bak -e "1s/^/$BRANCH_NAME /" "$1"
