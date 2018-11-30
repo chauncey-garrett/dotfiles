@@ -6,13 +6,13 @@ gixy
 glances
 jrnl
 jsonschema
-neovim
 pgsanity
 powerline-status
 proselint
 pycodestyle
 pydf
 pylint
+pyvim
 restructuredtext_lint
 setuptools
 terminal_velocity
