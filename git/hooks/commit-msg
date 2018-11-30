@@ -1,6 +1,5 @@
 #!/bin/bash
 # https://gist.github.com/chauncey-garrett/cc0c349b9928f174137419d270565961
-set -x
 
 BRANCHES_TO_SKIP=(
   master
