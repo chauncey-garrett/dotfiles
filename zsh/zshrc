@@ -909,5 +909,5 @@ fi
 #
 
 function jflint() {
-  nodemon --watch "${@}" --exec "jflint --csrf-disabled "${@}""
+  find . -type f -iname *jenkinsfile* | entr jflint --csrf-disabled /_
 }
