@@ -169,4 +169,7 @@
   email = git@chauncey.io
   # signingkey = **Your GPG ID**
 
+[http]
+	sslVerify = true
+
 # vim: set filetype=gitconfig:
