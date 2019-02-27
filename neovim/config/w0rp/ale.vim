@@ -11,7 +11,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_open_list = 1
 
 " Only lint on save
-let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_text_changed = 'never'
 
 " Automatically close loclist when its buffer is closed
 augroup CloseLoclistWindowGroup
