@@ -2,10 +2,7 @@
 # Executes commands at login post-zshrc.
 #
 
-#
 # Execute code that does not affect the current session in the background.
-#
-
 {
   # Compile the completion dump to increase startup speed.
   zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
@@ -22,10 +19,23 @@
   fi
 } &!
 
+# Print an ESV bible verse.
+if (( $+commands[devotion] )); then
+  devotion
+
 # Print a random, hopefully interesting, adage.
-if (( $+commands[fortune] )); then
+elif (( $+commands[fortune] )); then
   if [[ -t 0 || -t 1 ]]; then
-    fortune -s
+
+    # KJV bible.
+    if [[ -f ~/.config/fortune/bible-kjv/bible ]]; then
+      fortune ~/.config/fortune/bible-kjv/bible
+
+    # Standard fortune, but short ones only.
+    else
+      fortune -s
+    fi
+
     print
   fi
 fi
