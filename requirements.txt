@@ -17,5 +17,4 @@ restructuredtext_lint
 setuptools
 terminal_velocity
 vim-vint
-yamllint
 yapf
