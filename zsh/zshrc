@@ -880,6 +880,14 @@ function aliases() {
 }
 
 #
+# Whicha
+#
+
+function whicha() {
+  which -a "${@}"
+}
+
+#
 # Finda
 #
 
