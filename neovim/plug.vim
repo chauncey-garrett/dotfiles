@@ -175,7 +175,7 @@ augroup END
 "
 function! BuildYouCompleteMe(info)
   if a:info.status ==# 'installed' || a:info.force
-    !./install.py --all
+    !python3 ./install.py --all
   endif
 endfunction
 
