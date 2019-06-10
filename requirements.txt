@@ -12,7 +12,7 @@ proselint
 pycodestyle
 pydf
 pylint
-pyvim
+pynvim
 restructuredtext_lint
 setuptools
 terminal_velocity
