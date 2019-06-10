@@ -235,6 +235,7 @@ path=(
   ${HOME}/{.bin,bin}
   ${HOME}/.dotfiles/node_modules/.bin
   {${HOME},/home/linuxbrew}/.linuxbrew/{bin,sbin}
+  {${HOME},/home/linuxbrew}/.linuxbrew/opt/node@10/bin
   {${HOME},/home/linuxbrew}/.linuxbrew/opt/python/libexec/bin
   /usr/local/{bin,sbin}
   /usr/{bin,sbin}
@@ -253,7 +254,7 @@ rationalize-path path
 
 manpath=(
   ${HOME}/{.man,man}
-  /home/linuxbrew/.linuxbrew/share/man
+  {${HOME},/home/linuxbrew}/.linuxbrew/share/man
   /usr/local/{man,sbin}
   /usr/share/man
   /usr/man/preformat
