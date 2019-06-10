@@ -1,1 +1,1 @@
-pyvim
+pynvim
