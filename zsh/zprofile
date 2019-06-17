@@ -325,4 +325,19 @@ export GOPATH
 typeset -gU gopath
 rationalize-path gopath
 
+#
+# LIBRARY_PATH
+#
+
+typeset -T LIBRARY_PATH library_path
+
+library_path=(
+  /usr/lib64
+  "$library_path[@]"
+)
+
+export LIBRARY_PATH
+typeset -gU library_path
+rationalize-path library_path
+
 # vim: set filetype=zsh:
