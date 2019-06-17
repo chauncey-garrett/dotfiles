@@ -9,10 +9,12 @@ jsonschema
 pgsanity
 powerline-status
 proselint
+psutil
 pycodestyle
 pydf
 pylint
 pynvim
+pyuv
 restructuredtext_lint
 setuptools
 terminal_velocity
