@@ -246,7 +246,7 @@ autoload run-help
 export HELPDIR="/usr/local/share/zsh/helpfiles"
 
 #
-# Always use vim for the proper command
+# Always use the proper vim
 #
 
 # Use regular vim
