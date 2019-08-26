@@ -703,7 +703,7 @@ function tower() {
 function mark() {
   local marked
 
-  marked="/Applications/Marked 2.app"
+  marked="/Applications/Setapp/Marked.app"
 
   if [[ -f "${marked}" ]]; then
     warn "Marked is not an available application."
