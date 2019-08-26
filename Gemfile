@@ -8,23 +8,10 @@ gem 'rake'
 # gem 'json', github: 'flori/json', tag: 'v2.1.0'
 
 #
-# Git
-#
-
-gem 'gist'
-
-#
 # TMUX
 #
 
 gem 'tmuxinator'
-
-#
-# Fun
-#
-
-gem 'cowsay'
-gem 'lolcat'
 
 #
 # NeoVim
