@@ -65,7 +65,7 @@ function timestamp() {
 #   USAGE: info "Information."
 #
 
-function message() {
+function info() {
   # echo -e "\n\e[34m$(timestamp)\e[0m $0: $@ \n" >&2
   echo -e "\n$FG[blue]$(timestamp) $FX[bold]$FG[yellow]$0$FX[no-bold]$FG[blue]:$FG[none] $@ \n" >&2
 }
