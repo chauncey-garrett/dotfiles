@@ -12,7 +12,6 @@ gem 'rake'
 #
 
 gem 'gist'
-gem 'github'
 
 #
 # TMUX
