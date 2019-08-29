@@ -1,19 +1,32 @@
-tap "linuxbrew/xorg"
-tap "homebrew/core"
 tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core", "https://github.com/Homebrew/linuxbrew-core.git"
+tap "linuxbrew/xorg"
+tap "rockyluke/devops"
+tap "wagoodman/dive"
 # Freely available high-quality data compressor
 brew "bzip2"
+# SSL/TLS cryptography library
+brew "openssl"
 # Library for command-line editing
 brew "readline"
 # Interpreted, interactive, object-oriented programming language
-brew "python@2"
-# Interpreted, interactive, object-oriented programming language
 brew "python"
+# Automate deployment, configuration, and upgrading
+brew "ansible"
+# Checks ansible playbooks for practices and behaviour
+brew "ansible-lint"
+# Advanced SSH config - Regex, aliases, gateways, includes and dynamic hosts
+brew "assh"
+# High performance key/value database
+brew "berkeley-db"
+# Highly capable, feature-rich programming language
+brew "perl"
 # Automatic configure script builder
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
-# FSF/GNU ld, ar, readelf, etc. for native development
+# GNU binary tools for native development
 brew "binutils"
 # Cross-platform make
 brew "cmake"
@@ -21,6 +34,10 @@ brew "cmake"
 brew "colordiff"
 # Reimplementation of ctags(1)
 brew "ctags"
+# Top-like interface for container metrics
+brew "ctop"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
 # Command-line weather from the darksky.net API
 brew "darksky-weather"
 # Docker-compose completion script
@@ -43,6 +60,8 @@ brew "gawk"
 brew "gcc"
 # Distributed revision control system
 brew "git"
+# Alternative to top/htop
+brew "glances"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Smarter Dockerfile linter to validate best practices
@@ -55,6 +74,8 @@ brew "unzip"
 brew "lua"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
+# User-friendly cURL replacement (command-line HTTP client)
+brew "httpie", link: false
 # Add GitHub support to git on the command-line
 brew "hub"
 # Lightweight and flexible command-line JSON processor
@@ -65,26 +86,30 @@ brew "libuv"
 brew "luajit"
 # NCurses Disk Usage
 brew "ncdu"
+# Interpreted, interactive, object-oriented programming language
+brew "python@2"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Port scanning utility for large networks
 brew "nmap"
+# Platform built on V8 to build network applications
+brew "node@10"
+# Classic snake game with textual interface
+brew "nsnake"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Perl compatible regular expressions library
 brew "pcre"
-# Highly capable, feature-rich programming language
-brew "perl"
+# PostgreSQL syntax beautifier
+brew "pgformatter"
+# Linter for prose
+brew "proselint"
+# Simple Python style checker in one Python file
+brew "pycodestyle"
 # File browser
 brew "ranger"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Powerful, clean, object-oriented scripting language
-brew "ruby"
-# Install various Ruby versions and implementations
-brew "ruby-build"
-# Safe, concurrent, practical language
-brew "rust"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # netcat on steroids
@@ -105,5 +130,7 @@ brew "vimpager"
 brew "wego"
 # Linter for YAML files
 brew "yamllint"
-# UNIX shell (command interpreter)
-brew "zsh"
+# Linter for YAML files.
+brew "rockyluke/devops/pip-gitlint"
+# Linter for Python files.
+brew "rockyluke/devops/pip-pylint"
