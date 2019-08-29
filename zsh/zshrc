@@ -65,7 +65,7 @@ function timestamp() {
 #   USAGE: info "Information."
 #
 
-function message() {
+function info() {
   # echo -e "\n\e[34m$(timestamp)\e[0m $0: $@ \n" >&2
   echo -e "\n$FG[blue]$(timestamp) $FX[bold]$FG[yellow]$0$FX[no-bold]$FG[blue]:$FG[none] $@ \n" >&2
 }
@@ -246,7 +246,7 @@ autoload run-help
 export HELPDIR="/usr/local/share/zsh/helpfiles"
 
 #
-# Always use vim for the proper command
+# Always use the proper vim
 #
 
 # Use regular vim
@@ -267,17 +267,39 @@ if (( $+commands[nvim] )); then
 fi
 
 #
-# OS X Calendar
+# macOS Calendar
 #
 
-function ical() {
-  if (( ! $+commands[icalBuddy] )); then
-    warn "icalBuddy is not an available command."
-    return
-  fi
+if (( $+commands[icalBuddy] )); then
+	function ical() {
+		icalBuddy \
+			--formatOutput \
+			--separateByDate \
+			eventsToday+1
+	}
 
-  icalBuddy -nc -n -f eventsToday+2
-}
+	function reminders() {
+		icalBuddy \
+			--formatOutput \
+			--separateByDate \
+			-sc \
+			uncompletedTasks
+	}
+
+	function week() {
+		icalBuddy \
+			--formatOutput \
+			--separateByDate \
+			eventsToday+7
+	}
+
+  if (( $+commands[wego] )); then
+    function today() {
+      wego -days 1 \
+        && ical
+    }
+  fi
+fi
 
 #
 # WiFi
@@ -681,7 +703,7 @@ function tower() {
 function mark() {
   local marked
 
-  marked="/Applications/Marked 2.app"
+  marked="/Applications/Setapp/Marked.app"
 
   if [[ -f "${marked}" ]]; then
     warn "Marked is not an available application."
