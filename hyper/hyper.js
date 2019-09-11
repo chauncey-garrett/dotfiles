@@ -8,7 +8,7 @@ module.exports = {
     fontSize: 15,
 
     // font family with optional fallbacks
-    fontFamily: '"FuraCode Nerd Font", "Essential Pragmata Pro", "Input Mono Narrow", Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
+    fontFamily: '"PragmataPro", "FuraCode Nerd Font", "Essential Pragmata Pro", "Input Mono Narrow", Menlo, "DejaVu Sans Mono", "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     cursorColor: 'rgba(248,28,229,0.8)',
