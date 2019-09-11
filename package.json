@@ -31,6 +31,7 @@
     "browser-sync": "^2.26.7",
     "bundle-id-cli": "^1.0.0",
     "bundle-name-cli": "^1.0.0",
+    "catj": "^1.0.4",
     "cloc": "^2.5.0",
     "coffeelint": "^2.0.7",
     "config-hyperterm": "^1.0.1",
