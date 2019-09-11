@@ -1,1 +1,13 @@
 pynvim
+
+#
+# powerline requirements
+#
+# bzr
+# hglib
+# i3ipc
+# iwlib
+psutil
+# pyalsaaudio
+# pyuv
+xlib
