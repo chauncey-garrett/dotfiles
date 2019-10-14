@@ -8,12 +8,6 @@ gem 'rake'
 # gem 'json', github: 'flori/json', tag: 'v2.1.0'
 
 #
-# TMUX
-#
-
-gem 'tmuxinator'
-
-#
 # NeoVim
 #
 
