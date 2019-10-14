@@ -232,6 +232,7 @@ rationalize-path fpath
 
 path=(
   ${HOME}/{.bin,bin}
+  ${HOME}/.dotfiles/bin
   ${HOME}/.dotfiles/node_modules/.bin
   {${HOME},/home/linuxbrew}/.linuxbrew/{bin,sbin}
   {${HOME},/home/linuxbrew}/.linuxbrew/opt/node@10/bin
