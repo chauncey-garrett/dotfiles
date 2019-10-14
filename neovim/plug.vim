@@ -327,7 +327,7 @@ Plug 'mhinz/vim-startify', {
 source ~/.config/nvim/config/mhinz/vim-startify.vim
 
 Plug 'pearofducks/ansible-vim', {
-  \'do': 'python2 ./UltiSnips/generate.py'
+  \'do': './UltiSnips/generate.sh'
 \}
 source ~/.config/nvim/config/pearofducks/ansible-vim.vim
 
