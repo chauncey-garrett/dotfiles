@@ -231,7 +231,6 @@ rationalize-path fpath
 #
 
 path=(
-  ${HOME}/bin/Sencha/Cmd
   ${HOME}/{.bin,bin}
   ${HOME}/.dotfiles/node_modules/.bin
   {${HOME},/home/linuxbrew}/.linuxbrew/{bin,sbin}
