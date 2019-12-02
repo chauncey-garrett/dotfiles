@@ -346,14 +346,21 @@ source ~/.config/nvim/config/vim-scripts/SpellCheck.vim
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': [
-    \'javascript',
-    \'typescript',
-    \'css',
-    \'less',
-    \'scss',
-    \'json',
-    \'graphql',
-    \'markdown'
+    \ 'css',
+    \ 'graphql',
+    \ 'html',
+    \ 'javascript',
+    \ 'json',
+    \ 'less',
+    \ 'lua',
+    \ 'markdown',
+    \ 'php',
+    \ 'python',
+    \ 'ruby',
+    \ 'scss',
+    \ 'swift',
+    \ 'typescript',
+    \ 'vue'
   \]
 \}
 source ~/.config/nvim/config/prettier/vim-prettier.vim
