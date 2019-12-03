@@ -1,0 +1,69 @@
+#
+# dotsync : https://github.com/dotphiles/dotsync
+#
+# Config for dotsync
+#
+# Authors:
+#   Ben O'Hara <bohara@gmail.com>
+#
+
+# Location of your dotfiles in $HOME
+# DOTFILES=.dotfiles
+
+# dotfiles to symlink
+#
+# srcfile:dstfile
+# dstfile will be '.$srcfile' by default (with path removed)
+#
+[files]
+dotsyncrc
+ack/ackrc
+bash/bashrc
+bash/bash_login
+bash/bash_logout
+bash/bash_profile
+bash/bashrc
+bash/profile
+ctags/ctags
+curl/curlrc
+dir-colors/dircolors.256dark:.dir_colors
+editorconfig
+git/gitattributes
+git/gitconfig-osx:.gitconfig
+git/gitignore_global-osx:.gitignore
+git/gitmessage
+git/tigrc
+fasd/fasdrc
+highlight/highlight.css
+htop/htoprc
+markdownlintrc
+neovim:.config/nvim
+powerline:.config/powerline
+ruby/aprc
+ruby/caprc
+ruby/gemrc
+ruby/irbrc
+ruby/pryrc
+ruby/railsrc
+ruby/rdebugrc
+sack/.sackrc
+task/taskrc
+tmux/tmux.conf
+tmuxinator
+vifm/vifmrc
+wget/wgetrc
+yamllint/config:.config/yamllint
+zsh/zlogin
+zsh/zlogout
+zsh/zprofile
+zsh/zshenv
+zsh/zshrc
+zsh/zpreztorc
+zsh/zprezto
+[endfiles]
+
+## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
+[hosts]
+dfw189213l.containerstore.com
+[endhosts]
+
