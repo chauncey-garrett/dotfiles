@@ -1,6 +1,5 @@
 **/*.log
 Gemfile.lock
 TODO.taskpaper
-dotsyncrc
 node_modules
 yarn.lock
