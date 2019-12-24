@@ -18,6 +18,7 @@
 [files]
 dotsyncrc
 ack/ackrc
+asdf/tool-versions
 bash/bashrc
 bash/bash_login
 bash/bash_logout
