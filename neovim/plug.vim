@@ -212,6 +212,7 @@ call Plugged('godlygeek/tabular')
 
 " call Plugged('Yggdroot/indentLine') " TODO this causes a problem with vim-markdown
 " call Plugged('chauncey-garrett/vim-plist') " TODO may not need this b/c of darfink/vim-plist; need to test on mac
+" call Plugged('ervandew/supertab')
 " call Plugged('go2null/Mark--Karkat')
 " call Plugged('junegunn/vim-emoji') " TODO doesn't yet integrate with YouCompleteMe
 " call Plugged('neomake/neomake')
@@ -236,7 +237,6 @@ call Plugged('easymotion/vim-easymotion')
 call Plugged('editorconfig/editorconfig-vim')
 call Plugged('ekalinin/Dockerfile.vim')
 call Plugged('elzr/vim-json')
-call Plugged('ervandew/supertab')
 call Plugged('fadein/vim-FIGlet')
 call Plugged('hashivim/vim-consul')
 call Plugged('hashivim/vim-packer')
@@ -388,6 +388,11 @@ call Plugged('scrooloose/nerdtree')
   \| call Plugged('arkgast/nerdtree-execute') " TODO switch back to ivalkeen's version if it's ever updated
   " \| call Plugged('tiagofumo/vim-nerdtree-syntax-highlight')
 
+Plug 'neoclide/coc.nvim', {
+  \'branch': 'release'
+\}
+source ~/.config/nvim/config/neoclide/coc.vim
+
 Plug 'chrisbra/csv.vim', {
   \'on': [
     \'CSVTable'
@@ -405,17 +410,17 @@ call Plugged('vim-airline/vim-airline')
 
 " UltiSnips
 " NOTE: vim-snippets depends on UltiSnips
-Plug 'SirVer/ultisnips', {}
-  \| call Plugged('chauncey-garrett/vim-snippets')
-source ~/.config/nvim/config/SirVer/ultisnips.vim
+" Plug 'SirVer/ultisnips', {}
+  " \| call Plugged('chauncey-garrett/vim-snippets')
+" source ~/.config/nvim/config/SirVer/ultisnips.vim
 
 " YouCompleteMe
 " NOTE: Must be loaded after supertab for it's completion to work
 " NOTE: Must be loaded after UltiSnips for it's completion to work
-Plug 'Valloric/YouCompleteMe', {
-  \'do': function('BuildYouCompleteMe')
-\}
-source ~/.config/nvim/config/Valloric/YouCompleteMe.vim
+" Plug 'Valloric/YouCompleteMe', {
+  " \'do': function('BuildYouCompleteMe')
+" \}
+" source ~/.config/nvim/config/Valloric/YouCompleteMe.vim
 
 " DevIcons
 " NOTE: Must be loaded after NERDTree, vim-airline, CtrlP, powerline, unite, lightline.vim, vim-startify, vimfiler, flagship
