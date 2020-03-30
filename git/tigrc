@@ -7,11 +7,95 @@
 #   Ben O'Hara <bohara@gmail.com>
 #
 
-set show-date = relative
-set show-rev-graph = yes
-set show-refs = yes
-set show-line-numbers = yes
-set line-number-interval = 5
+# set show-date = relative
+# set show-rev-graph = yes
+# set show-refs = yes
+# set show-line-numbers = yes
+# set line-number-interval = 5
 set tab-size = 2
-set commit-encoding = "UTF-8"
+# set commit-encoding = "UTF-8"
 
+# Solarized
+# https://gist.github.com/lifepillar/2912d65344538d623f331a5f4d4ad8d1
+color  author        color14 default
+color  cursor        color7  color4  bold
+color  date          default default
+color  line-number   color14 color7
+color  title-blur    color10 color14
+color  title-focus   color15 color12 bold
+color  diff-header   color4  default bold
+color  diff-chunk    color3  default bold
+color  diff-del      color9  default
+color  search-result color15 color3  bold
+color  commit        color2  default bold
+
+# Vim-style keybindings for Tig
+# https://github.com/jonas/tig/blob/master/contrib/vim.tigrc
+bind generic h scroll-left
+bind generic j move-down
+bind generic k move-up
+bind generic l scroll-right
+
+bind generic g  none
+bind generic gg move-first-line
+bind generic gj next
+bind generic gk previous
+bind generic gp parent
+bind generic gP back
+bind generic gn view-next
+
+bind main    G move-last-line
+bind generic G move-last-line
+
+bind generic <C-f> move-page-down
+bind generic <C-b> move-page-up
+
+bind generic v  none
+bind generic vm view-main
+bind generic vd view-diff
+bind generic vl view-log
+bind generic vt view-tree
+bind generic vb view-blob
+bind generic vx view-blame
+bind generic vr view-refs
+bind generic vs view-status
+bind generic vu view-stage
+bind generic vy view-stash
+bind generic vg view-grep
+bind generic vp view-pager
+bind generic vh view-help
+
+bind generic o  none
+bind generic oo :toggle sort-order
+bind generic os :toggle sort-field
+bind generic on :toggle line-number
+bind generic od :toggle date
+bind generic oa :toggle author
+bind generic og :toggle line-graphics
+bind generic of :toggle file-name
+bind generic op :toggle ignore-space
+bind generic oi :toggle id
+bind generic ot :toggle commit-title-overflow
+bind generic oF :toggle file-filter
+bind generic or :toggle commit-title-refs
+
+bind generic @  none
+bind generic @j :/^@@
+bind generic @k :?^@@
+bind generic @- :toggle diff-context -1
+bind generic @+ :toggle diff-context +1
+
+bind status  u  none
+bind stage   u  none
+bind generic uu status-update
+bind generic ur status-revert
+bind generic um status-merge
+bind generic ul stage-update-line
+bind generic us stage-split-chunk
+
+bind generic c  none
+bind generic cc !git commit
+bind generic ca !?@git commit --amend --no-edit
+
+bind generic K view-help
+bind generic <C-w><C-w> view-next
