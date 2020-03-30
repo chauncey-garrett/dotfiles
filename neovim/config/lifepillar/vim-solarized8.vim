@@ -1,4 +1,3 @@
-
 "
 " Solarized8
 " https://github.com/lifepillar/vim-solarized8
