@@ -1,4 +1,3 @@
-
 "
 " Plug Functions
 "
@@ -262,6 +261,7 @@ call Plugged('mattn/emmet-vim')
 call Plugged('maxbrunsfeld/vim-yankstack')
 call Plugged('metakirby5/codi.vim')
 call Plugged('moll/vim-node')
+call Plugged('moon-musick/vim-logrotate')
 call Plugged('mtth/scratch.vim')
 call Plugged('myusuf3/numbers.vim')
 call Plugged('ntpeters/vim-better-whitespace')
