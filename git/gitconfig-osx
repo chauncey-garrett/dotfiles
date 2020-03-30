@@ -182,4 +182,4 @@
 [http]
 	sslVerify = true
 
-# vim: set filetype=gitconfig:
+# vi: set ft=gitconfig
