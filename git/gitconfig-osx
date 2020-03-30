@@ -149,6 +149,8 @@
 [pager]
   diff = diff-so-fancy
   show = diff-so-fancy
+[pager "delta"]
+  cmd = delta --theme='Solarized (dark)'
 [pager "diff-so-fancy"]
   cmd = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [push]
