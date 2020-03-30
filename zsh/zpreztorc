@@ -41,6 +41,7 @@ zstyle ':prezto:load' pmodule \
   'tmux' \
   'node' \
   'osx' \
+  'ssh' \
   'rails' \
   'rsync' \
   'ruby' \
@@ -180,7 +181,13 @@ zstyle ':prezto:module:python:virtualenv' initialize 'yes'
 #
 
 # Set the SSH identities to load into the agent.
-zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_dsa' 'id_github' 'id_stash' 'id_dev' 'id_devnet'
+zstyle ':prezto:module:ssh:load' identities \
+	'id_rsa' \
+	'id_rsa_github' \
+	'id_rsa_vault' \
+	'id_dsa' \
+	'id_github' \
+	'id_dev' \
 
 #
 # Syntax Highlighting
