@@ -11,7 +11,7 @@
 let g:solarized_termtrans = 1
 
 " Enable italics
-let g:solarized_term_italics = 1
+let g:solarized_italics = 1
 
 " Possible fix for colors
 " https://github.com/lifepillar/vim-solarized8#troubleshooting
