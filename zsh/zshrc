@@ -260,7 +260,11 @@ fi
 # Use Neovim if available
 if (( $+commands[nvim] )); then
   function nvim() {
-    TERM=xterm-256color-italic command nvim "$@"
+    ASDF_NODEJS_VERSION=system \
+    ASDF_PYTHON_VERSION=system \
+    ASDF_RUBY_VERSION=system \
+    TERM=xterm-256color-italic \
+      command nvim "$@"
   }
   alias vi='nvim'
   alias vim='nvim'
