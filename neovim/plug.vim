@@ -385,6 +385,12 @@ endif
   " \'do': 'cd rplugin/node && yarn',
 " \}
 
+" Plug 'fatih/vim-go', {
+  " \'do': ':GoInstallBinaries'
+" \}
+  " " \'tag': '*',
+" source ~/.config/nvim/config/fatih/vim-go.vim
+
 call Plugged('scrooloose/nerdtree')
   \| call Plugged('arkgast/nerdtree-execute') " TODO switch back to ivalkeen's version if it's ever updated
   " \| call Plugged('tiagofumo/vim-nerdtree-syntax-highlight')
