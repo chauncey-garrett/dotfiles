@@ -184,9 +184,11 @@ zstyle ':prezto:module:python:virtualenv' initialize 'yes'
 zstyle ':prezto:module:ssh:load' identities \
 	'id_rsa' \
 	'id_rsa_github' \
+	'id_rsa_gitlab' \
 	'id_rsa_vault' \
 	'id_dsa' \
 	'id_github' \
+	'id_gitlab' \
 	'id_dev' \
 
 #
