@@ -950,3 +950,7 @@ end tell
 EOD
 } && open -a Safari "${@}"
 }
+
+function k() {
+  kubectl "${@}"
+}
