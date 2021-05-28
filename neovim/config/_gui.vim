@@ -5,11 +5,11 @@
 
 " macVim
 if has('macunix')
-  set guifont=FiraCode\ Nerd\ Font\ Regular\ 13
+  set guifont=PragmataPro\ Liga\ Regular\ 15
 
 " Linux GUI
 else
-  set guifont=FiraCode\ Nerd\ Font\ Regular\ 13
+  set guifont=PragmataPro\ Liga\ Regular\ 15
 endif
 
 " Thematic settings for iA Writer clone
