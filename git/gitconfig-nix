@@ -97,7 +97,7 @@
 [credential]
   helper = cache --timeout=3600
 [diff]
-  tool = nvimDiff
+  tool = nvim-diff
   mnemonicprefix = true # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject instead of a/b/c/d as prefixes for patches
 [diff "spaceman-diff"]
   command = /usr/local/bin/spaceman-diff
@@ -105,9 +105,12 @@
   prompt = false
 [difftool "sourcetree"]
   cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-  path =
-[difftool "nvimDiff"]
-  cmd = nvim -d \"$BASE\" \"$MERGED\"
+[difftool "nvim-diff"]
+  cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+[difftool "icdiff"]
+  cmd = icdiff --line-numbers \"$LOCAL\" \"$REMOTE\"
+[difftool "ydiff"]
+  cmd = ydiff --side-by-side \"$LOCAL\" \"$REMOTE\"
 [fetch]
   prune = true
 [filter "hawser"]
@@ -130,17 +133,19 @@
   user = chauncey-garrett
 [merge]
   conflictstyle = diff3
-  tool = nvimMerge
+  tool = nvim-merge
   summary = true
   verbosity = 1
 [mergetool]
   prompt = true
   keepBackup = true
-[mergetool "nvimMerge"]
+[mergetool "nvim-merge"]
   cmd = nvim -d \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\" -c '$wincmd w' -c 'wincmd J'
 [pager]
   diff = diff-so-fancy
   show = diff-so-fancy
+[pager "delta"]
+  cmd = delta --theme='Solarized (dark)'
 [pager "diff-so-fancy"]
   cmd = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 [push]
@@ -172,4 +177,7 @@
 [http]
 	sslVerify = true
 
-# vim: set filetype=gitconfig:
+[pull]
+	ff = only
+
+# vi: set ft=gitconfig:
