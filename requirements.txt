@@ -1,15 +1,8 @@
-LinkChecker
-gixy
-jrnl
-jsonschema
-pgsanity
-powerline-status
-psutil
+# Human friendly df
 pydf
-pynvim
-pyuv
-restructuredtext_lint
-setuptools
+
+# PG linter
+pgsanity
+
+# NV-like text editor
 terminal_velocity
-vim-vint
-yapf

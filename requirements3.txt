@@ -1,13 +1,30 @@
+# neovim python plugin
 pynvim
 
-#
-# powerline requirements
-#
-# bzr
-# hglib
-# i3ipc
-# iwlib
+# powerline & requirements
+powerline-status
 psutil
-# pyalsaaudio
-# pyuv
-xlib
+
+# json schema validation
+jsonschema
+
+# NGINX linting
+gixy
+
+# Broken link checker
+LinkChecker
+
+# CLI journal
+jrnl
+
+# ps util
+psutil
+
+setuptools
+
+# RestructuredText linter
+restructuredtext_lint
+
+# Python formatter
+yapf
+
