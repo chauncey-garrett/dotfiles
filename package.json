@@ -26,6 +26,7 @@
     "api2swagger": "^0.1.5",
     "app-path-cli": "^4.0.0",
     "babel-eslint": "^10.0.2",
+    "bash-language-server": "^2.0.0",
     "bible": "^2.0.1",
     "bootlint": "^1.1.0",
     "broken-link-checker": "^0.7.6",
