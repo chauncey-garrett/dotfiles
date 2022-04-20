@@ -65,6 +65,6 @@ zsh/zprezto
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
-dfw189213l.containerstore.com
+chauncey
 [endhosts]
 
