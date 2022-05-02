@@ -95,7 +95,6 @@
     "nodemon": "^2.0.9",
     "npm-check": "^5.9.2",
     "npm-package-json-lint": "^5.1.0",
-    "onepass-cli": "^0.6.1",
     "oni-vim": "^0.1.11",
     "pageres-cli": "^6.0.0",
     "parse-columns-cli": "^2.0.0",
