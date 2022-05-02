@@ -1,0 +1,40 @@
+[style.description]
+foreground = "green"
+underline = false
+bold = true
+italic = true
+
+[style.command_name]
+foreground = "blue"
+underline = false
+bold = false
+italic = false
+
+[style.example_text]
+foreground = "blue"
+underline = false
+bold = true
+italic = false
+
+[style.example_code]
+foreground = "cyan"
+underline = false
+bold = false
+italic = false
+
+[style.example_variable]
+foreground = "yellow"
+underline = false
+italic = true
+bold = false
+
+[display]
+compact = false
+use_pager = true
+
+[updates]
+auto_update = true
+auto_update_interval_hours = 24
+
+[directories]
+custom_pages_dir = "/home/chauncey/.dotfiles/custom-tldr-pages/"
