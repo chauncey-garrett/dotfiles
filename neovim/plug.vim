@@ -403,6 +403,11 @@ Plug 'neoclide/coc.nvim', {
 \}
 source ~/.config/nvim/config/neoclide/coc.vim
 
+Plug 'psliwka/vim-dirtytalk', {
+  \'do': ':DirtytalkUpdate',
+\}
+source ~/.config/nvim/config/psliwka/vim-dirtytalk.vim
+
 Plug 'chrisbra/csv.vim', {
   \'on': [
     \'CSVTable'
