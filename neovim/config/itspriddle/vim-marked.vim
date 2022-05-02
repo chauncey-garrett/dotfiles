@@ -5,5 +5,4 @@
 
 " Open with Marked.
 nnoremap <leader>m :MarkedOpen!<CR>
-" :nnoremap <leader>m :silent !open -a "Marked 2.app" '%:p'<cr>
-
+:nnoremap <leader>m :silent !open -a "/Applications/Setapp/Marked.app" '%:p'<cr>
