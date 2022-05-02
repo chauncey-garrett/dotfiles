@@ -961,3 +961,9 @@ function repeat() {
     sleep 1
   done
 }
+
+#
+# ASDF
+#
+
+. /usr/local/opt/asdf/libexec/asdf.sh
