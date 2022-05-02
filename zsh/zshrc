@@ -946,3 +946,18 @@ EOD
 function k() {
   kubectl "${@}"
 }
+
+#
+# repeat
+# Repeat the previous command until it returns success.
+#
+function repeat() {
+  CMD=$(fc -ln | tail -2 | head -1)
+
+  echo "repeating until success: $CMD"
+  echo
+
+  until $CMD; do
+    sleep 1
+  done
+}
