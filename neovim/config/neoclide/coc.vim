@@ -136,3 +136,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " "
 " nmap <silent> <C-d> <Plug>(coc-cursors-word)*
 " xmap <silent> <C-d> y/\V<C-r>=escape(@",'/\')<CR><CR>gN<Plug>(coc-cursors-range)gn
+
+" Refactoring
+"
+nmap <silent> <M-r> <Plug>(coc-refactor)
