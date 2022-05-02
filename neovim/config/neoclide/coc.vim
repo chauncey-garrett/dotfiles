@@ -3,6 +3,45 @@
 " https://github.com/neoclide/coc.nvim
 "
 
+" Extensions
+"
+
+let g:coc_global_extensions = [
+  \ '@yaegassy/coc-ansible',
+  \ '@yaegassy/coc-nginx',
+  \ 'coc-cfn-lint',
+  \ 'coc-css',
+  \ 'coc-cssmodules',
+  \ 'coc-db',
+  \ 'coc-docker',
+  \ 'coc-emmet',
+  \ 'coc-emoji',
+  \ 'coc-fzf-preview',
+  \ 'coc-github-users',
+  \ 'coc-go',
+  \ 'coc-highlight',
+  \ 'coc-html',
+  \ 'coc-jedi',
+  \ 'coc-json',
+  \ 'coc-marketplace',
+  \ 'coc-sh',
+  \ 'coc-snippets',
+  \ 'coc-swagger',
+  \ 'coc-syntax',
+  \ 'coc-texlab',
+  \ 'coc-toml',
+  \ 'coc-tsserver',
+  \ 'coc-vimlsp',
+  \ 'coc-xml',
+  \ 'coc-yaml',
+  \ ]
+  " \ 'coc-dash-complete',
+  " \ 'coc-dot-complete',
+  " \ 'coc-just-complete',
+  " \ 'coc-spell-checker',
+  " \ 'coc-ultisnips',
+
+
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -140,3 +179,9 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Refactoring
 "
 nmap <silent> <M-r> <Plug>(coc-refactor)
+
+" For coc-ansible
+" https://github.com/yaegassy/coc-ansible#install
+let g:coc_filetype_map = {
+  \ 'yaml.ansible': 'ansible',
+  \ }
