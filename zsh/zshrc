@@ -879,14 +879,6 @@ function spec() {
 }
 
 #
-# tldr
-#
-
-if (( $+commands[tldr] )); then
-  alias tldr="tldr --theme ocean"
-fi
-
-#
 # cdiff
 #
 
