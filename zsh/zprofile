@@ -234,6 +234,7 @@ path=(
   ${HOME}/{.bin,bin}
   ${HOME}/.dotfiles/bin
   ${HOME}/.dotfiles/node_modules/.bin
+  ${HOME}/.krew/bin
   {${HOME},/home/linuxbrew}/.linuxbrew/{bin,sbin}
   {${HOME},/home/linuxbrew}/.linuxbrew/opt/node@10/bin
   {${HOME},/home/linuxbrew}/.linuxbrew/opt/python/libexec/bin
