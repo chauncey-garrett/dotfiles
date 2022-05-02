@@ -967,3 +967,12 @@ function repeat() {
 #
 
 . /usr/local/opt/asdf/libexec/asdf.sh
+
+#
+# touch-with-dir
+# `touch` a new file making missing directories
+#
+function touch-with-dir() {
+  mkdir -p "$(dirname "$1")" \
+    && touch "$1"
+}
