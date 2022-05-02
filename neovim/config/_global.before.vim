@@ -38,7 +38,6 @@ nnoremap <silent> p p`]
 
 " Use persistent undo feature but keep working dir clean
 set undofile
-set undodir=~/.undodir/
 set undolevels=10000
 
 " Go back to where you exited
