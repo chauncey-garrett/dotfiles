@@ -25,6 +25,7 @@ bash/bash_logout
 bash/bash_profile
 bash/bashrc
 bash/profile
+bat:.config/bat
 ctags/ctags
 curl/curlrc
 dir-colors/dircolors.256dark:.dir_colors
