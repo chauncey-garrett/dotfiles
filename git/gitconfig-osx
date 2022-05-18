@@ -97,14 +97,14 @@
 [credential]
   helper = osxkeychain
 [diff]
-  tool = nvim-diff
+  tool = Kaleidoscope
   mnemonicprefix = true # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject instead of a/b/c/d as prefixes for patches
 [diff "spaceman-diff"]
   command = /usr/local/bin/spaceman-diff
 [difftool]
   prompt = false
-  tool = kaleidoscope
-[difftool "kaleidoscope"]
+  tool = Kaleidoscope
+[difftool "Kaleidoscope"]
   cmd = reattach-to-user-namespace -l ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool "sourcetree"]
   cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
@@ -134,18 +134,20 @@
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [github]
   user = chauncey-garrett
+[http]
+  sslVerify = true
 [merge]
   conflictstyle = diff3
-  tool = nvim-merge
+  tool = Kaleidoscope
   summary = true
   verbosity = 1
 [mergetool]
   prompt = true
   keepBackup = true
-  tool = kaleidoscope
+  tool = Kaleidoscope
 [mergetool "nvim-merge"]
   cmd = nvim -d \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\" -c '$wincmd w' -c 'wincmd J'
-[mergetool "kaleidoscope"]
+[mergetool "Kaleidoscope"]
   cmd = reattach-to-user-namespace -l ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" \"$REMOTE\"
   trustExitCode = true
 [mergetool "sourcetree"]
@@ -158,10 +160,17 @@
   cmd = delta --theme='Solarized (dark)'
 [pager "diff-so-fancy"]
   cmd = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
+[pull]
+  ff = only
+  rebase = true
 [push]
   default = simple
   recurseSubmodules = check
-[rerere] # Remember my merges http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
+[rebase]
+  autoStash = true
+
+# Remember my merges http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
+[rerere]
   enabled = true
 
 # Rewrites Github repo paths
@@ -183,11 +192,5 @@
   name = Chauncey Garrett
   email = git@chauncey.io
   # signingkey = **Your GPG ID**
-
-[http]
-	sslVerify = true
-
-[pull]
-	ff = only
 
 # vi: set ft=gitconfig:
