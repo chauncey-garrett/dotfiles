@@ -25,3 +25,5 @@ restructuredtext_lint
 # Python formatter
 yapf
 
+# Salt linter
+salt-lint
