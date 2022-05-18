@@ -17,9 +17,6 @@ LinkChecker
 # CLI journal
 jrnl
 
-# ps util
-psutil
-
 setuptools
 
 # RestructuredText linter
