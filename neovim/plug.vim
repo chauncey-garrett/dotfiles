@@ -338,7 +338,7 @@ Plug 'mhinz/vim-startify', {
 source ~/.config/nvim/config/mhinz/vim-startify.vim
 
 Plug 'pearofducks/ansible-vim', {
-  \'do': './UltiSnips/generate.sh'
+  \'do': 'brew install ansible && ./UltiSnips/generate.sh',
 \}
 source ~/.config/nvim/config/pearofducks/ansible-vim.vim
 
@@ -401,7 +401,8 @@ call Plugged('scrooloose/nerdtree')
   " \| call Plugged('tiagofumo/vim-nerdtree-syntax-highlight')
 
 Plug 'neoclide/coc.nvim', {
-  \'branch': 'release'
+  \'branch': 'release',
+  \'do': 'brew install hashicorp/tap/terraform-ls',
 \}
 source ~/.config/nvim/config/neoclide/coc.vim
 
