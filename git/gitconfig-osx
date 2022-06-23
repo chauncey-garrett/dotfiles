@@ -59,6 +59,7 @@
   whitespace = nowarn
 [branch]
   autosetupmerge = always
+  autosetuprebase = always
 [color]
   diff = auto
   status = auto
