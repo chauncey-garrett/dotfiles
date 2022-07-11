@@ -377,13 +377,18 @@ source ~/.config/nvim/config/prettier/vim-prettier.vim
 " On macOS, use homebrew's fzf
 if (system('uname') =~? 'darwin')
   Plug '/usr/local/opt/fzf'
-    \| call Plugged('junegunn/fzf.vim')
+    \| Plug 'junegunn/fzf.vim', {
+      \'do': 'brew install fzf bat delta ag rg perl',
+    \}
 
 " On linux, use linuxbrew's fzf
 else
   Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
-    \| call Plugged('junegunn/fzf.vim')
+    \| Plug 'junegunn/fzf.vim', {
+      \'do': 'brew install fzf bat delta ag rg perl',
+    \}
 endif
+source ~/.config/nvim/config/junegunn/fzf.vim.vim
 
 " Plug 'bigfish/vim-js-context-coloring', {
   " \'branch': 'neovim',
