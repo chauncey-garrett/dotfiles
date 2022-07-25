@@ -23,6 +23,7 @@
     "@cacherapp/cli": "^1.0.9",
     "@rafaelrinaldi/whereami": "^2.2.1",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "add-gitignore": "^1.1.1",
     "api2swagger": "^0.1.5",
     "app-path-cli": "^4.0.0",
     "babel-eslint": "^10.0.2",
