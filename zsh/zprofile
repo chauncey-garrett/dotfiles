@@ -219,6 +219,7 @@ fpath=(
   ${HOME}/lib/zsh/func
   {${HOME},/home/linuxbrew}/.linuxbrew/share/zsh/site-functions
   /usr/local/share/zsh/site-functions
+  /usr/local/share/zsh-completions
   "${fpath[@]}"
 )
 
