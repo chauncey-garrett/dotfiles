@@ -976,3 +976,11 @@ function touch-with-dir() {
   mkdir -p "$(dirname "$1")" \
     && touch "$1"
 }
+
+#
+# Navi
+#
+
+if (( $+commands[navi] )); then
+  eval "$(navi widget zsh)"
+fi
