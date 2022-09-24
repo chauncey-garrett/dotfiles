@@ -3,6 +3,7 @@
 
 BRANCHES_TO_SKIP=(
   master
+  main
   develop
   test
 )
