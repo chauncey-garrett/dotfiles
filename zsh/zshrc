@@ -950,3 +950,11 @@ function touch-with-dir() {
 if (( $+commands[navi] )); then
   eval "$(navi widget zsh)"
 fi
+
+#
+# Source private config files
+#
+
+for file in ${HOME}/.dotfiles/zsh/private/**/*.rc; do
+  source "${file}"
+done

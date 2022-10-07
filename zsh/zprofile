@@ -118,16 +118,6 @@ elif [[ -f /usr/share/vim/runtime/macros/less.sh ]]; then
 fi
 
 #
-# Source private config files
-#
-
-if [[ -n "$(find "${HOME}/.dotfiles/zsh/profiles" -name '*.rc' -print -quit)" ]]; then
-  for file in ${HOME}/.dotfiles/zsh/profiles/**/*.rc; do
-    source "${file}"
-  done
-fi
-
-#
 # Docbook
 #
 
