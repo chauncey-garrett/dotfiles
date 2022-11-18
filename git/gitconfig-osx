@@ -14,7 +14,7 @@
   # @usage
   #   git root
   #
-  root = "!_() { !pwd -P }"
+  root = "!_() { !pwd -P; }"
 
   #
   # Diffs the changes git stash would apply.
