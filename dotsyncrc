@@ -34,7 +34,6 @@ git/gitattributes
 git/gitconfig-osx:.gitconfig
 git/gitignore_global-osx:.gitignore
 git/gitmessage
-git/tigrc
 fasd/fasdrc
 highlight/highlight.css
 htop/htoprc
@@ -50,6 +49,7 @@ ruby/railsrc
 ruby/rdebugrc
 sack/.sackrc
 task/taskrc
+tig/tigrc
 tmux/tmux.conf
 tmuxinator
 vifm/vifmrc
