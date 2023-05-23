@@ -19,7 +19,6 @@
 dotsyncrc
 ack/ackrc
 asdf/tool-versions
-bash/bashrc
 bash/bash_login
 bash/bash_logout
 bash/bash_profile
@@ -30,11 +29,11 @@ ctags/ctags
 curl/curlrc
 dir-colors/dircolors.256dark:.dir_colors
 editorconfig
+fasd/fasdrc
 git/gitattributes
 git/gitconfig-osx:.gitconfig
 git/gitignore_global-osx:.gitignore
 git/gitmessage
-fasd/fasdrc
 highlight/highlight.css
 htop/htoprc
 markdownlintrc
@@ -56,15 +55,14 @@ vifm/vifmrc
 yamllint:.config/yamllint
 zsh/zlogin
 zsh/zlogout
+zsh/zprezto
+zsh/zpreztorc
 zsh/zprofile
 zsh/zshenv
 zsh/zshrc
-zsh/zpreztorc
-zsh/zprezto
 [endfiles]
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
 chauncey
 [endhosts]
-
