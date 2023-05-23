@@ -53,7 +53,7 @@ tig/tigrc
 tmux/tmux.conf
 tmuxinator
 vifm/vifmrc
-yamllint/config:.config/yamllint
+yamllint:.config/yamllint
 zsh/zlogin
 zsh/zlogout
 zsh/zprofile
