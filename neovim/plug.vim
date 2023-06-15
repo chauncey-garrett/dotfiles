@@ -387,7 +387,7 @@ if (system('uname') =~? 'darwin')
 else
   Plug '/home/linuxbrew/.linuxbrew/opt/fzf'
     \| Plug 'junegunn/fzf.vim', {
-      \'do': 'brew install fzf bat delta ag rg perl',
+      \'do': 'brew install fzf bat git-delta ag rg perl',
     \}
 endif
 source ~/.config/nvim/config/junegunn/fzf.vim.vim
