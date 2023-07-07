@@ -956,6 +956,7 @@ fi
 #
 
 for file in ${HOME}/.dotfiles/zsh/private/**/*.rc; do
+  [[ -f "${file}" ]] || continue
   source "${file}"
 done
 
