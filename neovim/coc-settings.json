@@ -1,4 +1,7 @@
 {
+  "diagnostic": {
+    "displayByAle": true
+  },
   "languageserver": {
     "dockerfile": {
       "command": "docker-langserver",
