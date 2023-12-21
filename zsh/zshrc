@@ -966,3 +966,10 @@ done
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+
+#
+# 1Password
+#
+
+source /Users/chauncey/.config/op/plugins.sh
+eval "$(op completion zsh)"; compdef _op op
