@@ -380,7 +380,7 @@ source ~/.config/nvim/config/prettier/vim-prettier.vim
 if (system('uname') =~? 'darwin')
   Plug '/usr/local/opt/fzf'
     \| Plug 'junegunn/fzf.vim', {
-      \'do': 'brew install fzf bat delta ag rg perl',
+      \'do': 'brew install fzf bat git-delta ag rg perl',
     \}
 
 " On linux, use linuxbrew's fzf
