@@ -973,3 +973,21 @@ source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.in
 
 source /Users/chauncey/.config/op/plugins.sh
 eval "$(op completion zsh)"; compdef _op op
+
+#
+# git clone cd
+# NOTE: only works with git@ repos and not https
+#
+
+function gfcd() {
+  repo="$1"
+  repo_cleaned="$(sed 's/^.*://; s/\.git$//' <<< $repo)"
+  path_to_cloned_repo="$HOME/dev/${repo_cleaned}"
+
+  if [[ ! -d $path_to_cloned_repo ]]; then
+    git clone $repo $path_to_cloned_repo
+  fi
+
+  echo "Navigating to $path_to_cloned_repo..."
+  cd $path_to_cloned_repo
+}
