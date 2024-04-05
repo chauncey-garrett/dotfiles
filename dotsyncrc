@@ -58,11 +58,14 @@ zsh/zlogout
 zsh/zprezto
 zsh/zpreztorc
 zsh/zprofile
+zsh/zsh_plugins.txt
 zsh/zshenv
 zsh/zshrc
+zsh:.config/zsh
+zsh/zstyles
 [endfiles]
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
-chauncey
+rocket
 [endhosts]

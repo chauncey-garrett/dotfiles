@@ -206,8 +206,9 @@ rationalize-path cdpath
 #
 
 fpath=(
-  ${HOME}/lib/zsh/func
-  {${HOME},/home/linuxbrew}/.linuxbrew/share/zsh/site-functions
+  $HOME/lib/zsh/func
+  $HOME/.dotfiles/zsh/functions
+  {$HOME,/home/linuxbrew}/.linuxbrew/share/zsh/site-functions
   /usr/local/share/zsh/site-functions
   /usr/local/share/zsh-completions
   "${fpath[@]}"
@@ -216,22 +217,23 @@ fpath=(
 export FPATH
 typeset -gU fpath
 rationalize-path fpath
+autoload -Uz $fpath[@]/*(.:t)
 
 #
 # PATH
 #
-
 path=(
-  ${HOME}/{.bin,bin}
-  ${HOME}/.dotfiles/bin
-  ${HOME}/.dotfiles/node_modules/.bin
-  ${HOME}/.krew/bin
-  {${HOME},/home/linuxbrew}/.linuxbrew/{bin,sbin}
-  {${HOME},/home/linuxbrew}/.linuxbrew/opt/node@10/bin
-  {${HOME},/home/linuxbrew}/.linuxbrew/opt/python/libexec/bin
-  /usr/local/{bin,sbin}
-  /usr/{bin,sbin}
-  /{bin,sbin}
+  $HOME/{,s}bin(N)
+  $HOME/.dotfiles/bin
+  $HOME/.dotfiles/node_modules/.bin
+  $HOME/.krew/bin
+  {$HOME,/home/linuxbrew}/.linuxbrew/{,s}bin(N)
+  {$HOME,/home/linuxbrew}/.linuxbrew/opt/node@10/bin
+  {$HOME,/home/linuxbrew}/.linuxbrew/opt/python/libexec/bin
+  /opt/{homebrew,local}/{,s}bin(N)
+  /usr/local/{,s}bin(N)
+  /usr/{,s}bin(N)
+  /{,s}bin(N)
   "${path[@]}"
   "${fpath[@]}"
 )

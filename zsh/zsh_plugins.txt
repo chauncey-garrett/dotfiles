@@ -1,0 +1,124 @@
+# .zsh_plugins.txt
+
+# Includes zsh-users/zsh-completions
+sorin-ionescu/prezto path:modules/completion
+
+# Loads functions
+mattmc3/zfunctions
+
+#
+# Prezto
+#
+
+# sorin-ionescu/prezto
+sorin-ionescu/prezto path:modules/helper/functions kind:autoload
+sorin-ionescu/prezto path:modules/helper
+sorin-ionescu/prezto path:modules/archive/functions kind:autoload
+sorin-ionescu/prezto path:modules/command-not-found
+sorin-ionescu/prezto path:modules/directory
+sorin-ionescu/prezto path:modules/editor
+sorin-ionescu/prezto path:modules/environment
+sorin-ionescu/prezto path:modules/git/functions kind:autoload
+sorin-ionescu/prezto path:modules/git
+sorin-ionescu/prezto path:modules/history
+sorin-ionescu/prezto path:modules/homebrew
+sorin-ionescu/prezto path:modules/node
+sorin-ionescu/prezto path:modules/osx/functions kind:autoload conditional:ismacos
+sorin-ionescu/prezto path:modules/osx conditional:ismacos
+sorin-ionescu/prezto path:modules/perl
+# sorin-ionescu/prezto path:modules/prompt/functions kind:autoload
+# sorin-ionescu/prezto path:modules/prompt
+sorin-ionescu/prezto path:modules/python/functions kind:autoload
+sorin-ionescu/prezto path:modules/python
+sorin-ionescu/prezto path:modules/rails
+sorin-ionescu/prezto path:modules/rsync
+sorin-ionescu/prezto path:modules/ruby
+sorin-ionescu/prezto path:modules/spectrum
+sorin-ionescu/prezto path:modules/terminal
+sorin-ionescu/prezto path:modules/tmux
+sorin-ionescu/prezto path:modules/utility/functions kind:autoload
+sorin-ionescu/prezto path:modules/utility
+
+#
+# OMZ
+#
+
+ohmyzsh/ohmyzsh path:lib
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/copybuffer
+ohmyzsh/ohmyzsh path:plugins/copyfile
+ohmyzsh/ohmyzsh path:plugins/copypath
+ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+ohmyzsh/ohmyzsh path:plugins/magic-enter
+ohmyzsh/ohmyzsh path:plugins/git-auto-fetch
+
+ohmyzsh/ohmyzsh path:plugins/1password
+ohmyzsh/ohmyzsh path:plugins/iterm2
+# ohmyzsh/ohmyzsh path:plugins/ag # TODO fix loading of completions
+ohmyzsh/ohmyzsh path:plugins/aliases
+# ohmyzsh/ohmyzsh path:plugins/argocd # TODO fix loading of completions
+ohmyzsh/ohmyzsh path:plugins/asdf
+ohmyzsh/ohmyzsh path:plugins/bgnotify
+ohmyzsh/ohmyzsh path:plugins/zoxide
+# ohmyzsh/ohmyzsh path:plugins/autoenv
+# ohmyzsh/ohmyzsh path:plugins/alias-finder
+# ohmyzsh/ohmyzsh path:plugins/ansible
+
+chauncey-garrett/zsh-mime-setup
+
+romkatv/zsh-bench kind:path
+olets/zsh-abbr    kind:defer
+
+
+# TODO swap with prezto?
+# belak/zsh-utils path:editor
+# TODO swap with prezto?
+# belak/zsh-utils path:history
+# TODO swap with prezto?
+# belak/zsh-utils path:prompt
+# TODO swap with prezto?
+# belak/zsh-utils path:utility
+
+mattmc3/zephyr path:plugins/color
+# TODO swap with prezto?
+# mattmc3/zephyr path:plugins/completion
+mattmc3/zephyr path:plugins/confd
+# TODO swap with prezto?
+# mattmc3/zephyr path:plugins/directory
+# TODO swap with prezto?
+# mattmc3/zephyr path:plugins/editor
+# TODO swap with prezto?
+# mattmc3/zephyr path:plugins/environment
+# TODO swap with prezto?
+# mattmc3/zephyr path:plugins/history
+# TODO swap with prezto?
+# mattmc3/zephyr path:plugins/homebrew
+# TODO swap with prezto?
+# mattmc3/zephyr path:plugins/macos
+# TODO swap with prezto?
+mattmc3/zephyr path:plugins/prompt # for starship
+mattmc3/zephyr path:plugins/string
+# TODO swap with prezto?
+# mattmc3/zephyr path:plugins/utility
+
+mattmc3/zman
+mattmc3/zsh-safe-rm
+
+# Load these last
+
+# TODO swap with prezto?
+# zsh-users/zsh-completions path:src kind:fpath
+# belak/zsh-utils path:completion
+
+# TODO swap with prezto?
+# zdharma-continuum/fast-syntax-highlighting kind:defer
+sorin-ionescu/prezto path:modules/syntax-highlighting
+
+# TODO swap with prezto?
+# zsh-users/zsh-history-substring-search kind:defer
+sorin-ionescu/prezto path:modules/history-substring-search
+# TODO swap with prezto?
+
+# zsh-users/zsh-autosuggestions kind:defer
+sorin-ionescu/prezto path:modules/autosuggestions

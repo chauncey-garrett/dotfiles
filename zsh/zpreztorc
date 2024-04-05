@@ -21,38 +21,6 @@ zstyle ':prezto:load' zmodule 'attr' 'mathfunc' 'stat'
 # Set the Zsh functions to load (man zshcontrib).
 zstyle ':prezto:load' zfunction 'zargs' 'zmv'
 
-# Set the Prezto modules to load (browse modules).
-# The order matters.
-zstyle ':prezto:load' pmodule \
-  'mime-setup' \
-  'environment' \
-  'archive' \
-  'terminal' \
-  'editor' \
-  'history' \
-  'homebrew' \
-  'directory' \
-  'spectrum' \
-  'utility' \
-  'completion' \
-  'fasd' \
-  'git' \
-  'command-not-found' \
-  'tmux' \
-  'node' \
-  'osx' \
-  'rails' \
-  'rsync' \
-  'ruby' \
-  'perl' \
-  'python' \
-  'wakeonlan' \
-  'weather' \
-  'autoenv' \
-  'prompt' \
-  'syntax-highlighting' \
-  'history-substring-search' \
-  'autosuggestions' \
 
 #
 # Autosuggestions
@@ -124,20 +92,14 @@ zstyle ':prezto:module:history-substring-search' globbing-flags 'i'
 # zstyle ':prezto:module:osx:man' dash-keyword 'manpages'
 
 #
-# Pacman
-#
-
-# Set the Pacman frontend.
-# zstyle ':prezto:module:pacman' frontend 'yaourt'
-
-#
 # Prompt
 #
 
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'garrett'
+# zstyle ':prezto:module:prompt' theme 'garrett'
+# zstyle ':prezto:module:prompt' theme 'prezto'
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)

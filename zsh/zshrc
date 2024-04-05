@@ -1,3 +1,13 @@
+#!/bin/zsh
+#
+# .zshrc - Zsh file loaded on interactive shell sessions.
+#
+
+setopt extended_glob
+
+[[ -e ${ZDOTDIR:-$HOME}/.zstyles ]] && source ${ZDOTDIR:-$HOME}/.zstyles
+
+#
 # Executes commands at the start of an interactive session.
 #
 #
@@ -24,18 +34,22 @@ for i in {${#parts}..1}; do
 done
 
 #
-# Source Prezto
+# Source Antidote
 #
 
-prezto="${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# Homebrew installed antidote
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
 
-if [[ -s "${prezto}" ]]; then
+# Setup for OMZ
+ZSH=$(antidote path ohmyzsh/ohmyzsh)
+ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/oh-my-zsh"
+[[ -d $ZSH_CACHE_DIR ]] || mkdir -p $ZSH_CACHE_DIR
 
-  # shellcheck source=/dev/null
-  source "${prezto}"
-else
-  exit
-fi
+# Setup for Prezto
+pmodload() {}
+[[ -f ${ZDOTDIR:-$HOME}/.zpreztorc ]] && source ${ZDOTDIR:-$HOME}/.zpreztorc
+
+antidote load
 
 #
 # Customize to your needs...
@@ -927,12 +941,6 @@ function repeat() {
     sleep 1
   done
 }
-
-#
-# ASDF
-#
-
-. /usr/local/opt/asdf/libexec/asdf.sh
 
 #
 # touch-with-dir
