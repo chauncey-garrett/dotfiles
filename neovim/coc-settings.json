@@ -23,5 +23,6 @@
       ],
       "initializationOptions": {}
     }
-  }
+  },
+  "snippets.ultisnips.pythonPrompt": false
 }
