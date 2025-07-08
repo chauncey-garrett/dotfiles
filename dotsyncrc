@@ -67,5 +67,5 @@ zsh/zstyles
 
 ## hostname                     type=masterhost, ANY or NONE    files=dotfile:tolink,another:tolink
 [hosts]
-rocket
+ChaunceyGarrett-2024FZ
 [endhosts]

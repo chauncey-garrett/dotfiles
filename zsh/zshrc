@@ -943,6 +943,13 @@ function repeat() {
 }
 
 #
+# ASDF
+#
+
+# . /usr/local/opt/asdf/libexec/asdf.sh
+# . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+#
 # touch-with-dir
 # `touch` a new file making missing directories
 #
@@ -963,7 +970,7 @@ fi
 # Source private config files
 #
 
-for file in ${HOME}/.dotfiles/zsh/private/**/*.rc; do
+for file in ${HOME}/.dotfiles/zsh/private/**/*.rc(N); do
   [[ -f "${file}" ]] || continue
   source "${file}"
 done
@@ -973,13 +980,14 @@ done
 #
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 #
 # 1Password
 #
 
-source /Users/chauncey/.config/op/plugins.sh
+source $HOME/.config/op/plugins.sh
 eval "$(op completion zsh)"; compdef _op op
 
 #
@@ -999,3 +1007,4 @@ function gfcd() {
   echo "Navigating to $path_to_cloned_repo..."
   cd $path_to_cloned_repo
 }
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
