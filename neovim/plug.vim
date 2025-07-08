@@ -378,10 +378,21 @@ source ~/.config/nvim/config/prettier/vim-prettier.vim
 "
 " On macOS, use homebrew's fzf
 if (system('uname') =~? 'darwin')
-  Plug '/usr/local/opt/fzf'
-    \| Plug 'junegunn/fzf.vim', {
-      \'do': 'brew install fzf bat git-delta ag rg perl',
-    \}
+
+  " For Apple Silicon
+  if (system('arch') == "arm64")
+    Plug '/opt/homebrew/opt/fzf'
+      \| Plug 'junegunn/fzf.vim', {
+        \'do': 'brew install fzf bat git-delta ag rg perl',
+      \}
+
+  " For intel
+  else
+    Plug '/usr/local/opt/fzf'
+      \| Plug 'junegunn/fzf.vim', {
+        \'do': 'brew install fzf bat git-delta ag rg perl',
+      \}
+  endif
 
 " On linux, use linuxbrew's fzf
 else
