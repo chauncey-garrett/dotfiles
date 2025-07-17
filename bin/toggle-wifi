@@ -4,8 +4,12 @@
 ## Toggle wifi on OS X
 ##
 
-local device=$(networksetup -listallhardwareports | grep -E '(Wi-Fi|AirPort)' -A 1 | grep -o en.)
-[[ "$(networksetup -getairportpower $device)" == *On ]] && local power="off" || local power="on"
-networksetup -setairportpower $device $power
+local device=$(networksetup -listallhardwareports | grep -E '(Wi-Fi|AirPort)' -A 1 | grep -o 'en.')
+if [[ -z "$device" ]]; then
+    echo "Error: Could not find Wi-Fi device" >&2
+    exit 1
+fi
+[[ "$(networksetup -getairportpower "$device")" == *On ]] && local power="off" || local power="on"
+networksetup -setairportpower "$device" "$power"
 
 

@@ -196,7 +196,15 @@ private
 
 def run(cmd)
 	puts "[Running] #{cmd}"
-	`#{cmd}` unless ENV['DEBUG']
+	unless ENV['DEBUG']
+		if cmd.is_a?(Array)
+			system(*cmd)
+		else
+			# For backward compatibility, still support strings but warn
+			puts "Warning: String commands are deprecated. Use array format."
+			system(cmd)
+		end
+	end
 end
 
 def want_to_install? (section)

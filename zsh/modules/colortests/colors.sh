@@ -19,7 +19,7 @@ for FGs in '    m' '   1m' '  30m' '1;30m' '  31m' '1;31m' '  32m' \
   do FG=${FGs// /}
   echo -en " $FGs \033[$FG  $T  "
   for BG in 40m 41m 42m 43m 44m 45m 46m 47m;
-    do echo -en "$EINS \033[$FG\033[$BG  $T  \033[0m";
+    do echo -en " \033[$FG\033[$BG  $T  \033[0m";
   done
   echo;
 done
