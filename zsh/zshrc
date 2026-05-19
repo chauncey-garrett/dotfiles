@@ -988,7 +988,24 @@ source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 #
 
 source $HOME/.config/op/plugins.sh
-eval "$(op completion zsh)"; compdef _op op
+
+# Cache `op completion zsh` to avoid invoking the `op` binary on every shell
+# start (each invocation prompts 1Password for Touch ID, which storms across
+# new tmux panes, terminal tabs, and non-interactive subshells like the ones
+# Claude Code's Bash tool spawns). Regenerates only when the `op` binary is
+# newer than the cached output. The interactive-shell guard skips the whole
+# thing for non-interactive shells, which never need completions anyway.
+if [[ -o interactive ]] && (( $+commands[op] )); then
+  _op_cache="${ZDOTDIR:-$HOME}/.zcompcache/op-completion.zsh"
+  _op_bin="${commands[op]}"
+  if [[ ! -s $_op_cache || $(/usr/bin/stat -f %m "$_op_cache") -lt $(/usr/bin/stat -f %m "$_op_bin") ]]; then
+    mkdir -p "${_op_cache:h}"
+    op completion zsh > "$_op_cache" 2>/dev/null
+  fi
+  source "$_op_cache"
+  compdef _op op
+  unset _op_cache _op_bin
+fi
 
 #
 # git clone cd
