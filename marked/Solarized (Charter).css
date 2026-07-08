@@ -229,7 +229,10 @@ html body #wrapper {
      centered on the same axis, then scrolls. Short blocks align to the prose
      column (min-width:100%). 1ch here = one PragmataPro glyph.               */
   box-sizing: border-box;
-  width: fit-content;
+  width: max-content;          /* max-content, NOT fit-content: fit-content is
+                                  capped at the prose column width, so it can
+                                  never break out. max-content sizes to the
+                                  longest line, then max-width/overflow cap it. */
   min-width: 100%;
   max-width: min(var(--code-cap), 92vw);
   margin-left: 50%;

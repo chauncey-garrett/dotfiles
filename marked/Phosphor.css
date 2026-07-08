@@ -180,7 +180,7 @@ html body #wrapper {
   overflow-x: auto; font-size: .92em; line-height: 1.55;
   box-shadow: inset 0 0 40px rgba(0,0,0,.35);
   /* breakout: 80-col prose column; code grows toward ~100 cols then scrolls  */
-  box-sizing: border-box; width: fit-content; min-width: 100%;
+  box-sizing: border-box; width: max-content; min-width: 100%;
   max-width: min(var(--code-cap), 94vw); margin-left: 50%; transform: translateX(-50%);
 }
 #wrapper pre code { background: none; border: 0; padding: 0; font-size: 1em; color: inherit; }
