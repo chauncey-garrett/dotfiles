@@ -1,0 +1,258 @@
+/*
+   This document has been created with Marked.app <https://markedapp.com>
+   Please leave this notice in place, along with any additional credits below.
+   ---------------------------------------------------------------
+   Title: Phosphor
+   Author: Chauncey Garrett
+   Description: A phosphor-terminal reading theme for Marked — a modern take on
+                the classic green-on-black, full-screen writing / Mac OS Classic
+                terminal look. Text is PragmataPro Liga with contextual
+                ligatures; a subtle bloom gives it CRT glow. Green phosphor on a
+                deep green screen by default (amber on Solarized base03 is a
+                one-line toggle). The column holds an authentic, centered
+                80-column measure. Always dark (a terminal has no light mode).
+                Optional scanline / flicker CRT effects are one-line toggles.
+                Print/PDF flips to ink-on-paper.
+   Palette:   Rooted in Ethan Schoonover's Solarized. <https://ethanschoonover.com/solarized/>
+   Font:      PragmataPro Liga (with monospace system fallbacks).
+*/
+
+/* ============================================================
+   Palette — deep green "screen" + green phosphor text
+   ============================================================ */
+:root {
+  color-scheme: dark;
+
+  --screen:    #04231b;   /* deep green screen — harmonizes with green text */
+  --screen-in: #03170f;   /* sunken inset (code)                           */
+
+  /* GREEN phosphor */
+  --fg:        #74d999;
+  --fg-bright: #aef0c4;
+  --fg-dim:    #4b9068;
+  --fg-faint:  #2f5f45;
+
+  /* Phosphor bloom (glow ON). To disable, set: --glow: none;               */
+  --glow: 0 0 3px color-mix(in srgb, currentColor 55%, transparent),
+          0 0 10px color-mix(in srgb, currentColor 28%, transparent);
+
+  /* Type system */
+  --font-mono: "PragmataPro Liga", "PragmataPro Mono Liga", "PragmataPro", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --measure: 80ch;             /* 80-column terminal + good measure          */
+  --code-cap: 100ch;           /* code breakout ceiling                      */
+  --fs: clamp(15px, 1.05rem, 18px);
+  --lh: 1.65;
+}
+
+/* ===== OPTIONAL — Amber phosphor ====================================
+   Uncomment to switch to warm amber on the Solarized base03 screen
+   (amber pairs better with the teal base than with the green screen).
+:root {
+  --fg:#f0b45a; --fg-bright:#ffd79a; --fg-dim:#a9772f; --fg-faint:#6e4f22;
+  --screen:#002b36; --screen-in:#00212a;
+}
+================================================================== */
+
+/* ============================================================
+   Screen canvas
+   ============================================================ */
+html, body { margin: 0; background: var(--screen); }
+body {
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-feature-settings: "liga" 1, "calt" 1;   /* PragmataPro ligatures     */
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Subtle screen vignette — sells the "glass" without hurting reading.
+   To remove entirely, delete this block.                                    */
+body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 4;
+  background: radial-gradient(120% 100% at 50% 50%, transparent 55%, rgba(0,0,0,.45) 100%);
+}
+
+/* ===== OPTIONAL — CRT scanlines =====================================
+   Uncomment for faint horizontal scanlines over the whole screen.
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 5;
+  background: repeating-linear-gradient(0deg, rgba(0,0,0,.22) 0 1px, transparent 1px 3px);
+}
+================================================================== */
+
+/* ===== OPTIONAL — CRT flicker (needs scanlines block above too) =====
+   Uncomment to add a subtle screen flicker.
+body { animation: flicker 6s infinite steps(60); }
+@keyframes flicker {
+  0%,100%{opacity:1} 2%{opacity:.86} 3%{opacity:1} 41%{opacity:.92}
+  42%{opacity:1} 70%{opacity:.97} 71%{opacity:1}
+}
+================================================================== */
+
+/* ============================================================
+   #wrapper — the centered 80-column "page"
+   ============================================================ */
+#wrapper {
+  max-width: var(--measure);
+  margin: 3.5rem auto 8rem;
+  padding: 0 2ch;
+  font-size: var(--fs);
+  line-height: var(--lh);
+  text-shadow: var(--glow);
+  overflow-wrap: break-word;
+}
+/* Marked's base stylesheet widens #wrapper with higher specificity/!important;
+   out-specify it to hold the centered 80-column measure.                     */
+html body #wrapper {
+  max-width: var(--measure) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+}
+
+/* Inline */
+#wrapper p { margin: 0 0 1.1em; }
+#wrapper a { color: var(--fg-bright); text-decoration: none; border-bottom: 1px solid var(--fg-dim); }
+#wrapper a:hover { background: var(--fg); color: var(--screen); text-shadow: none; border-bottom-color: var(--fg); }
+#wrapper strong { color: var(--fg-bright); font-weight: 700; }
+#wrapper em { font-style: italic; color: var(--fg-bright); }
+#wrapper mark { background: var(--fg-dim); color: var(--screen); text-shadow: none; }
+
+/* Headings — uppercase, tracked, terminal prefixes */
+#wrapper h1, #wrapper h2, #wrapper h3, #wrapper h4, #wrapper h5, #wrapper h6 {
+  color: var(--fg-bright); font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em; line-height: 1.3;
+  margin: 2em 0 .7em;
+}
+#wrapper h1 { font-size: 1.5em; margin-top: 0; letter-spacing: .04em; }
+/* Blinking block cursor after the title. To disable, delete this rule.       */
+#wrapper h1::after {
+  content: "\258B"; margin-left: .1em; color: var(--fg-bright);
+  animation: blink 1.1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+#wrapper h2 { font-size: 1.18em; padding-bottom: .35em; border-bottom: 1px dashed var(--fg-faint); }
+#wrapper h2::before { content: "## "; color: var(--fg-dim); }
+#wrapper h3 { font-size: 1.02em; }
+#wrapper h3::before { content: "### "; color: var(--fg-dim); }
+#wrapper h4 { font-size: .95em; color: var(--fg); }
+#wrapper h4::before { content: "#### "; color: var(--fg-dim); }
+#wrapper h5, #wrapper h6 { font-size: .9em; color: var(--fg-dim); }
+#wrapper h1 + p { color: var(--fg); }
+
+/* Blockquote */
+#wrapper blockquote {
+  margin: 1.4em 0; padding: .1em 0 .1em 2ch;
+  border-left: 2px solid var(--fg-dim); color: var(--fg-dim); font-style: italic;
+}
+#wrapper blockquote p:last-child { margin-bottom: 0; }
+
+/* Lists — terminal bullets on the mono grid */
+#wrapper ol { margin: 0 0 1.1em; padding-left: 3ch; }
+#wrapper ol li::marker { color: var(--fg-dim); }
+#wrapper ul { list-style: none; margin: 0 0 1.1em; padding-left: 0; }
+#wrapper ul > li { padding-left: 3ch; text-indent: -3ch; }
+#wrapper ul > li::before { content: "\2013\0020"; color: var(--fg-dim); }  /* "– " dash + space (\0020 so the space isn't eaten as the hex-escape terminator) */
+#wrapper ul ul, #wrapper ol ol, #wrapper ul ol, #wrapper ol ul { margin-bottom: 0; }
+#wrapper ul ul > li::before { content: "\25E6\0020"; }                      /* "◦ " white bullet + space */
+#wrapper li { margin: .25em 0; }
+
+/* Task lists — literal terminal brackets.
+   The bracket ::before must live on the <li>: WebKit/Safari ignore ::before
+   and ::after on the replaced <input> element. :has() switches on state.     */
+#wrapper li:has(> input[type="checkbox"]) { padding-left: 4ch; text-indent: -4ch; }
+#wrapper li:has(> input[type="checkbox"])::before { content: "[ ] "; color: var(--fg-dim); white-space: pre; }
+#wrapper li:has(> input[type="checkbox"]:checked)::before { content: "[x] "; color: var(--fg-bright); }
+#wrapper li > input[type="checkbox"] { display: none; }
+
+/* Code — sunken screen inset, with breakout for long lines */
+#wrapper code, #wrapper pre, #wrapper kbd {
+  font-family: var(--font-mono); font-feature-settings: "liga" 1, "calt" 1;
+}
+#wrapper :not(pre) > code {
+  background: var(--screen-in); color: var(--fg-bright);
+  padding: .1em .4em; border: 1px solid var(--fg-faint); border-radius: 3px; font-size: .95em;
+}
+#wrapper pre {
+  background: var(--screen-in); color: var(--fg);
+  margin: 1.5em 0; padding: 1ch 2ch; border: 1px solid var(--fg-faint); border-radius: 4px;
+  overflow-x: auto; font-size: .92em; line-height: 1.55;
+  box-shadow: inset 0 0 40px rgba(0,0,0,.35);
+  /* breakout: 80-col prose column; code grows toward ~100 cols then scrolls  */
+  box-sizing: border-box; width: fit-content; min-width: 100%;
+  max-width: min(var(--code-cap), 94vw); margin-left: 50%; transform: translateX(-50%);
+}
+#wrapper pre code { background: none; border: 0; padding: 0; font-size: 1em; color: inherit; }
+
+/* Monochrome syntax: brightness, not hue — true to a single-phosphor tube */
+.hljs-comment, .hljs-quote { color: var(--fg-dim); font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-name,
+.hljs-title, .hljs-title.function_, .hljs-section, .hljs-strong { color: var(--fg-bright); }
+.hljs-string, .hljs-number, .hljs-attr, .hljs-symbol, .hljs-bullet,
+.hljs-built_in, .hljs-type, .hljs-meta, .hljs-addition { color: var(--fg); }
+.hljs-operator, .hljs-punctuation, .hljs-params, .hljs-subst { color: var(--fg-dim); }
+.hljs-deletion { color: var(--fg-dim); text-decoration: line-through; }
+.hljs-emphasis { font-style: italic; }
+
+/* Tables — ascii grid */
+#wrapper table { border-collapse: collapse; width: 100%; margin: 1.5em 0; font-size: .95em; }
+#wrapper th, #wrapper td { padding: .35em 1ch; text-align: left; border-bottom: 1px dashed var(--fg-faint); }
+#wrapper thead th { color: var(--fg-bright); border-bottom: 1px solid var(--fg-dim); text-transform: uppercase; letter-spacing: .06em; }
+
+/* Rules, images, kbd, footnotes */
+#wrapper hr { border: 0; border-top: 1px dashed var(--fg-faint); margin: 2.4em 0; }
+#wrapper img { max-width: 100%; height: auto; }
+#wrapper kbd { border: 1px solid var(--fg-dim); border-radius: 3px; padding: 0 .5ch; font-size: .9em; color: var(--fg-bright); }
+#wrapper a.footnote, #wrapper sup a { color: var(--fg-bright); border: 0; font-size: .8em; }
+#wrapper div.footnotes { margin-top: 3em; padding-top: 1em; border-top: 1px dashed var(--fg-faint); color: var(--fg-dim); font-size: .92em; }
+
+/* Poetry mode */
+body.poetry #wrapper p { white-space: pre-wrap; }
+
+::selection { background: var(--fg); color: var(--screen); text-shadow: none; }
+
+/* ============================================================
+   PRINT / PDF — flip the tube off: ink on paper.
+   Marked adds body.mkprinting during export; browsers use @media print.
+   ============================================================ */
+@media print {
+  html, body { background: #fff; }
+  body::before, body::after { display: none; }
+  #wrapper {
+    color: #1a1a1a; max-width: 100%; margin: 0 auto;
+    font-size: 11pt; line-height: 1.5; text-shadow: none;
+  }
+  #wrapper a, #wrapper strong, #wrapper em,
+  #wrapper h1, #wrapper h2, #wrapper h3, #wrapper h4 { color: #000; }
+  #wrapper h1::after { content: none; }
+  #wrapper :not(pre) > code, #wrapper pre {
+    background: #f4f4f4; color: #1a1a1a; border: 1px solid #ddd; box-shadow: none;
+  }
+  #wrapper pre {
+    width: auto; min-width: 0; max-width: 100%;
+    margin-left: 0; transform: none;
+    white-space: pre-wrap; word-break: break-word; overflow: visible;
+  }
+  .hljs-comment, .hljs-keyword, .hljs-string, .hljs-number,
+  .hljs-title, .hljs-built_in, .hljs-operator { color: #1a1a1a; }
+}
+body.mkprinting { background: #fff; }
+body.mkprinting::before, body.mkprinting::after { display: none; }
+body.mkprinting #wrapper {
+  color: #1a1a1a; max-width: 100%; margin: 0 auto;
+  font-size: 11pt; line-height: 1.5; text-shadow: none;
+}
+body.mkprinting #wrapper a, body.mkprinting #wrapper strong, body.mkprinting #wrapper em,
+body.mkprinting #wrapper h1, body.mkprinting #wrapper h2,
+body.mkprinting #wrapper h3, body.mkprinting #wrapper h4 { color: #000; }
+body.mkprinting #wrapper h1::after { content: none; }
+body.mkprinting #wrapper :not(pre) > code,
+body.mkprinting #wrapper pre {
+  background: #f4f4f4; color: #1a1a1a; border: 1px solid #ddd; box-shadow: none;
+}
+body.mkprinting #wrapper pre {
+  width: auto; min-width: 0; max-width: 100%;
+  margin-left: 0; transform: none;
+  white-space: pre-wrap; word-break: break-word; overflow: visible;
+}
