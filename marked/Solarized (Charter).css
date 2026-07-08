@@ -30,8 +30,11 @@
   /* ---- Type system ---- */
   --font-prose: Charter, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
   --font-mono:  "PragmataPro Liga", "PragmataPro Mono Liga", "PragmataPro", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --measure: 67ch;      /* prose line length — the reading measure          */
+  --measure: 46.5rem;   /* reading measure (~67 Charter chars). In rem, NOT ch,
+                           so every block aligns regardless of its font-size —
+                           ch would make big headings a much wider "measure".  */
   --code-cap: 125ch;    /* code breakout ceiling (~120 chars + padding)     */
+  --wrap: 88rem;        /* wide outer container; prose is inset to --measure */
   --fs-body: 1.25rem;   /* ~20px                                            */
   --lh-body: 1.62;
 
@@ -99,8 +102,8 @@ body {
    #wrapper — the centered reading column
    ============================================================ */
 #wrapper {
-  max-width: var(--measure);
-  margin: 4.5rem auto 8rem;    /* CENTERED column                           */
+  max-width: var(--wrap);      /* WIDE container; prose is inset below       */
+  margin: 4.5rem auto 8rem;    /* CENTERED                                   */
   padding: 0 1.5rem;
   font-size: var(--fs-body);
   line-height: var(--lh-body);
@@ -108,14 +111,19 @@ body {
   font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
   font-variant-numeric: oldstyle-nums;   /* book-like figures in prose       */
 }
-/* Marked's built-in stylesheet sets #wrapper full-width with higher
-   specificity/!important. Out-specify it to hold the centered measure.      */
+/* Marked's built-in stylesheet sizes #wrapper with higher specificity/!important;
+   out-specify it to hold our wide container.                                 */
 html body #wrapper {
-  max-width: var(--measure) !important;
+  max-width: var(--wrap) !important;
   margin-left: auto !important;
   margin-right: auto !important;
   width: auto !important;
 }
+/* Inset every top-level block to the reading measure, centered. Code (below)
+   overrides this to grow wider. This "inset children" model keeps everything
+   inside #wrapper, so nothing overflows the box that Marked's WebKit clips —
+   which is how code can be wider than prose without being cut off.           */
+#wrapper > * { max-width: var(--measure); margin-inline: auto !important; box-sizing: border-box; }
 
 /* ---- Paragraphs & inline ---- */
 #wrapper p { margin: 0 0 1.15em; }
@@ -202,11 +210,12 @@ html body #wrapper {
   border: 1.5px solid var(--muted); border-radius: 4px;
   vertical-align: -0.13em; text-indent: 0; position: relative;
 }
-#wrapper input[type="checkbox"]:checked { background: var(--sol-green); border-color: var(--sol-green); }
-#wrapper input[type="checkbox"]:checked::after {
-  content: "✓"; position: absolute; inset: 0;
-  display: grid; place-items: center;
-  color: var(--sol-base3); font-size: .8em; font-family: var(--font-mono);
+/* Checkmark is drawn as a background SVG (a cream tick on green), NOT via
+   ::after — WebKit/Safari (Marked's engine) ignores ::before/::after on the
+   replaced <input>, so an ::after tick silently vanishes in Marked.           */
+#wrapper input[type="checkbox"]:checked {
+  background: var(--sol-green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23fdf6e3' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 74% no-repeat;
+  border-color: var(--sol-green);
 }
 
 /* ---- Code: PragmataPro Liga, with breakout ---- */
@@ -229,14 +238,12 @@ html body #wrapper {
      centered on the same axis, then scrolls. Short blocks align to the prose
      column (min-width:100%). 1ch here = one PragmataPro glyph.               */
   box-sizing: border-box;
-  width: max-content;          /* max-content, NOT fit-content: fit-content is
-                                  capped at the prose column width, so it can
-                                  never break out. max-content sizes to the
-                                  longest line, then max-width/overflow cap it. */
-  min-width: 100%;
-  max-width: min(var(--code-cap), 92vw);
-  margin-left: 50%;
-  transform: translateX(-50%);
+  width: max-content;                    /* size to the longest line...        */
+  min-width: min(var(--measure), 100%);  /* ...but floor to the prose measure  */
+  max-width: var(--code-cap);            /* ...and cap the breakout, then scroll.
+     max-content (not fit-content) so it isn't clamped to the column; the cap is
+     <= #wrapper width, so the block never overflows #wrapper (no WebKit clip). */
+  margin-inline: auto;                   /* centered within the wide #wrapper   */
 }
 #wrapper pre code { background: none; border: 0; padding: 0; font-size: 1em; color: inherit; }
 

@@ -38,8 +38,11 @@
 
   /* Type system */
   --font-mono: "PragmataPro Liga", "PragmataPro Mono Liga", "PragmataPro", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --measure: 80ch;             /* 80-column terminal + good measure          */
+  --measure: 42rem;            /* reading measure (~80 mono cols). In rem, NOT
+                                  ch, so every block aligns regardless of its
+                                  font-size (big headings would else be wider). */
   --code-cap: 100ch;           /* code breakout ceiling                      */
+  --wrap: 66rem;               /* wide outer container; prose inset to measure */
   --fs: clamp(15px, 1.05rem, 18px);
   --lh: 1.65;
 }
@@ -94,7 +97,7 @@ body { animation: flicker 6s infinite steps(60); }
    #wrapper — the centered 80-column "page"
    ============================================================ */
 #wrapper {
-  max-width: var(--measure);
+  max-width: var(--wrap);      /* WIDE container; prose is inset below       */
   margin: 3.5rem auto 8rem;
   padding: 0 2ch;
   font-size: var(--fs);
@@ -102,19 +105,27 @@ body { animation: flicker 6s infinite steps(60); }
   text-shadow: var(--glow);
   overflow-wrap: break-word;
 }
-/* Marked's base stylesheet widens #wrapper with higher specificity/!important;
-   out-specify it to hold the centered 80-column measure.                     */
+/* Marked's base stylesheet sizes #wrapper with higher specificity/!important;
+   out-specify it to hold our wide container.                                 */
 html body #wrapper {
-  max-width: var(--measure) !important;
+  max-width: var(--wrap) !important;
   margin-left: auto !important;
   margin-right: auto !important;
   width: auto !important;
 }
+/* Inset every top-level block to the 80-col measure, centered. Code (below)
+   overrides this to grow wider. Keeping everything inside #wrapper means
+   nothing overflows the box Marked's WebKit clips — so code can break out
+   past the prose measure without being cut off.                              */
+#wrapper > * { max-width: var(--measure); margin-inline: auto !important; box-sizing: border-box; }
 
 /* Inline */
 #wrapper p { margin: 0 0 1.1em; }
-#wrapper a { color: var(--fg-bright); text-decoration: none; border-bottom: 1px solid var(--fg-dim); }
-#wrapper a:hover { background: var(--fg); color: var(--screen); text-shadow: none; border-bottom-color: var(--fg); }
+#wrapper a {
+  color: var(--fg-bright); text-decoration: underline;
+  text-decoration-color: var(--fg-dim); text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
+#wrapper a:hover { background: var(--fg); color: var(--screen); text-shadow: none; text-decoration-color: transparent; }
 #wrapper strong { color: var(--fg-bright); font-weight: 700; }
 #wrapper em { font-style: italic; color: var(--fg-bright); }
 #wrapper mark { background: var(--fg-dim); color: var(--screen); text-shadow: none; }
@@ -143,8 +154,10 @@ html body #wrapper {
 
 /* Blockquote */
 #wrapper blockquote {
-  margin: 1.4em 0; padding: .1em 0 .1em 2ch;
-  border-left: 2px solid var(--fg-dim); color: var(--fg-dim); font-style: italic;
+  margin: 1.4em auto; padding: .6em 1.5ch .6em 2ch;
+  border-left: 2px solid var(--fg-dim); border-radius: 0 4px 4px 0;
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+  color: var(--fg-dim); font-style: italic;
 }
 #wrapper blockquote p:last-child { margin-bottom: 0; }
 
@@ -180,10 +193,18 @@ html body #wrapper {
   overflow-x: auto; font-size: .92em; line-height: 1.55;
   box-shadow: inset 0 0 40px rgba(0,0,0,.35);
   /* breakout: 80-col prose column; code grows toward ~100 cols then scrolls  */
-  box-sizing: border-box; width: max-content; min-width: 100%;
-  max-width: min(var(--code-cap), 94vw); margin-left: 50%; transform: translateX(-50%);
+  box-sizing: border-box; width: max-content;      /* size to longest line...   */
+  min-width: min(var(--measure), 100%);            /* ...floor to the measure   */
+  max-width: var(--code-cap); margin-inline: auto; /* ...cap & center, then scroll.
+     Cap <= #wrapper width, so it never overflows #wrapper (no WebKit clip).    */
 }
 #wrapper pre code { background: none; border: 0; padding: 0; font-size: 1em; color: inherit; }
+/* Phosphor-tinted scrollbar for code that scrolls past the cap */
+#wrapper pre { scrollbar-width: thin; scrollbar-color: var(--fg-faint) transparent; }
+#wrapper pre::-webkit-scrollbar { height: 8px; }
+#wrapper pre::-webkit-scrollbar-thumb { background: var(--fg-faint); border-radius: 4px; }
+#wrapper pre::-webkit-scrollbar-thumb:hover { background: var(--fg-dim); }
+#wrapper pre::-webkit-scrollbar-track { background: transparent; }
 
 /* Monochrome syntax: brightness, not hue — true to a single-phosphor tube */
 .hljs-comment, .hljs-quote { color: var(--fg-dim); font-style: italic; }
