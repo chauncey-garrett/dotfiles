@@ -1,0 +1,329 @@
+/*
+   This document has been created with Marked.app <https://markedapp.com>
+   Please leave this notice in place, along with any additional credits below.
+   ---------------------------------------------------------------
+   Title: Solarized (Charter)
+   Author: Chauncey Garrett
+   Description: A quiet, book-like reading theme for Marked. Prose is set in
+                Charter (Matthew Carter's screen serif, released free by
+                Matthew Butterick of typographyforlawyers.com) on Ethan
+                Schoonover's Solarized palette, with automatic light/dark that
+                follows the system appearance. Code is set in PragmataPro Liga
+                with contextual ligatures. The prose column is held to a lean,
+                centered ~67-character measure, while code blocks break out
+                wider (up to ~120 monospace chars) so long lines stay readable.
+   Solarized: Precision colors for machines and people. <https://ethanschoonover.com/solarized/>
+   Fonts:     Charter (prose) · PragmataPro Liga (code) — both with system fallbacks.
+*/
+
+/* ============================================================
+   SOLARIZED palette — canonical values (Ethan Schoonover)
+   ============================================================ */
+:root {
+  --sol-base03:#002b36; --sol-base02:#073642; --sol-base01:#586e75;
+  --sol-base00:#657b83;  --sol-base0:#839496;  --sol-base1:#93a1a1;
+  --sol-base2:#eee8d5;   --sol-base3:#fdf6e3;
+  --sol-yellow:#b58900;  --sol-orange:#cb4b16;  --sol-red:#dc322f;
+  --sol-magenta:#d33682; --sol-violet:#6c71c4;  --sol-blue:#268bd2;
+  --sol-cyan:#2aa198;    --sol-green:#859900;
+
+  /* ---- Type system ---- */
+  --font-prose: Charter, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-mono:  "PragmataPro Liga", "PragmataPro Mono Liga", "PragmataPro", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --measure: 67ch;      /* prose line length — the reading measure          */
+  --code-cap: 125ch;    /* code breakout ceiling (~120 chars + padding)     */
+  --fs-body: 1.25rem;   /* ~20px                                            */
+  --lh-body: 1.62;
+
+  /* ---- Semantic tokens: LIGHT (default) ---- */
+  --bg:        var(--sol-base3);
+  --bg-inset:  var(--sol-base2);
+  --text:      var(--sol-base00);
+  --text-em:   var(--sol-base01);
+  --text-hi:   #4a5c63;             /* headings — a touch darker than base01 */
+  --muted:     var(--sol-base1);
+  --rule:      #e5dcc3;             /* faint hairline over base3             */
+  --rule-soft: #ded4b8;
+  --link:      var(--sol-blue);
+  --code-bg:   var(--sol-base2);
+  --code-fg:   var(--sol-base01);
+  --shadow:    0 1px 0 rgba(0,0,0,.04), 0 12px 40px -18px rgba(88,110,117,.35);
+
+  /* ---- Syntax tokens (RESTRAINED accent) ---- */
+  --hl-comment: var(--sol-base1);
+  --hl-keyword: var(--sol-green);
+  --hl-string:  var(--sol-cyan);
+  --hl-number:  var(--sol-magenta);
+  --hl-func:    var(--sol-blue);
+  --hl-builtin: var(--sol-orange);
+  --hl-punc:    var(--sol-base00);
+}
+
+/* ---- Semantic tokens: DARK ----
+   Defined for BOTH signals so the theme always follows the system:
+   (a) @media prefers-color-scheme  — system-following WebView
+   (b) body.inverted                — Marked's own dark-mode class          */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg:var(--sol-base03); --bg-inset:var(--sol-base02);
+    --text:var(--sol-base0); --text-em:var(--sol-base1); --text-hi:#a7b6b6;
+    --muted:var(--sol-base01); --rule:#0c3b47; --rule-soft:#0a333e;
+    --code-bg:#04313c; --code-fg:var(--sol-base1);
+    --hl-comment:var(--sol-base01);
+    --shadow:0 1px 0 rgba(0,0,0,.25), 0 18px 50px -20px rgba(0,0,0,.6);
+  }
+}
+body.inverted {
+  color-scheme: dark;
+  --bg:var(--sol-base03); --bg-inset:var(--sol-base02);
+  --text:var(--sol-base0); --text-em:var(--sol-base1); --text-hi:#a7b6b6;
+  --muted:var(--sol-base01); --rule:#0c3b47; --rule-soft:#0a333e;
+  --code-bg:#04313c; --code-fg:var(--sol-base1);
+  --hl-comment:var(--sol-base01);
+  --shadow:0 1px 0 rgba(0,0,0,.25), 0 18px 50px -20px rgba(0,0,0,.6);
+}
+
+/* ============================================================
+   Page canvas
+   ============================================================ */
+html, body { margin: 0; background: var(--bg); }
+body {
+  color: var(--text);
+  font-family: var(--font-prose);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ============================================================
+   #wrapper — the centered reading column
+   ============================================================ */
+#wrapper {
+  max-width: var(--measure);
+  margin: 4.5rem auto 8rem;    /* CENTERED column                           */
+  padding: 0 1.5rem;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  overflow-wrap: break-word;
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+  font-variant-numeric: oldstyle-nums;   /* book-like figures in prose       */
+}
+/* Marked's built-in stylesheet sets #wrapper full-width with higher
+   specificity/!important. Out-specify it to hold the centered measure.      */
+html body #wrapper {
+  max-width: var(--measure) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+}
+
+/* ---- Paragraphs & inline ---- */
+#wrapper p { margin: 0 0 1.15em; }
+#wrapper a {
+  color: var(--link); text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--link) 40%, transparent);
+  transition: border-color .15s, background .15s;
+}
+#wrapper a:hover {
+  border-bottom-color: var(--link);
+  background: color-mix(in srgb, var(--link) 9%, transparent);
+}
+#wrapper strong { color: var(--text-em); font-weight: 700; }
+#wrapper em { font-style: italic; }
+#wrapper mark {
+  background: color-mix(in srgb, var(--sol-yellow) 28%, transparent);
+  color: inherit; border-radius: 2px; padding: 0 .15em;
+}
+#wrapper sub, #wrapper sup { line-height: 0; }
+
+/* ---- Headings: Charter, bold (editorial) ---- */
+#wrapper h1, #wrapper h2, #wrapper h3, #wrapper h4, #wrapper h5, #wrapper h6 {
+  color: var(--text-hi); line-height: 1.18; font-weight: 700;
+  margin: 2.1em 0 .6em; letter-spacing: -0.006em;
+}
+#wrapper h1 { font-size: 2.15em; margin-top: 0; letter-spacing: -0.018em; }
+#wrapper h2 { font-size: 1.55em; }
+#wrapper h3 { font-size: 1.22em; }
+#wrapper h4 { font-size: 1.02em; color: var(--text-em); }
+#wrapper h5 { font-size: 0.9em; color: var(--text-em); text-transform: uppercase; letter-spacing: .08em; }
+#wrapper h6 { font-size: 0.85em; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+#wrapper h1 + p, #wrapper h2 + p, #wrapper h3 + p { margin-top: 0; }
+/* Lead paragraph right after the title */
+#wrapper h1 + p { font-size: 1.14em; color: var(--text-em); line-height: 1.5; }
+
+/* ===== OPTIONAL — Charter + accent rule ===============================
+   Uncomment to place a thin Solarized-blue hairline beneath H1 and H2.
+#wrapper h1, #wrapper h2 {
+  padding-bottom: .28em;
+  border-bottom: 2px solid color-mix(in srgb, var(--link) 55%, var(--rule));
+}
+====================================================================== */
+
+/* ===== OPTIONAL — PragmataPro headings (technical look) ===============
+   Uncomment to set headings in PragmataPro, uppercase and tracked.
+#wrapper h1, #wrapper h2, #wrapper h3, #wrapper h4 {
+  font-family: var(--font-mono);
+  text-transform: uppercase; letter-spacing: .04em; font-weight: 700;
+}
+#wrapper h1 { font-size: 1.7em; letter-spacing: .02em; }
+#wrapper h2 { font-size: 1.24em; }
+#wrapper h3 { font-size: 1.02em; }
+#wrapper h4 { font-size: .9em; }
+#wrapper h1 + p { text-transform: none; }
+====================================================================== */
+
+/* ---- Blockquote ---- */
+#wrapper blockquote {
+  margin: 1.6em 0; padding: .2em 0 .2em 1.4em;
+  border-left: 3px solid var(--muted);
+  color: var(--text-em); font-style: italic;
+}
+#wrapper blockquote p:last-child { margin-bottom: 0; }
+#wrapper blockquote cite {
+  display: block; font-style: normal; font-size: .82em;
+  color: var(--muted); margin-top: .5em;
+}
+#wrapper blockquote cite::before { content: "— "; }
+
+/* ---- Lists ---- */
+#wrapper ul, #wrapper ol { margin: 0 0 1.15em; padding-left: 1.5em; }
+#wrapper li { margin: .3em 0; }
+#wrapper li::marker { color: var(--muted); }
+#wrapper ul ul, #wrapper ol ol, #wrapper ul ol, #wrapper ol ul { margin-bottom: 0; }
+#wrapper dl dt { font-weight: 700; color: var(--text-em); margin-top: 1em; }
+#wrapper dl dd { margin: 0 0 .6em 1.5em; }
+
+/* Task lists */
+#wrapper ul:has(> li input[type="checkbox"]) { list-style: none; padding-left: .2em; }
+#wrapper li:has(> input[type="checkbox"]) { padding-left: 1.9em; text-indent: -1.9em; }
+#wrapper input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none;
+  width: 1.02em; height: 1.02em; margin-right: .55em;
+  border: 1.5px solid var(--muted); border-radius: 4px;
+  vertical-align: -0.13em; text-indent: 0; position: relative;
+}
+#wrapper input[type="checkbox"]:checked { background: var(--sol-green); border-color: var(--sol-green); }
+#wrapper input[type="checkbox"]:checked::after {
+  content: "✓"; position: absolute; inset: 0;
+  display: grid; place-items: center;
+  color: var(--sol-base3); font-size: .8em; font-family: var(--font-mono);
+}
+
+/* ---- Code: PragmataPro Liga, with breakout ---- */
+#wrapper code, #wrapper pre, #wrapper kbd {
+  font-family: var(--font-mono);
+  font-feature-settings: "liga" 1, "calt" 1;   /* PragmataPro ligatures      */
+}
+#wrapper :not(pre) > code {
+  background: var(--code-bg); color: var(--code-fg);
+  padding: .12em .38em; border-radius: 5px; font-size: .86em;
+  border: 1px solid color-mix(in srgb, var(--rule) 60%, transparent);
+}
+#wrapper pre {
+  background: var(--code-bg); color: var(--code-fg);
+  margin: 1.6em 0; padding: 1.1em 1.35em; border-radius: 10px;
+  overflow-x: auto; font-size: .82em; line-height: 1.58;
+  border: 1px solid color-mix(in srgb, var(--rule) 70%, transparent);
+  box-shadow: var(--shadow);
+  /* CODE BREAKOUT: prose stays ~67ch; code grows up to ~120 monospace chars,
+     centered on the same axis, then scrolls. Short blocks align to the prose
+     column (min-width:100%). 1ch here = one PragmataPro glyph.               */
+  box-sizing: border-box;
+  width: fit-content;
+  min-width: 100%;
+  max-width: min(var(--code-cap), 92vw);
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+#wrapper pre code { background: none; border: 0; padding: 0; font-size: 1em; color: inherit; }
+
+/* Syntax tokens — highlight.js-compatible class names */
+.hljs-comment, .hljs-quote { color: var(--hl-comment); font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-name { color: var(--hl-keyword); }
+.hljs-string, .hljs-attr, .hljs-regexp, .hljs-addition { color: var(--hl-string); }
+.hljs-number, .hljs-symbol, .hljs-bullet, .hljs-meta { color: var(--hl-number); }
+.hljs-title, .hljs-title.function_, .hljs-section, .hljs-selector-id { color: var(--hl-func); }
+.hljs-built_in, .hljs-type, .hljs-params, .hljs-class .hljs-title { color: var(--hl-builtin); }
+.hljs-punctuation, .hljs-operator, .hljs-subst { color: var(--hl-punc); }
+.hljs-deletion { color: var(--sol-red); }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 700; }
+
+/* ===== OPTIONAL — Spectrum accent (livelier tokens) ==================
+   Uncomment to color inline code and the blockquote bar with accents.
+#wrapper :not(pre) > code { color: var(--sol-magenta); }
+#wrapper blockquote { border-left-color: var(--sol-violet); }
+====================================================================== */
+
+/* ---- Tables ---- */
+#wrapper table {
+  border-collapse: collapse; width: 100%; margin: 1.6em 0;
+  font-size: .92em; font-variant-numeric: tabular-nums lining-nums;
+}
+#wrapper th, #wrapper td { padding: .5em .8em; text-align: left; border-bottom: 1px solid var(--rule); }
+#wrapper thead th { color: var(--text-em); border-bottom: 2px solid var(--muted); font-weight: 700; }
+#wrapper tbody tr:hover { background: color-mix(in srgb, var(--muted) 10%, transparent); }
+
+/* ---- Rules, images, figures, kbd, footnotes ---- */
+#wrapper hr {
+  border: 0; height: 1px; margin: 2.6em auto; width: 40%;
+  background: linear-gradient(90deg, transparent, var(--muted), transparent);
+}
+#wrapper img { max-width: 100%; height: auto; border-radius: 6px; }
+#wrapper figure { margin: 1.8em 0; text-align: center; }
+#wrapper figcaption { font-size: .82em; color: var(--muted); margin-top: .5em; font-style: italic; }
+#wrapper kbd {
+  font-size: .8em; background: var(--bg-inset); border: 1px solid var(--muted);
+  border-bottom-width: 2px; border-radius: 5px; padding: .05em .4em;
+}
+#wrapper a.footnote, #wrapper sup a { font-size: .72em; border: 0; padding: 0 .1em; color: var(--link); }
+#wrapper div.footnotes {
+  margin-top: 3em; padding-top: 1em; border-top: 1px solid var(--rule);
+  font-size: .88em; color: var(--muted);
+}
+
+/* ---- Poetry mode (Marked adds body.poetry) ---- */
+body.poetry #wrapper p { white-space: pre-wrap; }
+
+::selection { background: color-mix(in srgb, var(--sol-blue) 30%, transparent); }
+
+/* ============================================================
+   PRINT / PDF export
+   Marked adds body.mkprinting during export; browsers use @media print.
+   Both unwind the code breakout and force an ink-friendly light page.
+   ============================================================ */
+@media print {
+  html, body { background: #fff; }
+  #wrapper {
+    color: #1a1a1a; max-width: 100%; margin: 0 auto;
+    font-size: 11pt; line-height: 1.5;
+  }
+  #wrapper a { color: #1a1a1a; border-bottom: 0; }
+  #wrapper h1, #wrapper h2, #wrapper h3, #wrapper h4 { color: #000; }
+  #wrapper :not(pre) > code, #wrapper pre {
+    background: #f4f2ea; color: #1a1a1a; box-shadow: none; border: 1px solid #ddd;
+  }
+  #wrapper pre {
+    width: auto; min-width: 0; max-width: 100%;
+    margin-left: 0; transform: none;
+    white-space: pre-wrap; word-break: break-word; overflow: visible;
+  }
+  #wrapper h1, #wrapper h2, #wrapper h3 { page-break-after: avoid; }
+  #wrapper pre, #wrapper blockquote, #wrapper table, #wrapper figure { page-break-inside: avoid; }
+}
+body.mkprinting { background: #fff; }
+body.mkprinting #wrapper {
+  color: #1a1a1a; max-width: 100%; margin: 0 auto; font-size: 11pt; line-height: 1.5;
+}
+body.mkprinting #wrapper a { color: #1a1a1a; border-bottom: 0; }
+body.mkprinting #wrapper h1, body.mkprinting #wrapper h2,
+body.mkprinting #wrapper h3, body.mkprinting #wrapper h4 { color: #000; }
+body.mkprinting #wrapper :not(pre) > code,
+body.mkprinting #wrapper pre {
+  background: #f4f2ea; color: #1a1a1a; box-shadow: none; border: 1px solid #ddd;
+}
+body.mkprinting #wrapper pre {
+  width: auto; min-width: 0; max-width: 100%;
+  margin-left: 0; transform: none;
+  white-space: pre-wrap; word-break: break-word; overflow: visible;
+}
