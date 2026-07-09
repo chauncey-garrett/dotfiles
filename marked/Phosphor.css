@@ -7,9 +7,9 @@
    Description: A phosphor-terminal reading theme for Marked — a modern take on
                 the classic green-on-black, full-screen writing / Mac OS Classic
                 terminal look. Text is PragmataPro Liga with contextual
-                ligatures; a subtle bloom gives it CRT glow. Green phosphor on a
-                deep green screen by default (amber on Solarized base03 is a
-                one-line toggle). The column holds an authentic, centered
+                ligatures; a subtle bloom gives it CRT glow. Green phosphor on
+                Solarized base03 by default (amber, and a greener "forest"
+                screen, are one-line toggles). The column holds a centered
                 80-column measure. Always dark (a terminal has no light mode).
                 Optional scanline / flicker CRT effects are one-line toggles.
                 Print/PDF flips to ink-on-paper.
@@ -23,8 +23,10 @@
 :root {
   color-scheme: dark;
 
-  --screen:    #04231b;   /* deep green screen — harmonizes with green text */
-  --screen-in: #03170f;   /* sunken inset (code)                           */
+  --screen:    #002b36;   /* Solarized base03 (the classic dark screen)      */
+  --screen-in: #00212a;   /* sunken inset (code)                            */
+  /* Alt "forest" screen (greener, harmonizes more with green text):
+     --screen: #04231b; --screen-in: #03170f;                                */
 
   /* GREEN phosphor */
   --fg:        #74d999;
@@ -48,11 +50,9 @@
 }
 
 /* ===== OPTIONAL — Amber phosphor ====================================
-   Uncomment to switch to warm amber on the Solarized base03 screen
-   (amber pairs better with the teal base than with the green screen).
+   Uncomment to switch to warm amber (also on Solarized base03).
 :root {
   --fg:#f0b45a; --fg-bright:#ffd79a; --fg-dim:#a9772f; --fg-faint:#6e4f22;
-  --screen:#002b36; --screen-in:#00212a;
 }
 ================================================================== */
 
