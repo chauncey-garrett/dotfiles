@@ -248,16 +248,16 @@ html body #wrapper {
 #wrapper pre code { background: none; border: 0; padding: 0; font-size: 1em; color: inherit; }
 
 /* Syntax tokens — highlight.js-compatible class names */
-.hljs-comment, .hljs-quote { color: var(--hl-comment); font-style: italic; }
-.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-name { color: var(--hl-keyword); }
-.hljs-string, .hljs-attr, .hljs-regexp, .hljs-addition { color: var(--hl-string); }
-.hljs-number, .hljs-symbol, .hljs-bullet, .hljs-meta { color: var(--hl-number); }
-.hljs-title, .hljs-title.function_, .hljs-section, .hljs-selector-id { color: var(--hl-func); }
-.hljs-built_in, .hljs-type, .hljs-params, .hljs-class .hljs-title { color: var(--hl-builtin); }
-.hljs-punctuation, .hljs-operator, .hljs-subst { color: var(--hl-punc); }
-.hljs-deletion { color: var(--sol-red); }
-.hljs-emphasis { font-style: italic; }
-.hljs-strong { font-weight: 700; }
+#wrapper .hljs-comment, #wrapper .hljs-quote { color: var(--hl-comment); font-style: italic; }
+#wrapper .hljs-keyword, #wrapper .hljs-selector-tag, #wrapper .hljs-literal, #wrapper .hljs-name { color: var(--hl-keyword); }
+#wrapper .hljs-string, #wrapper .hljs-attr, #wrapper .hljs-regexp, #wrapper .hljs-addition { color: var(--hl-string); }
+#wrapper .hljs-number, #wrapper .hljs-symbol, #wrapper .hljs-bullet, #wrapper .hljs-meta { color: var(--hl-number); }
+#wrapper .hljs-title, #wrapper .hljs-title.function_, #wrapper .hljs-section, #wrapper .hljs-selector-id { color: var(--hl-func); }
+#wrapper .hljs-built_in, #wrapper .hljs-type, #wrapper .hljs-params, #wrapper .hljs-class .hljs-title { color: var(--hl-builtin); }
+#wrapper .hljs-punctuation, #wrapper .hljs-operator, #wrapper .hljs-subst { color: var(--hl-punc); }
+#wrapper .hljs-deletion { color: var(--sol-red); }
+#wrapper .hljs-emphasis { font-style: italic; }
+#wrapper .hljs-strong { font-weight: 700; }
 
 /* ===== OPTIONAL — Spectrum accent (livelier tokens) ==================
    Uncomment to color inline code and the blockquote bar with accents.

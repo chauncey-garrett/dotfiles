@@ -198,14 +198,14 @@ html body #wrapper {
 #wrapper pre::-webkit-scrollbar-track { background: transparent; }
 
 /* Monochrome syntax: brightness, not hue — true to a single-phosphor tube */
-.hljs-comment, .hljs-quote { color: var(--fg-dim); font-style: italic; }
-.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-name,
-.hljs-title, .hljs-title.function_, .hljs-section, .hljs-strong { color: var(--fg-bright); }
-.hljs-string, .hljs-number, .hljs-attr, .hljs-symbol, .hljs-bullet,
-.hljs-built_in, .hljs-type, .hljs-meta, .hljs-addition { color: var(--fg); }
-.hljs-operator, .hljs-punctuation, .hljs-params, .hljs-subst { color: var(--fg-dim); }
-.hljs-deletion { color: var(--fg-dim); text-decoration: line-through; }
-.hljs-emphasis { font-style: italic; }
+#wrapper .hljs-comment, #wrapper .hljs-quote { color: var(--fg-dim); font-style: italic; }
+#wrapper .hljs-keyword, #wrapper .hljs-selector-tag, #wrapper .hljs-literal, #wrapper .hljs-name,
+#wrapper .hljs-title, #wrapper .hljs-title.function_, #wrapper .hljs-section, #wrapper .hljs-strong { color: var(--fg-bright); }
+#wrapper .hljs-string, #wrapper .hljs-number, #wrapper .hljs-attr, #wrapper .hljs-symbol, #wrapper .hljs-bullet,
+#wrapper .hljs-built_in, #wrapper .hljs-type, #wrapper .hljs-meta, #wrapper .hljs-addition { color: var(--fg); }
+#wrapper .hljs-operator, #wrapper .hljs-punctuation, #wrapper .hljs-params, #wrapper .hljs-subst { color: var(--fg-dim); }
+#wrapper .hljs-deletion { color: var(--fg-dim); text-decoration: line-through; }
+#wrapper .hljs-emphasis { font-style: italic; }
 
 /* Tables — ascii grid */
 #wrapper table { border-collapse: collapse; width: 100%; margin: 1.5em 0; font-size: .95em; }
@@ -246,8 +246,8 @@ body.poetry #wrapper p { white-space: pre-wrap; }
     margin-left: 0; transform: none;
     white-space: pre-wrap; word-break: break-word; overflow: visible;
   }
-  .hljs-comment, .hljs-keyword, .hljs-string, .hljs-number,
-  .hljs-title, .hljs-built_in, .hljs-operator { color: #1a1a1a; }
+  #wrapper .hljs-comment, #wrapper .hljs-keyword, #wrapper .hljs-string, #wrapper .hljs-number,
+  #wrapper .hljs-title, #wrapper .hljs-built_in, #wrapper .hljs-operator { color: #1a1a1a; }
 }
 body.mkprinting { background: #fff; }
 body.mkprinting::before, body.mkprinting::after { display: none; }
