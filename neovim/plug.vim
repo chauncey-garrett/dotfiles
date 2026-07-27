@@ -295,6 +295,32 @@ call Plugged('w0rp/ale')
 call Plugged('wellle/tmux-complete.vim')
 call Plugged('wincent/terminus')
 
+
+
+" Deps
+call Plugged('nvim-lua/plenary.nvim')
+call Plugged('MunifTanjim/nui.nvim')
+call Plugged('MeanderingProgrammer/render-markdown.nvim')
+
+" Optional deps
+call Plugged('hrsh7th/nvim-cmp')
+call Plugged('nvim-tree/nvim-web-devicons') "or Plug 'echasnovski/mini.icons'
+call Plugged('HakonHarnes/img-clip.nvim')
+call Plugged('zbirenbaum/copilot.lua')
+call Plugged('stevearc/dressing.nvim') " for enhanced input UI
+call Plugged('folke/snacks.nvim') " for modern input UI
+
+Plug 'yetone/avante.nvim', {
+  \'do': 'make'
+\}
+source ~/.config/nvim/config/yetone/avante.nvim.vim
+" autocmd! User avante.nvim lua << EOF
+" require('avante').setup()
+" EOF
+
+call Plugged('ravitemer/mcphub.nvim')
+
+
 " macOS
 " TODO optimize check for system in global before file
 if (system('uname') =~? 'darwin')
@@ -463,6 +489,12 @@ call Plugged('vim-airline/vim-airline')
 call Plugged('ryanoasis/vim-devicons')
 
 call plug#end()
+
+" Now configure Avante using a Lua block:
+lua << EOF
+require('avante').setup()
+require("mcphub").setup()
+EOF
 
 " Enable vim-surround keybindings
 " https://github.com/machakann/vim-sandwich/wiki/Introduce-vim-surround-keymappings
