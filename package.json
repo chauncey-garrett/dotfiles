@@ -41,7 +41,6 @@
     "cpy-cli": "^5.0.0",
     "csslint": "^1.0.5",
     "default-browser-cli": "^4.0.0",
-    "devotions-cli": "^1.0.8",
     "docco": "^0.9.1",
     "dockerfile-language-server-nodejs": "^0.11.0",
     "dockerlint": "^0.3.1",

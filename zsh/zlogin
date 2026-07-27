@@ -20,11 +20,11 @@
 } &!
 
 # Print an ESV bible verse.
-if (( $+commands[devotion] )); then
-  devotion
+# if (( $+commands[devotion] )); then
+  # devotion
 
 # Print a random, hopefully interesting, adage.
-elif (( $+commands[fortune] )); then
+if (( $+commands[fortune] )); then
   if [[ -t 0 || -t 1 ]]; then
 
     # KJV bible.
