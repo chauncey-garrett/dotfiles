@@ -900,8 +900,8 @@ function finda() {
 #
 
 # Setup Kaleidoscope for tmux
-if (( $+commands[ksdiff] )) && (( $+commands[reattach-to-user-namespace] )); then
-  alias ksdiff='reattach-to-user-namespace -l ksdiff'
+if (( $+commands[ksdiff] )); then
+  alias ksdiff='ksdiff'
 fi
 
 #

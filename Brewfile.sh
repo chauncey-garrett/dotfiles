@@ -549,7 +549,6 @@ HOMEBREW_FORMULAS=(
   #
 
   tmux
-  reattach-to-user-namespace --with-wrap-launchctl --with-wrap-pbcopy-and-pbpaste
 
   #
   # Fun
@@ -850,4 +849,3 @@ brew cleanup
 
 echo "linking apps"
 brew linkapps
-
