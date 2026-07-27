@@ -139,6 +139,7 @@
   user = chauncey-garrett
 [http]
   sslVerify = true
+	sslCAInfo = /Library/Application Support/LifeChurch/certs/ca-bundle.pem
 [merge]
   conflictstyle = diff3
   tool = Kaleidoscope
