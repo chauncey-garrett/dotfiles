@@ -53,7 +53,7 @@ ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/git-auto-fetch
 
-ohmyzsh/ohmyzsh path:plugins/1password
+# ohmyzsh/ohmyzsh path:plugins/1password
 ohmyzsh/ohmyzsh path:plugins/iterm2
 # ohmyzsh/ohmyzsh path:plugins/ag # TODO fix loading of completions
 ohmyzsh/ohmyzsh path:plugins/aliases

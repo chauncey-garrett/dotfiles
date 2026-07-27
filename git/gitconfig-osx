@@ -90,6 +90,7 @@
   branch = magenta
 [commit]
   template = ~/.gitmessage
+	gpgsign = true
 [core]
   autocrlf = input
   editor = nvim -c startinsert
@@ -193,6 +194,11 @@
 [user]
   name = Chauncey Garrett
   email = git@chauncey.io
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJNgBENCRUNOPFxreCswOAR7qhTNekkmVJttm52Rtd+9
   # signingkey = **Your GPG ID**
 
 # vi: set ft=gitconfig:
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
