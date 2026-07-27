@@ -1015,21 +1015,37 @@ fi
 
 #
 # git clone cd
-# NOTE: only works with git@ repos and not https
+# Supports both SSH (git@host:path) and HTTPS (https://host/path) URLs
 #
 
 function gfcd() {
-  repo="$1"
-  repo_cleaned="$(sed 's/^.*://; s/\.git$//' <<< $repo)"
-  path_to_cloned_repo="$HOME/dev/${repo_cleaned}"
+  local repo="$1"
+  local host path_part
+
+  if [[ $repo == git@* ]]; then
+    # SSH: git@github.com:user/repo.git
+    host="${${repo#git@}%%:*}"
+    path_part="${repo#*:}"
+  elif [[ $repo == https://* ]]; then
+    # HTTPS: https://github.com/user/repo.git
+    host="${${repo#https://}%%/*}"
+    path_part="${${repo#https://}#*/}"
+  else
+    echo "Unsupported URL format: $repo" >&2
+    return 1
+  fi
+
+  path_part="${path_part%.git}"
+  local path_to_cloned_repo="$HOME/dev/${host}/${path_part}"
 
   if [[ ! -d $path_to_cloned_repo ]]; then
-    git clone $repo $path_to_cloned_repo
+    git clone "$repo" "$path_to_cloned_repo"
   fi
 
   echo "Navigating to $path_to_cloned_repo..."
-  cd $path_to_cloned_repo
+  cd "$path_to_cloned_repo"
 }
+
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
 
