@@ -51,6 +51,11 @@ pmodload() {}
 
 antidote load
 
+# Remove prezto's broken `git` autoload stub — it shadows /opt/homebrew/bin/git
+# and breaks tools (like Claude Code) that capture shell state. The prezto git
+# module's useful functions (git-info, git-root, etc.) are unaffected.
+unfunction git 2>/dev/null
+
 #
 # Customize to your needs...
 #
@@ -819,7 +824,8 @@ fi
 #
 
 # Shell integration
-if [[ -e "${HOME}/.iterm2_shell_integration.zsh" ]]; then
+
+if [[ -e "${HOME}/.iterm2_shell_integration.zsh" && ! -n "$CURSOR_AGENT" ]]; then
   source "${HOME}/.iterm2_shell_integration.zsh"
 fi
 
@@ -1025,3 +1031,6 @@ function gfcd() {
   cd $path_to_cloned_repo
 }
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+
+alias claude='SHELL=/bin/bash claude'
