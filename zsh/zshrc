@@ -1050,3 +1050,6 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
 
 alias claude='SHELL=/bin/bash claude'
+
+# Added by GitLab Knowledge Graph installer
+export PATH="$HOME/.local/bin:$PATH"

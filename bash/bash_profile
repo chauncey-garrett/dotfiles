@@ -10,3 +10,6 @@
 # if [ -f ~/.bashrc ]; then
 	# . ~/.bashrc
 # fi
+
+# Added by GitLab Knowledge Graph installer
+export PATH="$HOME/.local/bin:$PATH"
