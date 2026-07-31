@@ -339,3 +339,14 @@ rationalize-path library_path
 
 # Added by GitLab Knowledge Graph installer
 export PATH="$HOME/.local/bin:$PATH"
+
+#
+# Secrets sourced from the macOS login Keychain
+#
+# 1Password is the system of record; the login Keychain is the runtime source, because it
+# unlocks at login and needs no TTY (unlike `op read`, which fails non-interactively).
+# Only the lookup lives here -- never the secret -- so this file stays safe to commit.
+# Seed/rotate with:
+#   security add-generic-password -a pagerduty -s pagerduty-mcp -w '<token>' -A -U
+
+export PAGERDUTY_API_KEY="$(/usr/bin/security find-generic-password -a pagerduty -s pagerduty-mcp -w 2>/dev/null)"
