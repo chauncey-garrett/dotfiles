@@ -3,4 +3,5 @@ Gemfile.lock
 TODO.taskpaper
 node_modules
 yarn.lock
+package-lock.json
 Brewfile.lock.json
