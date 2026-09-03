@@ -139,7 +139,6 @@
   user = chauncey-garrett
 [http]
   sslVerify = true
-	sslCAInfo = /Library/Application Support/LifeChurch/certs/ca-bundle.pem
 [merge]
   conflictstyle = diff3
   tool = Kaleidoscope
@@ -203,3 +202,8 @@
 	format = ssh
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+# Machine/org-specific overrides that shouldn't live in a public dotfiles repo
+# (e.g. corporate TLS-interception CA bundle path). Silently ignored if absent.
+[include]
+  path = ~/.gitconfig.local
