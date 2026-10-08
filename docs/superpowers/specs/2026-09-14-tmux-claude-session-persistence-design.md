@@ -116,6 +116,22 @@ starting/reloading tmux; `prefix + I` also force-installs if needed.
 - **Restore fires on any tmux server start, not just crash-triggered ones.** A deliberate
   `tmux kill-server` also triggers auto-restore on the next `tmux` start. Escape hatch:
   `touch ~/tmux_no_auto_restore` before restarting tmux when a clean slate is wanted.
+- **Auto-restore never fires while any other tmux server (any socket) is already running.**
+  Confirmed during implementation (`tmux-continuum/docs/multiple_tmux_servers.md`):
+  `another_tmux_server_running_on_startup()` counts all `tmux` processes for the user via
+  `ps`, with no socket-name awareness, and gives "precedence to the server started first" —
+  no config option overrides this. Irrelevant to the real crash/reboot scenario (zero other
+  servers exist at boot), but means any *manual* rehearsal of this feature from inside an
+  already-running tmux session (e.g. one hosting a Claude Code CLI session) must invoke
+  `tmux-resurrect/scripts/restore.sh` directly rather than waiting for continuum's
+  background auto-trigger, which is structurally unobservable in that situation.
+- **The `last`-save symlink is shared across all tmux sockets, with no socket scoping.**
+  `tmux-resurrect/scripts/helpers.sh`'s `last_resurrect_file()` is a single
+  `$(resurrect_dir)/last` symlink read by `restore.sh` regardless of which socket invokes
+  it. A manual rehearsal on an isolated test socket (per the Validation plan below) writes
+  to this same shared file — **purge or avoid saving over it during a rehearsal**, since a
+  real crash before the next real autosave would otherwise have the real session's restore
+  read back the rehearsal's synthetic layout instead of nothing.
 
 ## Validation plan
 
