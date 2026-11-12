@@ -1017,10 +1017,35 @@ fi
 # git clone cd
 # Supports both SSH (git@host:path) and HTTPS (https://host/path) URLs
 #
+# Clones <repo-url> into the $HOME/dev/<host>/<path> mirror layout, refreshes it
+# when it is already there, and cd's into it.
+#
+# The refresh exists because "skip the clone if the directory exists" was
+# silently serving months-stale checkouts: `git log -- some/path` came back
+# empty while the remote had the commits the investigation depended on. Policy:
+#
+#   1. `git fetch --all --prune` always. It never touches the working tree and
+#      cannot fail on a dirty one, so every origin/... ref ends up current.
+#   2. Fast-forward the checked-out branch ONLY when that is provably safe: no
+#      operation in progress, on a branch, with an upstream, not diverged, and a
+#      clean tree. This is what makes a bare `git log` correct too.
+#   3. Otherwise say so, loudly, and leave the repo alone. A stale checkout you
+#      were warned about is recoverable; a silent one is not.
+#
+# `git pull` is deliberately not used: it mutates the working tree and can leave
+# a merge commit behind in a repo you only meant to read.
+#
+# Set GFCD_NO_FETCH=1 to skip the refresh entirely (offline, or in a hurry).
+#
 
 function gfcd() {
   local repo="$1"
   local host path_part
+
+  if [[ -z $repo ]]; then
+    echo "gfcd: usage: gfcd <repo-url>" >&2
+    return 1
+  fi
 
   if [[ $repo == git@* ]]; then
     # SSH: git@github.com:user/repo.git
@@ -1039,11 +1064,125 @@ function gfcd() {
   local path_to_cloned_repo="$HOME/dev/${host}/${path_part}"
 
   if [[ ! -d $path_to_cloned_repo ]]; then
-    git clone "$repo" "$path_to_cloned_repo"
+    if ! command git clone "$repo" "$path_to_cloned_repo"; then
+      echo "gfcd: clone failed; staying in $PWD" >&2
+      return 1
+    fi
+  else
+    # Never fatal: a repo we could not refresh is still worth cd'ing into, so
+    # long as we said so out loud.
+    _gfcd_refresh "$path_to_cloned_repo"
   fi
 
   echo "Navigating to $path_to_cloned_repo..."
   cd "$path_to_cloned_repo"
+}
+
+#
+# Bring an existing gfcd clone up to date, in place
+#   USAGE: _gfcd_refresh /path/to/clone
+#
+# Always returns 0: every problem is a warning, so gfcd still lands you in the
+# directory. Uses `command git` so that a `git` alias (hub et al.) cannot change
+# the semantics out from under us.
+#
+
+function _gfcd_refresh() {
+  local dir="$1"
+  local branch upstream counts behind ahead git_dir
+
+  if ! command git -C "$dir" rev-parse --git-dir &>/dev/null; then
+    echo "gfcd: WARNING: $dir is not a git repository; nothing to refresh" >&2
+    return 0
+  fi
+
+  if [[ -n $GFCD_NO_FETCH ]]; then
+    echo "gfcd: WARNING: GFCD_NO_FETCH is set; skipped fetch, $dir may be STALE" >&2
+    return 0
+  fi
+
+  # Bounded on purpose: with no network or no VPN this gives up in seconds
+  # instead of hanging an interactive shell. BatchMode keeps ssh from prompting.
+  echo "gfcd: fetching $dir ..."
+  if ! command git -C "$dir" \
+      -c core.sshCommand='ssh -o BatchMode=yes -o ConnectTimeout=5' \
+      -c http.lowSpeedLimit=1000 \
+      -c http.lowSpeedTime=10 \
+      fetch --all --prune --quiet; then
+    echo "gfcd: WARNING: fetch failed (offline? VPN? auth?); $dir may be STALE" >&2
+    return 0
+  fi
+
+  # Everything below decides whether the *checkout* may follow the refs.
+  git_dir="$(command git -C "$dir" rev-parse --absolute-git-dir)"
+  if [[ -d $git_dir/rebase-merge || -d $git_dir/rebase-apply || \
+        -f $git_dir/MERGE_HEAD || -f $git_dir/CHERRY_PICK_HEAD || \
+        -f $git_dir/BISECT_LOG ]]; then
+    _gfcd_stale_warning "$dir" "a rebase/merge/cherry-pick/bisect is in progress"
+    return 0
+  fi
+
+  if ! branch="$(command git -C "$dir" symbolic-ref --quiet --short HEAD)"; then
+    _gfcd_stale_warning "$dir" "HEAD is detached"
+    return 0
+  fi
+
+  upstream="$(command git -C "$dir" rev-parse --abbrev-ref --symbolic-full-name "${branch}@{upstream}" 2>/dev/null)"
+  if [[ -z $upstream ]]; then
+    _gfcd_stale_warning "$dir" "branch '$branch' has no upstream"
+    return 0
+  fi
+
+  if ! counts="$(command git -C "$dir" rev-list --left-right --count "${upstream}...HEAD" 2>/dev/null)"; then
+    _gfcd_stale_warning "$dir" "could not compare '$branch' against $upstream" "$upstream"
+    return 0
+  fi
+  read -r behind ahead <<< "$counts"
+
+  if (( behind == 0 )); then
+    if (( ahead > 0 )); then
+      echo "gfcd: '$branch' is up to date with $upstream ($ahead local commit(s) ahead)"
+    else
+      echo "gfcd: '$branch' is up to date with $upstream"
+    fi
+    return 0
+  fi
+
+  if (( ahead > 0 )); then
+    _gfcd_stale_warning "$dir" \
+      "'$branch' has DIVERGED from $upstream ($behind behind, $ahead ahead)" "$upstream"
+    return 0
+  fi
+
+  if [[ -n $(command git -C "$dir" status --porcelain --untracked-files=no) ]]; then
+    _gfcd_stale_warning "$dir" \
+      "'$branch' is $behind commit(s) behind $upstream and the working tree is DIRTY" "$upstream"
+    return 0
+  fi
+
+  if command git -C "$dir" merge --ff-only --quiet "$upstream"; then
+    echo "gfcd: fast-forwarded '$branch' $behind commit(s) to $upstream"
+  else
+    _gfcd_stale_warning "$dir" \
+      "'$branch' is $behind commit(s) behind $upstream and would not fast-forward" "$upstream"
+  fi
+}
+
+#
+# Say -- loudly -- that a clone was fetched but its checkout was not advanced,
+# and how to read current state anyway
+#   USAGE: _gfcd_stale_warning /path/to/clone "reason" [ref]
+#
+
+function _gfcd_stale_warning() {
+  local dir="$1" reason="$2" ref="${3:-origin/HEAD}"
+
+  echo "gfcd: WARNING: $dir: $reason." >&2
+  echo "gfcd:          Remote refs are current, but the CHECKOUT WAS NOT ADVANCED --" >&2
+  echo "gfcd:          a bare 'git log' or 'git grep' here still reads STALE local state." >&2
+  echo "gfcd:          Ask for the remote explicitly instead:" >&2
+  echo "gfcd:            git log $ref -- path/" >&2
+  echo "gfcd:            git show $ref:path/to/file" >&2
 }
 
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
