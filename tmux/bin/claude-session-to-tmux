@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+#
+# claude-session-to-tmux: Claude Code SessionStart hook. Records the current
+# session id on the tmux pane running Claude, as pane option @claude-session-id.
+# resurrect-save-claude-ids writes it into every resurrect save, and
+# claude-restore resumes it. That way a pane started as plain `claude` (no id on
+# its command line) still comes back on its own conversation.
+#
+# SessionStart fires on startup, resume, /clear and compaction, so the option
+# always holds the pane's current conversation.
+#
+# Registered in ~/.claude/settings.json under hooks.SessionStart.
+# Tests: make test-claude-session-tracking
+#
+# Rules:
+#  - Prints nothing. SessionStart stdout is injected into Claude's context.
+#  - Always exits 0, so it can never block or fail a session.
+#  - Records only the pane's top-level claude: the nearest `claude` ancestor of
+#    this hook must be the pane's process or a direct child of it. A nested
+#    `claude -p` (a hook's judge, a subagent CLI) has a shell in between, so it
+#    can't overwrite the pane's real session id.
+#
+[ -n "${TMUX:-}" ] && [ -n "${TMUX_PANE:-}" ] || exit 0
+command -v jq >/dev/null 2>&1 || exit 0
+
+sid=$(jq -r '.session_id // empty' 2>/dev/null) || exit 0
+[[ $sid =~ ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$ ]] || exit 0
+
+pane_pid=$(tmux display -p -t "$TMUX_PANE" '#{pane_pid}' 2>/dev/null) || exit 0
+[ -n "$pane_pid" ] || exit 0
+
+is_claude() { # native binary (`claude …`), a script named claude, or node …/claude-code/cli.js
+  local -a w
+  read -r -a w <<<"$(ps -o args= -p "$1" 2>/dev/null)" || return 1
+  [[ ${w[0]##*/} == claude || ${w[1]-} == */claude || ${w[1]-} == */claude-code/cli.js ]]
+}
+parent_of() { ps -o ppid= -p "$1" 2>/dev/null | tr -d ' '; }
+
+pid=$PPID
+for _ in 1 2 3 4 5 6 7 8; do
+  if is_claude "$pid"; then
+    if [ "$pid" = "$pane_pid" ] || [ "$(parent_of "$pid")" = "$pane_pid" ]; then
+      tmux set-option -p -t "$TMUX_PANE" @claude-session-id "$sid" >/dev/null 2>&1
+    fi
+    exit 0
+  fi
+  pid=$(parent_of "$pid")
+  [ -n "$pid" ] && [ "$pid" -gt 1 ] || exit 0
+done
+exit 0

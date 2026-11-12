@@ -8,6 +8,14 @@
 # Resurrect replaces `*` with the saved command's arguments, so a pane saved as
 # `claude -r 5b04030d-…` comes back as `claude-restore -r 5b04030d-…`.
 #
+# Which conversation to resume, first match wins:
+#   1. the pane's live session id, recorded in the save being restored
+#      (claude_session lines: SessionStart hook claude-session-to-tmux ->
+#      resurrect hook resurrect-save-claude-ids). This covers panes started as
+#      plain `claude`, and it stays right after /clear or an in-app /resume.
+#   2. -r/--resume <id> on the saved command line
+#   3. fallback_args
+#
 # Policy: only the session id and the worktree name carry over. Every other
 # argument is dropped, a positional prompt in particular: replaying
 # `claude "fix X"` would submit that prompt again in a new session.
@@ -43,14 +51,45 @@ while [ $# -gt 0 ]; do
   shift
 done
 
+uuid_re='^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
+tab=$'\t'
+
+resurrect_dir() { # mirrors tmux-resurrect's scripts/helpers.sh
+  local d
+  d=$(tmux show-options -gqv @resurrect-dir 2>/dev/null || true)
+  if [ -z "$d" ]; then
+    if [ -d "$HOME/.tmux/resurrect" ]; then d="$HOME/.tmux/resurrect"
+    else d="${XDG_DATA_HOME:-$HOME/.local/share}/tmux/resurrect"; fi
+  fi
+  echo "$d" | sed "s,\$HOME,$HOME,g; s,\$HOSTNAME,$(hostname),g; s,\~,$HOME,g"
+}
+
+# The live id recorded for this pane in the save being restored, or nothing.
+# CLAUDE_RESTORE_SAVE_FILE / CLAUDE_RESTORE_PANE ("session<TAB>window<TAB>pane")
+# override the lookup for tests.
+saved_session_id() {
+  local save=${CLAUDE_RESTORE_SAVE_FILE:-} pane=${CLAUDE_RESTORE_PANE:-}
+  [ -n "$save" ] || save="$(resurrect_dir)/last"
+  if [ -z "$pane" ]; then
+    [ -n "${TMUX_PANE:-}" ] || return 0
+    pane=$(tmux display -p -t "$TMUX_PANE" "#{session_name}${tab}#{window_index}${tab}#{pane_index}" 2>/dev/null) || return 0
+  fi
+  [ -r "$save" ] || return 0
+  awk -F'\t' -v key="$pane" '$1 == "claude_session" && ($2 FS $3 FS $4) == key { id = $5 } END { print id }' "$save"
+}
+
+saved=$(saved_session_id || true)
+if [[ $saved =~ $uuid_re ]]; then session_id=$saved; fi
+
 args=()
 if [ -n "$session_id" ]; then args=(--resume "$session_id"); else fallback_args; fi
 
 dir=$PWD
 if [ -n "$worktree" ]; then
-  # Resurrect restores the pane into the worktree, but Claude stored the
-  # session under the main checkout's project dir. `--worktree <name>` run
-  # from the main checkout is what resumes it (verified 2026-11-12).
+  # Resurrect restores the pane into the worktree. Replay the original
+  # `--worktree <name>` from the main checkout, exactly as the pane was
+  # launched. (`--resume <id>` alone also finds the session from the
+  # worktree, verified 2026-11-12, but this keeps the worktree's setup too.)
   common=$(git -C "$PWD" rev-parse --path-format=absolute --git-common-dir 2>/dev/null || true)
   if [[ $common == */.git ]]; then
     dir=${common%/.git}

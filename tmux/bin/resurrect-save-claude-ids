@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#
+# resurrect-save-claude-ids <save-file>: tmux-resurrect post-save-layout hook.
+# Appends one line per pane that has a live Claude session id (pane option
+# @claude-session-id, set by claude-session-to-tmux):
+#
+#   claude_session <TAB> session <TAB> window_index <TAB> pane_index <TAB> session-id
+#
+# Resurrect's restore reads only the line types it knows (pane, window, state,
+# grouped_session), so these lines are invisible to it. claude-restore reads them.
+# The hook runs before resurrect compares the new save with the previous one, so
+# a changed session id produces a new save, and the ids are pruned with the save.
+#
+# Wired in tmux/config/tmux-plugins/tmux-resurrect.conf. Tests: make test-claude-session-tracking
+#
+set -euo pipefail
+file=$1
+tab=$'\t'
+tmux list-panes -a -F "#{session_name}${tab}#{window_index}${tab}#{pane_index}${tab}#{@claude-session-id}" |
+  while IFS=$'\t' read -r s w p id; do
+    if [ -n "$id" ]; then printf 'claude_session\t%s\t%s\t%s\t%s\n' "$s" "$w" "$p" "$id"; fi
+  done >> "$file"

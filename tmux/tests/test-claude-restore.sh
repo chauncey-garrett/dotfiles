@@ -14,6 +14,13 @@ work="$(cd "$work" && pwd -P)" # resolve /var -> /private/var so paths compare e
 trap 'rm -rf "$work"' EXIT
 fails=0
 
+# Isolation: claude-restore looks up this pane's live session id in the resurrect
+# save. Point it at an empty save and a pane that doesn't exist, so these tests
+# never read the real ~/.local/share/tmux/resurrect/last, even when run inside tmux.
+: > "$work/empty-save.txt"
+export CLAUDE_RESTORE_SAVE_FILE="$work/empty-save.txt"
+export CLAUDE_RESTORE_PANE=$'none\t0\t0'
+
 run() { (cd "$1" && shift && CLAUDE_RESTORE_DRY_RUN=1 "$CR" "$@"); }
 
 expect() { # name dir expected-output args...
@@ -55,5 +62,26 @@ case "$fallback" in
   "cd $plain"$'\n'"claude"*) echo "ok   fallback shape ($(echo "$fallback" | tail -1))" ;;
   *) echo "FAIL fallback is not 'cd <dir>' + 'claude …': $fallback"; fails=$((fails + 1)) ;;
 esac
+
+# Live session ids recorded in the save (claude_session lines, written by
+# resurrect-save-claude-ids from the SessionStart hook's pane option). This is
+# what makes panes started as plain `claude` restore exactly.
+LIVE=aaaaaaaa-1111-2222-3333-444444444444
+CMD=cccccccc-1111-2222-3333-444444444444
+printf 'pane\tS\t3\t1\t:*\t1\tt\t:/x\t1\tclaude\t:claude\nclaude_session\tS\t3\t1\t%s\nclaude_session\tS\t4\t1\tdddddddd-1111-2222-3333-444444444444\nclaude_session\tS\t6\t1\tnot-a-uuid\n' \
+  "$LIVE" > "$work/save.txt"
+export CLAUDE_RESTORE_SAVE_FILE="$work/save.txt"
+
+export CLAUDE_RESTORE_PANE=$'S\t3\t1'
+expect "saved id, plain claude"          "$plain" $'cd '"$plain"$'\nclaude --resume '"$LIVE"
+expect "saved id beats command-line id"  "$plain" $'cd '"$plain"$'\nclaude --resume '"$LIVE"  -r "$CMD"
+expect "saved id + worktree"             "$wt"    $'cd '"$main"$'\nclaude --worktree wt --resume '"$LIVE"  --worktree wt
+
+export CLAUDE_RESTORE_PANE=$'S\t5\t1'
+expect "another pane's id is not used"   "$plain" $'cd '"$plain"$'\nclaude --resume '"$CMD"  -r "$CMD"
+expect "no saved id -> fallback"         "$plain" "$fallback"
+
+export CLAUDE_RESTORE_PANE=$'S\t6\t1'
+expect "malformed saved id is ignored"   "$plain" "$fallback"
 
 if [ "$fails" -eq 0 ]; then echo "PASS: claude-restore"; else echo "FAIL: $fails case(s)" >&2; exit 1; fi

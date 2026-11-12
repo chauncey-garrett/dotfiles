@@ -48,9 +48,12 @@ fi
 mkdir -p "$work/resurrect"
 # Window 2 holds a saved Claude pane, so the restore also exercises resurrect's
 # `->… *` argument hand-off to claude-restore.
+# Window 3 is a pane started as plain `claude`: its id exists only as a
+# claude_session line, the way resurrect-save-claude-ids records it.
 SID=11111111-2222-3333-4444-555555555555
-printf 'pane\tsynthetic\t1\t1\t:*\t1\thost\t:%s\t1\tzsh\t:\npane\tsynthetic\t2\t0\t:\t1\tclaude\t:%s\t1\tclaude\t:claude -r %s\nwindow\tsynthetic\t1\t:zsh\t1\t:*\tb25d,80x24,0,0,0\t:\nwindow\tsynthetic\t2\t:claude\t0\t:\tb25d,80x24,0,0,1\toff\nstate\tsynthetic\t\n' \
-  "$work" "$work" "$SID" > "$work/resurrect/tmux_resurrect_20000101T000000.txt"
+SID3=33333333-2222-3333-4444-555555555555
+printf 'pane\tsynthetic\t1\t1\t:*\t1\thost\t:%s\t1\tzsh\t:\npane\tsynthetic\t2\t0\t:\t1\tclaude\t:%s\t1\tclaude\t:claude -r %s\npane\tsynthetic\t3\t0\t:\t1\tclaude\t:%s\t1\tclaude\t:claude\nwindow\tsynthetic\t1\t:zsh\t1\t:*\tb25d,80x24,0,0,0\t:\nwindow\tsynthetic\t2\t:claude\t0\t:\tb25d,80x24,0,0,1\toff\nwindow\tsynthetic\t3\t:plain\t0\t:\tb25d,80x24,0,0,2\toff\nstate\tsynthetic\t\nclaude_session\tsynthetic\t3\t1\t%s\n' \
+  "$work" "$work" "$SID" "$work" "$SID3" > "$work/resurrect/tmux_resurrect_20000101T000000.txt"
 ln -s tmux_resurrect_20000101T000000.txt "$work/resurrect/last"
 
 # 3. Probe config = the real tmux.conf with TPM pointed at the plugin copy.
@@ -74,17 +77,33 @@ while (( SECONDS - start < TIMEOUT )); do
     echo "PASS: continuum auto-restored the saved session after $(( SECONDS - start ))s"
     # 5. The Claude pane must come back resuming its own saved id. This takes
     #    about 10s while the login shell initialises.
-    want="claude --resume $SID"
-    while (( SECONDS - start < TIMEOUT + 45 )); do
-      if tmux -L "$sock" capture-pane -p -t '=synthetic:2' 2>/dev/null | grep -qF -- "$want"; then
-        echo "PASS: restored Claude pane ran '$want' after $(( SECONDS - start ))s"
-        exit 0
-      fi
-      sleep 0.5
+    for case in "2|$SID|saved as claude -r <id>" "3|$SID3|plain claude, id from claude_session line"; do
+      IFS='|' read -r win id label <<<"$case"
+      want="claude --resume $id"
+      until tmux -L "$sock" capture-pane -p -t "=synthetic:$win" 2>/dev/null | grep -qF -- "$want"; do
+        if (( SECONDS - start >= TIMEOUT + 45 )); then
+          echo "FAIL: restored pane $win ($label) never ran '$want'. Pane shows:" >&2
+          tmux -L "$sock" capture-pane -p -t "=synthetic:$win" 2>/dev/null | grep -v '^\s*$' | tail -5 | sed 's/^/    /' >&2
+          echo "  @resurrect-processes: $(tmux -L "$sock" show -gqv @resurrect-processes)" >&2
+          exit 1
+        fi
+        sleep 0.5
+      done
+      echo "PASS: restored pane $win ($label) ran '$want' after $(( SECONDS - start ))s"
     done
-    echo "FAIL: restored Claude pane never ran '$want'. Pane shows:" >&2
-    tmux -L "$sock" capture-pane -p -t '=synthetic:2' 2>/dev/null | grep -v '^\s*$' | tail -5 | sed 's/^/    /' >&2
-    echo "  @resurrect-processes: $(tmux -L "$sock" show -gqv @resurrect-processes)" >&2
+
+    # 6. Save side: a real resurrect save must record a pane's live id.
+    SAVED=44444444-2222-3333-4444-555555555555
+    tmux -L "$sock" set-option -p -t '=synthetic:3' @claude-session-id "$SAVED"
+    tmux -L "$sock" run-shell "$work/plugins/tmux-resurrect/scripts/save.sh quiet"
+    newest="$work/resurrect/$(readlink "$work/resurrect/last")"
+    if grep -qxF "$(printf 'claude_session\tsynthetic\t3\t1\t%s' "$SAVED")" "$newest"; then
+      echo "PASS: resurrect save recorded the pane's live session id"
+      exit 0
+    fi
+    echo "FAIL: resurrect save has no claude_session line for synthetic:3. Lines:" >&2
+    grep '^claude_session' "$newest" | sed 's/^/    /' >&2 || echo "    (none)" >&2
+    echo "  @resurrect-hook-post-save-layout: '$(tmux -L "$sock" show -gqv @resurrect-hook-post-save-layout)'" >&2
     exit 1
   fi
   sleep 0.2

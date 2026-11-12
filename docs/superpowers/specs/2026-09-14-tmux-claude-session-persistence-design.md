@@ -165,15 +165,47 @@ don't inherit aliases. `make test-claude-restore` covers the decision table.
 resurrect path, with `CLAUDE_RESTORE_DRY_RUN=1`, and checks that it ran
 `claude --resume <id>`.
 
+### 7. Track each pane's live session id (added 2026-11-12)
+
+§6 helps only panes whose command line carries an id. Most panes are started as plain
+`claude`, so a restore had to guess with `fallback_args`. Two pieces now record the
+conversation each pane actually holds, using only standard hook mechanisms:
+
+1. **`tmux/bin/claude-session-to-tmux`**, a Claude Code SessionStart hook registered in
+   `~/.claude/settings.json`. It sets pane option `@claude-session-id` from the hook's
+   `session_id`. SessionStart fires on startup, resume, `/clear` and compaction, so the
+   option always names the current conversation, even after `/clear` or an in-session
+   `/resume`, where the command line is stale. It records only the pane's *top-level*
+   `claude`: the hook's nearest `claude` ancestor must be the pane process or its direct
+   child. Without this rule, a hook-spawned `claude -p` (e.g. the double-shot-latte judges)
+   would overwrite the pane's id. It prints nothing (SessionStart stdout is injected into
+   context) and always exits 0.
+2. **`tmux/bin/resurrect-save-claude-ids`**, set as `@resurrect-hook-post-save-layout`. It
+   appends `claude_session <session> <window> <pane> <id>` lines to every save. Resurrect
+   runs this hook before it compares the new save with the previous one, so the ids stay
+   in step with the snapshot and are pruned with it. Resurrect's restore ignores unknown
+   line types.
+
+`claude-restore` looks up its own pane's coordinates in the save being restored, and that
+id takes precedence over the command line. Verified 2026-11-12:
+- `claude --resume <id>` finds a session whichever project folder Claude filed its
+  transcript under. A session stored under a main checkout's slug resumed from inside one
+  of its worktrees, same session id, with the conversation intact.
+- Two real `claude -p` runs inside a tracked pane left its id untouched.
+
+Tests:
+- `make test-claude-session-tracking`: an isolated server with a fake `claude`, covering
+  top-level, pane-process and nested ancestry.
+- `make test-tmux-restore`: a saved plain-`claude` pane plus its `claude_session` line comes
+  back as `claude --resume <id>`, and a real resurrect save records a pane's id.
+
 ## Known limitations
 
-- **Same-directory multi-pane ambiguity.** If two or more panes are simultaneously sitting
-  in the exact same literal directory, `--continue`'s "most recent conversation in this
-  directory" can only pick one — a restore might resume the wrong one of the pair.
-  Accepted tradeoff (Chauncey's choice): notice the wrong context, run
-  `claude -r <correct-uuid>` manually. A full fix would need a background `lsof`-based
-  pane→session-uuid tracker hooked into resurrect's save/restore hooks — deliberately not
-  built; see the dotfiles todo for the reasoning if this needs revisiting.
+- **Same-directory multi-pane ambiguity: resolved 2026-11-12 (Changes §7).** This was
+  originally accepted as a rare trade-off, with "fix by hand with `claude -r`". It turned
+  out to be the main case: most panes start as plain `claude`, and several share `~/dev`.
+  Each pane's live session id is now tracked and saved, so it no longer depends on
+  `--continue`.
 - **`~claude` matches the whole saved command line, not just the program name.** The `~`
   prefix in `@resurrect-processes` is a plain substring test against the pane's entire
   saved command line — arguments and paths included — so any pane whose command line merely
@@ -187,12 +219,15 @@ resurrect path, with `CLAUDE_RESTORE_DRY_RUN=1`, and checks that it ran
   itself as `node …/claude-code/cli.js`, which some install configurations produce, so a
   stricter program-name match would break the feature's main case to avoid a cosmetic one.
   Documented rather than "fixed".
-- **Panes started as plain `claude` have no session id in the save.** Resurrect records
-  only the process's command line, and a pane started as bare `claude` has nothing to
-  resume by. `claude-restore` gives those panes its `fallback_args`. Panes saved with
-  `-r <id>` or `--resume <id>` resume exactly that conversation (Changes §6). Two
-  bare-`claude` panes in one directory can still both get the newest conversation under a
-  `--continue` fallback.
+- **Live session tracking needs the SessionStart hook to have run as the pane's top-level
+  `claude`** (Changes §7). Panes it doesn't cover fall back to the `-r <id>` on their
+  command line, then to `fallback_args`:
+  - sessions started before the hook was installed. The 8 open on 2026-11-12 were
+    backfilled by hand.
+  - sessions run with hooks disabled.
+  - `claude` launched through a wrapper (`caffeinate claude`, `op run -- claude`). There
+    the wrapper, not the pane's shell, is claude's parent, so the hook treats it as nested.
+  - machines without `jq`.
 - **Claude Code prunes idle transcripts (`cleanupPeriodDays`, default 30).** A session
   that stays open but idle for more than 30 days loses its transcript to the next
   `claude` launch, so no restore can resume it. Observed 2026-11-12: `7b8ac24c`

@@ -18,7 +18,11 @@ automatically the next time a tmux server starts. Design, known limitations, and
 - Continuum must be the **last** plugin sourced in `tmux.conf`. Otherwise auto-restore
   silently does nothing.
 - To start tmux clean once, without a restore, run `touch ~/tmux_no_auto_restore`.
-- Claude panes come back through `tmux/bin/claude-restore`. A pane saved as
-  `claude -r <id>` resumes exactly that conversation. A pane started as plain `claude`
-  gets the resolver's `fallback_args`. To make a pane restore exactly, start it as
-  `claude -r <id>` (or resume it once). `make test-claude-restore` covers the rules.
+- Claude panes come back through `tmux/bin/claude-restore`, each on its own conversation,
+  including panes started as plain `claude`. A Claude Code SessionStart hook
+  (`tmux/bin/claude-session-to-tmux`, registered in `~/.claude/settings.json`) records each
+  pane's live session id, and resurrect writes it into every save
+  (`tmux/bin/resurrect-save-claude-ids`). Panes without a recorded id use `-r <id>` from
+  their command line, then the resolver's `fallback_args`. Tests: `make test`.
+- New machine: also add the SessionStart hook to `~/.claude/settings.json`, which isn't in
+  this repo. See the spec's Changes §7.
