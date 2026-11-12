@@ -46,8 +46,11 @@ fi
 
 # 2. A synthetic save that only this test could have written.
 mkdir -p "$work/resurrect"
-printf 'pane\tsynthetic\t1\t1\t:*\t1\thost\t:%s\t1\tzsh\t:\nwindow\tsynthetic\t1\t:zsh\t1\t:*\tb25d,80x24,0,0,0\t:\nstate\tsynthetic\t\n' \
-  "$work" > "$work/resurrect/tmux_resurrect_20000101T000000.txt"
+# Window 2 holds a saved Claude pane, so the restore also exercises resurrect's
+# `->… *` argument hand-off to claude-restore.
+SID=11111111-2222-3333-4444-555555555555
+printf 'pane\tsynthetic\t1\t1\t:*\t1\thost\t:%s\t1\tzsh\t:\npane\tsynthetic\t2\t0\t:\t1\tclaude\t:%s\t1\tclaude\t:claude -r %s\nwindow\tsynthetic\t1\t:zsh\t1\t:*\tb25d,80x24,0,0,0\t:\nwindow\tsynthetic\t2\t:claude\t0\t:\tb25d,80x24,0,0,1\toff\nstate\tsynthetic\t\n' \
+  "$work" "$work" "$SID" > "$work/resurrect/tmux_resurrect_20000101T000000.txt"
 ln -s tmux_resurrect_20000101T000000.txt "$work/resurrect/last"
 
 # 3. Probe config = the real tmux.conf with TPM pointed at the plugin copy.
@@ -61,13 +64,28 @@ mkdir -p "$work/xdg/tmux"
 } > "$work/xdg/tmux/tmux.conf"
 
 # 4. Start a fresh server (as prezto does at login) and wait for the restore.
-env -u TMUX -u TMUX_PANE XDG_CONFIG_HOME="$work/xdg" \
+#    CLAUDE_RESTORE_DRY_RUN makes claude-restore print its command instead of
+#    launching Claude, so no real session starts.
+env -u TMUX -u TMUX_PANE XDG_CONFIG_HOME="$work/xdg" CLAUDE_RESTORE_DRY_RUN=1 \
   tmux -L "$sock" -f "$work/xdg/tmux/tmux.conf" new-session -d -s boot
 start=$SECONDS
 while (( SECONDS - start < TIMEOUT )); do
   if tmux -L "$sock" has-session -t '=synthetic' 2>/dev/null; then
     echo "PASS: continuum auto-restored the saved session after $(( SECONDS - start ))s"
-    exit 0
+    # 5. The Claude pane must come back resuming its own saved id. This takes
+    #    about 10s while the login shell initialises.
+    want="claude --resume $SID"
+    while (( SECONDS - start < TIMEOUT + 45 )); do
+      if tmux -L "$sock" capture-pane -p -t '=synthetic:2' 2>/dev/null | grep -qF -- "$want"; then
+        echo "PASS: restored Claude pane ran '$want' after $(( SECONDS - start ))s"
+        exit 0
+      fi
+      sleep 0.5
+    done
+    echo "FAIL: restored Claude pane never ran '$want'. Pane shows:" >&2
+    tmux -L "$sock" capture-pane -p -t '=synthetic:2' 2>/dev/null | grep -v '^\s*$' | tail -5 | sed 's/^/    /' >&2
+    echo "  @resurrect-processes: $(tmux -L "$sock" show -gqv @resurrect-processes)" >&2
+    exit 1
   fi
   sleep 0.2
 done

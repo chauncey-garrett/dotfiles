@@ -18,3 +18,7 @@ automatically the next time a tmux server starts. Design, known limitations, and
 - Continuum must be the **last** plugin sourced in `tmux.conf`. Otherwise auto-restore
   silently does nothing.
 - To start tmux clean once, without a restore, run `touch ~/tmux_no_auto_restore`.
+- Claude panes come back through `tmux/bin/claude-restore`. A pane saved as
+  `claude -r <id>` resumes exactly that conversation. A pane started as plain `claude`
+  gets the resolver's `fallback_args`. To make a pane restore exactly, start it as
+  `claude -r <id>` (or resume it once). `make test-claude-restore` covers the rules.

@@ -137,6 +137,34 @@ the Validation plan).
 - `make test-tmux-restore` (`tmux/tests/test-auto-restore.sh`) is the regression test. It
   exercises the real trigger (see the Validation plan).
 
+### 6. Restore each Claude pane by its saved session id (added 2026-11-12)
+
+The original `"~claude->claude --continue"` setting dropped the session id that resurrect
+had already saved. With the six windows open on 2026-11-12, it would have restored 2 of
+them wrong:
+- Two panes in `~/dev` would both resume the newest `~/dev` conversation.
+- The nri-bundle worktree pane would not find its session at all. `--continue` from the
+  worktree directory looks under the worktree's project slug, but a session started with
+  `claude --worktree <name>` is stored under the *main* checkout's slug.
+
+Resurrect's inline strategy replaces a ` *` in the replacement with the saved command's
+arguments (`_get_command_arguments` in `process_restore_helpers.sh`). So the setting is now
+`"~claude->~/.dotfiles/tmux/bin/claude-restore *"`, and the resolver decides:
+
+| Saved command | Relaunched as |
+|---|---|
+| `claude -r <id>`, `--resume <id>`, `--resume=<id>` | `claude --resume <id>` |
+| `claude --worktree <name> --resume <id>` | the same command, run from the main checkout (found with `git rev-parse --git-common-dir`) |
+| anything else (bare, a positional prompt, `-p`, `--resume` with no id) | `fallback_args` |
+
+Every other argument is dropped. In particular a positional prompt is never replayed,
+because replaying it would submit the prompt again to an auto-mode session. The resolver
+exports `SHELL=/bin/bash` to match the zshrc `claude` alias (`e56a3f7`), since scripts
+don't inherit aliases. `make test-claude-restore` covers the decision table.
+`make test-tmux-restore` restores a saved `claude -r <id>` pane through the real
+resurrect path, with `CLAUDE_RESTORE_DRY_RUN=1`, and checks that it ran
+`claude --resume <id>`.
+
 ## Known limitations
 
 - **Same-directory multi-pane ambiguity.** If two or more panes are simultaneously sitting
@@ -159,12 +187,12 @@ the Validation plan).
   itself as `node …/claude-code/cli.js`, which some install configurations produce, so a
   stricter program-name match would break the feature's main case to avoid a cosmetic one.
   Documented rather than "fixed".
-- **`--continue` discards the session id the save already has.** Resurrect records each
-  pane's full command, e.g. `claude -r 5b04030d-…`. The `->claude --continue` override
-  replaces that with "the most recent conversation in this directory". Observed
-  2026-11-12: two panes in `~/dev` would both resume the same conversation. A
-  `claude --worktree X --resume <id>` pane, whose transcript lives under the *main* repo's
-  project folder, cannot be found by `--continue` run from the worktree directory.
+- **Panes started as plain `claude` have no session id in the save.** Resurrect records
+  only the process's command line, and a pane started as bare `claude` has nothing to
+  resume by. `claude-restore` gives those panes its `fallback_args`. Panes saved with
+  `-r <id>` or `--resume <id>` resume exactly that conversation (Changes §6). Two
+  bare-`claude` panes in one directory can still both get the newest conversation under a
+  `--continue` fallback.
 - **Claude Code prunes idle transcripts (`cleanupPeriodDays`, default 30).** A session
   that stays open but idle for more than 30 days loses its transcript to the next
   `claude` launch, so no restore can resume it. Observed 2026-11-12: `7b8ac24c`

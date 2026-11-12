@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+#
+# claude-restore: what tmux-resurrect runs in a restored pane that was running
+# Claude Code. Wired in tmux/config/tmux-plugins/tmux-resurrect.conf:
+#
+#   set -g @resurrect-processes '"~claude->~/.dotfiles/tmux/bin/claude-restore *"'
+#
+# Resurrect replaces `*` with the saved command's arguments, so a pane saved as
+# `claude -r 5b04030d-…` comes back as `claude-restore -r 5b04030d-…`.
+#
+# Policy: only the session id and the worktree name carry over. Every other
+# argument is dropped, a positional prompt in particular: replaying
+# `claude "fix X"` would submit that prompt again in a new session.
+#
+# CLAUDE_RESTORE_DRY_RUN=1 prints "cd <dir>" and "claude <args>" instead of
+# launching. Tests: make test-claude-restore
+#
+set -euo pipefail
+
+# fallback_args: what to run for a pane saved WITHOUT a session id. It was
+# started as plain `claude`, or with a prompt or flags, so the save cannot say
+# which conversation the pane held. Set the global array `args`.
+fallback_args() {
+  # TODO(Chauncey): choose the fallback (default below is the Oct 8 design).
+  #   --continue  resumes the most recent conversation in this directory. Zero
+  #               clicks, but two panes sharing a directory both get the newest one.
+  #   --resume    opens Claude's session picker for this directory. Never wrong,
+  #               costs one selection per pane after a restore.
+  #   (nothing)   starts a fresh session. Predictable, but loses the context.
+  args=(--continue)
+}
+
+session_id="" worktree=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -r | --resume)
+      if [ $# -ge 2 ] && [[ $2 != -* ]]; then session_id=$2; shift; fi ;;
+    --resume=*)   session_id=${1#--resume=} ;;
+    --worktree)
+      if [ $# -ge 2 ] && [[ $2 != -* ]]; then worktree=$2; shift; fi ;;
+    --worktree=*) worktree=${1#--worktree=} ;;
+  esac
+  shift
+done
+
+args=()
+if [ -n "$session_id" ]; then args=(--resume "$session_id"); else fallback_args; fi
+
+dir=$PWD
+if [ -n "$worktree" ]; then
+  # Resurrect restores the pane into the worktree, but Claude stored the
+  # session under the main checkout's project dir. `--worktree <name>` run
+  # from the main checkout is what resumes it (verified 2026-11-12).
+  common=$(git -C "$PWD" rev-parse --path-format=absolute --git-common-dir 2>/dev/null || true)
+  if [[ $common == */.git ]]; then
+    dir=${common%/.git}
+    args=(--worktree "$worktree" ${args[@]+"${args[@]}"})
+  fi
+fi
+
+if [ -n "${CLAUDE_RESTORE_DRY_RUN:-}" ]; then
+  printf 'cd %s\nclaude' "$dir"; printf ' %s' ${args[@]+"${args[@]}"}; printf '\n'
+  exit 0
+fi
+
+cd "$dir"
+# Matches the zshrc alias `claude='SHELL=/bin/bash claude'` (e56a3f7). A
+# script does not inherit aliases.
+export SHELL=/bin/bash
+exec claude ${args[@]+"${args[@]}"}
