@@ -110,6 +110,33 @@ TPM auto-installs missing plugins the next time tmux starts (the existing `if "t
 ... tpm"` bootstrap clones TPM itself the same way). No separate install step beyond
 starting/reloading tmux; `prefix + I` also force-installs if needed.
 
+### 5. Plugin load order and restore window (added 2026-11-12, after an outage)
+
+**What happened.** Auto-restore never fired from 2026-10-08 to 2026-11-12. When tmux
+started on 2026-11-11, you got one bare session. Resurrect's 30-day backup pruning then
+deleted the last real snapshot, which covered six windows from 2026-10-08. The sessions had
+to be rebuilt by hand from the Claude transcripts.
+
+**Root cause.** `continuum_restore.sh` sleeps 1s and then reads
+`@resurrect-restore-script-path`. Resurrect's own `resurrect.tmux` sets that option. TPM
+loads plugins in the order their `source` lines appear in `tmux.conf`, and continuum was
+sourced *before* resurrect, with four plugins in between. The read therefore came back
+empty, and `[ -n "$path" ]` skipped the restore with no error. Measured warm: the path
+appeared 0.25–0.53s too late on 3 of 3 runs. In an A/B test on isolated servers, the old
+order restored 0 of 3 times and continuum-last restored 3 of 3. The original rehearsal
+passed because it called `restore.sh` directly, which skips this trigger path entirely (see
+the Validation plan).
+
+**Changes.**
+- `tmux.conf` now sources `tmux-continuum.conf` **last** among the plugins. A comment there
+  explains why. Continuum's README already asks for this, for its `status-right` hook.
+- `@continuum-restore-max-delay '30'` (default 10). Continuum's restore fires only if
+  `continuum.tmux` runs within that many seconds of server start. Loading last moves it to
+  about 3s warm, and a cold boot under endpoint security can be several times slower.
+  Resurrect skips panes that already exist, so a wider window cannot duplicate windows.
+- `make test-tmux-restore` (`tmux/tests/test-auto-restore.sh`) is the regression test. It
+  exercises the real trigger (see the Validation plan).
+
 ## Known limitations
 
 - **Same-directory multi-pane ambiguity.** If two or more panes are simultaneously sitting
@@ -132,6 +159,16 @@ starting/reloading tmux; `prefix + I` also force-installs if needed.
   itself as `node …/claude-code/cli.js`, which some install configurations produce, so a
   stricter program-name match would break the feature's main case to avoid a cosmetic one.
   Documented rather than "fixed".
+- **`--continue` discards the session id the save already has.** Resurrect records each
+  pane's full command, e.g. `claude -r 5b04030d-…`. The `->claude --continue` override
+  replaces that with "the most recent conversation in this directory". Observed
+  2026-11-12: two panes in `~/dev` would both resume the same conversation. A
+  `claude --worktree X --resume <id>` pane, whose transcript lives under the *main* repo's
+  project folder, cannot be found by `--continue` run from the worktree directory.
+- **Claude Code prunes idle transcripts (`cleanupPeriodDays`, default 30).** A session
+  that stays open but idle for more than 30 days loses its transcript to the next
+  `claude` launch, so no restore can resume it. Observed 2026-11-12: `7b8ac24c`
+  (dotfiles, idle since 2026-09-03) existed only in the episodic-memory archive.
 - **Deleted worktrees.** If a `.claude/worktrees/...` directory is removed between a save
   and a later restore, that pane's `cd` fails and `claude --continue` never runs — visible
   as a shell error in that pane, not a silent failure.
@@ -146,11 +183,14 @@ starting/reloading tmux; `prefix + I` also force-installs if needed.
   `another_tmux_server_running_on_startup()` counts all `tmux` processes for the user via
   `ps`, with no socket-name awareness, and the upstream doc describes the policy as "giving
   precedence to the tmux server that was first started" — no config option overrides this.
-  Irrelevant to the real crash/reboot scenario (zero other servers exist at boot), but means
-  any *manual* rehearsal of this feature from inside an already-running tmux session (e.g.
-  one hosting a Claude Code CLI session) must invoke `tmux-resurrect/scripts/restore.sh`
-  directly rather than waiting for continuum's background auto-trigger, which is
-  structurally unobservable in that situation.
+  At a real boot this gate passes: with one terminal window, the only other `tmux`
+  process is prezto's `tmux attach-session` client. On 2026-11-12, across 12 checks,
+  TPM's and continuum's own `tmux` calls never overlapped the count. It *does* trip
+  if several terminal windows or tabs attach at login at the same moment. A rehearsal
+  from inside a running tmux always trips it, which is why `make test-tmux-restore`
+  patches this gate out in a temporary copy of the plugins. Do **not** rehearse by calling
+  `restore.sh` directly: that skips continuum's trigger, and the trigger is where the
+  2026-10 outage was (Changes §5).
 
   **The same gate also decides whether autosave gets installed at all** — this is an
   ongoing-operation concern, not just a boot-time one. `continuum.tmux`'s `main()` calls
@@ -211,12 +251,14 @@ Config review alone doesn't prove this works — validate end-to-end before trus
    next crash reveals a stale snapshot. Two read-only lines, zero risk, and together they are
    the only cheap way to tell the three states apart.
 
-**Note on steps 3–5 — they cannot be run literally from inside tmux.** Per the
-multi-server bullet in Known limitations, continuum refuses to auto-restore while any other
-tmux server is running on any socket, which is always true when the rehearsal is driven
-from inside a tmux-hosted session (including a Claude Code CLI session). Don't rediscover
-this by waiting on a restore that will never fire: either perform steps 3–5 from a plain
-terminal outside tmux, or rehearse on an isolated socket (`tmux -L <name> …`) and invoke
-`~/.dotfiles/tmux/plugins/tmux-resurrect/scripts/restore.sh` directly in place of waiting
-for continuum's background auto-trigger. If rehearsing, re-read the `last`-symlink bullet
-first — the rehearsal writes to the same shared save file the real session restores from.
+**Steps 3–5 cannot be run literally from inside tmux: run `make test-tmux-restore`
+instead.** Continuum refuses to auto-restore while any other tmux server is running (see
+Known limitations), and a rehearsal driven from a tmux-hosted session always has one. The
+old workaround was to call `restore.sh` directly on an isolated socket. **That is the
+reason the 2026-10 outage shipped**: it tests resurrect and skips continuum's trigger,
+which is where the bug was (Changes §5). The make target runs a fresh server on its own
+socket with the real `tmux.conf`, a synthetic save in a temporary `@resurrect-dir`
+(so it cannot touch the real `last`), and `XDG_CONFIG_HOME` pointed at the probe config
+so TPM uses its plugin order. It passes only if continuum's automatic restore brings the
+saved session back. Run it after any change to `tmux.conf`, the plugin list, or a plugin
+update.
